@@ -9,33 +9,33 @@ import { EditRfqComponent } from './components/rfq-approval/edit-rfq.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: PagesCoreManagementComponent,
     children: [
       {
-        path: "",
-        pathMatch: "full",
-        redirectTo: "managementdashboard"
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'managementdashboard'
       },
 
       {
-        path: "managementdashboard",
+        path: 'managementdashboard',
         component: ManagementDashboardComponent
       },
       {
-        path: "rfq-approval",
+        path: 'rfq-approval',
         component: RfqApprovalComponent
       },
       {
-        path: "rfq-approval/edit-rfq",
+        path: 'rfq-approval/edit-rfq',
         component: EditRfqComponent
       },
       {
-        path: "updatemanagementprofile",
+        path: 'updatemanagementprofile',
         component: UpdateManagementProfileComponent
       },
       {
-        path: "notifications",
+        path: 'notifications',
         component: ManagementNotificationsComponent
       }
     ]
