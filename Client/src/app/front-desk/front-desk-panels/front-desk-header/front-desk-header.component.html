@@ -1,0 +1,49 @@
+<header class="flux-header clearfix" [attr.nav-layout]="navLayout"
+  [attr.navbar-type]="toggleStatus ? defaultNavbar : toggleNavbar " [attr.effect-type]="navbarEffect"
+  [attr.header-theme]="headerColorTheme" [attr.collapsed-left-header]="collapsedLeftHeader"
+  [attr.device-type]="deviceType">
+  <div class="flux-header-wrapper clearfix">
+    <div class="flux-brand" [attr.left-header-theme]="leftHeaderColorTheme">
+      <span class="flux-brand-logo"><i class="fas fa-meteor"></i></span>
+      <span class="flux-brand-text">Brimaslead</span>
+    </div>
+    <div class="flux-header-navbar">
+
+      <div class="flux-left-header clearfix">
+        <div class="sidebarToggle" (click)="changeTheToggleStatus()">
+          <i class="fas fa-bars">
+
+          </i>
+        </div>
+        <div class="left-header-nav">
+          <ul>
+            <li><a href="" class="nav-item dropdown dropdown-toggle">Mega</a></li>
+            <li>
+              
+            </li>
+            <li><a href="" class="dropdown-toggle">New</a></li>
+            <li></li>
+
+           
+            
+      
+          </ul>
+      
+
+        </div>
+      </div>
+      <!-- <div class="bg-info">
+          <button type="button" class="btn btn-secondary float-left">Example Button floated left</button>
+          <button type="button" class="btn btn-secondary float-right">Example Button floated right</button>
+        </div> -->
+
+      <div class="flux-right-header clearfix">
+        <ul>
+          <li><a href=""><i class="far fa-list-alt"></i></a></li>
+          <li><a href="" class="dropdown-toggle"><i class="fas fa-user-cog"></i> <span *ngIf="deviceType !== 'mobile'" >System Setting</span> </a></li>
+          <li><a href=""><i class="fas fa-power-off"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

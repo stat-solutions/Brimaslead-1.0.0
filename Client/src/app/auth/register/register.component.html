@@ -1,0 +1,289 @@
+<div class="container-fluid shadow-lg">
+      <section class="content-header text-primary shadow-lg">
+        <div class="container-fluid shadow-lg">
+          <div class="row ">
+            <div class="col-sm-6">
+              <h1 > <alert type="primary"> User Registration Form</alert></h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a routerLink='/authpage/loginpage'>Home</a></li>
+                <li class="breadcrumb-item active">Register User</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content text-info shadow-lg mx-2">
+         
+        <div class="row">
+             
+          <div class="col-md-6 shadow-lg">
+
+            <div class="card card-primary my-2">
+              <div class="card-header">
+                    
+                        <h3 class="card-title">
+                    
+                                <alert type="info"> <strong>Login Details </strong>  </alert>
+                    </h3>
+               
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+
+              <div class="card-body">
+   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+        <div class="form-group">
+                <label for="main_contact_number" [ngClass]="fval.main_contact_number.valid ? 'text-success' : ''">Enter Mobile Number<i  *ngIf="fval.main_contact_number.valid" class="material-icons">check_circle</i></label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fas fa-phone text-danger mx-auto" style="size: 50px"></i></div>
+                </div>
+                <input id="main_contact_number" formControlName="main_contact_number" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.main_contact_number.touched||fval.main_contact_number.dirty) && fval.main_contact_number.errors }" placeholder="Mobile number like 07XXXXXXXX" autocomplete="off"/>
+              </div> 
+            <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.required">The main mobile number is required</div>
+            <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.hasNumber">The main mobile number should be equal to 10 "digits"</div> 
+                    <!-- <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.maxlength">The main mobile number should not exceed 12 digits</div>
+                    <div class="text-danger col" *ngIf="(fval.main_contact_number.touched||fval.main_contact_number.dirty)  && fval.main_contact_number.errors?.minlength">The main mobile number  should have atleast 12 digits</div> -->
+            </div> 
+
+           
+<div class="form-group">
+        <label for="password" [ngClass]="fval.password.valid ? 'text-success' : ''">Enter Password:<i  *ngIf="fval.password.valid" class="material-icons">check_circle</i></label>
+            
+        <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-lock text-danger mx-auto" style="size: 50px"></i></div>
+                      </div>
+            <input id="password" formControlName="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': (fval.password.touched||fval.password.dirty) && fval.password.errors }" placeholder="password" autocomplete="off">
+        </div> 
+                               
+                <label class="text-danger col" *ngIf="(fval.password.touched||fval.password.dirty) && fval.password.errors?.required">
+                                  Password is Required!
+                 </label> 
+    
+                     <label class="col" *ngIf="((fval.password.touched||fval.password.dirty) && fval.password.invalid)" [ngClass]="fval.password.errors?.required ||  fval.password.errors?.minlength  ? 'text-danger' : 'text-success'">
+                         <i class="material-icons">{{ fval.password.errors?.required  ||  fval.password.errors?.minlength ? 'cancel' : 'check_circle' }}</i>
+                                  Minimum of four digits!!!
+                                </label>
+                                <label class="col" *ngIf="((fval.password.touched||fval.password.dirty) && fval.password.invalid)" [ngClass]="fval.password.errors?.required ||  fval.password.errors?.minlength  ? 'text-danger' : 'text-success'">
+                                  <i class="material-icons">{{ fval.password.errors?.required  ||  fval.password.errors?.maxlength ? 'cancel' : 'check_circle' }}</i>
+                                          Maximum four digits allowed!!!
+                                         </label>
+    
+                                <label class="col" *ngIf="((fval.password.touched||fval.password.dirty)  && fval.password.invalid)"  [ngClass]="fval.password.hasError('required') || fval.password.hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                                  <i class="material-icons">{{ fval.password.hasError('required') ||
+                                        fval.password.hasError('hasNumber') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                  Only digits are Allowed!!
+                                </label>
+    
+    
+                                <label class="col"  *ngIf="((fval.password.touched||fval.password.dirty) && fval.password.invalid)" [ngClass]="fval.password.hasError('required') || fval.password.hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                                  <i class="material-icons">{{ fval.password.hasError('required') ||
+                                        fval.password.hasError('hasCapitalCase') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                  Must contain at least 1 in Capital Case!
+                                </label>
+    
+                                <label class="col" *ngIf="((fval.password.touched||fval.password.dirty) && fval.password.invalid)" [ngClass]="fval.password.hasError('required') || fval.password.hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                                  <i class="material-icons">{{ fval.password.hasError('required') ||
+                                        fval.password.hasError('hasSmallCase') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                  Must contain at least 1 Letter in Small Case!
+                                </label>
+    
+                                <label class="col"  *ngIf="((fval.password.touched||fval.password.dirty) && fval.password.invalid)" [ngClass]="fval.password.hasError('required') || fval.password.hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                                  <i class="material-icons">{{ fval.password.hasError('required') ||
+                                        fval.password.hasError('hasSpecialCharacters') ? 'cancel' :
+                                    'check_circle' }}</i>
+                                  Must contain at least 1 Special Character!
+                                </label>
+                              </div>
+                     </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+            
+            <div class="card card-primary my-2">
+                <div class="card-header">
+                      
+                          <h3 class="card-title">
+                      
+                                  <alert type="info"> <strong>Bio Data </strong>  </alert>
+                      </h3>
+                 
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                      <i class="fas fa-minus"></i></button>
+                  </div>
+                </div>
+  
+                <div class="card-body">
+     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+
+          <div class="form-group">
+                  <label for="first_name" [ngClass]="fval.first_name.valid ? 'text-success' : ''">Enter First Name<i  *ngIf="fval.first_name.valid" class="material-icons">check_circle</i></label>
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-grin-alt text-danger mx-auto" style="size: 50px"></i></div>
+                  </div>
+                  <input id="first_name" formControlName="first_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.first_name.touched||fval.first_name.dirty) && fval.first_name.errors }" placeholder="First Name " autocomplete="off"/>
+                </div> 
+              <div class="text-danger col" *ngIf="(fval.first_name.touched||fval.first_name.dirty)  && fval.first_name.errors?.required">The First Name is required</div>
+              </div> 
+              <div class="form-group">
+                  <label for="middle_name" [ngClass]="fval.middle_name.valid ? 'text-success' : ''">Enter Middle Name<i  *ngIf="fval.middle_name.valid" class="material-icons">check_circle</i></label>
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-fas fa-grin-alt text-danger mx-auto" style="size: 50px"></i></div>
+                  </div>
+                  <input id="middle_name" formControlName="middle_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.middle_name.touched||fval.middle_name.dirty) && fval.middle_name.errors }" placeholder="Middle Name" autocomplete="off"/>
+                </div> 
+              <div class="text-danger col" *ngIf="(fval.middle_name.touched||fval.middle_name.dirty)  && fval.middle_name.errors?.required">The Middle Name is required</div>
+              </div> 
+              <div class="form-group">
+                  <label for="last_name" [ngClass]="fval.last_name.valid ? 'text-success' : ''">Enter Last Name<i  *ngIf="fval.last_name.valid" class="material-icons">check_circle</i></label>
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-fas fa-grin-stars text-danger mx-auto" style="size: 50px"></i></div>
+                  </div>
+                  <input id="last_name" formControlName="last_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.last_name.touched||fval.last_name.dirty) && fval.last_name.errors }" placeholder="Last Name" autocomplete="off"/>
+                </div> 
+              <div class="text-danger col" *ngIf="(fval.last_name.touched||fval.last_name.dirty)  && fval.last_name.errors?.required">The Last Name is required</div>
+              </div> 
+
+
+              <div class="form-group">
+                  <label for="sex" [ngClass]="fval.sex.valid ? 'text-success' : ''"><i  *ngIf="fval.sex.valid" class="material-icons">check_circle</i>Gender:</label>
+                  <input type="text"  list="sex"  formControlName="sex" class="form-control"  [ngClass]=" { 'is-invalid': (fval.sex.touched||fval.sex.dirty) && fval.sex.errors }" autocomplete="off" placeholder="Select The Gender">
+                  <datalist id="sex" class="bg-success">
+                    <option >Male</option>
+                    <option >Female</option>
+                    </datalist>
+                  <div class="text-danger col" *ngIf="(fval.sex.touched||fval.sex.dirty)  && fval.sex.errors?.required">Gender is required</div>     
+                  </div> 
+                                       
+                                     
+                              
+                  <div class="form-group">
+                    <label for="date_of_birth" [ngClass]="fval.date_of_birth.valid ? 'text-success' : ''"><i  *ngIf="fval.date_of_birth.valid" class="material-icons">check_circle</i>Date Of Birth:</label>
+                <input  id="date_of_birth" formControlName="date_of_birth" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.date_of_birth.touched||fval.date_of_birth.dirty) && fval.date_of_birth.errors }" placeholder="Enter Date of Birth" autocomplete="off" class="form-control"/>           
+                <div class="text-danger col" *ngIf="(fval.date_of_birth.touched||fval.date_of_birth.dirty)  && fval.date_of_birth.errors?.required">The Date Of Birth is required</div>
+                
+                </div> 
+                <!-- bsDatepicker -->
+                       </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+            <!-- /.card -->
+          </div>
+
+
+          <div class="col-md-6 my-2 shadow-lg">
+            
+              <div class="card card-primary my-2">
+                  <div class="card-header">
+                        
+                            <h3 class="card-title">
+                        
+                                    <alert type="info"> <strong>Next Of Kin </strong>  </alert>
+                        </h3>
+                   
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    </div>
+                  </div>
+    
+                  <div class="card-body">
+       <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+  
+            <div class="form-group">
+                    <label for="kin_first_name" [ngClass]="fval.kin_first_name.valid ? 'text-success' : ''">Enter Next Of Kin First Name<i  *ngIf="fval.kin_first_name.valid" class="material-icons">check_circle</i></label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-grin-squint text-danger mx-auto" style="size: 50px"></i></div>
+                    </div>
+                    <input id="kin_first_name" formControlName="kin_first_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.kin_first_name.touched||fval.kin_first_name.dirty) && fval.kin_first_name.errors }" placeholder="Next Of Kin First Name " autocomplete="off"/>
+                  </div> 
+                <div class="text-danger col" *ngIf="(fval.kin_first_name.touched||fval.kin_first_name.dirty)  && fval.kin_first_name.errors?.required">The Next Of Kin First Name is required</div>
+                </div> 
+                <div class="form-group">
+                    <label for="kin_middle_name" [ngClass]="fval.kin_middle_name.valid ? 'text-success' : ''">Enter Next Of Kin Middle Name<i  *ngIf="fval.kin_middle_name.valid" class="material-icons">check_circle</i></label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-fas fa-grin-hearts text-danger mx-auto" style="size: 50px"></i></div>
+                    </div>
+                    <input id="kin_middle_name" formControlName="kin_middle_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.kin_middle_name.touched||fval.kin_middle_name.dirty) && fval.kin_middle_name.errors }" placeholder=" Next Of Kin Middle Name" autocomplete="off"/>
+                  </div> 
+                <div class="text-danger col" *ngIf="(fval.kin_middle_name.touched||fval.kin_middle_name.dirty)  && fval.kin_middle_name.errors?.required">The Next Of Kin Middle Name is required</div>
+                </div> 
+                <div class="form-group">
+                    <label for="kin_last_name" [ngClass]="fval.kin_last_name.valid ? 'text-success' : ''">Enter Last Name<i  *ngIf="fval.kin_last_name.valid" class="material-icons">check_circle</i></label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-fas fa-grin-beam text-danger mx-auto" style="size: 50px"></i></div>
+                    </div>
+                    <input id="kin_last_name" formControlName="kin_last_name" type="text" class="form-control"  [ngClass]=" { 'is-invalid': (fval.kin_last_name.touched||fval.kin_last_name.dirty) && fval.kin_last_name.errors }" placeholder="Next Of Kin Last Name" autocomplete="off"/>
+                  </div> 
+                <div class="text-danger col" *ngIf="(fval.kin_last_name.touched||fval.kin_last_name.dirty)  && fval.kin_last_name.errors?.required">The Next Of Kin Last Name is required</div>
+                </div> 
+  
+  
+                <div class="form-group">
+                    <label for="relation" [ngClass]="fval.relation.valid ? 'text-success' : ''"><i  *ngIf="fval.relation.valid" class="material-icons">check_circle</i>Relation With User:</label>
+                    <input type="text"  list="relation"  formControlName="relation" class="form-control"  [ngClass]=" { 'is-invalid': (fval.relation.touched||fval.relation.dirty) && fval.relation.errors }" autocomplete="off" placeholder="Select The Relationship with User">
+                    <datalist id="relation" class="bg-success">
+                        <option >Husband</option>
+                        <option >Wife</option>
+                        <option >Father</option>
+                        <option >Mother</option>
+                        <option >Sister</option>
+                        <option >Brother</option>
+                      </datalist>
+                    <div class="text-danger col" *ngIf="(fval.relation.touched||fval.relation.dirty)  && fval.relation.errors?.required">Relatio with user is required</div>     
+                    </div> 
+                                         
+                                       
+                                
+                
+                  <!-- bsDatepicker -->
+                         </form>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              <!-- /.card -->
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-12">
+       
+            <a href="#" class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Register User" class="btn btn-success float-right">
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->
+    <!-- </div> -->
+    <!-- /.content-wrapper -->
+  
+    <!-- <footer class="main-footer"> -->
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Copyright &copy; 2011-2019 <a href="http://statsolutionsnetwork.com">Stat Solutions Research Network Ltd</a>.</strong> All rights
+      reserved.
+    <!-- </footer> -->
+  
+
+  </div>
+  <!-- ./wrapper -->

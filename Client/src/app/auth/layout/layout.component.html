@@ -1,0 +1,152 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex flex-row hidden-sm-down">
+    <a class="navbar-brand" href="#"> <img [src]="imageUrl" height="40" width="40">Brimas Media</a>
+  
+    <button class="navbar-toggler" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isCollapsed" aria-label="Toggle navigation"(click)="toggleArial()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div [ngClass]="toggleClass" id="navbarSupportedContent">
+
+        <ul></ul>
+      <ul class="navbar-nav mr-3 my-2 my-lg-0"> 
+        
+        <li class="nav-item  dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            
+            <i class="fas fa-user-friends" style="font-size:20px;color:rgb(58, 90, 121);padding: 2px"></i>{{boxUsage}}<span ></span></a>
+       
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/smart-saving"><i class="fa fa-user" style="font-size:20px;color:teal;padding: 2px"></i>{{usage[0]}}</a>
+
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fa fa-industry" style="border-radius:80;border-color: maroon; font-size:20px;color:rgb(179, 36, 11);padding: 2px"></i>{{usage[1]}}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fa fa-registered" style="font-size:20px;color:rgb(248, 112, 15);padding: 2px"></i>{{usage[2]}}</a>
+        
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><i class="fa fa-group" style="font-size:20px;color:rgb(31, 185, 65);padding: 2px"></i>{{usage[3]}}</a>
+           
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-church" style="font-size:20px;color:rgb(93, 17, 235);padding: 2px"></i>{{usage[4]}}</a>
+   
+        </div>
+          </li>
+      <li></li>
+   
+      <li class="nav-item  dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            
+            <i class="fas fa-piggy-bank" style="font-size:20px;color:rgb(58, 90, 121);padding: 2px"></i>{{boxUsage2}}<span ></span></a>
+       
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-comments-dollar" style="font-size:20px;color:teal;padding: 2px"></i>{{usage2[0]}}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="fas fa-donate" style="font-size:20px;color:rgb(179, 36, 11);padding: 2px"></i>{{usage2[1]}}</a>
+        </div>
+          </li>
+      <li></li>
+  
+  
+    
+    <li></li>
+  </ul>
+     
+  <ul></ul>
+  
+  <ul></ul>
+  
+ 
+  <ul class="navbar-nav mr-3 my-2 my-lg-0"> 
+    
+    <li class="nav-item  dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        <i class="fas fa-hand-holding" style="font-size:20px;color:rgb(58, 90, 121);padding: 2px"></i>{{boxUsage3}}<span ></span></a>
+   
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fa fa-user" style="font-size:20px;color:teal;padding: 2px"></i>{{usage3[0]}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fa fa-industry" style="border-radius:80;border-color: maroon; font-size:20px;color:rgb(179, 36, 11);padding: 2px"></i>{{usage3[1]}}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fa fa-registered" style="font-size:20px;color:rgb(248, 112, 15);padding: 2px"></i>{{usage3[2]}}</a>
+    
+        
+    </div>
+      </li>
+  <li></li>
+
+  <li class="nav-item  dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        <i class="fas fa-address-book" style="font-size:20px;color:rgb(58, 90, 121);padding: 2px"></i>Contact Us<span ></span></a>
+   
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-comments-dollar" style="font-size:20px;color:teal;padding: 2px"></i>Send Email</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-donate" style="font-size:20px;color:rgb(179, 36, 11);padding: 2px"></i>Send Text</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-wallet" style="font-size:20px;color:rgb(248, 112, 15);padding: 2px"></i>Follow On Facebook</a>
+    
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fa fa-group" style="font-size:20px;color:rgb(31, 185, 65);padding: 2px"></i>Twitter</a>
+       
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher" style="font-size:20px;color:rgb(3, 60, 87);padding: 2px"></i>Box Number</a>
+     
+    </div>
+      </li>
+  <li></li>
+  
+  </ul>
+
+  <ul></ul>
+  
+  <!-- <ul></ul> -->
+  
+ 
+  <ul class="navbar-nav mr-3 my-2 my-lg-0"> 
+    
+    
+      
+ <button class="btn text-light" ><i class="fa fa-download" style="color:rgb(58, 90, 121)"></i>Operating Manual</button>
+        
+   
+    
+  <li></li>
+
+  
+  <li></li>
+  
+  </ul>
+
+  <!-- <ul></ul>
+  
+  <ul></ul> -->
+  <ul class="navbar-nav mr-2 my-2 my-lg-0"> 
+    
+    <button  class="btn btn-info"  routerLink='/authpage/registeruser' (click)="toggleArial()"><i class="fas fa-lock text-light mr-2" ></i>Register User</button>
+    
+    <ul></ul>
+    <button  class="btn btn-info" routerLink='/authpage/registercustomer' (click)="toggleArial()"> <i class="fas fa-address-book text-light mr-1" ></i>Register Customer</button>
+  <li></li>
+
+  <ul></ul>
+  <button class="btn btn-info" routerLink='/authpage/registersupplier' (click)="toggleArial()"> <i class="fas fa-shopping-cart text-light mr-1" ></i>Register Supplier</button>
+<li></li>
+  <li></li>
+  
+  </ul>
+
+
+    </div>
+  </nav>
+
+  
+
