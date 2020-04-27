@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from 'src/app/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/layout.service';
 
 @Component({
   selector: 'app-leave-management',
@@ -14,7 +14,6 @@ export class LeaveManagementComponent implements OnInit {
 
   ngOnInit() {
 
-    this.layoutService.setThePanelNow('Leave Management');
   }
 
 }

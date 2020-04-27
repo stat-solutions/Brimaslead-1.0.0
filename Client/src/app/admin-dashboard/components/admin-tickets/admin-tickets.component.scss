@@ -1,0 +1,59 @@
+.text-danger{
+  color: #c63685f3 !important;
+}
+.text-warning{
+  color: #eee206ef !important;
+}
+.bg-danger{
+  background-color: #c63685 !important;
+}
+
+.roles-card{
+  border-left: 10px solid #54a9c9;
+}
+.accounts-card{
+  border-left: 10px solid #c63685f3;
+}
+.tickets-card{
+  border-left: 10px solid #54a9c9;
+}
+// h6{
+//   float: right !important;
+// }
+hr.top{
+  width: 10%;
+  min-width: 30px;
+  max-width: 50px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+hr.bottom{
+  width: 10%;
+  min-width: 30px;
+  max-width: 50px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+

@@ -1,0 +1,94 @@
+<div class="jumbotron">
+  <form [formGroup]="employeeForm" (ngSubmit)="processFormData()">
+    <div class="form-group">
+      <label for="name">Employee Name:</label>
+      <input type="text" id="name" formControlName="name" />
+
+      <div
+        class="text-danger col"
+        *ngIf="
+          employeeForm.controls.name.errors?.required &&
+          employeeForm.controls.name.touched
+        "
+      >
+        Employee Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Employee Age:</label>
+      <input type="text" id="age" formControlName="age" />
+
+      <div
+        class="text-danger col"
+        *ngIf="
+          employeeForm.controls.age.errors?.required &&
+          employeeForm.controls.age.touched
+        "
+      >
+        Employee age is required
+      </div>
+    </div>
+
+    <div
+      class="text-danger col"
+      *ngIf="
+        employeeForm.controls.age.errors?.maxLength &&
+        employeeForm.controls.age.touched
+      "
+    >
+      Employee age not exceed two digits
+    </div>
+
+    <div
+      formArrayName="nextOfKin"
+      *ngFor="let kins of nextOfKinDetails.controls; let i = index"
+    >
+      <div [formGroupName]="i">
+        <div class="form-group">
+          <label for="name">Next Of Kin Name:</label>
+          <input type="text" id="name" formControlName="nextOfKinName" />
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              nextOfKinDetails.controls[i].get('nextOfKinName').errors?.required
+            "
+          >
+            Next of kin Name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age">Next Of Kin Age:</label>
+          <input type="text" id="age" formControlName="nextOfKinAge" />
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              nextOfKinDetails.controls[i].get('nextOfKinAge').errors?.required
+            "
+          >
+            Next of kin Age is required
+          </div>
+
+        <div class="form-group">
+          <label for="relationship">Next Of Kin Relationship:</label>
+          <input type="text" id="relationship" formControlName="relationship" />
+
+          <div
+            class="text-danger col"
+            *ngIf="
+              nextOfKinDetails.controls[i].get('relationship').errors?.required
+            "
+          >
+            Next of Relationship is required
+          </div>
+        </div>
+      </div>
+   
+    </div>
+      <button class="btn btn-primary" (click)="removeNextOfKin(i)">remove next of kin</button> 
+    </div>
+    <button class="btn btn-primary" (click)="addNextOfKinDetails()">add next of kin</button>
+  </form>
+</div>

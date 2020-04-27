@@ -9,7 +9,7 @@ import { FrontDeskHeaderComponent } from './front-desk-panels/front-desk-header/
 import { FrontDeskLeftPanelComponent } from './front-desk-panels/front-desk-left-panel/front-desk-left-panel.component';
 import { FrontDeskRightPanelComponent } from './front-desk-panels/front-desk-right-panel/front-desk-right-panel.component';
 import { FrontDeskComponent } from './front-desk.component';
-import { ServicesModule } from '../services/services.module';
+import { ServicesModule } from '../shared/services/services.module';
 import { RequestForQuoteComponent } from './front-desk-dashboard/request-for-quote/request-for-quote.component';
 import { LeaveManagementComponent } from './front-desk-dashboard/employee-service/leave-management/leave-management.component';
 // tslint:disable-next-line:max-line-length
@@ -18,7 +18,11 @@ import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/
 // tslint:disable-next-line:max-line-length
 import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
+import { PurchasesComponent } from '../front-desk-dashboard/purchases/purchases.component';
+import { StockDetailsComponent } from '../front-desk-dashboard/purchases/stock-details/stock-details.component';
+import { ModalModule } from "ngx-bootstrap";
+import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +37,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     PerformanceManagementComponent,
     PayrollModuleComponent,
     HiringRetirementResignationComponent,
-
-
+    RfqDetailsComponent,
+    PurchasesComponent,
+    StockDetailsComponent,
+    AddRfqItemsComponent
   ],
   imports: [
     CommonModule,
     FrontDeskRoutingModule,
     FormsModule,
     ServicesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   exports: [
     FrontDeskLayoutComponent,
@@ -50,7 +57,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     FrontDeskLeftPanelComponent,
     FrontDeskRightPanelComponent,
     FrontDeskComponent
-
   ]
 })
-export class FrontDeskModule { }
+export class FrontDeskModule {}

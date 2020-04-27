@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid shadow-lg pb-0">
+<div class="container-fluid shadow-lg pb-0">
   <div class="container-fluid mt-0 mb-0 pb-0">
     <div class="row ">
       <div class="col-sm-6 mt-4">
@@ -17,58 +17,45 @@
   </div>
   <!-- /.container-fluid -->
 
-  <!-- Main content -->
-  <div class="container d-flex justify-content-center pb-0">
-    <div class="card my-2 col-xs-12 col-lg-5 center mb-0 pb-0">
-      <div class="card-body text-info">
-<div class="container-fluid shadow-lg pb-0 mx-0 px-0">
-  <div class="container-fluid mt-0 mb-0 pb-0">
-    <div class="row ">
-      <div class="col-sm-6 mt-4">
-        <ol class="breadcrumb float-sm-left pl-2">
-          <li class="breadcrumb-item text-info">
-            <a class="pointerCursor" routerLink="/authpage"
-              ><i class="fas fa-home"></i>&nbsp;Home</a
-            >
-          </li>
-          <li class="breadcrumb-item active">
-            <i class="fas fa-user"></i>&nbsp;Employee Registration
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-  <!-- /.container-fluid -->
-
-  <!-- Main content -->
-  <!-- <div class="container d-flex justify-content-center mx-auto px-0">
-    <div class="card shadow-lg my-2 col-xs-12 center  mx-0 mb-3 pb-0">
-      <div class="card-body">
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <mat-horizontal-stepper
-            labelPosition="bottom"
-            #linearHorizontalStepper="matHorizontalStepper"
-            formArrayName="formArray"
-            [linear]="true"
-          >
-            <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
-              <ng-template matStepLabel>Step 1 </ng-template>
-
+  <!--Main content -->
+  <div class="container d-flex justify-content-center mx-auto px-0">
+    <div class="card shadow-lg my-2 col-xs-12 center  mx-0 mb-3 pt-4 pb-0">
+      <div class="card-title text-center text-info"><hr class="top mb-1">Supplier Registration<hr class="bottom mt-1"></div>
+       <div class="card-body pt-3">
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()" #useform="ngForm">
               <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
+                <mat-label for="user_name"
+                  >Name</mat-label>
                 <mat-icon matPrefix>person_outline</mat-icon>
-                <input matInput formControlName="user_name" placeholder="Enter your name">
-                <mat-error *ngIf="checkError('user_name', 'required')">
+                <input matInput
+                formControlName="user_name" placeholder="Enter your name">
+                <mat-error *ngIf="this.userForm.get('user_name').hasError('required')">
                   Name is required
                 </mat-error>
-                <mat-error
-                  *ngIf="
-                    !checkError('user_name', 'required') &&
-                    checkError('user_name', 'minLength')
-                  "
-                >
-                  Name should not be less than two characters
-                </mat-error>
+            <mat-error
+              *ngIf="
+                !this.userForm.get('user_name').hasError('required') &&
+                this.userForm.get('user_name').hasError('minLength')
+              "
+            >
+              Name should not be less than two characters
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !this.userForm.get('user_name').hasError('required') &&
+                this.userForm.get('user_name').hasError('maxLength')
+              "
+            >
+              Name should have a maximum of 128 characters
+            </mat-error>
+            <mat-error
+              *ngIf="
+                !this.userForm.get('user_name').hasError('required') &&
+                this.userForm.get('user_name').hasError('hasCharacters')
+              "
+            >
+              Name should not include digits
+            </mat-error>
               </mat-form-field>
 
               <mat-form-field appearance="fill">
@@ -81,18 +68,17 @@
                 >
                 <mat-error
                     *ngIf="
-                      checkError('phone_number', 'required')
+ this.userForm.get('phone_number').hasError('required')
                     "
-                    >Phone number is required
+                                      >Phone number is required
                 </mat-error>
                 <mat-error
                     *ngIf="
-                      !checkError('phone_number', 'required') &&
-                      checkError('phone_number', 'patternValidator')
+                      !this.userForm.get('phone_number').hasError('required') &&
+                      this.userForm.get('phone_number').hasError('hasNumber')
                     "
                     >Phone number is invalid
-</mat-error
-                >
+</mat-error>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
@@ -115,18 +101,40 @@
                   }}</mat-icon>
                 </span>
                 <mat-error
-                    *ngIf="checkError('password', 'required')"
+                    *ngIf="this.userForm.get('password').hasError('required')"
                   >Password is required
                 </mat-error>
                 <mat-error
                     *ngIf="
-                      !checkError('password', 'required') &&
-                      checkError('password', 'patternValidator')
+                      !this.userForm.get('password').hasError('required') &&
+                      this.userForm.get('password').hasError('minLength')
                     "
-                    >Password is invalid
+                    >Password should have atleast 8 characters
 </mat-error
                 >
-              </mat-form-field>
+              <mat-error
+                    *ngIf="
+                      !this.userForm.get('password').hasError('required') &&
+                      this.userForm.get('password').hasError('hasCapitalCase')
+                    "
+                    >Password should have atleast 1 capital case letter
+</mat-error
+                >
+              <mat-error
+                    *ngIf="
+                      !this.userForm.get('password').hasError('required') &&
+                      this.userForm.get('password').hasError('hasSmallCase')
+                    "
+                    >Password should have atleast 1 small case characters
+</mat-error
+                >                            <mat-error
+                    *ngIf="
+                      !this.userForm.get('password').hasError('required') &&
+                      this.userForm.get('password').hasError('hasSpecialCharacters')
+                    "
+                    >Password should have atleast 1 special character
+</mat-error
+                >              </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Confirm password</mat-label>
                 <mat-icon matPrefix>lock</mat-icon>
@@ -148,85 +156,12 @@
                   }}</mat-icon>
                 </span>
                 <mat-error
-                    *ngIf="checkError('confirm_password', 'required')"
+                    *ngIf="this.userForm.get('confirm_password').hasError('required')"
                   >Confirm password
                 </mat-error>
                 <mat-error
-                    *ngIf="checkError('confirm_password', 'passwordMatchValidator')
+                    *ngIf="!this.userForm.get('confirm_password').hasError('required') && this.userForm.get('confirm_password').hasError('NoPasswordMatch')
                     ">Passwords do not match
-                </mat-error>
-              </mat-form-field>
-              <div>
-                 <button type="button" class="btn btn-info col-12 mt-3 pt-1" matStepperNext>
-                  Next
-                </button>
-              </div>
-            </mat-step>
-            <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
-              <ng-template matStepLabel>Step 2 </ng-template>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>TIN No.</mat-label>
-                <mat-icon matPrefix>perm_identity</mat-icon>
-                <input
-                  matInput
-                  formControlName="national_id"
-                  placeholder="Enter national Id number"
-                />
-                <mat-error
-                    *ngIf="checkError('national_id', 'required')"
-                  >National Id number is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Date of Birth</mat-label>
-                <mat-icon matPrefix>hourglass_empty</mat-icon>
-                <input
-                  matInput
-                  formControlName="date_of_birth"
-                  [matDatepicker]="picker"
-                  placeholder="Enter date of birth"
-                />
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error
-                    *ngIf="checkError('date_of_birth', 'required')"
-                  >Date of birth is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Gender</mat-label>
-                <mat-icon matPrefix>label</mat-icon>
-                <select matNativeControl>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-                <mat-error
-                    *ngIf="checkError('gender', 'required')"
-                  >Gender is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Address</mat-label>
-                <mat-icon matPrefix>my_location</mat-icon>
-                <input
-                  matInput
-                  formControlName="address"
-                  placeholder="Enter your address"
-                >
-                <mat-error
-                    *ngIf="checkError('address', 'required')"
-                  >Address is required
                 </mat-error>
               </mat-form-field>
               <mat-form-field
@@ -240,192 +175,21 @@
                   placeholder="Enter your email address"
                 >
                 <mat-error
-                    *ngIf="checkError('email', 'required')"
+                    *ngIf="this.userForm.get('email').hasError('email')"
                   >Email is required
                 </mat-error>
               </mat-form-field>
-              <div class="form-group col-xs-12 align-items-center px-auto">
-                <mat-label><i class="fas fa-portrait"></i>&nbsp;Passport-size Photo</mat-label>
-                <input
-                  type="file" class="form-control"
-                  formControlName="photo"
-                  placeholder="Upload your Passport-size photo"
-            (change)="onFileChange($event)">
-            <div class="form-group">
-              <button
-              type="button"
-              (click)="togglePhotoPreview()"
-              class="btn btn-sm btn-primary"
-              *ngIf="userForm.controls.photo !== null"
-              >
-              {{ previewPhoto ? "Hide" : "Show" }} Preview
-            </button>
-          </div>
-        <img [src]="imageSrc" *ngIf="
-                previewPhoto &&
-                userForm.controls.photo !== null
-              " style="height: 120px; width:120px">
-  </div>
-              <div class="foot d-flex mt-3 pt-1 mx-auto">
-                <button class="btn btn-info col-5 mx-auto" matStepperPrevious>
-                  Back
-                </button>
-                <button class="btn btn-info col-5 mx-auto" matStepperNext>
-                  Next
-                </button>
-              </div>
-            </mat-step>
-
-            <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
-              <ng-template matStepLabel>Step 3 </ng-template>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Employee IdNo.</mat-label>
-                <mat-icon matPrefix>supervised_user_circle</mat-icon>
-                <input
-                  matInput
-                  formControlName="employee_id"
-                  placeholder="Enter employee id number"
-                >
-                <mat-error
-                    *ngIf="checkError('employee_id', 'required')"
-                  >Employee Id number is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Job title</mat-label>
-                <mat-icon matPrefix>turned_in_not</mat-icon>
-                <input
-                  matInput
-                  formControlName="job_title"
-                  placeholder="Enter job title"
-                >
-                <mat-error
-                    *ngIf="checkError('job_title', 'required')"
-                  >Job title is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Department</mat-label>
-                <mat-icon matPrefix>work_outline</mat-icon>
-                <mat-select>
-                  <mat-option
-                    *ngFor="let dept of department"
-                    [value]="dept.value"
-                  >
-                    {{ dept.viewValue }}
-                  </mat-option>
-                </mat-select>
-                <mat-error
-                    *ngIf="checkError('department', 'required')"
-                  >Department is required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field
-                appearance="fill"
-              >
-                <mat-label>Commencement date</mat-label>
-                <mat-icon matPrefix>hourglass_empty</mat-icon>
-                <input
-                  matInput
-                  formControlName="commence_date"
-                  [matDatepicker]="picker2"
-                  placeholder="Enter commencement date"
-                >
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker2"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-                <mat-error
-                    *ngIf="checkError('commence_date', 'required')"
-                  >Commencement date is required
-                </mat-error>
-              </mat-form-field>
-              <div class="foot d-flex mt-3 pt-1 mx-auto">
-                <button class="btn btn-danger col-5 mx-auto" matStepperPrevious>
-                  Back
+            </form>
+              <div class="foot d-flex  mt-3 pt-1 pb-3 mx-auto">
+                <button type="button" class="btn btn-danger col-5 mx-auto" (click)="useform.reset()">
+                  Cancel
                 </button>
                 <button
-                  class="btn btn-info col-5 mx-auto" type="submit"
-                  (click)="onSubmit()"
-                  [disabled]="!userForm.valid"
+                class="btn btn-info col-5 mx-auto" type="button"  [disabled]="!userForm.valid"
+ (click)="useform.ngSubmit.emit()"
                 >
-                  Register
-                </button>
-              </div>
-            </mat-step>
-          </mat-horizontal-stepper>
-        </form>
-      </div>
-    </div>
-  </div> -->
-  <!-- /.content -->
-  <!-- /.content-wrapper -->
-  <!-- ./wrapper -->
-<!-- </div>
-
-              <div class="form-group">
-                <label
-                  for="contact_person"
-                  [ngClass]="fval.contact_person.valid ? 'text-success' : ''"
-                  >Contact Person<i
-                    *ngIf="fval.contact_person.valid"
-                    class="material-icons"
-                    >check_circle</i
-                  ></label
-                >
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <i
-                        class="fas fa-user-alt text-warning mx-auto"
-                        style="size: 50px"
-                      ></i>
-                    </div>
-                  </div>
-                  <input
-                    id="contact_person"
-                    formControlName="contact_person"
-                    type="text"
-                    class="form-control"
-                    [ngClass]="{
-                      'is-invalid':
-                        (fval.contact_person.touched || fval.contact_person.dirty) &&
-                        fval.contact_person.errors
-                    }"
-                    placeholder="Enter name of contact person"
-                    autocomplete="off"
-                  />
-                </div>
-                <div
-                  class="text-danger col"
-                  *ngIf="
-                    (fval.contact_person.touched || fval.contact_person.dirty) &&
-                    fval.contact_person.errors?.required
-                  "
-                >
-                  The contact person is required!
-                </div>
-              </div>
-          </div> -->
-          <!-- /.card-body -->
-
-          <!-- <div class="row d-flex flex-row">
-            <div class="col-12 my-0 pt-2 pb-0">
-              <div class="form-group">
-                <input
-                  type="submit"
-                  class="btn btn-info col-sm-6"
-                  [disabled]="!userForm.valid"
-                  value="Register"
-                />
-                <a routerLink="" class="btn btn-secondary col-sm-6">Cancel</a>
+                Register
+              </button>
                 <ngx-spinner
                   class="bg-warning bg-success"
                   size="medium"
@@ -433,22 +197,20 @@
                 >
                   <p class="text-light">Loading...</p>
                 </ngx-spinner>
-              </div>
             </div>
-          </div>
-        </form>
       </div>
-    </div> -->
-    <!-- /.content -->
-    <!-- </div> -->
-    <!-- /.content-wrapper -->
+    </div>
+  </div>
+  <!-- /.content -->
+  <!-- /.content-wrapper -->
   <!-- ./wrapper -->
+</div>
 <!-- <footer class="main-footer"> -->
-<!-- <div class="container mt-3 pb-2">
+<div class="container mt-3 pb-2">
   <div class="col-xs-12 col-lg-12">
     <div class="small text-center text-danger">
       Copyright &copy; 2020 - Brimasmedia Ltd
     </div>
   </div>
 </div>
-</footer> -->
+<!-- </footer> -->

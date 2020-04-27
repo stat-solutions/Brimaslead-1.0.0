@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { LayoutService } from 'src/app/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/layout.service';
 
 @Component({
   selector: 'app-front-desk-left-panel',
@@ -47,55 +47,53 @@ export class FrontDeskLeftPanelComponent implements OnInit {
 
     this.title = 'Navigation';
     this.menuList = [
-
       {
-        name: 'Front Desk Dashboard',
-        icon: 'fas fa-tachometer-alt',
-        url: '/frontdeskdashboard',
+        name: "Front Desk Dashboard",
+        icon: "fas fa-tachometer-alt",
+        url: "/frontdeskdashboard"
       },
 
       {
-        name: 'Request For Qoute',
-        icon: 'fas fa-registered',
-        url: '/requestforqoute',
-        badge: '2',
-        badgeBg: 'bg-success',
+        name: "Request For Quotation",
+        icon: "fas fa-clipboard-list",
+        url: "/requestforquote",
+        badge: "2",
+        badgeBg: "bg-warning"
       },
-
-
       {
-        name: 'Leave Managment',
-        icon: 'fa-address-book',
-        url: '/leavemanagement',
-      },
-
-      {
-        name: 'Pay Roll Module',
-        icon: 'fas fa-donate',
-        url: '/payrollmodule',
+        name: "Register Client",
+        icon: "fas fa-briefcase",
+        url: "authpage/register-client"
       },
 
       {
-        name: 'Sample Invoice',
-        icon: 'far fa-sun',
-        url: '/performancemanagement',
+        name: "Purchases",
+        icon: "fas fa-warehouse",
+        url: "/purchases"
+      },
+
+      {
+        name: "Appointments",
+        icon: "far fa-calendar-plus",
+        url: "/appointments"
+      },
+      {
+        name: "Human Capital Management",
+        icon: "fas fa-users",
+        url: "/human-capital-mgt"
+      },
+      {
+        name: "Reports And Analysis",
+        icon: "fa fa-chart-line",
+        url: "/reports-analysis"
+      },
+      {
+        name: "Notifications",
+        icon: "fas fa-envelope",
+        url: "/notifications",
+        badge: "2",
+        badgeBg: "bg-warning"
       }
-      ,
-      {
-        name: 'Retirement And Resignation',
-        icon: 'far fa-clone',
-        url: '/hiringretirementresignation',
-      }
-      ,
-
-      {
-        name: 'Reports And Analysis',
-        icon: 'fa fa-download',
-        url: '/reportsandanalysis',
-      }
-
-
-
     ];
   }
 

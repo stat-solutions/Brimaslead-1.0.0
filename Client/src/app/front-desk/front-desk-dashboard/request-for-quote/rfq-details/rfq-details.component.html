@@ -1,0 +1,34 @@
+
+
+<div class="jumbotron-fluid">
+<table class="table responsive">
+  <thead>
+<tr>
+  <th>ID</th>
+   <th>ITEM ID</th>
+   <th>ITEM</th>
+    <th>UNIT</th>
+     <th>QUANTITY</th>
+      <th>UNIT COST</th>
+         <th>TOTAL COST</th>
+</tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let item of rfqs">
+<td>{{item.rfq_id}}</td>
+<td>{{item.stock_id}}</td>
+<td>{{item.item_name}}</td>
+<td>{{item.unit}}</td>
+<td>{{item.unit_cost|number}}</td>
+<td>{{item.qty_required|number}}</td>
+<td>{{item.qty_required*item.unit_cost|number}}</td>
+</tr>
+
+  </tbody>
+
+
+
+</table>
+
+
+</div>

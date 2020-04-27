@@ -1,3 +1,4 @@
+import { ComponentFixture } from '@angular/core/testing';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FrontDeskLayoutComponent } from './front-desk-layout/front-desk-layout.component';
@@ -9,6 +10,7 @@ import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/
 import { PerformanceManagementComponent } from './front-desk-dashboard/employee-service/performance-management/performance-management.component';
 // tslint:disable-next-line:max-line-length
 import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
+import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
 
 
 const routes: Routes = [
@@ -27,9 +29,13 @@ const routes: Routes = [
         component: FrontDeskDashboardComponent,
       },
       {
-        path: 'requestforqoute',
+        path: 'requestforquote',
         component: RequestForQuoteComponent,
       },
+          {
+            path: 'detailquote',
+            component: RfqDetailsComponent
+              },
       {
         path: 'leavemanagement',
         component: LeaveManagementComponent,

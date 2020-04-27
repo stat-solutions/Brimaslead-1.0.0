@@ -1,0 +1,225 @@
+<div class="row">
+  <div class="col">
+    <div class="card card-primary">
+      <div class="card-body">
+        <form [formGroup]="userForm">
+          <legend class="text-info">Items</legend>
+          <div class="row">
+            <div class="col-xs-12 col-lg-4">
+              <div class="">
+                {{setRfqId()}}
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="">
+                {{client_names}}
+                <!-- <label
+                  class="text-info"
+                  [ngClass]="fval.clientName.valid ? 'text-success' : ''"
+                  >Client Name<i
+                    *ngIf="fval.clientName.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="clientName"
+                  [value]="client_name"
+                  name="clientName" disabled
+                /> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.stock_id.valid ? 'text-success' : ''"
+                  >Item Id No.<i
+                    *ngIf="fval.stock_id.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="stock_id">
+                   <!-- <option disabled selected>Select Item Id No.</option> -->
+                  <option *ngFor="let item of items_stock">{{
+                    item.stock_id
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.stock_id.touched || fval.stock_id.dirty) &&
+                    fval.stock_id.errors?.required
+                  "
+                >
+                  Item Id number is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.item_name.valid ? 'text-success' : ''"
+                  >Item Name<i
+                    *ngIf="fval.item_name.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="item_name">
+                  <option *ngFor="let item of items_stock">{{
+                    item.item_name
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.item_name.touched || fval.item_name.dirty) &&
+                    fval.item_name.errors?.required
+                  "
+                >
+                  Item name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.unit.valid ? 'text-success' : ''"
+                  >Unit<i *ngIf="fval.unit.valid" class="material-icons"
+                  >check_circle</i
+                  ></label
+                  >
+                <select class="form-control" formControlName="unit">
+                  <option *ngFor="let item of items_stock">{{
+                    item.unit
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.unit.touched || fval.unit.dirty) &&
+                    fval.unit.errors?.required
+                  "
+                >
+                  Unit is required
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.qty_required.valid ? 'text-success' : ''"
+                    >Quantity<i
+                      *ngIf="fval.qty_required.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div  *ngFor="let item of items_stock">
+                  <input type="text" class="form-control" formControlName="qty_required"></div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.qty_required.touched || fval.qty_required.dirty) &&
+                      fval.qty_required.errors?.required
+                    "
+                  >
+                    Quantity is required
+                  </div>
+                </div>
+              </div>
+                           <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.unit_cost.valid ? 'text-success' : ''"
+                    >Unit Cost<i
+                      *ngIf="fval.unit_cost.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <select class="form-control" formControlName="unit_cost">
+                    <option *ngFor="let item of items_stock">{{
+                      item.unit_cost | number
+                    }}</option>
+                  </select>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.unit_cost.touched || fval.unit_cost.dirty) &&
+                      fval.unit_cost.errors?.required
+                    "
+                  >
+                    Unit cost is required
+                  </div>
+                </div>
+              </div>
+ <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.total_cost.valid ? 'text-success' : ''"
+                    >Total Cost<i
+                      *ngIf="fval.total_cost.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <input type="text" class="form-control" formControlName="total_cost" (click)="totalCost()">
+
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.total_cost.touched || fval.total_cost.dirty) &&
+                      fval.total_cost.errors?.required
+                    "
+                  >
+                    Total cost is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.user_name.valid ? 'text-success' : ''"
+                  >Created by<i
+                    *ngIf="fval.user_name.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="user_name">
+                  <option *ngFor="let user of users">{{
+                    user.user_name
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.user_name.touched || fval.user_name.dirty) &&
+                    fval.user_name.errors?.required
+                  "
+                >
+                  User name is required
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

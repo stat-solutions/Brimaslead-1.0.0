@@ -1,166 +1,231 @@
-<!-- <div class="wrapper"> -->
+<div class="d-flex flex-column">
+  <div class="container">
+    <div class="row d-flex flex-row justify-content-center">
+      <div class="col-xs-12 "></div>
+      <div class="col-xs-12 mx-2"><h3 class="text-primary mb-0"></h3></div>
+      <div class="col-xs-12"></div>
+    </div>
+    <div class="container">
+      <div class="d-sm-flex justify-content-left align-items-center my-4">
+              <a
+                class="btn btn-info btn-sm"
+                role="button"
+                routerLink="/frontdesk-reports"
+                ><i class="fas fa-chart-line fa-sm text-white"></i>
+                Reports</a
+              >&nbsp;
+              <a
+                class="btn btn-info btn-sm"
+                role="button"
+                routerLink="/requestforquotes"
+                ><i class="fas fa-clipboard-list text-white"></i>&nbsp;RFQ</a
+              >&nbsp;
+              <a
+                class="btn btn-info btn-sm"
+                role="button"
+                routerLink="/register-client"
+                ><i class="fas fa-briefcase fa-sm text-white"></i>
+               Register Client</a
+              >&nbsp;
+              <a
+                class="btn btn-info btn-sm"
+                role="button"
+                routerLink="/purchases"
+                ><i class="fas fa-warehouse text-white"></i>&nbsp;Purchases</a
+              >
+&nbsp;
+              <a
+                class="btn btn-info btn-sm"
+                role="button"
+                routerLink="/appointments"
+                ><i class="fas fa-calendar-plus text-white"></i>&nbsp;Appointments</a
+              >     
+                      </div>
 
-    <!-- Navbar -->
-    <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> -->
-      <!-- Left navbar links -->
-      <!-- <div class="container-fluid"> -->
-      <!-- <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul> -->
-  
-      <!-- SEARCH FORM -->
-      <!-- <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
+      <div class="row">
+        <div class="col-md-4 col-xl-3 mb-4">
+          <div
+            class="rfqs-card card shadow py-2"
+          >
+            <div class="card-body">
+              <div class="row align-items-center no-gutters">
+                <div class="col mr-2">
+                  <div
+                    class="text-uppercase text-info font-weight-bold text-xs mb-1"
+                  >
+                    <span>RFQs</span>
+                  </div>
+                  <div class="text-secondary font-weight-bold h5 mb-0">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-clipboard-list fa-2x text-danger"></i>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </form> -->
-  
-      <!-- Right navbar links -->
-      <!-- <ul class="navbar-nav ml-auto"> -->
-        <!-- Messages Dropdown Menu -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item"> -->
-              <!-- Message Start -->
-              <!-- <div class="media">
-                <img src="./assets/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+
+        <div class="col-md-4 col-xl-3 mb-4">
+          <div class="orders-card card shadow py-2">
+            <div class="card-body ">
+              <div class="row align-items-center no-gutters">
+                <div class="col mr-2">
+                  <div
+                    class="text-uppercase text-danger font-weight-bold text-xs mb-1"
+                  >
+                    <span>ORDERS</span>
+                  </div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="text-secondary font-weight-bold h5 mb-0 mr-3">
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div> -->
-              <!-- Message End -->
-            <!-- </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item"> -->
-              <!-- Message Start -->
-              <!-- <div class="media">
-                <img src="./assets/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <div class="col-auto">
+                  <i class="fas fa-cart-arrow-down fa-2x text-info"></i>
                 </div>
-              </div> -->
-              <!-- Message End -->
-            <!-- </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item"> -->
-              <!-- Message Start -->
-              <!-- <div class="media">
-                <img src="./assets/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div> -->
-              <!-- Message End -->
-            <!-- </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+              </div>
+            </div>
           </div>
-        </li> -->
-        <!-- Notifications Dropdown Menu -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+        <div class="col-md-4 col-xl-3 mb-4">
+          <div class="purchases-card card shadow py-2">
+            <div class="card-body">
+              <div class="row align-items-center no-gutters">
+                <div class="col mr-2">
+                  <div
+                    class="text-uppercase text-info font-weight-bold text-xs mb-1"
+                  >
+                    <span>PURCHASES</span>
+                  </div>
+                  <div class="text-secondary font-weight-bold h5 mb-0">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-warehouse fa-2x text-danger"></i>
+                </div>
+              </div>
+            </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
-    </nav> -->
-    <!-- /.navbar -->
-  
-   
-  
+        </div>
+        <div class="col-md-4 col-xl-3 mb-4">
+          <div class="appointments-card card shadow py-2">
+            <div class="card-body">
+              <div class="row align-items-center no-gutters">
+                <div class="col mr-2">
+                  <div
+                    class="text-uppercase text-danger font-weight-bold text-xs mb-1"
+                  >
+                    <span>APPOINTMENTS</span>
+                  </div>
+                  <div class="text-secondary font-weight-bold h5 mb-0">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-calendar-plus fa-2x text-info"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-xs-12">
+          <div class="card shadow mb-4">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+            <h6 class="text-info pull-right font-weight-bold m-0">
+              <hr class="top mt-1 mb-0" />
+                REQUEST FOR QUOTATION(RFQs)
+                <hr class="bottom mt-1 mb-0" />
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-xs-12">
+          <div class="tickets-card2 card shadow mb-4">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+            <h6 class="text-info font-weight-bold m-0">
+              <hr class="top mt-1 mb-0" />
+                TICKETS
+                <hr class="bottom mt-1 mb-0" />
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-12 col-xs-12">
+          <div class="card shadow mb-4">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+            <h6 class="text-info font-weight-bold m-0">
+              <hr class="top mt-1 mb-0" />
+                ACCOUNT MANAGEMENT
+                <hr class="bottom mt-1 mb-0" />
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <footer class="main-footer"> -->
+  <div class="container mt-3 mb-2 pb-2">
+    <div class="col-xs-12 col-lg-12">
+      <div class="small text-center text-danger">
+        Copyright &copy; 2020 - Brimasmedia Ltd
+      </div>
+    </div>
+  </div>
+  <!-- </footer> -->
+</div>
+
     <!-- Content Wrapper. Contains page content -->
     <!-- <div class="content-wrapper"> -->
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Front Desk Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a routerLink='/frontdeskdashboard'>Home</a></li>
-                <li class="breadcrumb-item active">Front Desk Dashboard</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
-  
       <!-- Main content -->
-      <section class="content">
+      <!-- <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
+          <!Small boxes (Stat box) -->
+          <!-- <div class="row">
             <div class="col-lg-2 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
+              small box -->
+              <!-- <div class="small-box bg-info">
                 <div class="inner">
                   <h3>12</h3>
-  
+
                   <p>New RFQs Created</p>
                   <small>Last updated:27/11/2019</small>
                 </div>
-                
+
                 <div class="icon">
                   <i class="ion ion-bag"></i>
                 </div>
@@ -168,28 +233,25 @@
               </div>
             </div>
             <div class="col-lg-2 col-6">
-                <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3>08</h3>
-    
+
                     <p>At Customer Approval</p>
                     <small>Last updated:27/11/2019</small>
                   </div>
-                  
+
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
                   <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-            <!-- ./col -->
             <div class="col-lg-2 col-6">
-              <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3>16<sup style="font-size: 20px"></sup></h3>
-  
+
                   <p>Being Costed</p>
                   <small>Last updated:27/11/2019</small>
                 </div>
@@ -199,13 +261,11 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-2 col-6">
-                <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
                     <h3>53<sup style="font-size: 20px">%</sup></h3>
-    
+
                     <p>RFQ Bounce Rate</p>
                     <small>Last updated:27/11/2019</small>
                   </div>
@@ -215,13 +275,11 @@
                   <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-            <!-- ./col -->
             <div class="col-lg-2 col-6">
-              <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
                   <h3>44</h3>
-  
+
                   <p>RFQs Pending  Approvals</p>
                   <small>Last updated:27/11/2019</small>
                 </div>
@@ -231,13 +289,11 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-2 col-6">
-              <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
                   <h3>5</h3>
-  
+
                   <p>Processed RFQs</p>
                   <small>Last updated:27/11/2019</small>
                 </div>
@@ -247,24 +303,19 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
           </div>
-          <!-- /.row -->
-          <!-- Main row -->
           <div class="row">
-            <!-- Left col -->
             <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title text-primary">
                     <i class="fas fa-book text-info mr-1"></i>
                     Samples Pending Customer Approval
                   </h3>
-                
-                </div><!-- /.card-header -->
+
+                </div>
                 <div class="card-body">
-                
+
                     <table class="table table-condensed">
                         <thead>
                           <tr>
@@ -280,7 +331,7 @@
                             <td>1.</td>
                             <td>KCB Uganda</td>
                             <td>
-                             
+
                             </td>
                             <td><span class="badge bg-danger">55%</span></td>
                           </tr>
@@ -316,20 +367,17 @@
                           </tr>
                         </tbody>
                       </table>
-                </div><!-- /.card-body -->
+                </div>
               </div>
-              <!-- /.card -->
-  
-              <!-- DIRECT CHAT -->
+
               <div class="card direct-chat direct-chat-primary">
                 <div class="card-header">
                   <h3 class="card-title">Actual Samples Pending</h3>
-  
-                
+
+
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body table-responsive ">
-                  
+
                     <div class="row">
                         <div class="col-lg-12 col-xs-12">
                         <table class="table table-striped ">
@@ -350,12 +398,12 @@
                                     <th >
                                        No Of Items
                                     </th>
-        
+
                                     <th >
                                        Total Amount
                                     </th>
-        
-                                    
+
+
                            <th >
                                        Department
                                     </th>
@@ -368,21 +416,21 @@
                                     <th >
                                         Processing Status
                                     </th>
-        
+
                                     <th >
                                           Movement Timestamp
                                         </th>
-                                       
+
                                         <th >
                                               Action
                                             </th>
                                 </tr>
                             </thead>
                             <tbody>
-                              
-                                
-                                
-                                
+
+
+
+
                                 <tr>
                                     <td>
                                         1
@@ -392,12 +440,12 @@
                                            RFQ000111
                                         </a>
                                         <br/>
-                                      
+
                                     </td>
                                     <td>
                                             <a routerLink='/requestforqoute'>
                                                 KCB Bank
-                                             </a>   
+                                             </a>
                                         </td>
                                         <td>
                                               Email
@@ -408,23 +456,23 @@
                                     <td>
                                            4,000,000
                                          </td>
-        
+
                                          <td>
                                                 Front Desk
                                               </td>
-        
+
                                               <td>
                                                    Michelle Ssemwogere
                                                   </td>
-        
+
                                     <td >
                                         <span class="badge badge-danger">Created</span>
                                     </td>
-        
+
                                     <td >
                                             <span class="badge badge-primary">Pending Costing</span>
                                         </td>
-        
+
                                         <td >
                                             27/11/2019
                                             </td>
@@ -434,11 +482,6 @@
                                                 </i>
                                                 Receive
                                             </a>
-                                            <!-- <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Cost
-                                            </a> -->
                                             <a class="btn btn-danger btn-sm" href="#">
                                                 <i class="fas fa-check">
                                                 </i>
@@ -446,8 +489,8 @@
                                             </a>
                                         </td>
                                 </tr>
-                                 
-                                
+
+
                                 <tr>
                                         <td>
                                             2
@@ -457,12 +500,12 @@
                                                RFQ000133
                                             </a>
                                             <br/>
-                                          
+
                                         </td>
                                         <td>
                                                 <a routerLink='/requestforqoute'>
                                                   Ministry of Finance
-                                                 </a>   
+                                                 </a>
                                             </td>
                                             <td>
                                                Gov't Bid
@@ -473,23 +516,23 @@
                                         <td>
                                                14,000,000
                                              </td>
-            
+
                                              <td>
                                                     Assistant Admin
                                                   </td>
-            
+
                                                   <td>
                                                      Anita Arigye
                                                       </td>
-            
+
                                         <td >
                                             <span class="badge badge-success">Received</span>
                                         </td>
-            
+
                                         <td >
                                                 <span class="badge badge-warning">Costed</span>
                                             </td>
-            
+
                                             <td >
                                                 27/11/2019
                                                 </td>
@@ -499,11 +542,6 @@
                                                     </i>
                                                     Forward
                                                 </a>
-                                                <!-- <a class="btn btn-info btn-sm" href="#">
-                                                    <i class="fas fa-pencil-alt">
-                                                    </i>
-                                                    Cost
-                                                </a> -->
                                                 <a class="btn btn-danger btn-sm" href="#">
                                                     <i class="fas fa-check">
                                                     </i>
@@ -511,8 +549,8 @@
                                                 </a>
                                             </td>
                                     </tr>
-                               
-                                
+
+
                                     <tr>
                                             <td>
                                                 3
@@ -522,12 +560,12 @@
                                                    RFQ000143
                                                 </a>
                                                 <br/>
-                                              
+
                                             </td>
                                             <td>
                                                     <a routerLink='/frontdeskdashboard'>
                                                        Bazirake Augustine
-                                                     </a>   
+                                                     </a>
                                                 </td>
                                                 <td>
                                                       Walk In
@@ -538,23 +576,23 @@
                                             <td>
                                                   3,000,000
                                                  </td>
-                
+
                                                  <td>
                                                         Front Desk
                                                       </td>
-                
+
                                                       <td>
                                                            Bright Iryn
                                                           </td>
-                
+
                                             <td >
                                                 <span class="badge badge-info">Forwarded</span>
                                             </td>
-                
+
                                             <td >
                                                     <span class="badge badge-primary">Pending Costing</span>
                                                 </td>
-                
+
                                                 <td >
                                                     27/11/2019
                                                     </td>
@@ -564,11 +602,6 @@
                                                         </i>
                                                         Foward
                                                     </a>
-                                                    <!-- <a class="btn btn-info btn-sm" href="#">
-                                                        <i class="fas fa-pencil-alt">
-                                                        </i>
-                                                        Cost
-                                                    </a> -->
                                                     <a class="btn btn-danger btn-sm" href="#">
                                                         <i class="fas fa-check">
                                                         </i>
@@ -576,26 +609,21 @@
                                                     </a>
                                                 </td>
                                         </tr>
-                                          
+
                             </tbody>
                         </table>
                       </div>
                     </div>
-                        <!-- </div> -->
                 </div>
-                
-                <!-- /.card-footer-->
+
               </div>
-              <!--/.direct-chat -->
-  
-              <!-- TO DO List -->
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="ion ion-clipboard mr-1"></i>
                     To Do List
                   </h3>
-  
+
                   <div class="card-tools">
                     <ul class="pagination pagination-sm">
                       <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
@@ -606,25 +634,19 @@
                     </ul>
                   </div>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
                   <ul class="todo-list" data-widget="todo-list">
                     <li>
-                      <!-- drag handle -->
                       <span class="handle">
                         <i class="fas fa-ellipsis-v"></i>
                         <i class="fas fa-ellipsis-v"></i>
                       </span>
-                      <!-- checkbox -->
                       <div  class="icheck-primary d-inline ml-2">
                         <input type="checkbox" value="" name="todo1" id="todoCheck1">
                         <label for="todoCheck1"></label>
                       </div>
-                      <!-- todo text -->
                       <span class="text">Remember to take qouatation to MONF</span>
-                      <!-- Emphasis label -->
                       <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                      <!-- General tools such as edit or delete-->
                       <div class="tools">
                         <i class="fas fa-edit"></i>
                         <i class="fas fa-trash-o"></i>
@@ -711,26 +733,19 @@
                       </div>
                     </li>
                   </ul>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer clearfix">
+                </div> -->
+                <!-- <div class="card-footer clearfix">
                   <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add item</button>
                 </div>
               </div>
-              <!-- /.card -->
             </section>
-            <!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-5 connectedSortable">
-  
-              <!-- Map card -->
               <div class="card bg-gradient-primary">
                 <div class="card-header border-0">
                   <h3 class="card-title">
                     <i class="fas fa-map-marker-alt mr-1"></i>
                     Employee Dashboard
                   </h3>
-                  <!-- card tools -->
                   <div class="card-tools">
                     <button type="button"
                             class="btn btn-primary btn-sm daterange"
@@ -746,43 +761,34 @@
                       <i class="fas fa-minus"></i>
                     </button>
                   </div>
-                  <!-- /.card-tools -->
                 </div>
                 <div class="card-body">
                   <div id="world-map" style="height: 250px; width: 100%;"></div>
                 </div>
-                <!-- /.card-body-->
                 <div class="card-footer bg-transparent">
                   <div class="row">
                     <div class="col-4 text-center">
                       <div id="sparkline-1"></div>
                       <div class="text-white">My Payslip</div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-4 text-center">
                       <div id="sparkline-2"></div>
                       <div class="text-white">My Over time payment</div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-4 text-center">
                       <div id="sparkline-3"></div>
                       <div class="text-white">Performance Appraisal</div>
                     </div>
-                    <!-- ./col -->
                   </div>
-                  <!-- /.row -->
                 </div>
               </div>
-              <!-- /.card -->
-  
-              <!-- solid sales graph -->
               <div class="card bg-gradient-info">
                 <div class="card-header border-0">
                   <h3 class="card-title">
                     <i class="fas fa-th mr-1"></i>
                     Leave Managment
                   </h3>
-  
+
                   <div class="card-tools">
                     <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
@@ -795,49 +801,39 @@
                 <div class="card-body">
                   <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer bg-transparent">
                   <div class="row">
                     <div class="col-4 text-center">
                       <input type="text" class="knob" data-readonly="true" value="21" data-width="60" data-height="60"
                              data-fgColor="#39CCCC">
-  
+
                       <div class="text-white">Total Number of Leave Days</div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-4 text-center">
                       <input type="text" class="knob" data-readonly="true" value="7" data-width="60" data-height="60"
                              data-fgColor="#39CCCC">
-  
+
                       <div class="text-white">Leave Days Taken</div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-4 text-center">
                       <input type="text" class="knob" data-readonly="true" value="14" data-width="60" data-height="60"
                              data-fgColor="#39CCCC">
-  
+
                       <div class="text-white">Leave Days Remaining</div>
                     </div>
-                    <!-- ./col -->
                   </div>
-                  <!-- /.row -->
                 </div>
-                <!-- /.card-footer -->
               </div>
-              <!-- /.card -->
-  
-              <!-- Calendar -->
               <div class="card bg-gradient-success">
                 <div class="card-header border-0">
-  
+
                   <h3 class="card-title">
                     <i class="far fa-calendar-alt"></i>
                     Brimas Calender Events
                   </h3>
-                  <!-- tools card -->
-                  <div class="card-tools">
+                  <div class="card-tools"> -->
                     <!-- button with a dropdown -->
-                    <div class="btn-group">
+<!--                    <div class="btn-group">
                       <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">
                         <i class="fas fa-bars"></i></button>
                       <div class="dropdown-menu float-right" role="menu">
@@ -854,23 +850,23 @@
                       <i class="fas fa-times"></i>
                     </button>
                   </div>
-                  <!-- /. tools -->
                 </div>
-                <!-- /.card-header -->
+                /. tools -->
+                <!-- /.card-header
                 <div class="card-body pt-0">
-                  <!--The calendar -->
+                  The calendar -->
+                  <!-- /.card-body
                   <div id="calendar" style="width: 100%"></div>
                 </div>
-                <!-- /.card-body -->
               </div>
-              <!-- /.card -->
+               /.card
             </section>
-            <!-- right col -->
+            right col -->
+            <!-- /.row (main row)
           </div>
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+        </div>
       </section>
-      <!-- /.content -->
+       /.content -->
     <!-- </div> -->
     <!-- /.content-wrapper -->
     <!-- <footer class="main-footer">
@@ -880,6 +876,5 @@
         <b>Version</b> 3.0.0
       </div>
     </footer> -->
-  
- 
-  <!-- </div> -->
+
+

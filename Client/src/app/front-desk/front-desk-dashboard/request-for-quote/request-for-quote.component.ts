@@ -1,78 +1,308 @@
-import { Component, OnInit } from '@angular/core';
-import { LayoutService } from 'src/app/services/layout.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CustomValidatorInitialCompanySetup } from 'src/app/validators/custom-validator-initial-company-setup';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { LayoutService } from 'src/app/shared/services/layout.service';
+import { FormGroup, Validators, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
+import { ItemStock } from 'src/app/shared/models/item_stock.model';
+import { ClientData } from './../../../shared/models/client_data.model';
+import { CustomerRegisterComponent } from './../../../auth/customer-register/customer-register.component';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { AddRfqItemsComponent } from './add-rfq-items/add-rfq-items.component';
+import { RfqDetailsComponent } from './rfq-details/rfq-details.component';
 
 @Component({
-  selector: 'app-request-for-quote',
-  templateUrl: './request-for-quote.component.html',
-  styleUrls: ['./request-for-quote.component.sass']
+  selector: "app-request-for-quote",
+  templateUrl: "./request-for-quote.component.html",
+  styleUrls: ["./request-for-quote.component.scss"]
 })
 export class RequestForQuoteComponent implements OnInit {
-  private fieldArray: Array<any> = [];
-  private newAttribute: any = {};
+  public modalRef: BsModalRef;
+  rfq: any = {};
+  submit = false;
   userForm: FormGroup;
+  itemsForm: FormGroup;
+  rfq_number: number;
+  index: number;
 
+  users = [
+    { user_name: "Davis", department: "Front desk" },
+    { user_name: "Maria", department: "Sales" },
+    { user_name: "Sharon", department: "Front desk" }
+  ];
 
-  constructor(private layoutService: LayoutService) {
+  rfq_sources = [
+    { source_name: "Walk in" },
+    { source_name: "Email" },
+    { source_name: "Sales and Marketing" },
+    { source_name: "Bids" }
+  ];
 
-  }
+  items_stock: ItemStock[] = [
+    {
+      stock_id: "BMS235",
+      item_name: "pens",
+      unit: "boxes",
+      qty_required: null,
+      unit_cost: 30000
+    },
+    {
+      stock_id: "BMS346",
+      item_name: "umbrellas",
+      unit: "pieces",
+      qty_required: null,
+      unit_cost: 14000
+    },
+    {
+      stock_id: "BMS233",
+      item_name: "bags",
+      unit: "pieces",
+      qty_required: null,
+      unit_cost: 45000
+    },
+    {
+      stock_id: "BMS162",
+      item_name: "mugs",
+      unit: "pieces",
+      qty_required: null,
+      unit_cost: 20000
+    },
+    {
+      stock_id: "BMS135",
+      item_name: "diary",
+      unit: "pieces",
+      qty_required: null,
+      unit_cost: 25000
+    },
+    {
+      stock_id: "BMS127",
+      item_name: "tshirts",
+      unit: "pieces",
+      qty_required: null,
+      unit_cost: 25000
+    }
+  ];
+
+  clients: ClientData[] = [
+    {
+      client_id: "BC131212",
+      client_name: "KCB",
+      phone_number: 753134341,
+      email: "procurement@kcb-ug.com"
+    },
+    {
+      client_id: "BC121233",
+      client_name: "Sheraton Hotel",
+      phone_number: 772443208,
+      email: "procurement@sheratonhotel.com"
+    },
+    {
+      client_id: "BC031526",
+      client_name: "Shell",
+      phone_number: 751781341,
+      email: "supplies@shell.co.ug"
+    },
+    {
+      client_id: "BC107252",
+      client_name: "MTN",
+      phone_number: 782100042,
+      email: "procurement@mtn.co.ug"
+    }
+  ];
+  meta: any;
+  option: any;
+
+  constructor(
+    private layoutService: LayoutService,
+    private modalService: BsModalService,
+    private _formbuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.userForm = this.createFormGroup();
-    this.layoutService.setThePanelNow('Request for Qoute');
+    this.itemsForm = this.addItemsFormGroup();
   }
 
-
   createFormGroup() {
-    return new FormGroup({
+    return this._formbuilder.group({
+      rfq_number: [
+        { value: this.setRfqId(), disabled: true },
+        Validators.compose([Validators.required])
+      ],
+      client_name: ["", Validators.compose([Validators.required])],
 
-      company_name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3)])),
-
-      continents_name: new FormControl('', Validators.compose([
-        Validators.required,
-        CustomValidatorInitialCompanySetup.
-          patternValidator(/\bASIA|\bAFRICA|\bNORTH AMERICA|\bSOUTH AMERICA|\bANTARCTICA|\bEUROPE|\bAUSTRALIA/,
-            { belongToContinents: true })
-
-      ])),
-
-      continental_region_name: new FormControl('', Validators.compose([
-        Validators.required,
-        CustomValidatorInitialCompanySetup.
-          // tslint:disable-next-line:max-line-length
-          patternValidator(/\bEASTERN AFRICA|\bMIDDLE AFRICA|\bNORTHERN AFRICA|\bSOUTHERN AFRICA|\bWESTERN AFRICA|\bTHE CARIBBEAN|\bCENTRAL AMERICA |\bSOUTH AMERICA|\bNORTHERN AMERICA|\bMIDDLE EAST|\bOCEANIA|\bCENTRAL ASIA|\bEAST ASIA|\bSOUTH ASIA|\bSOUTHEAST ASIA|\bWESTERN ASIA|\bCENTRAL EUROPE|\bEASTERN EUROPE|\bNORTHEN EUROPE|\bSOUTHERN EUROPE|\bSOUTHEASTERN EUROPE|\bSOUTHWESTERN EUROPE|\bWESTERN EUROPE/, { belongToContinentalRegions: true })
-
-      ])),
-
-      countries_name: new FormControl('', Validators.compose([
-        Validators.required,
-        CustomValidatorInitialCompanySetup.
-          // tslint:disable-next-line:max-line-length
-          patternValidator(/\bEASTERN AFRICA|\bALAND ISLANDS|\bALBANIA|\bALGERIA|\bAMERICAN SAMOA|\bANDORRA|\bANGOLA|\bANGUILLA|\bANTARCTICA|\bANTIGUA AND BARBUDA|\bARGENTINA|\bARMENIA|\bARUBA|\bAUSTRALIA|\bAUSTRIA|\bAZERBAIJAN|\bBAHAMAS|\bBAHRAIN|\bBANGLADESH|\bBARBADOS|\bBELARUS|\bBELGIUM|\bBELIZE|\bBENIN|\bBERMUDA|\bBHUTAN|\bBOLIVIA|\bBONAIRE-SINT EUSTATIUS AND SABA|\bBOSNIA AND HERZEGOVINA|\bBOTSWANA|\bBOUVET ISLAND|\bBRAZIL|\bBRITISH INDIAN OCEAN TERRITORY|\bBRUNEI DARUSSALAM|\bBULGARIA|\bBURKINA FASO|\bBURUNDI|\bCAMBODIA|\bCAMEROON|\bCANADA|\bCAPE VERDE|\bCAYMAN ISLANDS|\bCENTRAL AFRICAN REPUBLIC|\bCHAD|\bCHILE|\bCHINA|\bCHRISTMAS ISLAND|\bCOCOS-KEELING ISLANDS|\bCOLOMBIA|\bCOMOROS|\bCONGO|\bCONGO-THE DEMOCRATIC REPUBLIC OF |\bCOOK ISLANDS|\bCOSTA RICA|\bCROATIA|\bCUBA|\bCURAÇAO|\bCYPRUS|\bCZECHIA|\bDENMARK|\bDJIBOUTI|\bDOMINICA|\bDOMINICAN REPUBLIC|\bECUADOR|\bEGYPT|\bEL SALVADOR|\bEQUATORIAL GUINEA|\bERITREA|\bESTONIA|\bETHIOPIA|\bFALKLAND ISLANDS -MALVINAS|\bFAROE ISLANDS|\bFIJI|\bFINLAND|\bFRANCE|\bFRENCH GUIANA|\bFRENCH POLYNESIA|\bFRENCH SOUTHERN TERRITORIES|\bGABON|\bGAMBIA|\bGEORGIA|\bGERMANY|\bGHANA|\bGIBRALTAR|\bGREECE|\bGREENLAND|\bGRENADA|\bGUADELOUPE|\bGUAM|\bGUATEMALA|\bGUERNSEY|\bGUINEA|\bGUINEA-BISSAU|\bGUYANA|\bHAITI|\bHEARD AND MC DONALD ISLANDS|\bHOLY SEE-VATICAN CITY STATE|\bHONDURAS|\bHONG KONG|\bHUNGARY|\bICELAND|\bINDIA|\bINDONESIA|\bIRAN-ISLAMIC REPUBLIC OF|\bIRAQ|\bIRELAND|\bISLE OF MAN|\bISRAEL|\bITALY|\bJAMAICA|\bJAPAN|\bJERSEY|\bJORDAN|\bKAZAKSTAN|\bKENYA|\bKIRIBATI|\bKOREA-REPUBLIC OF|\bKOSOVO-TEMPORARY CODE|\bKUWAIT|\bKYRGYZSTAN|\bLATVIA|\bLEBANON|\bLESOTHO|\bLIBERIA|\bLIBYAN ARAB JAMAHIRIYA|\bLIECHTENSTEIN|\bLITHUANIA|\bLUXEMBOURG|\bMACAO|\bMACEDONIA-THE FORMER YUGOSLAV REPUBLIC OF|\bMADAGASCAR|\bMALAWI|\bMALAYSIA|\bMALDIVES|\bMALI|\bMALTA|\bMARSHALL ISLANDS|\bMARTINIQUE|\bMAURITANIA|\bMAURITIUS|\bMAYOTTE|\bMEXICO|\bMICRONESIA-FEDERATED STATES OF|\bMOLDOVA-REPUBLIC OF|\bMONACO|\bMONGOLIA|\bMONTENEGRO|\bMONTSERRAT|\bMOROCCO|\bMOZAMBIQUE|\bMYANMAR|\bNAMIBIA|\bNAURU|\bNEPAL|\bNETHERLANDS|\bNETHERLANDS ANTILLES|\bNEW CALEDONIA|\bNEW ZEALAND|\bNICARAGUA|\bNIGER|\bNIGERIA|\bNIUE|\bNORFOLK ISLAND|\bNORTHERN MARIANA ISLANDS|\bNORWAY|\bOMAN|\bPAKISTAN|\bPALAU|\bPALESTINIAN TERRITORY-OCCUPIED|\bPANAMA|\bPAPUA NEW GUINEA|\bPARAGUAY|\bPERU|\bPHILIPPINES|\bPITCAIRN|\bPOLAND|\bPORTUGAL|\bPUERTO RICO|\bQATAR|\bREPUBLIC OF SERBIA|\bREUNION|\bROMANIA|\bRUSSIA FEDERATION|\bRWANDA|\bSAINT BARTHÉLEMY|\bSAINT HELENA|\bSAINT KITTS-NEVIS|\bSAINT LUCIA|\bSAINT MARTIN|\bSAINT PIERRE AND MIQUELON|\bSAINT VINCENT AND THE GRENADINES|\bSAMOA|\bSAN MARINO|\bSAO TOME AND PRINCIPE|\bSAUDI ARABIA|\bSENEGAL|\bSERBIA AND MONTENEGRO|\bSEYCHELLES|\bSIERRA LEONE|\bSINGAPORE|\bSINT MAARTEN|\bSLOVAKIA|\bSLOVENIA|\bSOLOMON ISLANDS|\bSOMALIA|\bSOUTH AFRICA|\bSOUTH GEORGIA-THE SOUTH SANDWICH ISLANDS|\bSOUTH SUDAN|\bSPAIN|\bSRI LANKA|\bSUDAN|\bSURINAME|\bSVALBARD AND JAN MAYEN|\bSWAZILAND|\bSWEDEN|\bSWITZERLAND|\bSYRIAN ARAB REPUBLIC|\bTAIWAN-PROVINCE OF CHINA|\bTAJIKISTAN|\bTANZANIA-UNITED REPUBLIC OF|\bTHAILAND|\bTIMOR-LESTE|\bTOGO|\bTOKELAU|\bTONGA|\bTRINIDAD AND TOBAGO|\bTUNISIA|\bTURKEY|\bTURKISH REP N CYPRUS-TEMPORARY CODE|\bTURKMENISTAN|\bTURKS AND CAICOS ISLANDS|\bTUVALU|\bUGANDA|\bUKRAINE|\bUNITED ARAB EMIRATES|\bUNITED KINGDOM|\bUNITED STATES|\bUNITED STATES MINOR OUTLYING ISLANDS|\bURUGUAY|\bUZBEKISTAN|\bVANUATU|\bVENEZUELA|\bVIETNAM|\bVIRGIN ISLANDS-BRITISH|\bVIRGIN ISLANDS-US|\bWALLIS AND FUTUNA|\bWESTERN SAHARA|\bYEMEN|\bZAMBIA|\bZIMBABWE/, { belongToCountry: true })
-
-      ])),
-
-      business_unit_type: new FormControl('', Validators.compose([Validators.required])),
-
-      business_unit_name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)]))
+      source_name: [
+        "",
+        Validators.compose([Validators.required, Validators.minLength(4)])
+      ]
+      // source_status: ["", Validators.compose([Validators.required])]
     });
   }
 
+  addItemsFormGroup() {
+    return this._formbuilder.group({
+      rfq_number: [
+        { value: "", disabled: true },
+        Validators.compose([Validators.required, Validators.minLength(5)])
+      ],
 
+      client_name: ["", Validators.compose([Validators.required])],
 
-  get fval() { return this.userForm.controls; }
-
-
-
-
-  addFieldValue() {
-    this.fieldArray.push(this.newAttribute);
-    this.newAttribute = {};
+      addItem: this._formbuilder.array([this.itemdets(),])
+    });
   }
 
-  deleteFieldValue(index) {
-    this.fieldArray.splice(index, 1);
+  itemdets() {
+    return this._formbuilder.group({
+      stock_id: [
+        "",
+        // { value: '', disabled: false },
+
+        Validators.compose([Validators.required, Validators.minLength(5)])
+        // { updateOn: 'blur' }
+      ],
+
+      item_name: [
+        "",
+        Validators.compose([Validators.required]),
+      ],
+
+      unit: [
+        { value: "", disabled: true },
+        Validators.compose([Validators.required]),
+      ],
+
+      unit_cost: [
+        { value: "", disabled: true },
+        Validators.compose([Validators.required]),
+      ],
+      qty_required: [
+        "",
+        Validators.compose([
+          Validators.required,
+          CustomValidatorInitialCompanySetup.patternValidator(
+            /^([0-9][0-9][0-9][0-9][0-9])$/,
+            { hasNumber: true }
+          )
+        ])
+      ],
+
+      total_cost: [
+        { value: "", disabled: true },
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          CustomValidatorInitialCompanySetup.patternValidator(
+            /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/,
+            { hasNumber: true }
+          )
+        ])
+      ]
+    });
   }
 
+  // Receive user input and send to search method
+  // onKey(value) {
+  //   this.selecteditem = [];
+  //   this.search(value);
+  // }
+
+  // search(value: string) {
+  //   let filter = value.toLowerCase();
+  //   for (let i = 0; i < this.meta.article.length; i++) {
+
+  //     for (let j = 0; j < this.meta.article[i].article.length; j++) {
+  //       let elt = this.meta.article[i].article[j];
+  //       if (elt.name.toLowerCase().indexOf(filter) >= 0) {
+  //         this.selecteditem.push(elt);
+  //       }
+  //     }
+  //   }
+  // }
+
+  updateName(name: string) {
+    this.fval.client_name.setValue(name);
+  }
+
+  getRandomNumberBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  setRfqId() {
+    return (this.rfq_number = this.getRandomNumberBetween(10000, 20000));
+  }
+
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  get items(): FormArray {
+    return this.itemsForm.get("addItem") as FormArray;
+  }
+
+  //  getItems() {
+  //    this.fcont.stock_id.setValue("article.stock_id.value");
+
+  //   }
+
+  get unitCost(): any {
+    return +this.itemsForm.get("unit_cost");
+  }
+  get qtyRequired(): any {
+    return +this.itemsForm.get("qty_required");
+  }
+  // totalCost() {
+  //   return this.unitCost() * this.qtyRequired();
+  // }
+  updateIndex(iex:number){
+
+    console.log(iex);
+  }
+  updateOtherItems(selectedItem: any) {
+    console.log(this.items.value[0]);
+      (<FormArray>this.itemsForm.controls["addItem"]).setValue([
+       this.items_stock.find(
+          item => (item.item_name = selectedItem.target.value)
+        ).stock_id,
+      this.items_stock.find(
+        item => (item.item_name = selectedItem.target.value)
+      ).item_name,
+      this.items_stock.find(
+        item => (item.item_name = selectedItem.target.value)
+      ).unit,
+      this.items_stock.find(
+        item => (item.item_name = selectedItem.target.value)
+      ).qty_required,
+      this.items_stock.find(
+        item => (item.item_name = selectedItem.target.value)
+  ).unit_cost,
+              this.items_stock.find(
+        item => (item.item_name = selectedItem.target.value)
+      ).total_cost
+
+    ]);
+  }
+
+  get fval() {
+    return this.userForm.controls;
+  }
+  get fcont() {
+    return this.itemsForm.controls;
+  }
+
+  get clientName(): any {
+    return this.userForm.get("client_name");
+  }
+
+  onSave() {}
+
+  onSubmit() {
+    this.submit = true;
+    this.userForm.value;
+  }
+
+  add() {
+    this.items.push(this.itemdets());
+  }
+  remove(indx: number) {
+    this.items.removeAt(indx);
+  }
 }

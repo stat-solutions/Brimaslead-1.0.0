@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from 'src/app/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/layout.service';
 
 @Component({
   selector: 'app-hiring-retirement-resignation',
@@ -15,7 +15,6 @@ export class HiringRetirementResignationComponent implements OnInit {
 
   ngOnInit() {
 
-    this.layoutService.setThePanelNow('Hiring And Resignation');
 
 
   }
