@@ -23,7 +23,7 @@ import { PurchasesComponent } from '../front-desk-dashboard/purchases/purchases.
 import { StockDetailsComponent } from '../front-desk-dashboard/purchases/stock-details/stock-details.component';
 import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
-
+import { FilterPipeModule } from 'ngx-filter-pipe';
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -48,7 +48,8 @@ import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/a
     FormsModule,
     ServicesModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FilterPipeModule
   ],
   exports: [
     FrontDeskLayoutComponent,

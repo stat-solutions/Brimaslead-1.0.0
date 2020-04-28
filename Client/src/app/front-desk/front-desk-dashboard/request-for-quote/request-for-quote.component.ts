@@ -8,74 +8,81 @@ import { CustomerRegisterComponent } from './../../../auth/customer-register/cus
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { AddRfqItemsComponent } from './add-rfq-items/add-rfq-items.component';
 import { RfqDetailsComponent } from './rfq-details/rfq-details.component';
+import { FilterPipe } from 'ngx-filter-pipe';
 
 @Component({
-  selector: "app-request-for-quote",
-  templateUrl: "./request-for-quote.component.html",
-  styleUrls: ["./request-for-quote.component.scss"]
+  selector: 'app-request-for-quote',
+  templateUrl: './request-for-quote.component.html',
+  styleUrls: ['./request-for-quote.component.scss']
 })
 export class RequestForQuoteComponent implements OnInit {
   public modalRef: BsModalRef;
+  userFilter: any = { client_name: '' };
   rfq: any = {};
   submit = false;
   userForm: FormGroup;
   itemsForm: FormGroup;
   rfq_number: number;
   index: number;
+  clientLabel = 'Client';
+  clientAdded = false;
+  skipWalkinApproval = false;
+  setApprovalStatus = false;
 
   users = [
-    { user_name: "Davis", department: "Front desk" },
-    { user_name: "Maria", department: "Sales" },
-    { user_name: "Sharon", department: "Front desk" }
+    { user_name: 'Davis', department: 'Front desk' },
+    { user_name: 'Maria', department: 'Sales' },
+    { user_name: 'Sharon', department: 'Front desk' }
   ];
 
   rfq_sources = [
-    { source_name: "Walk in" },
-    { source_name: "Email" },
-    { source_name: "Sales and Marketing" },
-    { source_name: "Bids" }
+
+    { source_name: 'Walk in' },
+    { source_name: 'Email' },
+    { source_name: 'Sales and Marketing' },
+    { source_name: 'Bids' }
   ];
 
   items_stock: ItemStock[] = [
     {
-      stock_id: "BMS235",
-      item_name: "pens",
-      unit: "boxes",
+      stock_id: 'BMS235',
+      item_name: 'pens',
+      unit: 'boxes',
       qty_required: null,
       unit_cost: 30000
     },
     {
-      stock_id: "BMS346",
-      item_name: "umbrellas",
-      unit: "pieces",
+      stock_id: 'BMS346',
+      item_name: 'umbrellas',
+      unit: 'pieces',
       qty_required: null,
       unit_cost: 14000
     },
     {
-      stock_id: "BMS233",
-      item_name: "bags",
-      unit: "pieces",
+      stock_id: 'BMS233',
+      item_name: 'bags',
+      unit: 'pieces',
       qty_required: null,
       unit_cost: 45000
     },
     {
-      stock_id: "BMS162",
-      item_name: "mugs",
-      unit: "pieces",
+      stock_id: 'BMS162',
+      item_name: 'mugs',
+      unit: 'pieces',
       qty_required: null,
       unit_cost: 20000
     },
     {
-      stock_id: "BMS135",
-      item_name: "diary",
-      unit: "pieces",
+      stock_id: 'BMS135',
+      item_name: 'diary',
+      unit: 'pieces',
       qty_required: null,
       unit_cost: 25000
     },
     {
-      stock_id: "BMS127",
-      item_name: "tshirts",
-      unit: "pieces",
+      stock_id: 'BMS127',
+      item_name: 'tshirts',
+      unit: 'pieces',
       qty_required: null,
       unit_cost: 25000
     }
@@ -83,28 +90,28 @@ export class RequestForQuoteComponent implements OnInit {
 
   clients: ClientData[] = [
     {
-      client_id: "BC131212",
-      client_name: "KCB",
+      client_id: 'BC131212',
+      client_name: 'KCB',
       phone_number: 753134341,
-      email: "procurement@kcb-ug.com"
+      email: 'procurement@kcb-ug.com'
     },
     {
-      client_id: "BC121233",
-      client_name: "Sheraton Hotel",
+      client_id: 'BC121233',
+      client_name: 'Sheraton Hotel',
       phone_number: 772443208,
-      email: "procurement@sheratonhotel.com"
+      email: 'procurement@sheratonhotel.com'
     },
     {
-      client_id: "BC031526",
-      client_name: "Shell",
+      client_id: 'BC031526',
+      client_name: 'Shell',
       phone_number: 751781341,
-      email: "supplies@shell.co.ug"
+      email: 'supplies@shell.co.ug'
     },
     {
-      client_id: "BC107252",
-      client_name: "MTN",
+      client_id: 'BC107252',
+      client_name: 'MTN',
       phone_number: 782100042,
-      email: "procurement@mtn.co.ug"
+      email: 'procurement@mtn.co.ug'
     }
   ];
   meta: any;
@@ -113,7 +120,8 @@ export class RequestForQuoteComponent implements OnInit {
   constructor(
     private layoutService: LayoutService,
     private modalService: BsModalService,
-    private _formbuilder: FormBuilder
+    private fb: FormBuilder,
+    private filterPipe: FilterPipe 
   ) {}
 
   ngOnInit() {
@@ -122,15 +130,15 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   createFormGroup() {
-    return this._formbuilder.group({
+    return this.fb.group({
       rfq_number: [
         { value: this.setRfqId(), disabled: true },
         Validators.compose([Validators.required])
       ],
-      client_name: ["", Validators.compose([Validators.required])],
+      client_name: ['', Validators.compose([Validators.required])],
 
       source_name: [
-        "",
+        '',
         Validators.compose([Validators.required, Validators.minLength(4)])
       ]
       // source_status: ["", Validators.compose([Validators.required])]
@@ -138,22 +146,17 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   addItemsFormGroup() {
-    return this._formbuilder.group({
+    return this.fb.group({
       rfq_number: [
-        { value: "", disabled: true },
+        { value: '', disabled: true },
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      client_name: ["", Validators.compose([Validators.required])],
+      client_name: ['', Validators.compose([Validators.required])],
 
-      addItem: this._formbuilder.array([this.itemdets(),])
-    });
-  }
-
-  itemdets() {
-    return this._formbuilder.group({
+      addItem: this.fb.array([this.itemdets(), ]),
       stock_id: [
-        "",
+        '',
         // { value: '', disabled: false },
 
         Validators.compose([Validators.required, Validators.minLength(5)])
@@ -161,21 +164,21 @@ export class RequestForQuoteComponent implements OnInit {
       ],
 
       item_name: [
-        "",
+        '',
         Validators.compose([Validators.required]),
       ],
 
       unit: [
-        { value: "", disabled: true },
+        { value: '', disabled: true },
         Validators.compose([Validators.required]),
       ],
 
       unit_cost: [
-        { value: "", disabled: true },
+        { value: '', disabled: true },
         Validators.compose([Validators.required]),
       ],
       qty_required: [
-        "",
+        '',
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -186,7 +189,56 @@ export class RequestForQuoteComponent implements OnInit {
       ],
 
       total_cost: [
-        { value: "", disabled: true },
+        { value: '', disabled: true },
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          CustomValidatorInitialCompanySetup.patternValidator(
+            /^([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])$/,
+            { hasNumber: true }
+          )
+        ])
+      ]
+    });
+  }
+
+  itemdets() {
+    return this.fb.group({
+      stock_id: [
+        '',
+        // { value: '', disabled: false },
+
+        Validators.compose([Validators.required, Validators.minLength(5)])
+        // { updateOn: 'blur' }
+      ],
+
+      item_name: [
+        '',
+        Validators.compose([Validators.required]),
+      ],
+
+      unit: [
+        { value: '', disabled: true },
+        Validators.compose([Validators.required]),
+      ],
+
+      unit_cost: [
+        { value: '', disabled: true },
+        Validators.compose([Validators.required]),
+      ],
+      qty_required: [
+        '',
+        Validators.compose([
+          Validators.required,
+          CustomValidatorInitialCompanySetup.patternValidator(
+            /^([0-9][0-9][0-9][0-9][0-9])$/,
+            { hasNumber: true }
+          )
+        ])
+      ],
+
+      total_cost: [
+        { value: '', disabled: true },
         Validators.compose([
           Validators.required,
           Validators.minLength(5),
@@ -220,6 +272,8 @@ export class RequestForQuoteComponent implements OnInit {
 
   updateName(name: string) {
     this.fval.client_name.setValue(name);
+    this.clientLabel = 'Selected Client';
+    this.clientAdded = true;
   }
 
   getRandomNumberBetween(min, max) {
@@ -231,11 +285,12 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'white modal-lg' }));
+
   }
 
   get items(): FormArray {
-    return this.itemsForm.get("addItem") as FormArray;
+    return this.itemsForm.get('addItem') as FormArray;
   }
 
   //  getItems() {
@@ -244,21 +299,21 @@ export class RequestForQuoteComponent implements OnInit {
   //   }
 
   get unitCost(): any {
-    return +this.itemsForm.get("unit_cost");
+    return +this.itemsForm.get('unit_cost');
   }
   get qtyRequired(): any {
-    return +this.itemsForm.get("qty_required");
+    return +this.itemsForm.get('qty_required');
   }
   // totalCost() {
   //   return this.unitCost() * this.qtyRequired();
   // }
-  updateIndex(iex:number){
+  updateIndex(iex: number) {
 
     console.log(iex);
   }
   updateOtherItems(selectedItem: any) {
     console.log(this.items.value[0]);
-      (<FormArray>this.itemsForm.controls["addItem"]).setValue([
+    ( this.itemsForm.controls.addItem as FormArray).setValue([
        this.items_stock.find(
           item => (item.item_name = selectedItem.target.value)
         ).stock_id,
@@ -281,6 +336,42 @@ export class RequestForQuoteComponent implements OnInit {
     ]);
   }
 
+
+  onCheckChange(event: any) {
+    console.log(event.target.checked);
+    if (event.target.checked) {
+
+      this.skipWalkinApproval = true;
+
+    } else {
+      this.skipWalkinApproval = false;
+
+    }
+  }
+
+  setSelectedChanges(event: any) {
+
+    if (event.target.value === 'Select Rfq source') {
+
+      this.fval.source_name.setErrors({ required: true });
+
+    }
+
+    if (event.target.value === 'Walk in') {
+
+      this.setApprovalStatus = true;
+    } else {
+      this.setApprovalStatus = false;
+    }
+
+  }
+
+  resetForm() {
+    location.reload();
+    this.userForm.reset();
+  }
+
+
   get fval() {
     return this.userForm.controls;
   }
@@ -289,7 +380,7 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   get clientName(): any {
-    return this.userForm.get("client_name");
+    return this.userForm.get('client_name');
   }
 
   onSave() {}
