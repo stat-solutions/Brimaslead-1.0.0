@@ -24,7 +24,7 @@ USE `brimaslead` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `the_company_datails` (
   `the_company_details_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `the_company_name` VARCHAR(100) NULL DEFAULT 'Edad Coin SMS-Ltd',
+  `the_company_name` VARCHAR(100) NULL DEFAULT 'Brimas Media Ltd',
   `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
   PRIMARY KEY (`the_company_details_id`)
@@ -32,6 +32,57 @@ CREATE TABLE IF NOT EXISTS `the_company_datails` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 16000
 DEFAULT CHARACTER SET = utf8;
+
+
+-- ---------------------------------------------------
+-- Table `the_company_contacts`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `the_company_contacts` (
+  `contact_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `phone1` VARCHAR(100) NULL DEFAULT NULL,
+  `phone2` VARCHAR(100) NULL DEFAULT NULL,
+  `phone3` VARCHAR(100) NULL DEFAULT NULL,
+  `email1` VARCHAR(100) NULL DEFAULT NULL,
+  `email2` VARCHAR(100) NULL DEFAULT NULL,
+  `fk_the_company_details_id_contacts` INT(11) NULL DEFAULT NULL,
+   `created_at` TIMESTAMP,
+  `update_at` TIMESTAMP,
+  PRIMARY KEY (`contact_id`),
+  CONSTRAINT `fk_the_company_details_id_contacts`
+  FOREIGN KEY (`fk_the_company_details_id_contacts`)
+  REFERENCES `the_company_datails`(`the_company_datails_id`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION)
+
+ENGINE = InnoDB
+AUTO_INCREMENT = 200
+DEFAULT CHARACTER SET = utf8;
+
+
+-- --------------------------------------------------
+-- Table `the_company_address`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `the_company_address` (
+  `address_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `box_number` VARCHAR(200) NULL DEFAULT NULL,
+  `plot_number` VARCHAR(200) NULL DEFAULT NULL,
+  `city` VARCHAR(60) NULL DEFAULT NULL,
+  `region` VARCHAR(60) NULL DEFAULT NULL,
+  `country` VARCHAR(60) NULL DEFAULT NULL,
+    `fk_the_company_details_id_the_company_address` INT(11) NULL DEFAULT NULL,
+   `created_at` TIMESTAMP,
+  `update_at` TIMESTAMP,
+  PRIMARY KEY (`address_id`),
+   CONSTRAINT `fk_the_company_details_id_the_company_address`
+    FOREIGN KEY (`fk_the_company_details_id_the_company_address`)
+    REFERENCES `the_company_datails`(`the_company_datails_id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 3000
+DEFAULT CHARACTER SET = utf8
+KEY_BLOCK_SIZE = 1;
+
 
 
 
@@ -47,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `branch` (
   PRIMARY KEY (`branch_id`),
   CONSTRAINT `fk_the_company_details_id_branch`
     FOREIGN KEY (`fk_the_company_details_id_branch`)
-    REFERENCES `the_company_datails` (`the_company_details_id`)
+    REFERENCES `the_company_details` (`the_company_details_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -78,27 +129,6 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE INDEX `fk_branch_id_department_indx` ON `department` (`fk_branch_id_department` ASC) VISIBLE;
 
-
--- -----------------------------------------------------
--- Table `unit`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unit` (
-  `unit_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `unit_name` VARCHAR(100) NULL DEFAULT 'Disbursement',
-  `fk_department_id_unit` INT(11) NULL ,
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  PRIMARY KEY (`unit_id`),
-  CONSTRAINT `fk_department_id_unit` 
-  FOREIGN KEY (`fk_department_id_unit`) 
-  REFERENCES `department`(`department_id`)
-   ON DELETE CASCADE 
-   ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 500
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_department_id_unit_idx` ON `unit`(`fk_department_id_unit` ASC) VISIBLE;
 
 
 -- ---------------------------------------------------
@@ -158,30 +188,31 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 ENGINE = InnoDB
 AUTO_INCREMENT = 1000;
 
--- ---------------------------------------------------
--- Table `users`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS  `users`;
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `users_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `users_name` VARCHAR(45) NULL DEFAULT 'GoogoBazi',
-  `users_password` VARCHAR(500) NULL DEFAULT 'XXXXXX',
-    `fk_unit_id_users` INT(11) NULL,
-  `fk_user_role_id_users` INT(11) NULL,
+-- ---------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS  `user`;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `user_contact` VARCHAR(45) NULL DEFAULT '0782231039',
+  `user_password` VARCHAR(500) NULL DEFAULT 'XXXXXX',
+    `fk_department_id_user` INT(11) NULL,
+  `fk_user_role_id_user` INT(11) NULL,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
-  PRIMARY KEY (`users_id`),
+  PRIMARY KEY (`user_id`),
 
-  CONSTRAINT `fk_user_role_id_users`
-    FOREIGN KEY (`fk_user_role_id_users`)
+  CONSTRAINT `fk_user_role_id_user`
+    FOREIGN KEY (`fk_user_role_id_user`)
     REFERENCES `user_role` (`user_role_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
-     CONSTRAINT `fk_unit_id_users`
-    FOREIGN KEY (`fk_unit_id_users`)
-    REFERENCES `unit` (`unit_id`)
+     CONSTRAINT `fk_department_id_user`
+    FOREIGN KEY (`fk_department_id_user`)
+    REFERENCES `department` (`department_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     
@@ -190,13 +221,13 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 100000000
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `fk_user_role_id_users_idx` ON `users` (`fk_user_role_id_users` ASC) VISIBLE;
-CREATE INDEX `fk_unit_id_users_idx` ON `users` (`fk_unit_id_users` ASC) VISIBLE;
+CREATE INDEX `fk_user_role_id_user_idx` ON `user` (`fk_user_role_id_user` ASC) VISIBLE;
+CREATE INDEX `fk_unit_id_user_idx` ON `user` (`fk_department_id_user` ASC) VISIBLE;
 
 
 
 -- ---------------------------------------------------
--- Table `users`
+-- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS  `customer`;
 
@@ -213,18 +244,18 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
   CONSTRAINT `fk_user_id_created_by_customer`
     FOREIGN KEY (`fk_user_id_created_by_customer`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
      CONSTRAINT `fk_user_id_first_approved_by_customer`
     FOREIGN KEY (`fk_user_id_first_approved_by_customer`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
     
       CONSTRAINT `fk_user_id_second_approved_by_customer`
     FOREIGN KEY (`fk_user_id_second_approved_by_customer`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     )
@@ -301,22 +332,22 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `fk_user_id_second_approved_by_supplier` INT,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
-  PRIMARY KEY (`customer_id`),
+  PRIMARY KEY (`supplier_id`),
 
   CONSTRAINT `fk_user_id_created_by_supplier`
     FOREIGN KEY (`fk_user_id_created_by_supplier`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
      CONSTRAINT `fk_user_id_first_approved_by_supplier`
     FOREIGN KEY (`fk_user_id_first_approved_by_supplier`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
     
       CONSTRAINT `fk_user_id_second_approved_by_supplier`
     FOREIGN KEY (`fk_user_id_second_approved_by_supplier`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     )
@@ -327,7 +358,7 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- ---------------------------------------------------
--- Table `customer_contacts`
+-- Table `supplier_contacts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `supplier_contacts` (
   `contact_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -342,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `supplier_contacts` (
   PRIMARY KEY (`contact_id`),
   CONSTRAINT `fk_supplier_id_contacts`
   FOREIGN KEY (`fk_supplier_id_contacts`)
-  REFERENCES `customer`(`supplier_id`)
+  REFERENCES `supplier`(`supplier_id`)
   ON DELETE CASCADE
   ON UPDATE NO ACTION)
 
@@ -400,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `employee_details` (
 
   CONSTRAINT `fk_user_id_employee_details`
     FOREIGN KEY (`fk_user_id_employee_details`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -469,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `next_of_kin` (
   PRIMARY KEY (`next_of_kin_id`),
   CONSTRAINT `fk_user_id_next_of_kin`
     FOREIGN KEY (`fk_user_id_next_of_kin`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -491,13 +522,13 @@ CREATE TABLE IF NOT EXISTS `document_identification` (
   `insuance_date` TIMESTAMP NULL DEFAULT NULL,
   `expirely_date` TIMESTAMP NULL DEFAULT NULL,
   `issueing_authority` VARCHAR(200) NULL DEFAULT NULL,
-  `fk_next_of_kin_id_document_identification` INT(11) NULL DEFAULT NULL,
+  `fk_user_id_document_identification` INT(11) NULL DEFAULT NULL,
   `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
   PRIMARY KEY (`document_identification_id`),
-  CONSTRAINT `fk_next_of_kin_id_document_identification`
-    FOREIGN KEY (`fk_next_of_kin_id_document_identification`)
-    REFERENCES `next_of_kin` (`next_of_kin_id`)
+  CONSTRAINT `fk_user_id_document_identification`
+    FOREIGN KEY (`fk_user_id_document_identification`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -505,7 +536,7 @@ AUTO_INCREMENT = 1000
 DEFAULT CHARACTER SET = utf8;
 
 
-CREATE INDEX `next_of_kin_id` ON `document_identification` (`fk_next_of_kin_id_document_identification` ASC) VISIBLE;
+CREATE INDEX `fk_user_id_document_identification_idx` ON `document_identification` (`fk_user_id_document_identification` ASC) VISIBLE;
 
 
 
@@ -517,13 +548,13 @@ CREATE TABLE IF NOT EXISTS `images_path` (
   `images_path_actual_path` VARCHAR(100) NULL DEFAULT NULL,
   `image_name` VARCHAR(100) NULL DEFAULT NULL,
   `image_caption` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_next_of_kin_id_images_path` INT(11) NULL DEFAULT NULL,
+  `fk_user_id_images_path` INT(11) NULL DEFAULT NULL,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
   PRIMARY KEY (`images_path_id`),
-  CONSTRAINT `fk_next_of_kin_id_images_path`
-    FOREIGN KEY (`fk_next_of_kin_id_images_path`)
-    REFERENCES `next_of_kin` (`next_of_kin_id`)
+  CONSTRAINT `fk_user_id_images_path`
+    FOREIGN KEY (`fk_user_id_images_path`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -531,7 +562,7 @@ AUTO_INCREMENT = 11000
 DEFAULT CHARACTER SET = utf8;
 
 
-CREATE INDEX `fk_next_of_kin_id_images_path` ON `images_path` (`fk_next_of_kin_id_images_path` ASC) VISIBLE;
+CREATE INDEX `fk_user_id_images_path` ON `images_path` (`fk_user_id_images_path` ASC) VISIBLE;
 
 
 
@@ -540,20 +571,18 @@ CREATE INDEX `fk_next_of_kin_id_images_path` ON `images_path` (`fk_next_of_kin_i
 -- ---------------------------------------------------
 -- Table `common_bio_data`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `common_bio_data` (
-  `common_bio_data_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `first_name` VARCHAR(100) NULL DEFAULT 'Augustine',
-  `middle_name` VARCHAR(100) NULL DEFAULT 'Googo',
-  `last_name` VARCHAR(100) NULL DEFAULT 'Bazirake',
+CREATE TABLE IF NOT EXISTS `user_common_bio_data` (
+  `user_common_bio_data_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL DEFAULT 'Augustine Bazirake Googo',
   `sex` VARCHAR(45) NULL DEFAULT 'Male',
   `date_of_birth` VARCHAR(45) NULL DEFAULT '1983-10-04',
-  `fk_next_of_kin_id_common_bio_data` INT(11) NULL DEFAULT NULL,
+  `fk_user_id_common_bio_data` INT(11) NULL DEFAULT NULL,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
-  PRIMARY KEY (`common_bio_data_id`),
-  CONSTRAINT `fk_next_of_kin_id_common_bio_data`
-    FOREIGN KEY (`fk_next_of_kin_id_common_bio_data`)
-    REFERENCES `next_of_kin` (`next_of_kin_id`)
+  PRIMARY KEY (`user_common_bio_data_id`),
+  CONSTRAINT `fk_user_id_common_bio_data`
+    FOREIGN KEY (`fk_user_id_common_bio_data`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
   
@@ -561,7 +590,7 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 90
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `fk_next_of_kin_id_common_bio_data` ON `common_bio_data` (`fk_next_of_kin_id_common_bio_data` ASC) VISIBLE;
+CREATE INDEX `fk_user_id_common_bio_data` ON `common_bio_data` (`fk_user_id_common_bio_data` ASC) VISIBLE;
 
 
 
@@ -569,20 +598,20 @@ CREATE INDEX `fk_next_of_kin_id_common_bio_data` ON `common_bio_data` (`fk_next_
 -- ---------------------------------------------------
 -- Table `contacts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `contacts` (
+CREATE TABLE IF NOT EXISTS `user_contacts` (
   `contact_id` INT(11) NOT NULL AUTO_INCREMENT,
   `phone1` VARCHAR(100) NULL DEFAULT NULL,
   `phone2` VARCHAR(100) NULL DEFAULT NULL,
-  --`phone3` VARCHAR(100) NULL DEFAULT NULL,
+  -- `phone3` VARCHAR(100) NULL DEFAULT NULL,
   `email1` VARCHAR(100) NULL DEFAULT NULL,
   `email2` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_next_of_kin_id_contacts` INT(11) NULL DEFAULT NULL,
+  `fk_user_id_contacts` INT(11) NULL DEFAULT NULL,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
   PRIMARY KEY (`contact_id`),
-  CONSTRAINT `fk_next_of_kin_id_contacts`
-  FOREIGN KEY (`fk_next_of_kin_id_contacts`)
-  REFERENCES `next_of_kin`(`next_of_kin_id`)
+  CONSTRAINT `fk_user_id_contacts`
+  FOREIGN KEY (`fk_user_id_contacts`)
+  REFERENCES `user`(`user_id`)
   ON DELETE CASCADE
   ON UPDATE NO ACTION)
 
@@ -590,8 +619,8 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 200
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX fk_next_of_kin_id_contacts_indx ON
-`contacts`(`fk_next_of_kin_id_contacts` ASC);
+CREATE INDEX fk_user_id_contacts_indx ON
+`user_contacts`(`fk_user_id_contacts` ASC);
 
 
 
@@ -603,14 +632,14 @@ CREATE TABLE IF NOT EXISTS `address` (
   `box_number` VARCHAR(200) NULL DEFAULT NULL,
   `fk_user_id_ddress` INT(11) NULL DEFAULT NULL,
   `the_company_details_id_address` INT(11) NULL DEFAULT NULL,
-  `fk_next_of_kin_id_address` INT(11) NULL DEFAULT NULL,
+  `fk_user_id_address` INT(11) NULL DEFAULT NULL,
    `created_at` TIMESTAMP,
   `update_at` TIMESTAMP,
   PRIMARY KEY (`address_id`),
 
-  CONSTRAINT `fk_next_of_kin_id_address`
-    FOREIGN KEY (`fk_next_of_kin_id_address`)
-    REFERENCES `next_of_kin` (`next_of_kin_id`)
+  CONSTRAINT `fk_user_id_address`
+    FOREIGN KEY (`fk_user_id_address`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -618,7 +647,7 @@ DEFAULT CHARACTER SET = utf8
 KEY_BLOCK_SIZE = 1;
 
 
-CREATE INDEX `fk_next_of_kin_id_address` ON `address` (`fk_next_of_kin_id_address` ASC) VISIBLE;
+CREATE INDEX `fk_user_id_address` ON `address` (`fk_user_id_address` ASC) VISIBLE;
 
 
 
@@ -691,98 +720,6 @@ CREATE INDEX `fk_address_id_city_indx` ON `city` (`fk_address_id_city` ASC) VISI
 
 
 
-
--- ---------------------------------------------------
--- Table `district`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `district` (
-  `district_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `district_name` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_address_id_district` INT(11) NULL DEFAULT NULL,
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  PRIMARY KEY (`district_id`),
-  CONSTRAINT `fk_address_id_district`
-    FOREIGN KEY (`fk_address_id_district`)
-    REFERENCES `address` (`address_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION
- )
-ENGINE = InnoDB
-AUTO_INCREMENT = 900
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_address_id_district_indx` ON `district` (`fk_address_id_district` ASC) VISIBLE;
-
-
-
--- -----------------------------------------------------
--- Table `county`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `county` (
-  `county_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `county_name` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_address_id_county` INT(11) NULL DEFAULT NULL,
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  PRIMARY KEY (`county_id`),
-  CONSTRAINT `fk_address_id_county`
-    FOREIGN KEY (`fk_address_id_county`)
-    REFERENCES `address` (`address_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 800
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_district_id_county_indx` ON `county` (`fk_address_id_county` ASC) VISIBLE;
-
-
-
--- ---------------------------------------------------
--- Table `sub_county`
--- -------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sub_county` (
-  `sub_county_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `sub_county_name` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_address_id_sub_county` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`sub_county_id`),
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  CONSTRAINT `fk_address_id_sub_county`
-    FOREIGN KEY (`fk_address_id_sub_county`)
-    REFERENCES `address` (`address_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 15000
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_address_id_sub_county_indx` ON `sub_county` (`fk_address_id_sub_county` ASC) VISIBLE;
-
-
--- ---------------------------------------------------
--- Table `parish`
--- ---------------------------------------------------
-CREATE TABLE IF NOT EXISTS `parish` (
-  `parish_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `parish_name` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_address_id_parish` INT(11) NULL DEFAULT NULL,
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  PRIMARY KEY (`parish_id`),
-  CONSTRAINT `fk_address_id_parish`
-    FOREIGN KEY (`fk_address_id_parish`)
-    REFERENCES `address` (`address_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 14000
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_address_id_parish_indx` ON `parish` (`fk_address_id_parish` ASC) VISIBLE;
-
-
 -- ---------------------------------------------------
 -- Table `town`
 -- -----------------------------------------------------
@@ -803,31 +740,6 @@ AUTO_INCREMENT = 17000
 DEFAULT CHARACTER SET = utf8;
 
 CREATE INDEX `fk_address_id_town_indx` ON `town` (`fk_address_id_town` ASC) VISIBLE;
-
-
-
--- ---------------------------------------------------
--- Table `village`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `village` (
-  `village_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `village_name` VARCHAR(100) NULL DEFAULT NULL,
-  `fk_address_id_village` INT(11) NULL DEFAULT NULL,
-   `created_at` TIMESTAMP,
-  `update_at` TIMESTAMP,
-  PRIMARY KEY (`village_id`),
-  CONSTRAINT `fk_address_id_village`
-    FOREIGN KEY (`fk_address_id_village`)
-    REFERENCES `address` (`address_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 18000
-DEFAULT CHARACTER SET = utf8;
-
-CREATE INDEX `fk_address_id_village_indx` ON `village` (`fk_address_id_village` ASC) VISIBLE;
-
-
 
 
 
@@ -865,19 +777,19 @@ CREATE TABLE IF NOT EXISTS `order` (
     
       CONSTRAINT `fk_user_id_created_by_order`
     FOREIGN KEY (`fk_user_id_created_by_order`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
         CONSTRAINT `fk_user_id_first_approved_by_order`
     FOREIGN KEY (`fk_user_id_first_approved_by_order`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
          CONSTRAINT `fk_user_id_second_approved_by_order`
     FOREIGN KEY (`fk_user_id_second_approved_by_order`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     
@@ -944,19 +856,19 @@ CREATE TABLE IF NOT EXISTS `job_costing` (
     
       CONSTRAINT `fk_user_id_created_by_job_costing`
     FOREIGN KEY (`fk_user_id_created_by_job_costing`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
         CONSTRAINT `fk_user_id_first_approved_by_job_costing`
     FOREIGN KEY (`fk_user_id_first_approved_by_job_costing`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
          CONSTRAINT `fk_user_id_second_approved_by_job_costing`
     FOREIGN KEY (`fk_user_id_second_approved_by_job_costing`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     
@@ -992,19 +904,19 @@ CREATE TABLE IF NOT EXISTS `request_for_quote` (
     
       CONSTRAINT `fk_user_id_created_by_request_for_quote`
     FOREIGN KEY (`fk_user_id_created_by_request_for_quote`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
         CONSTRAINT `fk_user_id_first_approved_by_request_for_quote`
     FOREIGN KEY (`fk_user_id_first_approved_by_request_for_quote`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
          CONSTRAINT `fk_user_id_second_approved_by_request_for_quote`
     FOREIGN KEY (`fk_user_id_second_approved_by_request_for_quote`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     
@@ -1038,19 +950,19 @@ CREATE TABLE IF NOT EXISTS `pre_order_samples` (
 
       CONSTRAINT `fk_user_id_created_by_pre_order_samples`
     FOREIGN KEY (`fk_user_id_created_by_pre_order_samples`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
         CONSTRAINT `fk_user_id_first_approved_by_pre_order_samples`
     FOREIGN KEY (`fk_user_id_first_approved_by_pre_order_samples`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
         CONSTRAINT `fk_user_id_second_approved_by_pre_order_samples`
     FOREIGN KEY (`fk_user_id_second_approved_by_pre_order_samples`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION
     
@@ -1082,19 +994,19 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   PRIMARY KEY (`invoice_id`),
    CONSTRAINT `fk_user_id_created_by_invoice` 
   FOREIGN KEY (`fk_user_id_created_by_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_first_approved_by_invoice` 
   FOREIGN KEY (`fk_user_id_first_approved_by_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_second_approved_by_invoice` 
   FOREIGN KEY (`fk_user_id_second_approved_by_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION
 
@@ -1120,19 +1032,19 @@ CREATE TABLE IF NOT EXISTS `preforma_invoice` (
   PRIMARY KEY (`preforma_invoice_id`),
    CONSTRAINT `fk_user_id_created_by_preforma_invoice` 
   FOREIGN KEY (`fk_user_id_created_by_preforma_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_first_approved_by_preforma_invoice` 
   FOREIGN KEY (`fk_user_id_first_approved_by_preforma_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_second_approved_by_preforma_invoice` 
   FOREIGN KEY (`fk_user_id_second_approved_by_preforma_invoice`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION
 
@@ -1165,19 +1077,19 @@ CREATE TABLE `stock` (
   PRIMARY KEY (`stock_id`),
    CONSTRAINT `fk_user_id_created_by_stock` 
   FOREIGN KEY (`fk_user_id_created_by_stock`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_first_approved_by_stock` 
   FOREIGN KEY (`fk_user_id_first_approved_by_stock`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION,
 
      CONSTRAINT `fk_user_id_second_approved_by_stock` 
   FOREIGN KEY (`fk_user_id_second_approved_by_stock`) 
-  REFERENCES `users`(`users_id`)
+  REFERENCES `user`(`user_id`)
    ON DELETE CASCADE 
    ON UPDATE NO ACTION
 
@@ -1280,19 +1192,19 @@ CREATE TABLE IF NOT EXISTS `accounts_created_store` (
 
   CONSTRAINT `fk_user_id_created_by_accounts_created_store`
     FOREIGN KEY (`fk_user_id_created_by_accounts_created_store`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
       CONSTRAINT `fk_user_id_first_approved_by_accounts_created_store`
     FOREIGN KEY (`fk_user_id_first_approved_by_accounts_created_store`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
     
     CONSTRAINT `fk_user_id_second_approved_by_accounts_created_store`
     FOREIGN KEY (`fk_user_id_second_approved_by_accounts_created_store`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -1398,19 +1310,19 @@ CREATE TABLE IF NOT EXISTS `general_ledger` (
 
     CONSTRAINT `fk_user_id_created_by_general_ledger`
     FOREIGN KEY (`fk_user_id_created_by_general_ledger`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
       CONSTRAINT `fk_user_id_first_approved_by_general_ledger`
     FOREIGN KEY (`fk_user_id_first_approved_by_general_ledger`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
        CONSTRAINT `fk_user_id_second_approved_by_general_ledger`
     FOREIGN KEY (`fk_user_id_second_approved_by_general_ledger`)
-    REFERENCES `users` (`users_id`)
+    REFERENCES `user` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
 
@@ -1465,20 +1377,20 @@ CREATE TABLE `posting_date` (
 
  CONSTRAINT `fk_user_id_created_by_posting_date`
  FOREIGN KEY (`fk_user_id_created_by_posting_date`)
- REFERENCES `users`(`users_id`)
+ REFERENCES `user`(`user_id`)
  ON DELETE CASCADE
  ON UPDATE NO ACTION,
 
   CONSTRAINT `fk_user_id_first_approved_by_posting_date`
  FOREIGN KEY (`fk_user_id_first_approved_by_posting_date`)
- REFERENCES `users`(`users_id`)
+ REFERENCES `user`(`user_id`)
  ON DELETE CASCADE
  ON UPDATE NO ACTION,
 
 
    CONSTRAINT `fk_user_id_second_approved_by_posting_date`
  FOREIGN KEY (`fk_user_id_second_approved_by_posting_date`)
- REFERENCES `users`(`users_id`)
+ REFERENCES `user`(`user_id`)
  ON DELETE CASCADE
  ON UPDATE NO ACTION
 
@@ -1517,19 +1429,19 @@ CREATE TABLE `trn_process` (
 
    CONSTRAINT `fk_user_id_created_by_trn_process`
   FOREIGN KEY (`fk_user_id_created_by_trn_process`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
    CONSTRAINT `fk_user_id_first_approved_by_trn_process`
   FOREIGN KEY (`fk_user_id_first_approved_by_trn_process`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
     CONSTRAINT `fk_user_id_second_approved_by_trn_process`
   FOREIGN KEY (`fk_user_id_second_approved_by_trn_process`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE
 
@@ -1572,19 +1484,19 @@ CREATE TABLE `trn_type` (
   
    CONSTRAINT `fk_user_id_created_by_trn_type`
   FOREIGN KEY (`fk_user_id_created_by_trn_type`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
    CONSTRAINT `fk_user_id_first_approved_by_trn_type`
   FOREIGN KEY (`fk_user_id_first_approved_by_trn_type`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
     CONSTRAINT `fk_user_id_second_approved_by_trn_type`
   FOREIGN KEY (`fk_user_id_second_approved_by_trn_type`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=latin1;
@@ -1638,19 +1550,19 @@ CREATE TABLE `special_account_setups` (
   
    CONSTRAINT `fk_user_id_created_by_special_account_setups`
   FOREIGN KEY (`fk_user_id_created_by_special_account_setups`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
    CONSTRAINT `fk_user_id_first_approved_by_special_account_setups`
   FOREIGN KEY (`fk_user_id_first_approved_by_special_account_setups`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE,
 
     CONSTRAINT `fk_user_id_second_approved_by_special_account_setups`
   FOREIGN KEY (`fk_user_id_second_approved_by_special_account_setups`)
-  REFERENCES  `users`(`users_id`)
+  REFERENCES  `user`(`user_id`)
   ON UPDATE NO ACTION
   ON DELETE CASCADE)
 

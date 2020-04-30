@@ -1,18 +1,18 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AuthRoutingModule } from "./auth-routing.module";
-import { AuthComponent } from "./auth.component";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
-import { SupplierRegisterComponent } from "./supplier-register/supplier-register.component";
-import { CustomerRegisterComponent } from "./customer-register/customer-register.component";
-import { NgxSpinnerModule } from "ngx-spinner";
-import { AlertModule } from "ngx-bootstrap/alert";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { AuthRoutingModule } from './auth-routing.module';
+import { AuthComponent } from './auth.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SupplierRegisterComponent } from './supplier-register/supplier-register.component';
+import { CustomerRegisterComponent } from './customer-register/customer-register.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
-import { ReactiveFormsModule } from "@angular/forms";
-import { HomeComponent } from "./home/home.component";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -49,6 +49,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { GoogoComponent } from './googo/googo.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../../environments/environment';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +63,7 @@ import { GoogoComponent } from './googo/googo.component';
     SupplierRegisterComponent,
     CustomerRegisterComponent,
     HomeComponent,
-    GoogoComponent
+    GoogoComponent,
   ],
   imports: [
     CommonModule,
@@ -101,7 +106,14 @@ import { GoogoComponent } from './googo/googo.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    AngularFireAuthModule
+
+  ],
+  providers: [
+    { provide: StorageBucket, useValue: 'your' }
   ]
 })
 export class AuthModule {}

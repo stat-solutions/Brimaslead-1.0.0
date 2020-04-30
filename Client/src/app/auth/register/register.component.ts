@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
-import { NgxSpinnerService } from "ngx-spinner";
-import { Router } from "@angular/router";
-import { AuthServiceService } from "src/app/shared/services/auth-service.service";
-import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
 
 interface Department {
   value: string;
@@ -11,11 +11,14 @@ interface Department {
 }
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"]
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  isHovering: boolean;
+  files: File[] = [];
   hide = true;
   registered = false;
   submitted = false;
@@ -40,13 +43,13 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   department: Department[] = [
-    { value: "management", viewValue: "Management" },
-    { value: "front-desk", viewValue: "Front Desk" },
-    { value: "finance", viewValue: "Finance" },
-    { value: "production", viewValue: "Production" },
-    { value: "quality-assurance", viewValue: "Quality assurance" },
-    { value: "sales-marketing", viewValue: "Sales & Marketing" },
-    { value: "transport-logistics", viewValue: "Transport & Logistics" }
+    { value: 'management', viewValue: 'Management' },
+    { value: 'front-desk', viewValue: 'Front Desk' },
+    { value: 'finance', viewValue: 'Finance' },
+    { value: 'production', viewValue: 'Production' },
+    { value: 'quality-assurance', viewValue: 'Quality assurance' },
+    { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
+    { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
   ];
 
   /** Returns a FormArray with the name 'formArray'. */
@@ -58,7 +61,7 @@ export class RegisterComponent implements OnInit {
     this.loginFormGroup = this._formBuilder.group(
       {
         user_name: [
-          "",
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -70,7 +73,7 @@ export class RegisterComponent implements OnInit {
           ])
         ],
         phone_number: [
-          "",
+          '',
           Validators.compose([
             Validators.required,
             CustomValidatorInitialCompanySetup.patternValidator(
@@ -80,17 +83,17 @@ export class RegisterComponent implements OnInit {
           ])
         ],
         password: [
-          "",
+          '',
           Validators.compose([
             // 1. Password Field is Required
 
             Validators.required,
 
             // 2. check whether the entered password has a number
-            //CustomValidatorInitialCompanySetup.patternValidator(/^(([1-9])([1-9])([1-9])([0-9]))$/, { hasNumber: true }),
+            // CustomValidatorInitialCompanySetup.patternValidator(/^(([1-9])([1-9])([1-9])([0-9]))$/, { hasNumber: true }),
             // 6. Has a minimum length of 8 characters
             Validators.minLength(8),
-            //Validators.maxLength(4),
+            // Validators.maxLength(4),
             // 3. check whether the entered password has upper case letter
             CustomValidatorInitialCompanySetup.patternValidator(/[A-Z]/, {
               hasCapitalCase: true
@@ -106,7 +109,7 @@ export class RegisterComponent implements OnInit {
             )
           ])
         ],
-        confirm_password: ["", Validators.required]
+        confirm_password: ['', Validators.required]
       },
       {
         validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
@@ -115,26 +118,30 @@ export class RegisterComponent implements OnInit {
 
     this.personalFormGroup = this._formBuilder.group({
       national_id: [
-        "",
+        '',
         Validators.compose([
           Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z]))$/,
-            { nationalIdCheck: true }
-          )
+          Validators.maxLength(14),
+          Validators.minLength(14)
+          // ,
+          // CustomValidatorInitialCompanySetup.patternValidator(
+          //   /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z]))$/,
+          //   { nationalIdCheck: true }
+          // )
+
         ])
       ],
-      date_of_birth: ["", Validators.required],
-      gender: ["", Validators.required],
-      address: ["", Validators.required],
-      email: ["", Validators.email],
-      photo: ["", Validators.required],
-      fileSource: ["", [Validators.required]]
+      date_of_birth: ['', Validators.required],
+      gender: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', Validators.email],
+      photo: ['', Validators.required],
+      fileSource: ['', [Validators.required]]
     });
 
     this.employeeFormGroup = this._formBuilder.group({
       employee_id: [
-        "",
+        '',
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -143,11 +150,23 @@ export class RegisterComponent implements OnInit {
           )
         ])
       ],
-      job_title: ["", Validators.required],
-      department: ["", Validators.required],
-      commence_date: ["", Validators.required]
+      job_title: ['', Validators.required],
+      department: ['', Validators.required],
+      commence_date: ['', Validators.required]
     });
   }
+
+
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
+
+  onDrop(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files.item(i));
+    }
+  }
+
 
   /* Called on each input in either password field */
   // onPasswordInput() {
@@ -166,23 +185,8 @@ export class RegisterComponent implements OnInit {
   //   const control = this.userForm.get(controlName);
   //   return control ? control.hasError(errorName) : true;
   // };
-
-  onFileChange(event) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [photo] = event.target.files;
-      reader.readAsDataURL(photo);
-
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
-
-        this.personalFormGroup.patchValue({
-          fileSource: reader.result
-        });
-      };
-    }
-  }
+ //24691119
+  
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
@@ -206,13 +210,13 @@ export class RegisterComponent implements OnInit {
     } else {
       this.authService.registerUser(this.userForm).subscribe(
         (data: string) => {
-          if (data === "Posted Successfully") {
-            this.serviceErrors = "Registration was Successful";
+          if (data === 'Posted Successfully') {
+            this.serviceErrors = 'Registration was Successful';
             // this.userForm.reset();
             setTimeout(() => {
               this.posted = true;
               this.spinner.hide();
-              this.router.navigate(["userDashboard/dashboard"]);
+              this.router.navigate(['userDashboard/dashboard']);
             }, 2000);
           }
         },

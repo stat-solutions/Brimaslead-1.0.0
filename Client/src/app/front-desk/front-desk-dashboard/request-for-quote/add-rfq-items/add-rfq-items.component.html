@@ -2,6 +2,145 @@
   <div class="col">
     <div class="card card-primary">
       <div class="card-body">
+        <form [formGroup]="itemsForm" (ngSubmit)="onSave()">
+          <div class="row">
+          <div class="col-xs-12 col-lg-6">
+          <div class="form-group">
+            <label for="rfq_number" class="text-info"
+              >RFQ ID no.</label
+            >
+            <input
+              class="form-control"
+              formControlName="rfq_number"
+              [value]="fval.rfq_number.value"
+            />
+          </div>
+          </div>
+          <div class="col-xs-12 col-lg-6">
+          <div class="form-group">
+            <label for="client_name" class="text-info"
+              >Client Name</label
+            >
+            <input
+              class="form-control"
+              formControlName="client_name"
+              [value]="fval.client_name.value"
+            />
+            <div
+              class="text-danger col"
+              *ngIf="
+                (fval.client_name.touched ||
+                  fval.client_name.dirty) &&
+                fval.client_name.errors?.required
+              "
+            >
+              Client is required
+            </div>
+          </div>
+          </div>
+          </div>
+          <legend class="text-info">
+            <i class="fas fa-plus"></i>&nbsp;Add Item
+            </legend>
+          <table class="table table-bordered">
+          <tbody class="text-dark">
+          <div
+            *ngFor="let item of items.controls; let i = index"
+          >
+            <tr>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="stock_id"
+                    />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <select
+                    class="form-control"
+                    formControlName="item_name"
+                    placeholder="Select Item"
+                    (change)="updateOtherItems($event)"
+                  >
+                    <option
+                      *ngFor="let article of items_stock"
+                      >{{ article.item_name }}</option
+                    >
+                  </select>
+          
+                  <!-- <div
+                  class="text-danger col" *ngIf="item[i].item_name.valid"
+                >
+                </div> -->
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="unit"
+                    />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="unit_cost"
+                    />
+                  </div>
+                </div>
+              </td>
+          
+              <td>
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    formControlName="qty_required"
+                    type="text"
+                  />
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="total_cost"
+                  />
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-info"
+                  type="button"
+                  (click)="add()"
+                >
+                  Add</button
+                >&nbsp;
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="remove(i)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </div>
+          </tbody>
+          </table>
+          </form>
         <form [formGroup]="userForm">
           <legend class="text-info">Items</legend>
           <div class="row">

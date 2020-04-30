@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LayoutService } from './services/layout.service';
 import { MenudropdownDirective } from './directives/menudropdown.directive';
+import { DropzoneDirective } from './directives/dropzone.directive';
 
 @NgModule({
   declarations: [
-    MenudropdownDirective
+    MenudropdownDirective,
+    DropzoneDirective
   ],
   imports: [
     CommonModule,

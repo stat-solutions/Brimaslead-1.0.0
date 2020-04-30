@@ -92,25 +92,25 @@ export class RequestForQuoteComponent implements OnInit {
     {
       client_id: 'BC131212',
       client_name: 'KCB',
-      phone_number: 753134341,
+      phone_number: '0753134341',
       email: 'procurement@kcb-ug.com'
     },
     {
       client_id: 'BC121233',
       client_name: 'Sheraton Hotel',
-      phone_number: 772443208,
+      phone_number: '0772443208',
       email: 'procurement@sheratonhotel.com'
     },
     {
       client_id: 'BC031526',
       client_name: 'Shell',
-      phone_number: 751781341,
+      phone_number: '0751781341',
       email: 'supplies@shell.co.ug'
     },
     {
       client_id: 'BC107252',
       client_name: 'MTN',
-      phone_number: 782100042,
+      phone_number: '0782100042',
       email: 'procurement@mtn.co.ug'
     }
   ];

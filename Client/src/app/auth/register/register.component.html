@@ -250,6 +250,22 @@
                   >National Id number is required
                 </mat-error>
                 <mat-error
+                *ngIf="
+                  this.personalFormGroup
+                    .get('national_id')
+                    .hasError('minLength')
+                "
+                >Please put a valid National Id
+              </mat-error>
+              <mat-error
+              *ngIf="
+                this.personalFormGroup
+                  .get('national_id')
+                  .hasError('maxLength')
+              "
+              >Please put a valid National Id
+            </mat-error>
+                <!-- <mat-error
                   *ngIf="
                     !this.personalFormGroup
                       .get('national_id')
@@ -258,7 +274,8 @@
                       .hasError('nationalIdCheck')
                   "
                   >National Id number is not valid
-                </mat-error>              </mat-form-field>
+                </mat-error>               -->
+                </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Date of Birth</mat-label>
                 <mat-icon matPrefix>hourglass_empty</mat-icon>
@@ -329,6 +346,10 @@
                 </mat-error>
               </mat-form-field>
               <div class="form-group col-xs-12 align-items-center px-auto">
+              
+              
+           
+          
                 <mat-label
                   ><i class="fas fa-portrait"></i>&nbsp;Passport-size
                   Photo</mat-label

@@ -73,7 +73,7 @@ CREATE RFQ
 
       <button
       type="button" class="btn btn-primary form-control" (click)="openModal(template)" *ngIf="!clientAdded"><i class="fas fa-user-plus"></i>
-       Add Client
+       Select Client
        </button>
 
        <input *ngIf="clientAdded" class="form-control" formControlName="client_name"  [value]="fval.client_name.value" />
@@ -144,6 +144,7 @@ CREATE RFQ
     <button
       type="submit"
       class="btn btn-info col-5"
+       [disabled]="!userForm.valid"
     >
       Create RFQ
     </button>
@@ -156,146 +157,8 @@ CREATE RFQ
 [client_names]="fval.client_name"
 ></app-add-rfq-items> -->
 
-<legend class="text-info">
-<i class="fas fa-plus"></i>&nbsp;Add Item
-</legend>
-<form [formGroup]="itemsForm" (ngSubmit)="onSave()">
-<div class="row">
-<div class="col-xs-12 col-lg-6">
-<div class="form-group">
-  <label for="rfq_number" class="text-info"
-    >RFQ ID no.</label
-  >
-  <input
-    class="form-control"
-    formControlName="rfq_number"
-    [value]="fval.rfq_number.value"
-  />
-</div>
-</div>
-<div class="col-xs-12 col-lg-6">
-<div class="form-group">
-  <label for="client_name" class="text-info"
-    >Client Name</label
-  >
-  <input
-    class="form-control"
-    formControlName="client_name"
-    [value]="fval.client_name.value"
-  />
-  <div
-    class="text-danger col"
-    *ngIf="
-      (fval.client_name.touched ||
-        fval.client_name.dirty) &&
-      fval.client_name.errors?.required
-    "
-  >
-    Client is required
-  </div>
-</div>
-</div>
-</div>
 
-<table class="table table-bordered">
-<tbody class="text-dark">
-<div
-  *ngFor="let item of items.controls; let i = index"
->
-  <tr>
-    <td>
-      <div class="form-group">
-        <div class="text-info col">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="stock_id"
-          />
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="form-group">
-        <select
-          class="form-control"
-          formControlName="item_name"
-          placeholder="Select Item"
-          (change)="updateOtherItems($event)"
-        >
-          <option
-            *ngFor="let article of items_stock"
-            >{{ article.item_name }}</option
-          >
-        </select>
 
-        <!-- <div
-        class="text-danger col" *ngIf="item[i].item_name.valid"
-      >
-      </div> -->
-      </div>
-    </td>
-    <td>
-      <div class="form-group">
-        <div class="text-info col">
-          <input
-            class="form-control"
-            type="text"
-            formControlName="unit"
-          />
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="form-group">
-        <div class="text-info col">
-          <input
-            class="form-control"
-            type="text"
-            formControlName="unit_cost"
-          />
-        </div>
-      </div>
-    </td>
-
-    <td>
-      <div class="form-group">
-        <input
-          class="form-control"
-          formControlName="qty_required"
-          type="text"
-        />
-      </div>
-    </td>
-    <td>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          formControlName="total_cost"
-        />
-      </div>
-    </td>
-    <td>
-      <button
-        class="btn btn-info"
-        type="button"
-        (click)="add()"
-      >
-        Add</button
-      >&nbsp;
-      <button
-        class="btn btn-danger"
-        type="button"
-        (click)="remove(i)"
-      >
-        Delete
-      </button>
-    </td>
-  </tr>
-</div>
-</tbody>
-</table>
-</form>
 </div>
 <!-- /.card-body-->
 </div>
@@ -308,233 +171,78 @@ CREATE RFQ
 <div class="card">
 <div class="card-body p-0">
 <div id="rfq-listing" class="table-responsive">
-<table class="table table-striped projects">
+<table class="table table-striped  thead-dark table-hover table-sm">
 <thead>
-  <tr>
-    <th style="width: 2%;">
-      #
-    </th>
-    <th style="width: 5%;">
-      RFQ Serial No.
-    </th>
-    <th style="width: 10%;">
-      Client Name
-    </th>
-    <th style="width: 5%;">
-      RFQ Source
-    </th>
-    <th style="width: 5%;">
-      No. Of Items
-    </th>
+  <tr class="text-info align-items-center">
+    <th> Action</th>
+    <th > #</th>
+    <th >RFQ Serial No.</th>
+    <th >Client Name</th>
+    <th >RFQ Source</th>
+    <th > No. Of Items</th>
+    <th >Total Amount</th>
+    <th > Department</th>
+    <th >User Queue</th>
+    <th >Movement Status</th>
+    <th >Processing Status</th>
+    <th>Movement Timestamp</th>
 
-    <th style="width: 10%;">
-      Total Amount
-    </th>
-
-    <th style="width: 8%;" class="text-center">
-      Department
-    </th>
-    <th style="width: 7%;" class="text-center">
-      User Queue
-    </th>
-    <th style="width: 7%;" class="text-center">
-      Movement Status
-    </th>
-    <th style="width: 7%;">
-      Processing Status
-    </th>
-
-    <th style="width: 7%;">
-      Movement Timestamp
-    </th>
-
-    <th style="width: 20%;">
-      Action
-    </th>
+   
+ 
   </tr>
 </thead>
 <tbody>
-  <tr>
-    <td>
-      1
-    </td>
-    <td>
-      <a routerLink="/requestforqoute"> </a>
-      <br />
-    </td>
-    <td>
-      <a routerLink="/detailquote">
-        kcb
-      </a>
-    </td>
-    <td></td>
-    <td></td>
-    <td></td>
-
-    <td></td>
-
-    <td>
-      Michelle Ssemwogere
-    </td>
-
-    <td>
-      <span class="badge badge-danger"
-        >Created</span
-      >
-    </td>
-
-    <td>
-      <span class="badge badge-primary"
-        >Pending Costing</span
-      >
-    </td>
-
-    <td>
-      27/11/2019
-    </td>
-    <td class="project-actions text-right">
-      <a class="btn btn-primary btn-sm" href="#">
-        <i class="fas fa-folder"> </i>
-        Receive
-      </a>
-      <a class="btn btn-info btn-sm" href="#">
-        <i class="fas fa-pencil-alt"> </i>
-        Cost
-      </a>
-      <a class="btn btn-danger btn-sm" href="#">
-        <i class="fas fa-check"> </i>
-        Approve
-      </a>
-    </td>
-  </tr>
 
   <tr>
-    <td>
-      2
-    </td>
-    <td>
-      <a routerLink="/requestforqoute">
-        RFQ000133
-      </a>
-      <br />
-    </td>
-    <td>
-      <a routerLink="/requestforqoute">
-        Ministry of Finance
-      </a>
-    </td>
-    <td>
-      Gov't Bid
-    </td>
-    <td>
-      12
-    </td>
-    <td>
-      14,000,000
-    </td>
+    <td class="dropdown">
+      <a  class="text-info" data-toggle="dropdown" role="button"
+         aria-haspopup="true" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 
-    <td>
-      Assistant Admin
+      <div class="dropdown-menu position-absolute">
+        <a 
+           data-toggle="modal"
+           data-target="#comment"
+           class="dropdown-item d-flex align-items-center text-info  btn btn-info btn-sm">
+          <i class="material-icons">check</i>Approve
+        </a>
+        
+        <a 
+          
+           data-toggle="modal"
+           data-target="#defer"
+           class="dropdown-item d-flex align-items-center ">
+          <i class="material-icons">edit</i>Defer
+        </a>
+        <a 
+           data-toggle="modal"
+           data-target="#comment"
+           class="dropdown-item d-flex align-items-center ">
+          <i class="material-icons">block</i>Reject
+        </a>
+      
+        
+        <a 
+           data-toggle="modal"
+           data-target="#comment"
+           class="dropdown-item d-flex align-items-center ">
+          <i class="material-icons">forward</i>Disburse
+        </a>
+      </div>
     </td>
-
-    <td>
-      Anita Arigye
-    </td>
-
-    <td>
-      <span class="badge badge-success"
-        >Received</span
-      >
-    </td>
-
-    <td>
-      <span class="badge badge-warning"
-        >Costed</span
-      >
-    </td>
-
-    <td>
-      27/11/2019
-    </td>
-    <td class="project-actions text-right">
-      <a class="btn btn-primary btn-sm" href="#">
-        <i class="fas fa-folder"> </i>
-        Forward
-      </a>
-      <a class="btn btn-info btn-sm" href="#">
-        <i class="fas fa-pencil-alt"> </i>
-        Cost
-      </a>
-      <a class="btn btn-danger btn-sm" href="#">
-        <i class="fas fa-check"> </i>
-        Approve
-      </a>
-    </td>
+    <td> 1</td>
+    <td><a routerLink="/requestforqoute">RFQ000133</a></td>
+    <td><a routerLink="/detailquote">Ministry of Finance</a></td>
+    <td>Gov't Bid</td>
+    <td>12</td>
+    <td>14,000,000</td>
+    <td>Assistant Admin</td>
+    <td>Anita Arigye</td>
+    <td><span class="badge badge-success">Received</span></td>
+    <td><span class="badge badge-warning">Costed</span></td>
+    <td>27/11/2019</td>
   </tr>
 
-  <tr>
-    <td>
-      3
-    </td>
-    <td>
-      <a routerLink="/requestforqoute">
-        RFQ000143
-      </a>
-      <br />
-    </td>
-    <td>
-      <a routerLink="/frontdeskdashboard">
-        Bazirake Augustine
-      </a>
-    </td>
-    <td>
-      Walk In
-    </td>
-    <td>
-      36
-    </td>
-    <td>
-      3,000,000
-    </td>
-
-    <td>
-      Front Desk
-    </td>
-
-    <td>
-      Bright Iryn
-    </td>
-
-    <td>
-      <span class="badge badge-info"
-        >Forwarded</span
-      >
-    </td>
-
-    <td>
-      <span class="badge badge-primary"
-        >Pending Costing</span
-      >
-    </td>
-
-    <td>
-      27/11/2019
-    </td>
-    <td class="project-actions text-right">
-      <a class="btn btn-primary btn-sm" href="#">
-        <i class="fas fa-folder"> </i>
-        Foward
-      </a>
-      <a class="btn btn-info btn-sm" href="#">
-        <i class="fas fa-pencil-alt"> </i>
-        Cost
-      </a>
-      <a class="btn btn-danger btn-sm" href="#">
-        <i class="fas fa-check"> </i>
-        Approve
-      </a>
-    </td>
-  </tr>
+  
 </tbody>
 </table>
 </div>
