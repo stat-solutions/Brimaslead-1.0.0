@@ -4,34 +4,37 @@ import { PagesCoreManagementComponent } from './pages-core/pages-core-management
 import { ManagementDashboardComponent } from './components/management-dashboard/management-dashboard.component';
 import { UpdateManagementProfileComponent } from './components/update-management-profile/update-management-profile.component';
 import { ManagementNotificationsComponent } from './components/management-notifications/management-notifications.component';
+import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesCoreManagementComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard'
+        path: "",
+        pathMatch: "full",
+        redirectTo: "managementdashboard"
       },
 
       {
-        path: 'dashboardmanagement',
-       component: ManagementDashboardComponent,
+        path: "managementdashboard",
+        component: ManagementDashboardComponent
       },
       {
-        path: 'updatemanagementprofile',
-       component: UpdateManagementProfileComponent,
-      }
-      ,
+        path: "rfq-approval",
+        component: RfqApprovalComponent
+      },
       {
-        path: 'notifications',
-       component: ManagementNotificationsComponent,
+        path: "updatemanagementprofile",
+        component: UpdateManagementProfileComponent
+      },
+      {
+        path: "notifications",
+        component: ManagementNotificationsComponent
       }
-
     ]
-  },
+  }
 ];
 
 

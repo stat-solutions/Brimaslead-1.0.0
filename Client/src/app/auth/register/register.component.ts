@@ -176,6 +176,7 @@ export class RegisterComponent implements OnInit {
 
       reader.onload = () => {
         this.imageSrc = reader.result as string;
+console.log(this.imageSrc);
 
         this.personalFormGroup.patchValue({
           fileSource: reader.result

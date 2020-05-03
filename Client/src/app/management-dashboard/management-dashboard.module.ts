@@ -14,7 +14,8 @@ import { ContentSectionManagementComponent } from './content-section/content-sec
 import { ManagementDashboardComponent } from './components/management-dashboard/management-dashboard.component';
 import { ManagementNotificationsComponent } from './components/management-notifications/management-notifications.component';
 import { SharedModule } from '../shared/shared.module';
-
+import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.component';
+import { TabsModule } from "ngx-bootstrap/tabs";
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { SharedModule } from '../shared/shared.module';
     ManagementDashboardComponent,
     UpdateManagementProfileComponent,
     ManagementNotificationsComponent,
+    RfqApprovalComponent
   ],
   imports: [
     CommonModule,
     ManagementDashboardRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabsModule.forRoot()
   ]
 })
 export class ManagementDashboardModule { }

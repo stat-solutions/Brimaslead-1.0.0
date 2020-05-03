@@ -78,9 +78,9 @@ export class FrontDeskLeftPanelComponent implements OnInit {
         url: "/appointments"
       },
       {
-        name: "Human Capital Management",
+        name: "HR Management",
         icon: "fas fa-users",
-        url: "/human-capital-mgt"
+        url: "/hr-management"
       },
       {
         name: "Reports And Analysis",

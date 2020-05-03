@@ -9,7 +9,7 @@ import { RfqData } from 'src/app/shared/models/rfq-data.model';
 export class RfqDetailsComponent implements OnInit {
   rfqs: RfqData[] = [
     {
-      rfq_id: 1,
+      rfq_id: 'RFQ023100',
       stock_id: 'BMS104',
       item_name: "School Bags",
       unit: "Pieces",
@@ -18,7 +18,7 @@ export class RfqDetailsComponent implements OnInit {
       total_cost: 230000
     },
     {
-      rfq_id: 1,
+      rfq_id: 'RFQ100293',
       stock_id: 'BMS012',
       item_name: "Branded Laptops",
       unit: "Pieces",
@@ -27,7 +27,7 @@ export class RfqDetailsComponent implements OnInit {
       total_cost: 23000000
     },
     {
-      rfq_id: 1,
+      rfq_id: 'RFQ000023',
       stock_id: 'BMS128',
       item_name: "Bannerz",
       unit: "Pieces",
@@ -36,7 +36,7 @@ export class RfqDetailsComponent implements OnInit {
       total_cost: 34000000
     },
     {
-      rfq_id: 1,
+      rfq_id: 'RFQ000221',
       stock_id: 'BMS144',
         item_name: "Branded Pends",
       unit: "Boxes",

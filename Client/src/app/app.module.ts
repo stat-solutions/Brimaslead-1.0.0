@@ -53,11 +53,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TabsModule } from 'ngx-bootstrap';
 // import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -111,8 +112,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
-
+    MatTreeModule,
+    TabsModule.forRoot()
     // FormsModule
   ],
   providers: [
@@ -120,7 +121,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptorServiceService,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

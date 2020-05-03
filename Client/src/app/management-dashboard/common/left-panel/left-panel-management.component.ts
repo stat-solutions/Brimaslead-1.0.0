@@ -49,72 +49,86 @@ export class LeftPanelManagementComponent implements OnInit {
     this.title = 'Navigation';
 
     this.menuList = [
-      {
-        name: this.userName,
-        icon: 'far fa-user-circle',
-        url: '/none',
-        image: this.imageurl
-      },
+      // {
+      //   name: this.userName,
+      //   icon: 'far fa-user-circle',
+      //   url: '/none',
+      //   image: this.imageurl
+      // },
 
       {
-        name: 'management Dashboard',
-        icon: 'far fa-clone',
-        url: '/dashboard'
+        name: "management Dashboard",
+        icon: "fas fa-tachometer-alt",
+        url: "/managementdashboard"
         // badge: '2',
         // badgeBg: 'bg-success',
       },
 
       {
-        name: 'Add Tokens To Stock',
-        icon: 'far fa-calendar-alt text-danger',
-        url: '/addtokens'
+        name: "RFQ Approval",
+        icon: "fas fa-clipboard-list",
+        url: "/rfq-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: 'Sell Tokens',
-        icon: 'far fa-user-circle text-success',
-        url: '/selltokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-      ,
-      {
-        name: 'Transfer Tokens To Savings',
-        icon: 'far fa-user-circle text-info',
-        url: '/transfertokenstosavingsbox'
+        name: "Purchases Approval",
+        icon: "fas fa-warehouse",
+        url: "/purchases-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: 'Withdraw Tokens',
-        icon: 'far fa-clone text-warning',
-        url: '/withdrawTokens'
+        name: "Production Approval",
+        icon: "fas fa-building",
+        url: "/production-qpproval"
+        // badge: '3',
+        // badgeBg: 'bg-danger',
+      },
+      {
+        name: "HR Approvals",
+        icon: "fas fa-users",
+        url: "/hr-approvals"
         // badge: '2',
         // badgeBg: 'bg-success',
       },
-
+      // {
+      //   name: "Leave Approval",
+      //   icon: "far fa-calendar-minus",
+      //   url: "/leave-approval"
+      //   // badge: '2',
+      //   // badgeBg: 'bg-success',
+      // },
+      // {
+      //   name: "Hiring Approval",
+      //   icon: "fas fa-hourglass-start",
+      //   url: "/hiring-approval"
+      //   // badge: '2',
+      //   // badgeBg: 'bg-success',
+      // },
+      {
+        name: "Appointments",
+        icon: "far fa-calendar-plus",
+        url: "/appointments",
+        badge: '2',
+        badgeBg: 'bg-warning',
+      },
 
       {
-        name: 'Update Profile',
-        icon: 'far fa-user text-danger',
-        url: '/updatemanagementprofile'
+        name: "Update Profile",
+        icon: "far fa-user",
+        url: "/update-mgt-profile"
         // badge: '3',
         // badgeBg: 'bg-danger',
-      }
-
-      ,
-
+      },
 
       {
-        name: 'Notifications',
-        icon: 'fas fa-envelope text-info',
-        url: '/notifications',
-        badge: '8',
-        badgeBg: 'bg-danger',
+        name: "Notifications",
+        icon: "fas fa-envelope",
+        url: "/notifications",
+        badge: "8",
+        badgeBg: "bg-warning"
       }
-
-
     ];
   }
 }

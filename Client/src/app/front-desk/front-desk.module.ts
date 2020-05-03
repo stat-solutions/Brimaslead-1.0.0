@@ -19,8 +19,6 @@ import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/
 import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
-import { PurchasesComponent } from '../front-desk-dashboard/purchases/purchases.component';
-import { StockDetailsComponent } from '../front-desk-dashboard/purchases/stock-details/stock-details.component';
 import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 
@@ -38,8 +36,6 @@ import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/a
     PayrollModuleComponent,
     HiringRetirementResignationComponent,
     RfqDetailsComponent,
-    PurchasesComponent,
-    StockDetailsComponent,
     AddRfqItemsComponent
   ],
   imports: [

@@ -59,7 +59,7 @@ export class LeftPanelAdminComponent implements OnInit {
       {
         name: "Admin Dashboard",
         icon: "fas fa-tachometer-alt",
-        url: "/dashboardadmin"
+        url: "/admindashboard"
         // badge: '2',
         // badgeBg: 'bg-success',
       },
