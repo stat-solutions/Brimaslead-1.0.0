@@ -21,7 +21,7 @@ export class HeaderTransLogisticsComponent implements OnInit {
   @Input() collapsedLeftHeader: boolean;
 
   constructor( private layoutService: LayoutService) { }
-
+  imageUrl: string;
   ngOnInit() {
 
   }

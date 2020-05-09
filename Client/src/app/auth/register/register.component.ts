@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
+import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-service.service';
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
+import { ToastrService } from 'ngx-toastr';
+import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
+
 
 interface Department {
   value: string;
@@ -18,7 +21,9 @@ interface Department {
 export class RegisterComponent implements OnInit {
 
   isHovering: boolean;
+  file: any;
   files: File[] = [];
+ authData: AuthUser;
   hide = true;
   registered = false;
   submitted = false;
@@ -34,12 +39,14 @@ export class RegisterComponent implements OnInit {
   loginFormGroup: FormGroup;
   personalFormGroup: FormGroup;
   employeeFormGroup: FormGroup;
+  appData: any;
 
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   department: Department[] = [
@@ -58,9 +65,16 @@ export class RegisterComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.loginFormGroup = this._formBuilder.group(
+    this.loginFormGroup = this.createLoginFormControls();
+    this.personalFormGroup  = this.createPersonalFormControls();
+    this.employeeFormGroup = this.createEmployeeFormControls();
+  }
+
+
+  createLoginFormControls() {
+  return  this._formBuilder.group(
       {
-        user_name: [
+        userName: [
           '',
           Validators.compose([
             Validators.required,
@@ -72,7 +86,7 @@ export class RegisterComponent implements OnInit {
             })
           ])
         ],
-        phone_number: [
+        phoneNumber: [
           '',
           Validators.compose([
             Validators.required,
@@ -85,78 +99,79 @@ export class RegisterComponent implements OnInit {
         password: [
           '',
           Validators.compose([
-            // 1. Password Field is Required
+
 
             Validators.required,
 
-            // 2. check whether the entered password has a number
-            // CustomValidatorInitialCompanySetup.patternValidator(/^(([1-9])([1-9])([1-9])([0-9]))$/, { hasNumber: true }),
-            // 6. Has a minimum length of 8 characters
             Validators.minLength(8),
-            // Validators.maxLength(4),
-            // 3. check whether the entered password has upper case letter
+
             CustomValidatorInitialCompanySetup.patternValidator(/[A-Z]/, {
               hasCapitalCase: true
             }),
-            // 4. check whether the entered password has a lower-case letter
+
             CustomValidatorInitialCompanySetup.patternValidator(/[a-z]/, {
               hasSmallCase: true
             }),
-            // 5. check whether the entered password has a special character
+
             CustomValidatorInitialCompanySetup.patternValidator(
               /[!@#$%^&*_+-=;':"|,.<>/?]/,
               { hasSpecialCharacters: true }
             )
           ])
         ],
-        confirm_password: ['', Validators.required]
+        confirmPassword: ['', Validators.required]
+
       },
       {
         validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
       }
     );
-
-    this.personalFormGroup = this._formBuilder.group({
-      national_id: [
-        '',
+  }
+    createPersonalFormControls() {
+    return this._formBuilder.group(
+      {
+      nationalId: ['',
         Validators.compose([
           Validators.required,
           Validators.maxLength(14),
           Validators.minLength(14)
-          // ,
-          // CustomValidatorInitialCompanySetup.patternValidator(
-          //   /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z]))$/,
-          //   { nationalIdCheck: true }
-          // )
 
         ])
       ],
-      date_of_birth: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
       gender: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', Validators.email],
       photo: ['', Validators.required],
-      fileSource: ['', [Validators.required]]
-    });
 
-    this.employeeFormGroup = this._formBuilder.group({
-      employee_id: [
+
+    });
+    }
+    // fileSource: ['', [Validators.required]]
+
+    // CustomValidatorInitialCompanySetup.patternValidator(
+    //   /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
+    //   { employeeIdCheck: true }
+    // )
+
+    createEmployeeFormControls() {
+  return this._formBuilder.group({
+      employeeId: [
         '',
         Validators.compose([
           Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-            { employeeIdCheck: true }
-          )
+
         ])
       ],
-      job_title: ['', Validators.required],
+      jobTitle: ['', Validators.required],
       department: ['', Validators.required],
-      commence_date: ['', Validators.required]
+      commenceDate: ['', Validators.required]
     });
   }
 
-
+  onFileChange(event: boolean) {
+    this.isHovering = event;
+  }
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
@@ -171,9 +186,9 @@ export class RegisterComponent implements OnInit {
   /* Called on each input in either password field */
   // onPasswordInput() {
   //   if (this.userForm.hasError("NoPasswordMatch")) {
-  //     this.userForm.controls.confirm_password.setErrors([{ NoPasswordMatch: true }]);
+  //     this.userForm.controls.confirmPassword.setErrors([{ NoPasswordMatch: true }]);
   //   } else {
-  //     this.userForm.controls.confirm_password.setErrors(null);
+  //     this.userForm.controls.confirmPassword.setErrors(null);
   //   }
   // }
 
@@ -185,38 +200,56 @@ export class RegisterComponent implements OnInit {
   //   const control = this.userForm.get(controlName);
   //   return control ? control.hasError(errorName) : true;
   // };
- //24691119
-  
+ // 24691119
+
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
 
-  form1() {
-    console.log(this.loginFormGroup.value);
-  }
+  // form1() {
+  //   console.log(this.loginFormGroup.value);
+  // }
   form2() {
     console.log(this.personalFormGroup.value);
   }
-  form3() {
-    console.log(this.employeeFormGroup.value);
+  // form3() {
+  //   console.log(this.employeeFormGroup.value);
+  // }
+  onFileSelected(event) {
+
+    this.file = event.target.files[0];
+    console.log( this.file);
   }
 
+  showSuccess() {
+
+    this.toastr.success('Please first verify your email and then proceed to login', this.serviceErrors,
+                         {timeOut: 6000, positionClass: 'toast-top-right'});
+  }
+  showDanger() {
+
+    this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
   onSubmit() {
-    this.submitted = true;
+
     this.spinner.show();
-    if (this.userForm.invalid === true) {
-      return;
-    } else {
-      this.authService.registerUser(this.userForm).subscribe(
+    this.appData = {...this.loginFormGroup.value, ...this.personalFormGroup.value, ...this.employeeFormGroup.value, ...{photo: this.file}};
+
+    this.authData = {email: this.appData.email, password: this.appData.password};
+    this.submitted = true;
+   
+    this.authService.registerEmployee(this.authData, this.appData).subscribe(
         (data: string) => {
-          if (data === 'Posted Successfully') {
+          console.log(data);
+          if (data === 'User created successfully') {
             this.serviceErrors = 'Registration was Successful';
-            // this.userForm.reset();
+
             setTimeout(() => {
               this.posted = true;
               this.spinner.hide();
-              this.router.navigate(['userDashboard/dashboard']);
+              this.showSuccess();
+              // this.router.navigate(['userDashboard/dashboard']);
             }, 2000);
           }
         },
@@ -225,8 +258,17 @@ export class RegisterComponent implements OnInit {
           this.spinner.hide();
           this.errored = true;
           this.serviceErrors = error;
+          this.showDanger();
         }
       );
     }
+
+    // this.spinner.hide();
+    // this.errored = true;
+    // this.serviceErrors = 'Errored';
+
+
+
+
   }
-}
+

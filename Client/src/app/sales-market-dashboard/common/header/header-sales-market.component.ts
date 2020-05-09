@@ -19,6 +19,7 @@ export class HeaderSalesMarketComponent implements OnInit {
   @Input() activeNavColorTheme: string;
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
+  imageUrl: string;
 
   constructor( private layoutService: LayoutService) { }
 

@@ -54,6 +54,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { NgxSpinnerModule } from 'ngx-spinner';
 // import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -111,8 +112,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
-
+    MatTreeModule,
+    ToastrModule.forRoot(), // ToastrModule added
     // FormsModule
   ],
   providers: [

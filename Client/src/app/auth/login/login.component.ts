@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
-import { AuthServiceService } from "src/app/shared/services/auth-service.service";
+import { AuthServiceService } from "src/app/shared/services/auth-services/auth-service.service";
 import { Router } from "@angular/router";
 import * as jwt_decode from "jwt-decode";
 @Component({

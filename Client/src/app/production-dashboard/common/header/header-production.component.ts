@@ -19,7 +19,7 @@ export class HeaderProductionComponent implements OnInit {
   @Input() activeNavColorTheme: string;
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
-
+  imageUrl: string ;
   constructor( private layoutService: LayoutService) { }
 
   ngOnInit() {

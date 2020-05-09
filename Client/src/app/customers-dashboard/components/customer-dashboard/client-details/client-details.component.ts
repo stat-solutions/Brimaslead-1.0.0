@@ -1,4 +1,4 @@
-import { ClientData } from './../../../../shared/models/client_data.model';
+import { ClientData } from '../../../../shared/models/other-models/client_data.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

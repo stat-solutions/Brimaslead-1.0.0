@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from "@angular/router";
-import { AuthServiceService } from "src/app/shared/services/auth-service.service";
+import { AuthServiceService } from "src/app/shared/services/auth-services/auth-service.service";
 import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
+import { OtherBackendApiService } from 'src/app/shared/services/auth-services/other-backend-api.service';
 
 interface Department {
   value: string;
@@ -30,7 +31,7 @@ export class CustomerRegisterComponent implements OnInit {
   previewPhoto = false;
 
   constructor(
-    private authService: AuthServiceService,
+    private authService: OtherBackendApiService,
     private spinner: NgxSpinnerService,
     private router: Router,
     private _formBuilder: FormBuilder

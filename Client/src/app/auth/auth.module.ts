@@ -48,11 +48,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { GoogoComponent } from './googo/googo.component';
-
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     AuthRoutingModule,
     NgxSpinnerModule,
     AlertModule.forRoot(),
+
     BsDatepickerModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
@@ -113,7 +115,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
   ],
   providers: [
-    { provide: StorageBucket, useValue: 'your' }
+    { provide: StorageBucket, useValue: 'gs://brimaslead/' }, AngularFirestore,
   ]
 })
 export class AuthModule {}

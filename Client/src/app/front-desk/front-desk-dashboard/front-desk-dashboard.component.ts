@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RfqData } from 'src/app/shared/models/rfq-data.model';
+import { RfqData } from 'src/app/shared/models/other-models/rfq-data.model';
 
 @Component({
   selector: "app-front-desk-dashboard",
