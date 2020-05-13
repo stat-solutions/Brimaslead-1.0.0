@@ -1,0 +1,260 @@
+.container-fluid {
+  align-items: center;
+}
+.container {
+  width: 100%;
+  align-items: center;
+}
+.breadcrumb {
+  position: relative;
+  background: transparent !important;
+  font-size: 16px !important;
+  font-weight: 700;
+  border-radius: 2px;
+  width: 100%;
+  //  border-bottom: solid 4px #c63685;
+  // border-left: solid 4px #070707;
+}
+.breadcrumb-item a:hover {
+  color: #eee206 !important;
+}
+.breadcrumb-item.active {
+  color: #c63685 !important;
+}
+.form-card {
+  width: 90%;
+  min-width: 150px;
+  max-width: 800px;
+  margin: auto;
+  padding-right: 2px;
+  padding-left: 2px;
+  border: 0rem;
+  padding-bottom: 20px;
+  align-self: center !important;
+}
+fieldset{
+  border-radius: 3px;
+}
+legend{
+  font-size: 18px;
+  font-weight: bold;
+}
+.innerFieldset legend{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.tickets-card2 {
+  width: 100%;
+  padding-right: 2px;
+  padding-left: 2px;
+  border: 0rem;
+  padding-bottom: 20px;
+}
+.card .card-title {
+  width: 100%;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  align-items: center
+}
+hr.top{
+  width: 10%;
+  min-width: 30px;
+  max-width: 80px;
+  position: relative;
+  margin-left: 85px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+hr.bottom{
+  width: 10%;
+  min-width: 30px;
+  max-width: 80px;
+  position: relative;
+  margin-right: 85px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+.pointerCursor {
+  cursor: pointer;
+}
+
+ ::ng-deep .mat-step-header {
+   pointer-events: none !important;
+   color: #54a9c9 !important;
+   background-color: none;
+}
+
+::ng-deep ng-template .mat-step-header:active, .mat-step-header:focus {
+   pointer-events: none !important;
+   color: #54a9c9 !important;
+   background-color: none !important;
+ }
+//mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+   background-color: #54a9c9d5!important;
+}
+
+//input outline color
+//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+ //   color: red!important;
+    // opacity: 1!important;
+//}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-fill-thick {
+    color: #54a9c9d5 !important;
+}
+
+// mat-input error fill color
+::ng-deep .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-fill-thick{
+    color: #c63685f3!important;
+    opacity: 0.8!important;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+button.btn {
+  border-radius: 13px;
+}
+mat-icon,
+mat-label {
+  color: #54a9c9;
+}
+mat-error {
+  color: #c63685;
+}
+
+.foot {
+  min-width: 110px !important;
+  max-width: 500px !important;
+  width: 100% !important;
+  font-size: 22px !important;
+}
+
+.text-danger {
+  color: #c63685f3 !important;
+}
+.text-warning {
+  color: #eee206ef !important;
+}
+.bg-danger {
+  background-color: #c63685 !important;
+}
+
+h5 {
+  font-size: 19px !important;
+}
+.rfqs hr.top {
+  width: 10%;
+  min-width: 25px;
+  max-width: 50px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.rfqs hr.bottom {
+  width: 10%;
+  min-width: 25px;
+  max-width: 50px;
+  position: relative;
+  right: 0px;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+
+a.rfq-listing{
+  // color:
+  border-color: eee206ef !important;
+  border-bottom: 0px !important;
+  font-weight: 700 !important;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #d6d3d3;
+  min-width: 120px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  margin-left: auto;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: rgb(184, 178, 178)
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.select_listing:hover{
+  background-color: #777676;
+  color: #e5e2e4f3
+}
+.badge-danger{
+  background-color: #c63685 !important
+}
+
+h4.modal-title {
+  color: #e5e2e4f3 !important;
+  align-items: center !important;
+
+}
+.rfq_table{
+  position: relative;
+  width: 100% !important;
+  max-width: 900px !important;
+  align-self: center;
+}
+.client_table{
+  position: relative;
+  width: 100% !important;
+  max-width: 900px !important;
+  align-self: center;
+}
+.modal-content{
+  position: relative;
+  width: 140% !important;
+  max-width: 1000px !important;
+}
