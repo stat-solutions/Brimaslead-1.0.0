@@ -16,6 +16,7 @@ import { ManagementNotificationsComponent } from './components/management-notifi
 import { SharedModule } from '../shared/shared.module';
 import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.component';
 import { TabsModule } from "ngx-bootstrap/tabs";
+import { EditRfqComponent } from './components/rfq-approval/edit-rfq.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TabsModule } from "ngx-bootstrap/tabs";
     ManagementDashboardComponent,
     UpdateManagementProfileComponent,
     ManagementNotificationsComponent,
-    RfqApprovalComponent
+    RfqApprovalComponent,
+    EditRfqComponent
   ],
   imports: [
     CommonModule,

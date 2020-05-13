@@ -5,6 +5,7 @@ import { ManagementDashboardComponent } from './components/management-dashboard/
 import { UpdateManagementProfileComponent } from './components/update-management-profile/update-management-profile.component';
 import { ManagementNotificationsComponent } from './components/management-notifications/management-notifications.component';
 import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.component';
+import { EditRfqComponent } from './components/rfq-approval/edit-rfq.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: "rfq-approval",
         component: RfqApprovalComponent
+      },
+      {
+        path: "rfq-approval/edit-rfq",
+        component: EditRfqComponent
       },
       {
         path: "updatemanagementprofile",

@@ -25,26 +25,26 @@ h5 {
 //   font-size: 18px !important;
 // }
 
-hr.top {
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-top: 0px;
-  margin-left: 0px;
-  background-color: #c63685f3;
-  height: 4px;
-}
-hr.bottom {
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  right: 12px;
-  margin-right: 25px;
-  background-color: #eee206ef;
-  height: 4px;
-}
+// hr.top {
+//   width: 10%;
+//   min-width: 30px;
+//   max-width: 50px;
+//   position: relative;
+//   margin-top: 0px;
+//   margin-left: 0px;
+//   background-color: #c63685f3;
+//   height: 4px;
+// }
+// hr.bottom {
+//   width: 10%;
+//   min-width: 30px;
+//   max-width: 50px;
+//   position: relative;
+//   right: 12px;
+//   margin-right: 25px;
+//   background-color: #eee206ef;
+//   height: 4px;
+// }
 .rfqs hr.top {
   width: 10%;
   min-width: 25px;
@@ -64,12 +64,32 @@ hr.bottom {
   background-color: #eee206ef;
   height: 4px;
 }
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+
 a.rfq-listing{
   // color:
   border-color: eee206ef !important;
   border-bottom: 0px !important;
   font-weight: 700 !important;
 }
+
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: absolute;
@@ -102,12 +122,13 @@ a.rfq-listing{
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .select_listing:hover{
   background-color: #777676;
   color: #e5e2e4f3
 }
 .badge-danger{
-  background-color: #c63685 !important 
+  background-color: #c63685 !important
 }
 
 h4.modal-title {
@@ -131,8 +152,4 @@ h4.modal-title {
   position: relative;
   width: 140% !important;
   max-width: 1000px !important;
-}
-div.modal-header{
-}
-div.modal-body{
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { LayoutService } from '../../../shared/services/layout.service';
+import { Component, OnInit, Input, HostListener } from "@angular/core";
+import { LayoutService } from "../../../shared/services/layout.service";
 
 @Component({
-  selector: 'app-left-panel',
-  templateUrl: './left-panel-management.component.html',
-  styleUrls: ['./left-panel-management.component.scss']
+  selector: "app-left-panel",
+  templateUrl: "./left-panel-management.component.html",
+  styleUrls: ["./left-panel-management.component.scss"]
 })
 export class LeftPanelManagementComponent implements OnInit {
   asidebarHeight: number;
@@ -18,7 +18,7 @@ export class LeftPanelManagementComponent implements OnInit {
   @Input() headerColorTheme: string;
   @Input() navbarColorTheme: string;
   @Input() activeNavColorTheme: string;
-  imageurl = '../../../../assets/avatar3.jpg';
+  imageurl = "../../../../assets/avatar3.jpg";
   title: any;
   menuList: any;
   selected: any;
@@ -36,7 +36,7 @@ export class LeftPanelManagementComponent implements OnInit {
     this.selected = this.selected === item ? item : item;
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResizeHeight(event: any) {
     this.asidebarHeight = window.innerHeight;
   }
@@ -46,7 +46,7 @@ export class LeftPanelManagementComponent implements OnInit {
       setSidebarHeight => (this.asidebarHeight = setSidebarHeight)
     );
 
-    this.title = 'Navigation';
+    this.title = "Navigation";
 
     this.menuList = [
       // {
@@ -57,7 +57,7 @@ export class LeftPanelManagementComponent implements OnInit {
       // },
 
       {
-        name: "management Dashboard",
+        name: "Management Dashboard",
         icon: "fas fa-tachometer-alt",
         url: "/managementdashboard"
         // badge: '2',
@@ -65,28 +65,35 @@ export class LeftPanelManagementComponent implements OnInit {
       },
 
       {
-        name: "RFQ Approval",
+        name: "Request for Quotation(RFQ)",
         icon: "fas fa-clipboard-list",
         url: "/rfq-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: "Purchases Approval",
+        name: "Purchases",
         icon: "fas fa-warehouse",
         url: "/purchases-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: "Production Approval",
+        name: "Production",
         icon: "fas fa-building",
-        url: "/production-qpproval"
+        url: "/production-approvals"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: "HR Approvals",
+        name: "Quality Assurance(QA)",
+        icon: "fas fa-gem",
+        url: "/qa-approvals"
+        // badge: '3',
+        // badgeBg: 'bg-danger',
+      },
+      {
+        name: "HR Management",
         icon: "fas fa-users",
         url: "/hr-approvals"
         // badge: '2',
@@ -110,18 +117,22 @@ export class LeftPanelManagementComponent implements OnInit {
         name: "Appointments",
         icon: "far fa-calendar-plus",
         url: "/appointments",
-        badge: '2',
-        badgeBg: 'bg-warning',
+        badge: "2",
+        badgeBg: "bg-warning"
       },
 
       {
-        name: "Update Profile",
-        icon: "far fa-user",
-        url: "/update-mgt-profile"
+        name: "Finance",
+        icon: "fas fa-coins",
+        url: "/finance-approvals"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
-
+      {
+        name: "Reports and Analysis",
+        icon: "fa fa-chart-line",
+        url: "/reports-analysis"
+      },
       {
         name: "Notifications",
         icon: "fas fa-envelope",

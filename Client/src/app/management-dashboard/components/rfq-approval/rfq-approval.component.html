@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-12">
-        <div class="card shadow-lg mt-2 mb-2 pt-0 pb-1">
+        <div class="tickets-card2 card shadow-lg mt-2 mb-2 pt-0 pb-1">
           <div class="row">
             <div class="col-xs-12 col-lg-5 justify-content-left ml-3 mt-4 pt-2">
               <a
@@ -39,13 +39,13 @@
             <div class=" mx-auto">
               <tabset>
                 <tab heading="RFQ Listing" class="rfq-listing text-info">
-                  <div class="card shadow mt-3 mx-3 mb-4">
+                  <div class="card shadow mt-3 mx-3 mb-4" *ngIf="showTable">
                     <div class="card-body p-4">
                       <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-hover">
                           <thead class="text-info">
                             <tr>
-                              <th style="width: 10%">
+                              <th style="width: 5%">
                                 Action
                               </th>
                               <th style="width: 2%">
@@ -54,10 +54,10 @@
                               <th style="width: 5%">
                                 RFQ Serial No.
                               </th>
-                              <th style="width: 18%">
+                              <th style="width: 17%">
                                 Client Name
                               </th>
-                              <th style="width: 14%">
+                              <th style="width: 20%">
                                 RFQ Source
                               </th>
                               <th style="width: 8%">
@@ -78,7 +78,7 @@
                           <tbody>
                             <tr
                               class="select_listing"
-                              *ngFor="let rfq of rfq_table; let i = index"
+                              *ngFor="let rfq of rfqTable; let i = index"
                             >
                               <td class="text-info">
                                 <div class="dropdown">
@@ -91,12 +91,12 @@
                                   <div class="dropdown-content">
                                     <a
                                       class="text-info"
-                                      (click)="filterClients(rfq.client_name)" (click)="openModal(client_template)"
+                                      (click)="filterClients(rfq.clientName)" (click)="openModal(client_template)"
                                     >
                                       <i class="fas fa-briefcase"> </i>
                                       Client details
                                     </a>
-                                    <a class="text-primary" >
+                                    <a class="text-primary" (click)="filterRfq(rfq.rfqId)">
                                       <i class="fas fa-edit"> </i>
                                       Edit
                                     </a>
@@ -118,31 +118,31 @@
                                 </div>
                               </td>
 
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ i }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{i+1}}
                               </td>
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.rfq_id }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.rfqId }}
                               </td>
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.client_name }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.clientName }}
                               </td>
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.rfq_source }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.rfqSource }}
                               </td>
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.no_of_items }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.noOfItems }}
                               </td>
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.total_amount }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.totalAmount }}
                               </td>
 
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
                                 {{ rfq.department }}
                               </td>
 
-                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfq_id)">
-                                {{ rfq.user_name }}
+                              <td (click)="openModal(template)" (click)="filterRfqs(rfq.rfqId)">
+                                {{ rfq.userName }}
                               </td>
                             </tr>
                           </tbody>
@@ -150,6 +150,7 @@
                       </div>
                     </div>
                   </div>
+                  <div *ngIf="showEditTable"><app-edit-rfq [rfqData]=rfqData></app-edit-rfq></div>
                 </tab>
                 <tab heading="RFQ Status" class="rfq-status text-info">
                   <div class="card shadow mt-3 mx-3 mb-4">
@@ -174,67 +175,67 @@
                                 Processing Status
                               </th>
 
-                              <th style="width: 25%">
+                              <th style="width: 20%">
                                 Movement Timestamp
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr
-                              *ngFor="let status of rfq_status; let i = index"
+                              *ngFor="let status of rfqStatus; let i = index"
                             >
                               <td>
-                                {{ i }}
+                                {{ i+1 }}
                               </td>
                               <td>
-                                {{ status.rfq_id }}
+                                {{ status.rfqId }}
                               </td>
                               <td>
-                                {{ status.user_name }}
+                                {{ status.userName }}
                               </td>
 
                               <td>
-                                <div *ngIf="status.movt_status == 'Approved'">
+                                <div *ngIf="status.movtStatus == 'Approved'">
                                   <span class="badge badge-success">
-                                    {{ status.movt_status }}
+                                    {{ status.movtStatus }}
                                   </span>
                                 </div>
-                                <div *ngIf="status.movt_status == 'Received'">
+                                <div *ngIf="status.movtStatus == 'Received'">
                                   <span class="badge badge-primary">
-                                    {{ status.movt_status }}
+                                    {{ status.movtStatus }}
                                   </span>
                                 </div>
-                                <div *ngIf="status.movt_status == 'Deferred'">
+                                <div *ngIf="status.movtStatus == 'Deferred'">
                                   <span class="badge badge-danger">
-                                    {{ status.movt_status }}
+                                    {{ status.movtStatus }}
                                   </span>
                                 </div>
-                                <div *ngIf="status.movt_status == 'Created'">
+                                <div *ngIf="status.movtStatus == 'Created'">
                                   <span class="badge badge-info">
-                                    {{ status.movt_status }}
+                                    {{ status.movtStatus }}
                                   </span>
                                 </div>
                               </td>
 
                               <td>
-                                <div *ngIf="status.process_status == 'Costed'">
+                                <div *ngIf="status.processStatus == 'Costed'">
                                   <span class="badge badge-success">
-                                    {{ status.process_status }}
+                                    {{ status.processStatus }}
                                   </span>
                                 </div>
                                 <div
                                   *ngIf="
-                                    status.process_status == 'Pending costing'
+                                    status.processStatus == 'Pending costing'
                                   "
                                 >
                                   <span class="badge badge-danger">
-                                    {{ status.movt_status }}
+                                    {{ status.processStatus }}
                                   </span>
                                 </div>
                               </td>
 
                               <td>
-                                {{ status.movt_timestamp }}
+                                {{ status.movtTimestamp }}
                               </td>
                             </tr>
                           </tbody>
@@ -285,15 +286,15 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let item of rfq_data; let i = index">
-                        <td>{{ i }}</td>
-                        <td>{{ item.stock_id }}</td>
-                        <td>{{ item.item_name }}</td>
+                      <tr *ngFor="let item of rfqData; let i = index">
+                        <td>{{ i+1}}</td>
+                        <td>{{ item.stockId }}</td>
+                        <td>{{ item.itemName }}</td>
                         <td>{{ item.unit }}</td>
-                        <td>{{ item.qty_required | number }}</td>
-                        <td>{{ item.unit_cost | number }}</td>
+                        <td>{{ item.qtyRequired | number }}</td>
+                        <td>{{ item.unitCost | number }}</td>
                         <td>
-                          {{ item.qty_required * item.unit_cost | number }}
+                          {{ item.qtyRequired * item.unitCost | number }}
                         </td>
                       </tr>
                     </tbody>
@@ -333,16 +334,16 @@
                     <tbody>
                       <tr *ngFor="let client of clientOne; let i = index">
                         <td>
-                            {{ i }}
+                            {{ i+1 }}
                         </td>
                         <td>
-                            {{ client.client_id }}
+                            {{ client.clientId }}
                         </td>
                         <td >
-                            {{ client.client_name }}
+                            {{ client.clientName }}
                         </td>
                         <td>
-                            {{ client.phone_number }}
+                            {{ client.phoneNumber }}
                         </td>
                         <td>
                             {{ client.email }}
@@ -358,7 +359,7 @@
       </ng-template>
     </div>
     <!-- <footer class="main-footer"> -->
-    <div class="container mt-3 pb-2">
+    <div class="container mt-3 pb-3">
       <div class="col-xs-12 col-lg-12">
         <div class="small text-center text-danger">
           Copyright &copy; 2020 - Brimasmedia Ltd

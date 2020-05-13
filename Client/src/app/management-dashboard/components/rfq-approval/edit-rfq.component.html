@@ -1,0 +1,171 @@
+                  <div class="card shadow mt-3 mx-3 mb-4" *ngIf="removEditTable">
+                     <div class="card-body p-4">
+                      <legend class="text-info ml-2">
+                        <i class="fas fa-edit"></i>&nbsp;Edit RFQ
+                      </legend>
+                  <div class="card shadow mt-3 mx-3 mb-4">
+                    <div class="card-body p-4">
+                      <form [formGroup]="itemsForm" (ngSubmit)="onSubmit()">
+<div class=" table-responsive">
+                          <table class="table table-striped">
+                    <thead class="text-info">
+                      <tr>
+                        <th>#</th>
+                        <th>Item ID</th>
+                        <th>Item name</th>
+                        <th>Unit</th>
+                        <th>Quantity</th>
+                        <th>Unit cost</th>
+                        <th>Total cost</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                          <tbody class="text-dark">
+  <tr
+                              *ngFor="let item of rfqData; let i = index">
+                        <td>{{i+1}}</td>
+                              <td>
+<span *ngIf="!item.isEditable">{{item.stockId}}</span>
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="stockId"  *ngIf="item.isEditable" readonly
+                                    />
+                              </td>
+                              <td>
+<span *ngIf="!item.isEditable">{{item.itemName}}</span>
+                                  <select
+                                    class="form-control"
+                                    formControlName="itemName"
+                                    placeholder="Select Item"  *ngIf="item.isEditable"
+                                  >
+                                    <option
+                                      *ngFor="let article of itemsStock"
+                                                                           >{{ article.itemName }}</option
+                                    >
+                                </select>
+                              </td>
+                              <td>
+<span *ngIf="!item.isEditable">{{item.unit}}</span>
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="unit"  *ngIf="item.isEditable"
+                                    />
+                              </td>
+
+                              <td>
+<span *ngIf="!item.isEditable">{{item.qtyRequired}}</span>
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="qtyRequired"  *ngIf="item.isEditable"
+                                    />
+                              </td>
+                              <td>
+<span *ngIf="!item.isEditable">{{item.unitCost}}</span>
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="unitCost"  *ngIf="item.isEditable"
+                                    />
+                              </td>
+                              <td>
+{{item.qtyRequired*item.unitCost}}
+                              </td>
+                              <td>
+                                 <button
+                                  class="btn btn-info"
+                                  type="button"
+                                  (click)="edit(item)"
+                                >
+                                {{ edited ? "Save" : "Edit" }}
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <button
+ class="btn btn-info"
+ type="submit"
+>
+Save Rfq                               </button>
+</div>
+</form>
+<!-- <fieldset name="edit record" class="my-2">
+                        <legend class="text-info">
+                        <i class="fas fa-edit"></i>&nbsp;Edit RFQ
+                      </legend>
+                      <form [formGroup]="itemsForm">
+  <div class="form-group">
+                                  <label for="stock_id" class="text-info col">Item ID
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="stock_id" [value]="fcont.stock_id.value"
+                                    />
+                                  </label>
+                                </div>
+                                <div class="form-group">
+                                  <label for="item_name" class="text-info col">
+                                  <select
+                                    class="form-control"
+                                    formControlName="item_name"
+                                    placeholder="Select Item"
+                                  >
+                                    <option
+                                      *ngFor="let article of items_stock"
+                                                                           >{{ article.item_name }}</option
+                                    >
+                                </select>
+                                </label>
+                                </div>
+  <div class="form-group">
+                                  <label for="unit" class="text-info col">
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="unit" [value]="fcont.unit.value"
+                                    />
+                                  </label>
+                                </div>
+  <div class="form-group">
+                                  <label for="qty_required" class="text-info col">
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="qty_required"
+                                    />
+                                  </label>
+                                </div>
+  <div class="form-group">
+                                  <label for="unit_cost" class="text-info col">
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="unit_cost"
+                                    />
+                                  </label>
+                                </div>
+  <div class="form-group">
+                                  <label for="total_cost" class="text-info col">
+                                    <input
+                                    type="text"
+                                      class="form-control"
+                         formControlName="total_cost"
+                                    />
+                                  </label>
+                                </div>
+  <div class="form-group">
+                                <button
+                                  class="btn btn-danger"
+                                  type="button"
+                                >
+                                  Delete
+                                </button>
+</div>
+</form>
+</fieldset> -->
+</div>
+</div>
+</div>

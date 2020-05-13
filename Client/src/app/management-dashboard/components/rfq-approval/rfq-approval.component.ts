@@ -16,6 +16,7 @@ import { TabsetComponent } from "ngx-bootstrap/tabs";
 import { RfqData } from "src/app/shared/models/rfq-data.model";
 import { RfqTable } from "src/app/shared/models/rfq_table.model";
 import { RfqStatus } from 'src/app/shared/models/rfq_status.model';
+import { EditRfqComponent } from './edit-rfq.component';
 
 @Component({
   selector: "app-rfq-approval",
@@ -25,242 +26,252 @@ import { RfqStatus } from 'src/app/shared/models/rfq_status.model';
 export class RfqApprovalComponent implements OnInit {
   public modalRef: BsModalRef;
   submit = false;
-  rfq_data: RfqData[];
+  rfqData: RfqData[];
   clientOne: ClientData[];
   userForm: FormGroup;
   itemsForm: FormGroup;
-  rfq_number: number;
+  rfqNumber: number;
   index: number;
+  showTable = true;
+  showEditTable = false;
 
   @ViewChild("staticTabs", { static: false }) staticTabs: TabsetComponent;
 
   users = [
-    { user_name: "Davis", department: "Front desk" },
-    { user_name: "Maria", department: "Sales" },
-    { user_name: "Sharon", department: "Front desk" }
+    { userName: "Davis", department: "Front desk" },
+    { userName: "Maria", department: "Sales" },
+    { userName: "Sharon", department: "Front desk" }
   ];
 
-  rfq_sources = [
-    { source_name: "Walk in" },
-    { source_name: "Email" },
-    { source_name: "Sales and Marketing" },
-    { source_name: "Bids" }
+  rfqSources = [
+    { sourceName: "Walk in" },
+    { sourceName: "Email" },
+    { sourceName: "Sales and Marketing" },
+    { sourceName: "Bids" }
   ];
 
   rfqs: RfqData[] = [
     {
-      rfq_id: "RFQ023100",
-      stock_id: "BMS104",
-      item_name: "School Bags",
+      rfqId: "RFQ023100",
+      stockId: "BMS104",
+      itemName: "School Bags",
       unit: "Pieces",
-      unit_cost: 10000,
-      qty_required: 23,
-      total_cost: null
+      unitCost: 10000,
+      qtyRequired: 23,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ100293",
-      stock_id: "BMS012",
-      item_name: "Branded Laptops",
+      rfqId: "RFQ100293",
+      stockId: "BMS012",
+      itemName: "Branded Laptops",
       unit: "Pieces",
-      unit_cost: 1000000,
-      qty_required: 23,
-      total_cost: null
+      unitCost: 1000000,
+      qtyRequired: 23,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ100293",
-      stock_id: "BMS128",
-      item_name: "Bannerz",
+      rfqId: "RFQ100293",
+      stockId: "BMS128",
+      itemName: "Bannerz",
       unit: "Pieces",
-      unit_cost: 340000,
-      qty_required: 100,
-      total_cost: null
+      unitCost: 340000,
+      qtyRequired: 100,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ000221",
-      stock_id: "BMS144",
-      item_name: "Branded Pens",
+      rfqId: "RFQ000221",
+      stockId: "BMS144",
+      itemName: "Branded Pens",
       unit: "Boxes",
-      unit_cost: 30000,
-      qty_required: 50,
-      total_cost: null
+      unitCost: 30000,
+      qtyRequired: 50,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ023100",
-      stock_id: "BMS104",
-      item_name: "School Bags",
+      rfqId: "RFQ023100",
+      stockId: "BMS104",
+      itemName: "School Bags",
       unit: "Pieces",
-      unit_cost: 10000,
-      qty_required: 23,
-      total_cost: null
+      unitCost: 10000,
+      qtyRequired: 23,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ100293",
-      stock_id: "BMS012",
-      item_name: "Branded Laptops",
+      rfqId: "RFQ100293",
+      stockId: "BMS012",
+      itemName: "Branded Laptops",
       unit: "Pieces",
-      unit_cost: 1000000,
-      qty_required: 23,
-      total_cost: null
+      unitCost: 1000000,
+      qtyRequired: 23,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ000023",
-      stock_id: "BMS128",
-      item_name: "Bannerz",
+      rfqId: "RFQ000023",
+      stockId: "BMS128",
+      itemName: "Bannerz",
       unit: "Pieces",
-      unit_cost: 340000,
-      qty_required: 100,
-      total_cost: null
+      unitCost: 340000,
+      qtyRequired: 100,
+      totalCost: null,
+      isEditable: false
     },
     {
-      rfq_id: "RFQ000221",
-      stock_id: "BMS144",
-      item_name: "Branded Pens",
+      rfqId: "RFQ000221",
+      stockId: "BMS144",
+      itemName: "Branded Pens",
       unit: "Boxes",
-      unit_cost: 30000,
-      qty_required: 50,
-      total_cost: null
+      unitCost: 30000,
+      qtyRequired: 50,
+      totalCost: null,
+      isEditable: false
     }
   ];
 
-  items_stock: ItemStock[] = [
+  itemsStock: ItemStock[] = [
     {
-      stock_id: "BMS235",
-      item_name: "pens",
+      stockId: "BMS235",
+      itemName: "pens",
       unit: "boxes",
-      qty_required: null,
-      unit_cost: 30000
+      qtyRequired: null,
+      unitCost: 30000
     },
     {
-      stock_id: "BMS346",
-      item_name: "umbrellas",
+      stockId: "BMS346",
+      itemName: "umbrellas",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 14000
+      qtyRequired: null,
+      unitCost: 14000
     },
     {
-      stock_id: "BMS233",
-      item_name: "bags",
+      stockId: "BMS233",
+      itemName: "bags",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 45000
+      qtyRequired: null,
+      unitCost: 45000
     },
     {
-      stock_id: "BMS162",
-      item_name: "mugs",
+      stockId: "BMS162",
+      itemName: "mugs",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 20000
+      qtyRequired: null,
+      unitCost: 20000
     },
     {
-      stock_id: "BMS135",
-      item_name: "diary",
+      stockId: "BMS135",
+      itemName: "diary",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     },
     {
-      stock_id: "BMS127",
-      item_name: "tshirts",
+      stockId: "BMS127",
+      itemName: "tshirts",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     }
   ];
 
   clients: ClientData[] = [
     {
-      client_id: "BC131212",
-      client_name: "KCB",
-      phone_number: 753134341,
+      clientId: "BC131212",
+      clientName: "KCB",
+      phoneNumber: 753134341,
       email: "procurement@kcb-ug.com"
     },
     {
-      client_id: "BC121233",
-      client_name: "Sheraton Hotel",
-      phone_number: 772443208,
+      clientId: "BC121233",
+      clientName: "Sheraton Hotel",
+      phoneNumber: 772443208,
       email: "procurement@sheratonhotel.com"
     },
     {
-      client_id: "BC031526",
-      client_name: "Shell",
-      phone_number: 751781341,
+      clientId: "BC031526",
+      clientName: "Shell",
+      phoneNumber: 751781341,
       email: "supplies@shell.co.ug"
     },
     {
-      client_id: "BC107252",
-      client_name: "MTN",
-      phone_number: 782100042,
+      clientId: "BC107252",
+      clientName: "MTN",
+      phoneNumber: 782100042,
       email: "procurement@mtn.co.ug"
     }
   ];
 
-  rfq_table: RfqTable[] = [
+  rfqTable: RfqTable[] = [
     {
-      rfq_id: "RFQ023100",
-      client_name: "MTN",
-      rfq_source: "Walk in",
-      no_of_items: 10,
-      total_amount: 4000000,
+      rfqId: "RFQ023100",
+      clientName: "MTN",
+      rfqSource: "Walk in",
+      noOfItems: 10,
+      totalAmount: 4000000,
       department: "Front Desk",
-      user_name: "Michelle Ssemwogerere"
+      userName: "Michelle Ssemwogerere"
     },
     {
-      rfq_id: "RFQ100293",
-      client_name: "Sheraton Hotel",
-      rfq_source: "Sales & Marketing",
-      no_of_items: 44,
-      total_amount: 15300000,
+      rfqId: "RFQ100293",
+      clientName: "Sheraton Hotel",
+      rfqSource: "Sales & Marketing",
+      noOfItems: 44,
+      totalAmount: 15300000,
       department: "Sales & Marketing",
-      user_name: "Odong George"
+      userName: "Odong George"
     },
     {
-      rfq_id: "RFQ000023",
-      client_name: "Shell",
-      rfq_source: "Email",
-      no_of_items: 210,
-      total_amount: 5250000,
+      rfqId: "RFQ000023",
+      clientName: "Shell",
+      rfqSource: "Email",
+      noOfItems: 210,
+      totalAmount: 5250000,
       department: "Front Desk",
-      user_name: "Bright Iryn"
+      userName: "Bright Iryn"
     },
     {
-      rfq_id: "RFQ000221",
-      client_name: "KCB",
-      rfq_source: "Bids",
-      no_of_items: 30,
-      total_amount: 42000000,
+      rfqId: "RFQ000221",
+      clientName: "KCB",
+      rfqSource: "Bids",
+      noOfItems: 30,
+      totalAmount: 42000000,
       department: "Front Desk",
-      user_name: "Anita Arigye"
+      userName: "Anita Arigye"
     }
   ];
 
-  rfq_status: RfqStatus[] = [
+  rfqStatus: RfqStatus[] = [
     {
-      rfq_id: "RFQ023100",
-      user_name: "Michelle Ssemwogerere",
-      movt_status: "Created",
-      process_status: "Pending costing",
-      movt_timestamp: "27/11/2019"
+      rfqId: "RFQ023100",
+      userName: "Michelle Ssemwogerere",
+      movtStatus: "Created",
+      processStatus: "Pending costing",
+      movtTimestamp: "27/11/2019"
     },
     {
-      rfq_id: "RFQ100293",
-      user_name: "Odong George",
-      movt_status: "Received",
-      process_status: "Costed",
-      movt_timestamp: "13/11/2019"
+      rfqId: "RFQ100293",
+      userName: "Odong George",
+      movtStatus: "Received",
+      processStatus: "Costed",
+      movtTimestamp: "13/11/2019"
     },
     {
-      rfq_id: "RFQ000023",
-      user_name: "Bright Iryn",
-      movt_status: "Deferred",
-      process_status: "Pending costing",
-      movt_timestamp: "18/4/2020"
+      rfqId: "RFQ000023",
+      userName: "Bright Iryn",
+      movtStatus: "Deferred",
+      processStatus: "Pending costing",
+      movtTimestamp: "18/4/2020"
     },
     {
-      rfq_id: "RFQ000221",
-      user_name: "Anita Arigye",
-      movt_status: "Approved",
-      process_status: "Costed",
-      movt_timestamp: "05/03/2020"
+      rfqId: "RFQ000221",
+      userName: "Anita Arigye",
+      movtStatus: "Approved",
+      processStatus: "Costed",
+      movtTimestamp: "05/03/2020"
     }
   ];
 
@@ -277,13 +288,13 @@ export class RfqApprovalComponent implements OnInit {
 
   createFormGroup() {
     return this._formbuilder.group({
-      rfq_number: [
+      rfqNumber: [
         { value: this.setRfqId(), disabled: true },
         Validators.compose([Validators.required])
       ],
-      client_name: ["", Validators.compose([Validators.required])],
+      clientName: ["", Validators.compose([Validators.required])],
 
-      source_name: [
+      sourceName: [
         "",
         Validators.compose([Validators.required, Validators.minLength(4)])
       ]
@@ -293,12 +304,12 @@ export class RfqApprovalComponent implements OnInit {
 
   addItemsFormGroup() {
     return this._formbuilder.group({
-      rfq_number: [
+      rfqNumber: [
         { value: "", disabled: true },
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      client_name: ["", Validators.compose([Validators.required])],
+      clientName: ["", Validators.compose([Validators.required])],
 
       addItem: this._formbuilder.array([this.itemdets()])
     });
@@ -306,7 +317,7 @@ export class RfqApprovalComponent implements OnInit {
 
   itemdets() {
     return this._formbuilder.group({
-      stock_id: [
+      stockId: [
         "",
         // { value: '', disabled: false },
 
@@ -314,18 +325,18 @@ export class RfqApprovalComponent implements OnInit {
         // { updateOn: 'blur' }
       ],
 
-      item_name: ["", Validators.compose([Validators.required])],
+      itemName: ["", Validators.compose([Validators.required])],
 
       unit: [
         { value: "", disabled: true },
         Validators.compose([Validators.required])
       ],
 
-      unit_cost: [
+      unitCost: [
         { value: "", disabled: true },
         Validators.compose([Validators.required])
       ],
-      qty_required: [
+      qtyRequired: [
         "",
         Validators.compose([
           Validators.required,
@@ -336,7 +347,7 @@ export class RfqApprovalComponent implements OnInit {
         ])
       ],
 
-      total_cost: [
+      totalCost: [
         { value: "", disabled: true },
         Validators.compose([
           Validators.required,
@@ -372,19 +383,23 @@ export class RfqApprovalComponent implements OnInit {
   //method for filtering clients
   filterClients(clientId: string) {
     this.clientOne = this.clients.filter(
-      clinet => clinet.client_name === clientId
+      clinet => clinet.clientName === clientId
     );
   }
   //method for filtering rfqs
   filterRfqs(rfqId: string) {
-    console.log
-      (this.rfq_data = this.rfqs.filter(rfq => rfq.rfq_id === rfqId))
-    ;
+    this.rfqData = this.rfqs.filter(rfq => rfq.rfqId === rfqId);
+  }
+  //method for filtering rfqs
+  filterRfq(rfqId: string) {
+    this.rfqData = this.rfqs.filter(rfq => rfq.rfqId === rfqId);
+    this.showTable = !this.showTable;
+    this.showEditTable = !this.showEditTable
   }
 
   //method for updating client name
   updateName(name: string) {
-    this.fval.client_name.setValue(name);
+    this.fval.clientName.setValue(name);
   }
 
   //method for generating random number
@@ -394,7 +409,7 @@ export class RfqApprovalComponent implements OnInit {
 
   //method for setting the random number
   setRfqId() {
-    return (this.rfq_number = this.getRandomNumberBetween(10000, 20000));
+    return (this.rfqNumber = this.getRandomNumberBetween(10000, 20000));
   }
 
   //method for creating modal
@@ -418,7 +433,7 @@ export class RfqApprovalComponent implements OnInit {
   }
 
   get clientName(): any {
-    return this.userForm.get("client_name");
+    return this.userForm.get("clientName");
   }
 
   onSubmit() {
