@@ -1,9 +1,9 @@
 export interface RfqTable {
-  rfq_id: string;
-  client_name: string;
-  rfq_source: string;
-  no_of_items: number;
-  total_amount: number;
+  rfqId: string;
+  clientName: string;
+  rfqSource: string;
+  noOfItems: number;
+  totalAmount: number;
   department: string;
-  user_name: string;
+  userName: string;
 }

@@ -1,6 +1,6 @@
 export interface ClientData{
-  client_id: string;
-  client_name: string;
-  phone_number: number;
+  clientId: string;
+  clientName: string;
+  phoneNumber: number;
   email: string;
 }

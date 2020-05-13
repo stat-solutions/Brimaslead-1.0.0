@@ -11,21 +11,21 @@ import { LayoutService } from 'src/app/shared/services/layout.service';
   styleUrls: ["./add-rfq-items.component.scss"]
 })
 export class AddRfqItemsComponent implements OnInit {
-  @Input() client_names: string;
+  @Input() clientNames: string;
 
   userForm: FormGroup;
-  rfq_number: number;
+  rfqNumber: number;
   index: number;
   items = [];
   users = [
-    { user_name: "Davis", department: "Front desk" },
-    { user_name: "Maria", department: "Sales" },
-    { user_name: "Sharon", department: "Front desk" }
+    { userName: "Davis", department: "Front desk" },
+    { userName: "Maria", department: "Sales" },
+    { userName: "Sharon", department: "Front desk" }
   ];
   // users = [
-  //   { user_name: "Davis", department: "Front desk" },
-  //   { user_name: "Maria", department: "Sales" },
-  //   { user_name: "Sharon", department: "Front desk" }
+  //   { userName: "Davis", department: "Front desk" },
+  //   { userName: "Maria", department: "Sales" },
+  //   { userName: "Sharon", department: "Front desk" }
   // ];
 
   rfq_sources = [
@@ -35,48 +35,48 @@ export class AddRfqItemsComponent implements OnInit {
     { source_name: "Bids" }
   ];
 
-  items_stock: ItemStock[] = [
+  itemsStock: ItemStock[] = [
     {
-      stock_id: "BMS235",
-      item_name: "pens",
+      stockId: "BMS235",
+      itemName: "pens",
       unit: "boxes",
-      qty_required: null,
-      unit_cost: 30000
+      qtyRequired: null,
+      unitCost: 30000
     },
     {
-      stock_id: "BMS346",
-      item_name: "umbrellas",
+      stockId: "BMS346",
+      itemName: "umbrellas",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 14000
+      qtyRequired: null,
+      unitCost: 14000
     },
     {
-      stock_id: "BMS233",
-      item_name: "bags",
+      stockId: "BMS233",
+      itemName: "bags",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 45000
+      qtyRequired: null,
+      unitCost: 45000
     },
     {
-      stock_id: "BMS162",
-      item_name: "mugs",
+      stockId: "BMS162",
+      itemName: "mugs",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 20000
+      qtyRequired: null,
+      unitCost: 20000
     },
     {
-      stock_id: "BMS135",
-      item_name: "diary",
+      stockId: "BMS135",
+      itemName: "diary",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     },
     {
-      stock_id: "BMS127",
-      item_name: "tshirts",
+      stockId: "BMS127",
+      itemName: "tshirts",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     }
   ];
 
@@ -93,11 +93,11 @@ export class AddRfqItemsComponent implements OnInit {
     this.fval.client_name.setValue(name);
   }
 
-  get unitCost(): any{
-    return this.userForm.get('unit_cost');
+  get unitCost(): any {
+    return this.userForm.get("unit_cost");
   }
-  get qtyRequired(): any{
-    return this.userForm.get('qty_required');
+  get qtyRequired(): any {
+    return this.userForm.get("qty_required");
   }
 
   totalCost() {
@@ -111,7 +111,7 @@ export class AddRfqItemsComponent implements OnInit {
   }
 
   setRfqId() {
-    this.rfq_number = this.getRandomNumberBetween(10000, 20000);
+    this.rfqNumber = this.getRandomNumberBetween(10000, 20000);
   }
 
   // pickData() {
@@ -129,7 +129,7 @@ export class AddRfqItemsComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      item_name:["", Validators.compose([Validators.required])],
+      item_name: ["", Validators.compose([Validators.required])],
 
       unit: ["", Validators.compose([Validators.required])],
 
@@ -155,7 +155,7 @@ export class AddRfqItemsComponent implements OnInit {
             { hasNumber: true }
           )
         ])
-      ],
+      ]
     });
   }
 

@@ -11,18 +11,36 @@
     <div class="flux-header-navbar">
       <div class="flux-left-header clearfix">
         <div class="sidebarToggle" (click)="changeTheToggleStatus()"><i class="fas fa-bars"></i></div>
-        <!-- <div class="left-header-nav">
-          <ul>
-            <li><a href="" class="dropdown-toggle">Mega</a></li>
-            <li><a href="" class="dropdown-toggle">New</a></li>
-          </ul>
-        </div> -->
       </div>
-    <span class="text-info align-self-baseline mt-4 mb-0 pl-3 pt-5 pb-0">FRONT DESK DASHBOARD</span>
+    <span class="text-info align-self-baseline mt-4 mb-0 pl-2 pt-5 pb-0">FRONT DESK DASHBOARD</span>
       <div class="flux-right-header clearfix">
         <ul>
-          <li><a href=""><i class="far fa-list-alt"></i></a></li>
-          <li><a href="" class="dropdown-toggle"><i class="fas fa-cog"></i> <span *ngIf="deviceType !== 'mobile'" >&nbsp;System Settings</span> </a></li>
+          <li>
+            <a
+              class="dropdown-toggle nav-link mt-0 ml-3 pt-0"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              href="#"
+              ><span class="d-none d-lg-inline mr-0 text-gray-600 small">{{
+                userName
+              }}</span
+              ><img
+                class="border rounded-circle img-profile"
+                style="width: 35px; height: 35px"
+                [src]="user"
+              />
+            </a>
+
+            <div
+              class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
+              role="menu"
+            >
+              <a class="dropdown-item text-info" role="presentation" href="#"
+                ><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i
+                >&nbsp;Profile</a
+              ><a class="dropdown-item" role="presentation" href="#"></a>
+            </div>
+          </li>
           <li><a href=""><i class="fas fa-power-off"></i></a></li>
         </ul>
       </div>

@@ -16,6 +16,16 @@
   clear: both;
 }
 
+.dropdown-menu {
+  background-color: #354052 !important;
+  color: #54a9c9 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #2b3544 !important;
+  color: #f5f5f5 !important;
+}
+
 .flux-brand {
   width: 230px;
   padding: 0 10px;
@@ -39,7 +49,6 @@
     -moz-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
     transition: all 0.2s linear;
-
   }
 
   .flux-brand-text {
@@ -154,10 +163,7 @@
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
   }
-
-
 }
-
 
 .flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="overlay"][collapsed-left-header="true"] {
   .flux-header-navbar {
@@ -175,12 +181,8 @@
   .flux-header-navbar {
     margin-left: 230px;
     margin-right: -230px;
-
   }
 }
-
-
-
 
 // #################### collapsed Header Style ######################################
 .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="false"] {
@@ -209,12 +211,10 @@
   .flux-header-navbar {
     margin-left: 50px;
     margin-right: -50px;
-
   }
 }
 
 .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"] {
-
   .flux-brand {
     width: 50px;
     padding-left: 10px;
@@ -270,7 +270,6 @@
 .flux-header[nav-layout="vertical"][navbar-type="offcanvas"][effect-type="push"][collapsed-left-header="true"] {
   .flux-header-navbar {
     margin-left: 0px;
-
   }
 }
 
@@ -315,8 +314,6 @@
   }
 }
 
-
-
 // ##################### Double Header on Mobile Style start ###################################################
 
 .flux-header[nav-layout="vertical"][navbar-type="expanded"][effect-type="overlay"][collapsed-left-header="false"][device-type="mobile"] {
@@ -359,7 +356,6 @@
   .flux-header-navbar {
     margin-left: 230px;
     margin-right: -230px;
-
   }
 }
 
@@ -400,7 +396,6 @@
   .flux-header-navbar {
     margin-left: 50px;
     margin-right: -50px;
-
   }
 }
 
@@ -440,17 +435,31 @@
 
   .flux-header-navbar {
     margin-left: 0px;
-
   }
 }
 
 // ##################### Double Header on Mobile Style Close ###################################################
 
-@mixin headerColorTheme($theme-name, $brand-i-bg, $header-bg, $brand-bg, $brand-color, $brand-border-color, $sidebarToggle-bg, $sidebarToggle-color,
-  $sidebarToggle-bg-onHover, $sidebarToggle-color-onHover, $text-color, $text-color-hover, $right-header-link-bg, $right-header-icons-color,
-  $rh-link-bg-onhover, $rh-link-color-onhover, $rh-icons-color-onhover) {
-
-  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme=#{$theme-name}] {
+@mixin headerColorTheme(
+  $theme-name,
+  $brand-i-bg,
+  $header-bg,
+  $brand-bg,
+  $brand-color,
+  $brand-border-color,
+  $sidebarToggle-bg,
+  $sidebarToggle-color,
+  $sidebarToggle-bg-onHover,
+  $sidebarToggle-color-onHover,
+  $text-color,
+  $text-color-hover,
+  $right-header-link-bg,
+  $right-header-icons-color,
+  $rh-link-bg-onhover,
+  $rh-link-color-onhover,
+  $rh-icons-color-onhover
+) {
+  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme="#{$theme-name}"] {
     .flux-brand {
       i {
         background: $brand-i-bg;
@@ -458,7 +467,7 @@
     }
   }
 
-  .flux-header[header-theme=#{$theme-name}] {
+  .flux-header[header-theme="#{$theme-name}"] {
     background: $header-bg;
 
     .flux-brand {
@@ -468,12 +477,10 @@
 
       .flux-brand-logo {
         color: $brand-color;
-        ;
       }
 
       .flux-brand-text {
         color: $brand-color;
-        ;
       }
     }
 
@@ -513,53 +520,172 @@
       }
     }
   }
-
-
-
-
 }
 
+@include headerColorTheme(
+  theme1,
+  #ecf0f8,
+  #354052,
+  #fff,
+  #678098,
+  #f5f5f5,
+  #354052,
+  #54a9c9,
+  #354052,
+  #c63685f3,
+  #364357,
+  #007bff,
+  #f2f2f2,
+  #54a9c9,
+  #54a9c9,
+  #fff,
+  #fff
+);
 
-@include headerColorTheme(theme1, #ecf0f8, #354052, #FFF, #678098, #f5f5f5, #354052, #54a9c9,
-  #354052, #c63685f3, #364357, #007bff, #f2f2f2, #54a9c9, #54a9c9, #FFF, #FFF);
+@include headerColorTheme(
+  theme2,
+  #1c232e,
+  #354052,
+  #354052,
+  #b4bcc8,
+  #485468,
+  #1c232e,
+  #b4bcc8,
+  #b4bcc8,
+  #1c232e,
+  #b4bcc8,
+  #ffffff,
+  #1c232e,
+  #b4bcc8,
+  #b4bcc8,
+  #1c232e,
+  #1c232e
+);
 
-@include headerColorTheme(theme2, #1c232e, #354052, #354052, #b4bcc8, #485468, #1c232e, #b4bcc8,
-  #b4bcc8, #1c232e, #b4bcc8, #FFFFFF, #1c232e, #b4bcc8, #b4bcc8, #1c232e, #1c232e);
+@include headerColorTheme(
+  theme3,
+  #2f4475,
+  #3f5485,
+  #3f5485,
+  #d8e3fc,
+  #4a5f90,
+  #2f4475,
+  #d8e3fc,
+  #d8e3fc,
+  #2f4475,
+  #d8e3fc,
+  #ffffff,
+  #2f4475,
+  #d8e3fc,
+  #d8e3fc,
+  #2f4475,
+  #2f4475
+);
 
-@include headerColorTheme(theme3, #2f4475, #3f5485, #3f5485, #d8e3fc, #4a5f90, #2f4475, #d8e3fc,
-  #d8e3fc, #2f4475, #d8e3fc, #FFFFFF, #2f4475, #d8e3fc, #d8e3fc, #2f4475, #2f4475);
+@include headerColorTheme(
+  theme4,
+  #2b64a4,
+  #3c75b5,
+  #3c75b5,
+  #b9d4f2,
+  #4f82bc,
+  #2b64a4,
+  #fff,
+  #b9d4f2,
+  #2b64a4,
+  #b9d4f2,
+  #ffffff,
+  #2b64a4,
+  #b9d4f2,
+  #d8e3fc,
+  #2b64a4,
+  #2b64a4
+);
 
-@include headerColorTheme(theme4, #2b64a4, #3c75b5, #3c75b5, #b9d4f2, #4f82bc, #2b64a4, #FFF,
-  #b9d4f2, #2b64a4, #b9d4f2, #FFFFFF, #2b64a4, #b9d4f2, #d8e3fc, #2b64a4, #2b64a4);
+@include headerColorTheme(
+  theme5,
+  #4b3154,
+  #583a63,
+  #583a63,
+  #ccbad2,
+  #5d4865,
+  #4b3154,
+  #ccbad2,
+  #ccbad2,
+  #4b3154,
+  #ccbad2,
+  #ffffff,
+  #4b3154,
+  #ccbad2,
+  #ccbad2,
+  #4b3154,
+  #4b3154
+);
 
-@include headerColorTheme(theme5, #4b3154, #583a63, #583a63, #ccbad2, #5d4865, #4b3154, #ccbad2,
-  #ccbad2, #4b3154, #ccbad2, #FFFFFF, #4b3154, #ccbad2, #ccbad2, #4b3154, #4b3154);
+@include headerColorTheme(
+  theme6,
+  #e1e1e1,
+  #ededed,
+  #ededed,
+  #787878,
+  #e4e5e5,
+  #e1e1e1,
+  #787878,
+  #787878,
+  #e1e1e1,
+  #787878,
+  #000000,
+  #e1e1e1,
+  #787878,
+  #787878,
+  #ffffff,
+  #ffffff
+);
 
-@include headerColorTheme(theme6, #e1e1e1, #ededed, #ededed, #787878, #e4e5e5, #e1e1e1, #787878,
-  #787878, #e1e1e1, #787878, #000000, #e1e1e1, #787878, #787878, #FFFFFF, #FFFFFF);
+@include headerColorTheme(
+  theme7,
+  #0b9c8f,
+  #0aa699,
+  #0aa699,
+  #ffffff,
+  #1ab0a3,
+  #0b9c8f,
+  #ffffff,
+  #ffffff,
+  #0b9c8f,
+  #ffffff,
+  #4b3154,
+  #0b9c8f,
+  #ffffff,
+  #ffffff,
+  #0b9c8f,
+  #0b9c8f
+);
 
-@include headerColorTheme(theme7, #0b9c8f, #0aa699, #0aa699, #FFFFFF, #1ab0a3, #0b9c8f, #FFFFFF,
-  #FFFFFF, #0b9c8f, #FFFFFF, #4b3154, #0b9c8f, #FFFFFF, #FFFFFF, #0b9c8f, #0b9c8f);
-
-
-
-
-
-@mixin leftHeaderTheme($theme-name, $brand-i-bg, $header-bg, $brand-bg, $brand-color, $brand-border-color) {
-
-  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme=theme2][_ngcontent-xca-c2] .flux-brand[_ngcontent-xca-c2] i[_ngcontent-xca-c2] {
+@mixin leftHeaderTheme(
+  $theme-name,
+  $brand-i-bg,
+  $header-bg,
+  $brand-bg,
+  $brand-color,
+  $brand-border-color
+) {
+  .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"][header-theme="theme2"][_ngcontent-xca-c2]
+    .flux-brand[_ngcontent-xca-c2]
+    i[_ngcontent-xca-c2] {
     background: #1c232e;
   }
 
   .flux-header[nav-layout="vertical"][navbar-type="collapsed"][collapsed-left-header="true"] {
-    .flux-brand[left-header-theme=#{$theme-name}] {
+    .flux-brand[left-header-theme="#{$theme-name}"] {
       i {
         background: $brand-i-bg;
       }
     }
   }
 
-  .flux-header[nav-layout="vertical"] .flux-brand[left-header-theme=#{$theme-name}] {
+  .flux-header[nav-layout="vertical"]
+    .flux-brand[left-header-theme="#{$theme-name}"] {
     background: $brand-bg;
     color: $brand-color;
     border-bottom-color: $brand-border-color;
@@ -572,22 +698,15 @@
       color: $brand-color;
     }
   }
-
 }
 
-@include leftHeaderTheme(theme1, #ecf0f8, #FFFFFF, #FFFFFF, #678098, #f5f5f5);
+@include leftHeaderTheme(theme1, #ecf0f8, #ffffff, #ffffff, #678098, #f5f5f5);
 @include leftHeaderTheme(theme2, #1c232e, #354052, #354052, #b4bcc8, #485468);
 @include leftHeaderTheme(theme3, #2f4475, #3f5485, #3f5485, #d8e3fc, #4a5f90);
 @include leftHeaderTheme(theme4, #2b64a4, #3c75b5, #3c75b5, #b9d4f2, #4f82bc);
 @include leftHeaderTheme(theme5, #4b3154, #583a63, #583a63, #ccbad2, #5d4865);
 @include leftHeaderTheme(theme6, #e1e1e1, #ededed, #ededed, #787878, #e4e5e5);
-@include leftHeaderTheme(theme7, #0b9c8f, #0aa699, #0aa699, #FFFFFF, #1ab0a3);
-
-
-
-
-
-
+@include leftHeaderTheme(theme7, #0b9c8f, #0aa699, #0aa699, #ffffff, #1ab0a3);
 
 .flux-header[nav-layout="horizontal"][device-type="mobile"] {
   .flux-brand {
@@ -607,5 +726,4 @@
   .flux-right-header {
     display: none;
   }
-
 }

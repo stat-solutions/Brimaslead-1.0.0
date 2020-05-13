@@ -1,8 +1,7 @@
 export interface ItemStock {
-  [x: string]: any;
-  stock_id: string;
-  item_name: string;
+  stockId: string;
+  itemName: string;
   unit: string;
-  qty_required: number;
-  unit_cost: number;
+  qtyRequired: number;
+  unitCost: number;
 }

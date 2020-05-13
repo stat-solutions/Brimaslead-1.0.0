@@ -20,95 +20,93 @@ export class RequestForQuoteComponent implements OnInit {
   submit = false;
   userForm: FormGroup;
   itemsForm: FormGroup;
-  rfq_number: number;
+  rfqNumber: number;
   index: number;
 
   users = [
-    { user_name: "Davis", department: "Front desk" },
-    { user_name: "Maria", department: "Sales" },
-    { user_name: "Sharon", department: "Front desk" }
+    { userName: "Davis", department: "Front desk" },
+    { userName: "Maria", department: "Sales" },
+    { userName: "Sharon", department: "Front desk" }
   ];
 
-  rfq_sources = [
-    { source_name: "Walk in" },
-    { source_name: "Email" },
-    { source_name: "Sales and Marketing" },
-    { source_name: "Bids" }
+  rfqSources = [
+    { sourceName: "Walk in" },
+    { sourceName: "Email" },
+    { sourceName: "Sales and Marketing" },
+    { sourceName: "Bids" }
   ];
 
-  items_stock: ItemStock[] = [
+  itemsStock: ItemStock[] = [
     {
-      stock_id: "BMS235",
-      item_name: "pens",
+      stockId: "BMS235",
+      itemName: "pens",
       unit: "boxes",
-      qty_required: null,
-      unit_cost: 30000
+      qtyRequired: null,
+      unitCost: 30000
     },
     {
-      stock_id: "BMS346",
-      item_name: "umbrellas",
+      stockId: "BMS346",
+      itemName: "umbrellas",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 14000
+      qtyRequired: null,
+      unitCost: 14000
     },
     {
-      stock_id: "BMS233",
-      item_name: "bags",
+      stockId: "BMS233",
+      itemName: "bags",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 45000
+      qtyRequired: null,
+      unitCost: 45000
     },
     {
-      stock_id: "BMS162",
-      item_name: "mugs",
+      stockId: "BMS162",
+      itemName: "mugs",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 20000
+      qtyRequired: null,
+      unitCost: 20000
     },
     {
-      stock_id: "BMS135",
-      item_name: "diary",
+      stockId: "BMS135",
+      itemName: "diary",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     },
     {
-      stock_id: "BMS127",
-      item_name: "tshirts",
+      stockId: "BMS127",
+      itemName: "tshirts",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     }
   ];
 
   clients: ClientData[] = [
     {
-      client_id: "BC131212",
-      client_name: "KCB",
-      phone_number: 753134341,
+      clientId: "BC131212",
+      clientName: "KCB",
+      phoneNumber: 753134341,
       email: "procurement@kcb-ug.com"
     },
     {
-      client_id: "BC121233",
-      client_name: "Sheraton Hotel",
-      phone_number: 772443208,
+      clientId: "BC121233",
+      clientName: "Sheraton Hotel",
+      phoneNumber: 772443208,
       email: "procurement@sheratonhotel.com"
     },
     {
-      client_id: "BC031526",
-      client_name: "Shell",
-      phone_number: 751781341,
+      clientId: "BC031526",
+      clientName: "Shell",
+      phoneNumber: 751781341,
       email: "supplies@shell.co.ug"
     },
     {
-      client_id: "BC107252",
-      client_name: "MTN",
-      phone_number: 782100042,
+      clientId: "BC107252",
+      clientName: "MTN",
+      phoneNumber: 782100042,
       email: "procurement@mtn.co.ug"
     }
   ];
-  meta: any;
-  option: any;
 
   constructor(
     private layoutService: LayoutService,
@@ -123,13 +121,13 @@ export class RequestForQuoteComponent implements OnInit {
 
   createFormGroup() {
     return this._formbuilder.group({
-      rfq_number: [
+      rfqNumber: [
         { value: this.setRfqId(), disabled: true },
         Validators.compose([Validators.required])
       ],
-      client_name: ["", Validators.compose([Validators.required])],
+      clientName: ["", Validators.compose([Validators.required])],
 
-      source_name: [
+      sourceName: [
         "",
         Validators.compose([Validators.required, Validators.minLength(4)])
       ]
@@ -139,12 +137,12 @@ export class RequestForQuoteComponent implements OnInit {
 
   addItemsFormGroup() {
     return this._formbuilder.group({
-      rfq_number: [
+      rfqNumber: [
         { value: "", disabled: true },
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      client_name: ["", Validators.compose([Validators.required])],
+      clientName: ["", Validators.compose([Validators.required])],
 
       addItem: this._formbuilder.array([this.itemdets(),])
     });
@@ -152,7 +150,7 @@ export class RequestForQuoteComponent implements OnInit {
 
   itemdets() {
     return this._formbuilder.group({
-      stock_id: [
+      stockId: [
         "",
         // { value: '', disabled: false },
 
@@ -160,7 +158,7 @@ export class RequestForQuoteComponent implements OnInit {
         // { updateOn: 'blur' }
       ],
 
-      item_name: [
+      itemName: [
         "",
         Validators.compose([Validators.required]),
       ],
@@ -170,11 +168,11 @@ export class RequestForQuoteComponent implements OnInit {
         Validators.compose([Validators.required]),
       ],
 
-      unit_cost: [
+      unitCost: [
         { value: "", disabled: true },
         Validators.compose([Validators.required]),
       ],
-      qty_required: [
+      qtyRequired: [
         "",
         Validators.compose([
           Validators.required,
@@ -185,7 +183,7 @@ export class RequestForQuoteComponent implements OnInit {
         ])
       ],
 
-      total_cost: [
+      totalCost: [
         { value: "", disabled: true },
         Validators.compose([
           Validators.required,
@@ -219,7 +217,7 @@ export class RequestForQuoteComponent implements OnInit {
   // }
 
   updateName(name: string) {
-    this.fval.client_name.setValue(name);
+    this.fval.clientName.setValue(name);
   }
 
   getRandomNumberBetween(min, max) {
@@ -227,7 +225,7 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   setRfqId() {
-    return (this.rfq_number = this.getRandomNumberBetween(10000, 20000));
+    return (this.rfqNumber = this.getRandomNumberBetween(10000, 20000));
   }
 
   public openModal(template: TemplateRef<any>) {
@@ -239,15 +237,15 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   //  getItems() {
-  //    this.fcont.stock_id.setValue("article.stock_id.value");
+  //    this.fcont.stockId.setValue("article.stockId.value");
 
   //   }
 
   get unitCost(): any {
-    return +this.itemsForm.get("unit_cost");
+    return +this.itemsForm.get("unitCost");
   }
   get qtyRequired(): any {
-    return +this.itemsForm.get("qty_required");
+    return +this.itemsForm.get("qtyRequired");
   }
   // totalCost() {
   //   return this.unitCost() * this.qtyRequired();
@@ -259,25 +257,21 @@ export class RequestForQuoteComponent implements OnInit {
   updateOtherItems(selectedItem: any) {
     console.log(this.items.value[0]);
       (<FormArray>this.itemsForm.controls["addItem"]).setValue([
-       this.items_stock.find(
-          item => (item.item_name = selectedItem.target.value)
-        ).stock_id,
-      this.items_stock.find(
-        item => (item.item_name = selectedItem.target.value)
-      ).item_name,
-      this.items_stock.find(
-        item => (item.item_name = selectedItem.target.value)
+       this.itemsStock.find(
+          item => (item.itemName = selectedItem.target.value)
+        ).stockId,
+      this.itemsStock.find(
+        item => (item.itemName = selectedItem.target.value)
+      ).itemName,
+      this.itemsStock.find(
+        item => (item.itemName = selectedItem.target.value)
       ).unit,
-      this.items_stock.find(
-        item => (item.item_name = selectedItem.target.value)
-      ).qty_required,
-      this.items_stock.find(
-        item => (item.item_name = selectedItem.target.value)
-  ).unit_cost,
-              this.items_stock.find(
-        item => (item.item_name = selectedItem.target.value)
-      ).total_cost
-
+      this.itemsStock.find(
+        item => (item.itemName = selectedItem.target.value)
+      ).qtyRequired,
+      this.itemsStock.find(
+        item => (item.itemName = selectedItem.target.value)
+  ).unitCost
     ]);
   }
 
@@ -289,7 +283,7 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   get clientName(): any {
-    return this.userForm.get("client_name");
+    return this.userForm.get("clientName");
   }
 
   onSave() {}

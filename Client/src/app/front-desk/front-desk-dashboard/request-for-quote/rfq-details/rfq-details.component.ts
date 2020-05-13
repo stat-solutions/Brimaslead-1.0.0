@@ -9,40 +9,44 @@ import { RfqData } from 'src/app/shared/models/rfq-data.model';
 export class RfqDetailsComponent implements OnInit {
   rfqs: RfqData[] = [
     {
-      rfq_id: 'RFQ023100',
-      stock_id: 'BMS104',
-      item_name: "School Bags",
+      rfqId: "RFQ023100",
+      stockId: "BMS104",
+      itemName: "School Bags",
       unit: "Pieces",
-      unit_cost: 10000,
-      qty_required: 23,
-      total_cost: 230000
+      unitCost: 10000,
+      qtyRequired: 23,
+      totalCost: 230000,
+      isEditable: false
     },
     {
-      rfq_id: 'RFQ100293',
-      stock_id: 'BMS012',
-      item_name: "Branded Laptops",
+      rfqId: "RFQ100293",
+      stockId: "BMS012",
+      itemName: "Branded Laptops",
       unit: "Pieces",
-      unit_cost: 1000000,
-      qty_required: 23,
-      total_cost: 23000000
+      unitCost: 1000000,
+      qtyRequired: 23,
+      totalCost: 23000000,
+      isEditable: false
     },
     {
-      rfq_id: 'RFQ000023',
-      stock_id: 'BMS128',
-      item_name: "Bannerz",
+      rfqId: "RFQ000023",
+      stockId: "BMS128",
+      itemName: "Bannerz",
       unit: "Pieces",
-      unit_cost: 340000,
-      qty_required: 100,
-      total_cost: 34000000
+      unitCost: 340000,
+      qtyRequired: 100,
+      totalCost: 34000000,
+      isEditable: false
     },
     {
-      rfq_id: 'RFQ000221',
-      stock_id: 'BMS144',
-        item_name: "Branded Pends",
+      rfqId: "RFQ000221",
+      stockId: "BMS144",
+      itemName: "Branded Pends",
       unit: "Boxes",
-      unit_cost: 30000,
-      qty_required: 50,
-      total_cost: 1500000
+      unitCost: 30000,
+      qtyRequired: 50,
+      totalCost: 1500000,
+      isEditable: false
     }
   ];
 

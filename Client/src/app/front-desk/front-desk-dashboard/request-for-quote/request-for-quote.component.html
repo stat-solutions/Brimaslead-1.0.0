@@ -6,13 +6,13 @@
           <div class="row">
             <div class="col-xs-12 col-lg-5 justify-content-left ml-3 mt-4 pt-2">
               <a
-                class="btn btn-info btn-sm"
+                class="btn btn-info btn-sm mb-1"
                 role="button"
                 routerLink="/frontdesk-reports"
                 ><i class="fas fa-chart-line fa-sm text-white"></i> Reports</a
               >&nbsp;
               <a
-                class="btn btn-info btn-sm"
+                class="btn btn-info btn-sm mb-1"
                 role="button"
                 routerLink="authpage/register-client"
                 ><i class="fas fa-briefcase text-white"></i>&nbsp;Register
@@ -20,10 +20,10 @@
               >
               &nbsp;
               <a
-                class="btn btn-info btn-sm"
+                class="btn btn-info btn-sm mb-1"
                 role="button"
                 routerLink="/create-item"
-                ><i class="fas fa-umbrella text-white"></i>&nbsp;Create Item</a
+                ><i class="fas fa-cookie-bite text-white"></i>&nbsp;Create Item</a
               >
             </div>
             <div
@@ -79,15 +79,15 @@
                               <div class="col-xs-12 col-lg-5">
                                 <div class="form-group">
                                   <label
-                                    for="client_name"
+                                    for="clientName"
                                     class="text-info"
                                     [ngClass]="
-                                      fval.client_name.valid
+                                      fval.clientName.valid
                                         ? 'text-success'
                                         : ''
                                     "
                                     >Select Client<i
-                                      *ngIf="fval.client_name.valid"
+                                      *ngIf="fval.clientName.valid"
                                       class="material-icons"
                                       >check_circle</i
                                     ></label
@@ -96,19 +96,19 @@
                                   <select
                                     (click)="openModal(template)"
                                     class="form-control"
-                                    formControlName="client_name"
+                                    formControlName="clientName"
                                   >
                                     <!-- <option value="" selected>Select Client name</option> -->
                                     <option *ngFor="let client of clients">{{
-                                      client.client_name
+                                      client.clientName
                                     }}</option>
                                   </select>
                                   <div
                                     class="text-danger col"
                                     *ngIf="
-                                      (fval.client_name.touched ||
-                                        fval.client_name.dirty) &&
-                                      fval.client_name.errors?.required
+                                      (fval.clientName.touched ||
+                                        fval.clientName.dirty) &&
+                                      fval.clientName.errors?.required
                                     "
                                   >
                                     Client is required
@@ -138,8 +138,8 @@
                                   >
                                     <!-- <option disabled selected>Select Rfq source</option> -->
                                     <option
-                                      *ngFor="let rfq_source of rfq_sources"
-                                      >{{ rfq_source.source_name }}</option
+                                      *ngFor="let rfq_source of rfqSources"
+                                      >{{ rfq_source.sourceName }}</option
                                     >
                                   </select>
                                   <div
@@ -257,7 +257,7 @@
                         </div>
                       </div>
                       <!-- <app-add-rfq-items
-                        [client_names]="fval.client_name"
+                        [clientNames]="fval.clientName"
                       ></app-add-rfq-items> -->
 
                       <legend class="text-info">
@@ -279,20 +279,20 @@
                           </div>
                           <div class="col-xs-12 col-lg-6">
                             <div class="form-group">
-                              <label for="client_name" class="text-info"
+                              <label for="clientName" class="text-info"
                                 >Client Name</label
                               >
                               <input
                                 class="form-control"
-                                formControlName="client_name"
-                                [value]="fval.client_name.value"
+                                formControlName="clientName"
+                                [value]="fval.clientName.value"
                               />
                               <div
                                 class="text-danger col"
                                 *ngIf="
-                                  (fval.client_name.touched ||
-                                    fval.client_name.dirty) &&
-                                  fval.client_name.errors?.required
+                                  (fval.clientName.touched ||
+                                    fval.clientName.dirty) &&
+                                  fval.clientName.errors?.required
                                 "
                               >
                                 Client is required
@@ -327,15 +327,10 @@
                                     (change)="updateOtherItems($event)"
                                   >
                                     <option
-                                      *ngFor="let article of items_stock"
-                                                                           >{{ article.item_name }}</option
+                                      *ngFor="let article of itemsStock"
+                                                                           >{{ article.itemName }}</option
                                     >
                                 </select>
-
-                                  <!-- <div
-                                    class="text-danger col" *ngIf="item[i].item_name.valid"
-                                  >
-                                  </div> -->
                                 </div>
                               </td>
                               <td>
@@ -355,7 +350,7 @@
                                     <input
                                       class="form-control"
                                       type="text"
-                                      formControlName="unit_cost"
+                                      formControlName="unitCost"
                                     />
                                   </div>
                                 </div>
@@ -365,7 +360,7 @@
                                 <div class="form-group">
                                   <input
                                     class="form-control"
-                                    formControlName="qty_required"
+                                    formControlName="qtyRequired"
                                     type="text"
                                   />
                                 </div>
@@ -375,7 +370,7 @@
                                   <input
                                     type="text"
                                     class="form-control"
-                                    formControlName="total_cost"
+                                    formControlName="totalCost"
                                   />
                                 </div>
                               </td>
@@ -412,7 +407,7 @@
                     <div class="card">
                       <div class="card-body p-0">
                         <div id="rfq-listing" class="table-responsive">
-                          <table class="table table-striped  projects">
+                          <table class="table table-striped">
                             <thead>
                               <tr>
                                 <th style="width: 2%">
@@ -685,16 +680,16 @@
                 <button
                   class="primary"
                   (click)="modalRef.hide()"
-                  (click)="updateName(client.client_name)"
+                  (click)="updateName(client.clientName)"
                 >
                   Add
                 </button>
               </td>
               <td>
-                <a>{{ client.client_id }}</a>
+                <a>{{ client.clientId }}</a>
               </td>
-              <td>{{ client.client_name }}</td>
-              <td>{{ client.phone_number }}</td>
+              <td>{{ client.clientName }}</td>
+              <td>{{ client.phoneNumber }}</td>
               <td>{{ client.email }}</td>
             </tr>
           </tbody>

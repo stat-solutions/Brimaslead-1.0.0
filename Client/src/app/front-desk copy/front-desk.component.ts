@@ -2,13 +2,12 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { LayoutService } from '../shared/services/layout.service';
 
 @Component({
-  selector: 'app-front-desk',
-  templateUrl: './front-desk.component.html',
-  styleUrls: ['./front-desk.component.scss']
+  selector: "app-front-desk",
+  templateUrl: "./front-desk.component.html",
+  styleUrls: ["./front-desk.component.scss"]
 })
 export class FrontDeskComponent implements OnInit {
-
-  screenTitle = 'Front Desk-Dashboard';
+  screenTitle = "Front Desk Dashboard";
   accessedPanel: string;
   contentHeight: number;
   @Input() navLayout: string;
@@ -21,16 +20,17 @@ export class FrontDeskComponent implements OnInit {
   @Input() navbarColorTheme: string;
   @Input() activeNavColorTheme: string;
 
+  user = "/../../../assets/avatar3.jpg";
 
-  constructor(private layoutService: LayoutService) {
-
-  }
+  constructor(private layoutService: LayoutService) {}
 
   ngOnInit() {
-    this.layoutService.contentHeightCast.subscribe(setCtHeight => this.contentHeight = setCtHeight);
+    this.layoutService.contentHeightCast.subscribe(
+      setCtHeight => (this.contentHeight = setCtHeight)
+    );
     this.setAccessedPanel();
   }
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResizeHeight(event: any) {
     this.contentHeight = window.innerHeight - this.layoutService.headerHeight;
   }
@@ -38,7 +38,4 @@ export class FrontDeskComponent implements OnInit {
   setAccessedPanel() {
     this.accessedPanel = this.layoutService.thePanelNow;
   }
-
-
-
 }

@@ -1,7 +1,7 @@
 export interface RfqStatus {
-  rfq_id: string;
-  user_name: string;
-  movt_status: string;
-  process_status: string;
-  movt_timestamp: string;
+  rfqId: string;
+  userName: string;
+  movtStatus: string;
+  processStatus: string;
+  movtTimestamp: string;
 }
