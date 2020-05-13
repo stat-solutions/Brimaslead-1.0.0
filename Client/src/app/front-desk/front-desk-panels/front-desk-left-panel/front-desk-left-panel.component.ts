@@ -54,11 +54,9 @@ export class FrontDeskLeftPanelComponent implements OnInit {
       },
 
       {
-        name: "Request For Quotation",
+        name: "Request For Quotation(RFQ)",
         icon: "fas fa-clipboard-list",
         url: "/requestforquote",
-        badge: "2",
-        badgeBg: "bg-warning"
       },
       {
         name: "Register Client",
@@ -75,7 +73,9 @@ export class FrontDeskLeftPanelComponent implements OnInit {
       {
         name: "Appointments",
         icon: "far fa-calendar-plus",
-        url: "/appointments"
+        url: "/appointments",
+        badge: "2",
+        badgeBg: "bg-warning"
       },
       {
         name: "HR Management",
@@ -83,7 +83,7 @@ export class FrontDeskLeftPanelComponent implements OnInit {
         url: "/hr-management"
       },
       {
-        name: "Reports And Analysis",
+        name: "Reports and Analysis",
         icon: "fa fa-chart-line",
         url: "/reports-analysis"
       },

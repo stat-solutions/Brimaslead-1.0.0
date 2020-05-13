@@ -2,12 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LayoutService } from 'src/app/shared/services/layout.service';
 
 @Component({
-  selector: 'app-front-desk-header',
-  templateUrl: './front-desk-header.component.html',
-  styleUrls: ['./front-desk-header.component.scss']
+  selector: "app-front-desk-header",
+  templateUrl: "./front-desk-header.component.html",
+  styleUrls: ["./front-desk-header.component.scss"]
 })
 export class FrontDeskHeaderComponent implements OnInit {
-
   @Input() navLayout: string;
   @Input() defaultNavbar: string;
   @Input() toggleNavbar: string;
@@ -20,11 +19,13 @@ export class FrontDeskHeaderComponent implements OnInit {
   @Input() activeNavColorTheme: string;
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
-  constructor( private layoutService: LayoutService) { }
 
-  ngOnInit() {
+  user = "/../../../assets/avatar3.jpg";
+  userName: string;
 
-  }
+  constructor(private layoutService: LayoutService) {}
+
+  ngOnInit() {}
   changeTheToggleStatus() {
     this.layoutService.getToggleStatus();
   }
