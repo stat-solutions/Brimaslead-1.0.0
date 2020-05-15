@@ -5,6 +5,7 @@ import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/cu
 import { AuthServiceService } from "src/app/shared/services/auth-services/auth-service.service";
 import { Router } from "@angular/router";
 import * as jwt_decode from "jwt-decode";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html"
@@ -18,11 +19,12 @@ export class LoginComponent implements OnInit {
   loginStatus: string;
   value: string;
   mySubscription: any;
-
+  serviceErrors: any = {};
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -31,15 +33,15 @@ export class LoginComponent implements OnInit {
 
   createFormGroup() {
     return new FormGroup({
-      phone_number: new FormControl(
+     email: new FormControl(
         "",
         Validators.compose([
           Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(/\d/, {
-            hasNumber: true
-          }),
-          Validators.maxLength(10),
-          Validators.minLength(10)
+          // CustomValidatorInitialCompanySetup.patternValidator(/\d/, {
+          //   hasNumber: true
+          // }),
+          // Validators.maxLength(10),
+          Validators.email
         ])
       ),
       password: new FormControl(
@@ -61,7 +63,19 @@ export class LoginComponent implements OnInit {
     return this.userForm.controls;
   }
 
+  showSuccess() {
+
+    this.toastr.success('Over to Brimaslead Dashboard', this.serviceErrors,
+                         {timeOut: 6000, positionClass: 'toast-top-right'});
+  }
+  showDanger() {
+
+    this.toastr.warning(this.serviceErrors, 'Login Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
+
+
   login() {
+    
     this.submitted = true;
 
     this.spinner.show();
@@ -69,44 +83,49 @@ export class LoginComponent implements OnInit {
     if (this.userForm.invalid === true) {
       return;
     } else {
-      // this.authService.loginNormalUser(this.userForm)
-      //   .subscribe(
-      //     (success: boolean) => {
-      //       if (success) {
-      //         this.posted = true;
-      //         this.loginStatus = 'Signed In Successfully';
-      //         this.spinner.hide();
-      //         if (jwt_decode(this.authService.getJwtToken()).user_role === 1000) {
-      //           setTimeout(() => {
-      //             this.router.navigate(['userDashboard/dashboard']);
-      //           }, 1000);
-      //         } else if (jwt_decode(this.authService.getJwtToken()).user_role === 1001) {
-      //           setTimeout(() => {
-      //             this.router.navigate(['admindashboard/thedashboard']);
-      //           }, 1000);
-      //         } else if (jwt_decode(this.authService.getJwtToken()).user_role === 1002) {
-      //           setTimeout(() => {
-      //             this.router.navigate(['superuserdashboard/thesuperuserdashboard']);
-      //           }, 1000);
-      //         }
-      //       } else {
-      //         this.spinner.hide();
-      //         this.errored = true;
-      //       }
-      //     },
-      //     (error: string) => {
-      //       this.spinner.hide();
-      //       this.errored = true;
-      //       this.loginStatus = error;
-      // console.log();
-      //         if (this.loginStatus === 'Authorisation Failed!! User Not Registered') {
-      //           setTimeout(() => {
-      //             this.router.navigate(['userDashboard/registeruser']);
-      //           }, 1000);
-      //         }
-      //         this.spinner.hide();
-      //       }
-      //     );
+      // console.log(this.userForm.value);
+   this.authService.loginEmployee(this.userForm.value).subscribe(
+     
+    (user) => {
+         
+      if (user){
+        //  console.log(loggedInUser);
+         console.log(user.emailVerified);
+        //  console.log(loggedInUser.user.emailVerified);
+        //  console.log(loggedInUser.user.displayName);
+          if (user.emailVerified) {
+            this.serviceErrors = `Hello ${user.displayName}, You signed in successfully!!!`;
+
+            setTimeout(() => {
+              this.posted = true;
+              this.spinner.hide();
+              this.showSuccess();
+              this.router.navigate(['frontdeskdashboard']);
+            }, 2000);
+          }else{
+            
+            this.serviceErrors = 'Email not verified!! Please first login into your email address and verify the email by click on the link';
+
+            setTimeout(() => {
+              this.posted = true;
+              this.spinner.hide();
+              this.showDanger();
+              // this.router.navigate(['userDashboard/dashboard']);
+            }, 2000);
+            
+          } 
+          }
+      
+      }
+        ,
+
+        (error: string) => {
+          this.spinner.hide();
+          this.errored = true;
+          this.serviceErrors = error;
+          this.showDanger();
+        } 
+      );
+    
     }
-  }
-}
+  }}

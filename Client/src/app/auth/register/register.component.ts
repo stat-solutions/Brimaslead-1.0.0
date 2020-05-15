@@ -6,12 +6,8 @@ import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-s
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
 import { ToastrService } from 'ngx-toastr';
 import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
-
-
-interface Department {
-  value: string;
-  viewValue: string;
-}
+import { throwIfEmpty } from 'rxjs/operators';
+export interface Department {departmentName:string};
 
 @Component({
   selector: 'app-register',
@@ -32,7 +28,6 @@ export class RegisterComponent implements OnInit {
   serviceErrors: any = {};
   value: string;
   mySubscription: any;
-
   userForm: FormGroup;
   imageSrc: string;
   previewPhoto = false;
@@ -40,7 +35,8 @@ export class RegisterComponent implements OnInit {
   personalFormGroup: FormGroup;
   employeeFormGroup: FormGroup;
   appData: any;
-
+  department: Department[];
+  
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
@@ -49,15 +45,16 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
-  department: Department[] = [
-    { value: 'management', viewValue: 'Management' },
-    { value: 'front-desk', viewValue: 'Front Desk' },
-    { value: 'finance', viewValue: 'Finance' },
-    { value: 'production', viewValue: 'Production' },
-    { value: 'quality-assurance', viewValue: 'Quality assurance' },
-    { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
-    { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
-  ];
+
+  // = [
+  //   { value: 'management', viewValue: 'Management' },
+  //   { value: 'front-desk', viewValue: 'Front Desk' },
+  //   { value: 'finance', viewValue: 'Finance' },
+  //   { value: 'production', viewValue: 'Production' },
+  //   { value: 'quality-assurance', viewValue: 'Quality assurance' },
+  //   { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
+  //   { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
+  // ];
 
   /** Returns a FormArray with the name 'formArray'. */
   // get formArray() {
@@ -68,9 +65,14 @@ export class RegisterComponent implements OnInit {
     this.loginFormGroup = this.createLoginFormControls();
     this.personalFormGroup  = this.createPersonalFormControls();
     this.employeeFormGroup = this.createEmployeeFormControls();
+    this.getDepartments();
   }
 
-
+ getDepartments(){
+  this.authService.getAllDepartments().subscribe(
+    x=>{this.department=x;console.log(x[0].departmentName)}
+  );
+}
   createLoginFormControls() {
   return  this._formBuilder.group(
       {
@@ -142,17 +144,12 @@ export class RegisterComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', Validators.email],
-      photo: ['', Validators.required],
+  
 
 
     });
     }
-    // fileSource: ['', [Validators.required]]
-
-    // CustomValidatorInitialCompanySetup.patternValidator(
-    //   /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-    //   { employeeIdCheck: true }
-    // )
+   
 
     createEmployeeFormControls() {
   return this._formBuilder.group({
@@ -183,39 +180,13 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  /* Called on each input in either password field */
-  // onPasswordInput() {
-  //   if (this.userForm.hasError("NoPasswordMatch")) {
-  //     this.userForm.controls.confirmPassword.setErrors([{ NoPasswordMatch: true }]);
-  //   } else {
-  //     this.userForm.controls.confirmPassword.setErrors(null);
-  //   }
-  // }
-
-  // revert() {
-  //   this.userForm.reset();
-  // }
-
-  // checkError = (controlName: string, errorName: string) => {
-  //   const control = this.userForm.get(controlName);
-  //   return control ? control.hasError(errorName) : true;
-  // };
- // 24691119
 
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
 
-  // form1() {
-  //   console.log(this.loginFormGroup.value);
-  // }
-  form2() {
-    console.log(this.personalFormGroup.value);
-  }
-  // form3() {
-  //   console.log(this.employeeFormGroup.value);
-  // }
+ 
   onFileSelected(event) {
 
     this.file = event.target.files[0];
@@ -234,14 +205,16 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     this.spinner.show();
-    this.appData = {...this.loginFormGroup.value, ...this.personalFormGroup.value, ...this.employeeFormGroup.value, ...{photo: this.file}};
-
+    this.appData = {...this.loginFormGroup.value, ...this.personalFormGroup.value, ...this.employeeFormGroup.value};
+  //  console.log(  this.appData );
     this.authData = {email: this.appData.email, password: this.appData.password};
     this.submitted = true;
-   
+    delete this.appData.password;
+    delete this.appData.confirmPassword;
+    console.log(this.authData);
     this.authService.registerEmployee(this.authData, this.appData).subscribe(
         (data: string) => {
-          console.log(data);
+         
           if (data === 'User created successfully') {
             this.serviceErrors = 'Registration was Successful';
 
@@ -249,7 +222,7 @@ export class RegisterComponent implements OnInit {
               this.posted = true;
               this.spinner.hide();
               this.showSuccess();
-              // this.router.navigate(['userDashboard/dashboard']);
+              this.router.navigate(['authpage/loginpage']);
             }, 2000);
           }
         },
@@ -263,12 +236,9 @@ export class RegisterComponent implements OnInit {
       );
     }
 
-    // this.spinner.hide();
-    // this.errored = true;
-    // this.serviceErrors = 'Errored';
+
 
 
 
 
   }
-

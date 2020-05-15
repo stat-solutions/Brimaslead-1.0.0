@@ -2,7 +2,6 @@
 
 export interface UserRole {
 
-  user_role_id: number;
-  user_role_name: string;
-  users_contact: string;
+  userRoleName: string;
+  userContact: string;
 }

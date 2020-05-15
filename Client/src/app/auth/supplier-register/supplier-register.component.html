@@ -28,7 +28,7 @@
                   >Name</mat-label>
                 <mat-icon matPrefix>person_outline</mat-icon>
                 <input matInput
-                formControlName="user_name" placeholder="Enter your name">
+                formControlName="user_name" placeholder="Enter your name" />
                 <mat-error *ngIf="this.userForm.get('user_name').hasError('required')">
                   Name is required
                 </mat-error>
@@ -65,7 +65,7 @@
                   matInput
                   formControlName="phone_number"
                   placeholder="Enter phone number"
-                >
+                />
                 <mat-error
                     *ngIf="
  this.userForm.get('phone_number').hasError('required')
@@ -88,7 +88,7 @@
                   [type]="hide ? 'password' : 'text'"
                   formControlName="password"
                   placeholder="Enter your password"
-                >
+                />
                 <span
                   mat-icon-button
                   matSuffix
@@ -141,9 +141,9 @@
                 <input type="password"
                   matInput
                   [type]="hide ? 'password' : 'text'"
-                  formControlName="confirm_password"
+                  formControlName="confirmPassword"
                   placeholder="Confirm password"
-                >
+                />
                 <span
                   mat-icon-button
                   matSuffix
@@ -156,11 +156,11 @@
                   }}</mat-icon>
                 </span>
                 <mat-error
-                    *ngIf="this.userForm.get('confirm_password').hasError('required')"
+                    *ngIf="this.userForm.get('confirmPassword').hasError('required')"
                   >Confirm password
                 </mat-error>
                 <mat-error
-                    *ngIf="!this.userForm.get('confirm_password').hasError('required') && this.userForm.get('confirm_password').hasError('NoPasswordMatch')
+                    *ngIf="!this.userForm.get('confirmPassword').hasError('required') && this.userForm.get('confirmPassword').hasError('NoPasswordMatch')
                     ">Passwords do not match
                 </mat-error>
               </mat-form-field>
@@ -173,7 +173,7 @@
                   matInput
                   formControlName="email"
                   placeholder="Enter your email address"
-                >
+                />
                 <mat-error
                     *ngIf="this.userForm.get('email').hasError('email')"
                   >Email is required

@@ -1,6 +1,11 @@
 export interface ClientData{
-  client_id: string;
-  client_name: string;
-  phone_number: string;
+  clientId: string;
+  clientName: string;
+  phoneNumber: string;
   email: string;
+  createdBy:string;
+  firstApprovedBy:firebase.firestore.FieldPath;
+  secondApprovedBy:firebase.firestore.FieldPath;
+  createdAt:firebase.firestore.FieldValue;
+  updateAt:firebase.firestore.FieldValue;
 }

@@ -1,96 +1,155 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { map, tap, catchError, mapTo, finalize, mergeMap, concatMap } from 'rxjs/operators';
-import { Observable, throwError, of, BehaviorSubject, combineLatest, from } from 'rxjs';
-import { AuthUser } from '../../models/user-profile/auth-user';
-import { DatabaseServiceService } from './database-service.service';
-import { UserData } from '../../models/user-profile/user-data';
-import { AngularFirestore } from '@angular/fire/firestore';
-import * as firebase from 'firebase';
-import { BinaryDataServiceService } from './binary-data-service.service';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { map, catchError, mapTo, concatMap } from "rxjs/operators";
+import { Observable, throwError, from } from "rxjs";
+import { AuthUser } from "../../models/user-profile/auth-user";
+import { UserData } from "../../models/user-profile/user-data";
+import * as firebase from "firebase";
+import { DatabaseServiceService } from './database-auth-service.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
-
 export class EmailServiceService {
-
   public authState$: Observable<any | null>;
 
-  private readonly usersCol = 'users';
-
-  constructor(
-    private afa: AngularFireAuth, 
-    private fts: AngularFirestore,
-    private createPhoto:BinaryDataServiceService) {
+  constructor(private afa: AngularFireAuth, private db: DatabaseServiceService) {
     this.authState$ = this.afa.authState;
   }
-
-  signIn(user: AuthUser): Observable<any> {
-    return this.fromFirebaseAuthPromise(
-      this.afa.auth.signInWithEmailAndPassword(user.email, user.password)
-    );
-  }
-
-  signOut(): Observable<any> {
-    return this.fromFirebaseAuthPromise(
-      this.afa.auth.signOut()
-    );
-  }
-
-  signUp(user: AuthUser, data: UserData): Observable<firebase.auth.UserCredential> {
-
-
-
-    // create auth user on firebase
-    const createAuthUser = (email, pwd): Observable<firebase.auth.UserCredential> => {
-      return from(this.afa.auth.createUserWithEmailAndPassword(email, pwd));
+   
+   // create auth user on firebase
+   createAuthUser = (
+    email: string,
+    pwd: string
+  ): Observable<firebase.auth.UserCredential> => {
+    return from(this.afa.auth.createUserWithEmailAndPassword(email, pwd));
+  };
+   
+      // update the auth user displayname
+       updateAuthUser = (
+        fireUser: firebase.auth.UserCredential,
+        _data: UserData
+      ): Observable<firebase.auth.UserCredential> => {
+        return from(
+          fireUser.user.updateProfile({
+            displayName: _data.userName,
+            photoURL: "Missing",
+          })
+        ).pipe(mapTo(fireUser));
+      };
+  
+   
+  signUpEmployee(
+    user: AuthUser,
+    data: UserData
+  ): Observable<firebase.auth.UserCredential> {
+    
+ 
+    // update the Employee profile data on firestore
+    const updateDatabase = (
+      fireUser: firebase.auth.UserCredential,
+      _data: UserData
+    ): Observable<firebase.auth.UserCredential> => {
+      return from(
+        this.db.addEmployeeeProfile(
+          `employeeData/${fireUser.user.uid}`,
+          _data,
+          fireUser
+        )
+      ).pipe(mapTo(fireUser));
     };
 
-
-    // update the auth user displayname
-    const updateAuthUser = (fireUser: firebase.auth.UserCredential, _data: UserData): Observable<firebase.auth.UserCredential> => {
-      return from(fireUser.user.updateProfile({
-        displayName: _data.userName
-      })).pipe(
-        mapTo(fireUser)
-      );
-    };
-
-
-
-    return createAuthUser(user.email, user.password).pipe(
-
-      tap((x) => console.log('create auth user', x.user.uid)),
-
-      concatMap((fireUserCredentials: firebase.auth.UserCredential) => updateAuthUser(fireUserCredentials, data).pipe(
-        tap(x2 => console.log('auth user info updated', x2.user.displayName))
-      )),
-      
-      concatMap((fireUserCredentials: firebase.auth.UserCredential) => this.createPhoto.uploadImage(data.photo, fireUserCredentials).pipe(
-        tap(x2 => console.log('auth user info updated', x2.user.photoURL))
-      )),
-      concatMap((fireUserCredentials: firebase.auth.UserCredential) => this.sendVerificationEmail(fireUserCredentials).pipe(
-        tap(x=>console.log(`the deal is ${x}` ))
-      )
-      ),
-
+    return this.createAuthUser(user.email, user.password).pipe(
+      concatMap((firstReturn) => this.updateAuthUser(firstReturn, data)),
+      concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
+      concatMap((thirdReturn) => updateDatabase(thirdReturn, data)),
       catchError((error) => {
-
         return throwError(error.message);
       })
     );
   }
 
 
-  // send verifcation email to current user
-  sendVerificationEmail(fireUserCredentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential> {
-    return this.fromFirebaseAuthPromise(this.afa.auth.currentUser.sendEmailVerification()
+  signUpCustomerByHimself(
+    user: AuthUser,
+    data: UserData
+  ): Observable<firebase.auth.UserCredential> {
+   
+    // update the user profile data on firestore
+    const updateDatabase = (
+      fireUser: firebase.auth.UserCredential,
+      _data: UserData
+    ): Observable<firebase.auth.UserCredential> => {
+      return from(
+        this.db.addCustomerProfile(
+          `customerData/${fireUser.user.uid}`,
+          _data,
+          fireUser
+        )
+      ).pipe(mapTo(fireUser));
+    };
 
-    ).pipe(
-     
-      mapTo(fireUserCredentials)
+    return this.createAuthUser(user.email, user.password).pipe(
+      concatMap((firstReturn) => this.updateAuthUser(firstReturn, data)),
+      concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
+      concatMap((thirdReturn) => updateDatabase(thirdReturn, data)),
+      catchError((error) => {
+        return throwError(error.message);
+      })
     );
+  }
+
+  signUpSupplier(
+    user: AuthUser,
+    data: UserData
+  ): Observable<firebase.auth.UserCredential> {
+
+ 
+    // update the Employee profile data on firestore
+    const updateDatabase = (
+      fireUser: firebase.auth.UserCredential,
+      _data: UserData
+    ): Observable<firebase.auth.UserCredential> => {
+      return from(
+        this.db.addEmployeeeProfile(
+          `employeeData/${fireUser.user.uid}`,
+          _data,
+          fireUser
+        )
+      ).pipe(mapTo(fireUser));
+    };
+
+    return this.createAuthUser(user.email, user.password).pipe(
+      concatMap((firstReturn) => this.updateAuthUser(firstReturn, data)),
+      concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
+      concatMap((thirdReturn) => updateDatabase(thirdReturn, data)),
+      catchError((error) => {
+        return throwError(error.message);
+      })
+    );
+  }
+
+  // send verifcation email to current user
+  sendVerificationEmail(
+    fireUserCredentials: firebase.auth.UserCredential
+  ): Observable<firebase.auth.UserCredential> {
+    return this.fromFirebaseAuthPromise(
+      this.afa.auth.currentUser.sendEmailVerification()
+    ).pipe(mapTo(fireUserCredentials));
+  }
+
+  private fromFirebaseAuthPromise(promise): Observable<any> {
+    return from(promise);
+  }
+
+  signIn(user: AuthUser): Observable<firebase.User> {
+    return from(
+      this.afa.auth.signInWithEmailAndPassword(user.email, user.password)
+    ).pipe(map((x) => x.user));
+  }
+
+  signOut(): Observable<any> {
+    return this.fromFirebaseAuthPromise(this.afa.auth.signOut());
   }
 
   changePassword(newPwd: string): Observable<any> {
@@ -98,13 +157,4 @@ export class EmailServiceService {
       this.afa.auth.currentUser.updatePassword(newPwd)
     );
   }
-
-  private fromFirebaseAuthPromise(promise): Observable<any> {
-    return from(promise);
-  }
-
-
-
-
-
 }

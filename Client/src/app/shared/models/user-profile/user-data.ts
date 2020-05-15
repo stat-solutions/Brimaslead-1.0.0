@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export interface UserData {
 
     address: string;
@@ -14,5 +16,12 @@ export interface UserData {
     phoneNumber: string;
     photo: File;
     userName: string;
+    accessRef:firebase.firestore.FieldPath;
+    departmentRef:firebase.firestore.FieldPath;
+    createdAt:firebase.firestore.FieldValue;
+    updatedAt:firebase.firestore.FieldValue
+
+
+
 
 }

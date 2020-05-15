@@ -9,6 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { AddRfqItemsComponent } from './add-rfq-items/add-rfq-items.component';
 import { RfqDetailsComponent } from './rfq-details/rfq-details.component';
 import { FilterPipe } from 'ngx-filter-pipe';
+export interface ClientRfqData{  clientId: string;clientName: string;phoneNumber: string; email: string};
 
 @Component({
   selector: 'app-request-for-quote',
@@ -17,7 +18,7 @@ import { FilterPipe } from 'ngx-filter-pipe';
 })
 export class RequestForQuoteComponent implements OnInit {
   public modalRef: BsModalRef;
-  userFilter: any = { client_name: '' };
+  userFilter: any = { clientName: '' };
   rfq: any = {};
   submit = false;
   userForm: FormGroup;
@@ -88,29 +89,30 @@ export class RequestForQuoteComponent implements OnInit {
     }
   ];
 
-  clients: ClientData[] = [
+  clients: ClientRfqData[] = [
     {
-      client_id: 'BC131212',
-      client_name: 'KCB',
-      phone_number: '0753134341',
-      email: 'procurement@kcb-ug.com'
+      clientId: 'BC131212',
+      clientName: 'KCB',
+      phoneNumber: '0753134341',
+      email: 'procurement@kcb-ug.com',
+    
     },
     {
-      client_id: 'BC121233',
-      client_name: 'Sheraton Hotel',
-      phone_number: '0772443208',
+      clientId: 'BC121233',
+      clientName: 'Sheraton Hotel',
+      phoneNumber: '0772443208',
       email: 'procurement@sheratonhotel.com'
     },
     {
-      client_id: 'BC031526',
-      client_name: 'Shell',
-      phone_number: '0751781341',
+      clientId: 'BC031526',
+      clientName: 'Shell',
+      phoneNumber: '0751781341',
       email: 'supplies@shell.co.ug'
     },
     {
-      client_id: 'BC107252',
-      client_name: 'MTN',
-      phone_number: '0782100042',
+      clientId: 'BC107252',
+      clientName: 'MTN',
+      phoneNumber: '0782100042',
       email: 'procurement@mtn.co.ug'
     }
   ];
@@ -135,7 +137,7 @@ export class RequestForQuoteComponent implements OnInit {
         { value: this.setRfqId(), disabled: true },
         Validators.compose([Validators.required])
       ],
-      client_name: ['', Validators.compose([Validators.required])],
+      clientName: ['', Validators.compose([Validators.required])],
 
       source_name: [
         '',
@@ -152,7 +154,7 @@ export class RequestForQuoteComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      client_name: ['', Validators.compose([Validators.required])],
+      clientName: ['', Validators.compose([Validators.required])],
 
       addItem: this.fb.array([this.itemdets(), ]),
       stock_id: [
@@ -271,7 +273,7 @@ export class RequestForQuoteComponent implements OnInit {
   // }
 
   updateName(name: string) {
-    this.fval.client_name.setValue(name);
+    this.fval.clientName.setValue(name);
     this.clientLabel = 'Selected Client';
     this.clientAdded = true;
   }
@@ -380,7 +382,7 @@ export class RequestForQuoteComponent implements OnInit {
   }
 
   get clientName(): any {
-    return this.userForm.get('client_name');
+    return this.userForm.get('clientName');
   }
 
   onSave() {}

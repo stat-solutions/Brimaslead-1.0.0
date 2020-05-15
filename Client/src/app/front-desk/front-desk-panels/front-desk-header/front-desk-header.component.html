@@ -21,8 +21,16 @@
     <span class="text-info flux-left-header">FRONT DESK DASHBOARD</span>
       <div class="flux-right-header clearfix">
         <ul>
-          <li><a href="" class=""><i class="fas fa-cog"></i> <span *ngIf="deviceType !== 'mobile'" ></span> </a></li>
-          <li><a href=""><i class="fas fa-power-off"></i></a></li>
+          <li><a  class=""><i class="fas fa-cog"></i> <span *ngIf="deviceType !== 'mobile'" ></span> </a></li>
+          <li><a (click)="logoutUser()"><i class="fas fa-power-off"></i></a></li>
+          <ngx-spinner
+          class="bg-warning bg-success"
+          size="medium"
+          type="ball-scale-multiple"
+        >
+          <p class="text-light">Loading...</p>
+        </ngx-spinner>
+       
         </ul>
       </div>
     </div>

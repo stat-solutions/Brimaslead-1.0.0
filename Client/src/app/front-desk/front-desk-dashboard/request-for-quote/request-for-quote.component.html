@@ -67,8 +67,8 @@ CREATE RFQ
   <div class="col-xs-12 col-lg-4">
     <div class="form-group">
       <label
-      for="client_name" class="text-info" [ngClass]="fval.client_name.valid ? 'text-success'
-      : '' ">{{clientLabel}}<i *ngIf="fval.client_name.valid" class="material-icons">check_circle</i>
+      for="clientName" class="text-info" [ngClass]="fval.clientName.valid ? 'text-success'
+      : '' ">{{clientLabel}}<i *ngIf="fval.clientName.valid" class="material-icons">check_circle</i>
       </label>
 
       <button
@@ -76,10 +76,10 @@ CREATE RFQ
        Select Client
        </button>
 
-       <input *ngIf="clientAdded" class="form-control" formControlName="client_name"  [value]="fval.client_name.value" />
+       <input *ngIf="clientAdded" class="form-control" formControlName="clientName"  [value]="fval.clientName.value" />
 
-       <div class="text-danger col" *ngIf="(fval.client_name.touched ||fval.client_name.dirty) &&
-      fval.client_name.errors?.required">
+       <div class="text-danger col" *ngIf="(fval.clientName.touched ||fval.clientName.dirty) &&
+      fval.clientName.errors?.required">
                                           Client is required
              </div>
                </div>
@@ -154,7 +154,7 @@ CREATE RFQ
 </div>
 </div>
 <!-- <app-add-rfq-items
-[client_names]="fval.client_name"
+[clientNames]="fval.clientName"
 ></app-add-rfq-items> -->
 
 
@@ -276,7 +276,7 @@ CREATE RFQ
 </div>
 <div class="modal-body">
   <div class="form-group">
-    <input type="text" class="form-control" [(ngModel)]="userFilter.client_name"  placeholder="Enter Client Name">
+    <input type="text" class="form-control" [(ngModel)]="userFilter.clientName"  placeholder="Enter Client Name">
 </div>
 <div class="jumbotron-fluid table-responsive mx-5 my-5">
 <table class="table-bordered table-striped mx-3">
@@ -293,16 +293,16 @@ CREATE RFQ
 <button
 class="primary"
 (click)="modalRef.hide()"
-(click)="updateName(client.client_name)"
+(click)="updateName(client.clientName)"
 >
 Add
 </button>
 </td>
 <td class="p-2 mx-2">
-<a>{{ client.client_id }}</a>
+<a>{{ client.clientId }</a>
 </td>
-<td>{{ client.client_name }}</td>
-<td>{{ client.phone_number }}</td>
+<td>{{ client.clientName }</td>
+<td>{{ client.phoneNumber }</td>
 <td>{{ client.email }}</td>
 </tr>
 </tbody>

@@ -105,7 +105,7 @@ export class SupplierRegisterComponent implements OnInit {
             )
           ])
         ],
-        confirm_password: ["", Validators.required]
+        confirmPassword: ["", Validators.required]
       },
       {
         validator: CustomValidatorInitialCompanySetup.passwordMatchValidator

@@ -19,11 +19,10 @@ import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/
 import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
-import { PurchasesComponent } from '../front-desk-dashboard/purchases/purchases.component';
-import { StockDetailsComponent } from '../front-desk-dashboard/purchases/stock-details/stock-details.component';
 import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -38,8 +37,6 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     PayrollModuleComponent,
     HiringRetirementResignationComponent,
     RfqDetailsComponent,
-    PurchasesComponent,
-    StockDetailsComponent,
     AddRfqItemsComponent
   ],
   imports: [
@@ -49,7 +46,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ServicesModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
-    FilterPipeModule
+    FilterPipeModule,
+    NgxSpinnerModule
   ],
   exports: [
     FrontDeskLayoutComponent,

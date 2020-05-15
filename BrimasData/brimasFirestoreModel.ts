@@ -14,26 +14,26 @@
 // -- ---------------------------------------------------
 //  Collection `the_company_details`
 // -- -----------------------------------------------------
-export interface the_company_details {
-  id:string;
-  the_company_details_name:string; //Brimas Media Ltd
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+export interface theCompanyDetails {
+  theCompanyDetailsName:string; //Brimas Media Ltd
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
+
 
 // -- ---------------------------------------------------
 //  Collection `the_company_contacts`
 // -- -----------------------------------------------------
-export interface the_company_contacts {
-  phone1:string;
-  phone2:string;
-  phone3:string;
-  email1:string;
-  email2:string;
-  email3:string;
-  the_company_details_id:string;
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+export interface theCompanyContacts {
+  phone1?:string;
+  phone2?:string;
+  phone3?:string;
+  email1?:string;
+  email2?:string;
+  email3?:string;
+  theCompanyDetails:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 
@@ -41,49 +41,48 @@ export interface the_company_contacts {
 // -- ---------------------------------------------------
 //  Collection `the_company_address`
 // -- -----------------------------------------------------
-export interface the_company_address {
-  office_floor:string;
-  street_building:string;
-  box_number:string;
-  plot_number:string;
+export interface theCompanyAddress {
+  officeFloor:string;
+  streetBuilding:string;
+  boxNumber:string;
+  plotNumber:string;
   city:string;
   region:string;
   country:string;
-  the_company_details_id:string;
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+  theCompanyDetails:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 // -- ---------------------------------------------------
 //  Collection `Branch`
 // -- -----------------------------------------------------
 export interface branch {
-  branch_name:string;
-  the_company_details_id:string;
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+  branchName:string;
+  theCompanyDetails:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 // -- ---------------------------------------------------
 //  Collection `Department`
 // -- -----------------------------------------------------
 export interface department {
-  department_name:string;
-  branch_id:string;
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+  departmentName:string;
+  branch:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 // -- ---------------------------------------------------
 //  Collection `CountryCurrency`
 // -- -----------------------------------------------------
-export interface CountryCurrency {
-  countryCurrencyId:string;
+export interface countryCurrency {
   countryCurrencyName:string;
   countryCurrencyId:string;
  countryCurrencySymbol:string;
-  createdAt: TIMESTAMP,
-  updatedAt: TIMESTAMP,
+ createdAt: Timestamp,
+ updatedAt: Timestamp,
 }
 
 
@@ -91,11 +90,10 @@ export interface CountryCurrency {
 //  Collection `CountryCurrency`
 // -- -----------------------------------------------------
 export interface Gateway {
-  gatewayId:string;
   gatewayName:string;
-  countryCurrencyId:string;
-  createdAt: TIMESTAMP,
-  updatedAt: TIMESTAMP,
+  countryCurrency:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 /*==============PART TWO:USER DETAILS SETUPS============*/
@@ -104,11 +102,10 @@ export interface Gateway {
 //  Collection `UserRole`
 // -- -----------------------------------------------------
 export interface UserRole {
-  userRoleId:string;
   userRoleName:string;
   userRoleCategory:string;
-  createdAt: TIMESTAMP,
-  updatedAt: TIMESTAMP,
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 
@@ -118,33 +115,27 @@ export interface UserRole {
 export interface user {
   user_contact:string;
   user_email:string;
-  department_id:string;
-  created_at: TIMESTAMP,
-  updated_at: TIMESTAMP,
+  department:Reference;
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 // -- ---------------------------------------------------
 //  Collection `User`
 // -- -----------------------------------------------------
-export interface User {
-  userId:string;
-  userContact:string;
+export interface employeeDetails {
+  employeeIdNumber:string;
+  employeeJobTitle:string;
   userEmail:string;
-  userPassword:string;
   deparmentId:string;
-  createdAt: TIMESTAMP,
-  updatedAt: TIMESTAMP,
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
 }
 
 
--- ---------------------------------------------------
--- Table `employee_details`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS  `employee_details`;
 
 CREATE TABLE IF NOT EXISTS `employee_details` (
-  `employee_details_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `employee_id_number` VARCHAR(45) NULL,
+
    `employee_job_title` VARCHAR(45) NULL,
   `employee_salry` DOUBLE,
     `leave_days_entitled` INT,
