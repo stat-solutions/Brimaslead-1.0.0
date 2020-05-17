@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { AuthServiceService } from './auth-services/auth-service.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { OtherBackendApiService } from './auth-services/other-backend-api.service';
+import { OtherBackendApiService } from '../auth-services/other-backend-api.service';
 
 @Injectable({
   providedIn: 'root'

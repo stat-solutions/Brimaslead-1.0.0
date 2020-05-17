@@ -46,7 +46,7 @@ export class CustomerRegisterComponent implements OnInit {
   ngOnInit() {
     this.userForm = this._formBuilder.group(
       {
-        user_name: [
+        clientName: [
           "",
           Validators.compose([
             Validators.required,
@@ -61,7 +61,7 @@ export class CustomerRegisterComponent implements OnInit {
             )
           ])
         ],
-        phone_number: [
+        phoneNumber: [
           "",
           Validators.compose([
             Validators.required,

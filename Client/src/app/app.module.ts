@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { FrontDeskModule } from './front-desk/front-desk.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { RequestInterceptorServiceService } from './shared/services/request-interceptor-service.service';
+import { RequestInterceptorServiceService } from './shared/services/other-services/request-interceptor-service.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';

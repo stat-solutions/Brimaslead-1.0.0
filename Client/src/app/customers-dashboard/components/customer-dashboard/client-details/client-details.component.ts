@@ -1,4 +1,3 @@
-import { ClientData } from '../../../../shared/models/other-models/client_data.model';
 import { Component, OnInit } from '@angular/core';
 import { ClientRfqData } from 'src/app/front-desk/front-desk-dashboard/request-for-quote/request-for-quote.component';
 

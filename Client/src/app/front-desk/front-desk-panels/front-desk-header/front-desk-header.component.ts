@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LayoutService } from 'src/app/shared/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/other-services/layout.service';
 import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';

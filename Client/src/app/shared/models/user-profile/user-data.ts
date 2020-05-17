@@ -14,13 +14,15 @@ export interface UserData {
     nationalId: string;
     password: string;
     phoneNumber: string;
-    photo: File;
+    photo: string;
     userName: string;
-    accessRef:firebase.firestore.FieldPath;
-    departmentRef:firebase.firestore.FieldPath;
+    accessColRef:string;
+    accessDocRef:string;
+    departmentColRef:string;
+    departmentDocRef:string;
     createdAt:firebase.firestore.FieldValue;
     updatedAt:firebase.firestore.FieldValue
-
+    approvalStatus?:string;//APPROVED,NOTAPPROVED
 
 
 

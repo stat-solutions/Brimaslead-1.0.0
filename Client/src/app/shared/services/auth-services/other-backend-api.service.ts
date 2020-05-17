@@ -5,8 +5,7 @@ import { HttpHeaders, HttpErrorResponse, HttpClient, HttpParams } from '@angular
 import { catchError, tap, mapTo, map } from 'rxjs/operators';
 import { UserRole } from '../../models/user-profile/user-role';
 import { FormGroup } from '@angular/forms';
-import { CountryRegions } from '../../models/other-models/country-regions';
-import { Tokens } from '../../models/other-models/tokens';
+import { Tokens } from '../../models/user-profile/tokens';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -75,17 +74,6 @@ export class OtherBackendApiService {
 
 
 
- getCounryRegions(): Observable<CountryRegions[]> {
-
-    return this.http.get<CountryRegions[]>(`${this.API_URL}/api/auth/getTheCountryRegions`, this.httpOptions)
-
-      .pipe(
-
-        tap(response => console.log(`${response}`)),
-
-        catchError(this.OtherErrors)
-      );
-  }
 
  testingTheTablePost(postData: FormGroup): Observable<string> {
 

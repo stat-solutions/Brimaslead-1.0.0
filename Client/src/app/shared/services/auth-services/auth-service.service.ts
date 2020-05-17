@@ -6,7 +6,8 @@
    import { DatabaseServiceService } from './database-auth-service.service';
    import { UserData } from '../../models/user-profile/user-data';
    import { Department } from '../../../auth/register/register.component';
-   import { DbServiceService } from '../firestore-db/db-service.service';
+import { DbServiceService } from "../firestore-db/DbServiceService";
+import { CustomerData } from '../../models/user-profile/client_data.model';
 
 
    @Injectable({
@@ -52,7 +53,7 @@
 
       }
      
-       registerCustomer(authUser: AuthUser, userProfile: UserData): Observable<string>{
+       registerCustomer(authUser: AuthUser, userProfile: CustomerData): Observable<string>{
          return this. sendEmail.signUpCustomerByHimself(authUser, userProfile).pipe(
             mapTo('User created successfully'),
     

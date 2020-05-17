@@ -23,6 +23,7 @@ import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DocPipe } from '../shared/pipes/doc.pipe';
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -37,7 +38,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PayrollModuleComponent,
     HiringRetirementResignationComponent,
     RfqDetailsComponent,
-    AddRfqItemsComponent
+    AddRfqItemsComponent,
+    DocPipe
   ],
   imports: [
     CommonModule,

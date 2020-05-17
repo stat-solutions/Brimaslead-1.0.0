@@ -134,6 +134,18 @@ export interface employeeDetails {
 
 
 
+export interface rfqDetails {
+  rfqRef:string;
+  clientRef:string;
+  totalItems:string;
+  totalAmount:string;
+  employeeRef: string,
+  processingStatus: string,
+  movementStatus: string,
+  movementTime: string,
+}
+
+
 CREATE TABLE IF NOT EXISTS `employee_details` (
 
    `employee_job_title` VARCHAR(45) NULL,
