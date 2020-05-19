@@ -18,20 +18,20 @@
           </div>
           <div class="col-xs-12 col-lg-6">
           <div class="form-group">
-            <label for="client_name" class="text-info"
+            <label for="clientName" class="text-info"
               >Client Name</label
             >
             <input
               class="form-control"
-              formControlName="client_name"
-              [value]="fval.client_name.value"
+              formControlName="clientName"
+              [value]="fval.clientName.value"
             />
             <div
               class="text-danger col"
               *ngIf="
-                (fval.client_name.touched ||
-                  fval.client_name.dirty) &&
-                fval.client_name.errors?.required
+                (fval.clientName.touched ||
+                  fval.clientName.dirty) &&
+                fval.clientName.errors?.required
               "
             >
               Client is required
@@ -151,7 +151,7 @@
             </div>
             <div class="col-xs-12 col-lg-4">
               <div class="">
-                {{client_names}}
+                {{clientNames}}
                 <!-- <label
                   class="text-info"
                   [ngClass]="fval.clientName.valid ? 'text-success' : ''"
@@ -165,7 +165,7 @@
                   class="form-control"
                   type="text"
                   id="clientName"
-                  [value]="client_name"
+                  [value]="clientName"
                   name="clientName" disabled
                 /> -->
               </div>

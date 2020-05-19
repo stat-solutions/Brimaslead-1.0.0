@@ -9,6 +9,8 @@ import { UserData } from "src/app/shared/models/user-profile/user-data";
 import { switchMap, tap } from "rxjs/operators";
 import { AuthUser } from "src/app/shared/models/user-profile/auth-user";
 import { AngularFireAuth } from '@angular/fire/auth';
+import { RfqSerialNumberService } from 'src/app/shared/services/front-desk-services/rfq-serial-number.service';
+
 export interface AccessRights {
   accessCategory: string;
   accessType: string;
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private db: DbServiceService,
-    private afa: AngularFireAuth
+    private afa: AngularFireAuth,
+    private aa:RfqSerialNumberService
   ) {}
 
   ngOnInit() {
@@ -69,7 +72,10 @@ export class LoginComponent implements OnInit {
       ),
     });
   }
-
+viewIt(){
+  
+this.aa.rfqSerialNumber().subscribe(x=>console.log(x));
+}
   revert() {
     this.userForm.reset();
   }

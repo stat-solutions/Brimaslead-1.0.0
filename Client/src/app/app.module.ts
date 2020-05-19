@@ -55,6 +55,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { NgxSpinnerModule } from 'ngx-spinner';
 // import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -115,6 +116,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatTreeModule,
     ToastrModule.forRoot(), // ToastrModule added
     // FormsModule
+    AngularFirestoreModule,
   ],
   providers: [
     {

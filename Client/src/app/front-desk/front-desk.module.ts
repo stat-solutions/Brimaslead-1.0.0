@@ -24,6 +24,10 @@ import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/a
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { DocPipe } from '../shared/pipes/doc.pipe';
+import { DbDatePipe } from '../shared/pipes/db-date.pipe';
+import { FieldPathGenPipe } from '../shared/pipes/field-path-gen.pipe';
+import { TimevaluePipe } from '../shared/pipes/timevalue.pipe';
+import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -39,7 +43,11 @@ import { DocPipe } from '../shared/pipes/doc.pipe';
     HiringRetirementResignationComponent,
     RfqDetailsComponent,
     AddRfqItemsComponent,
-    DocPipe
+    DocPipe,
+    DbDatePipe,
+    FieldPathGenPipe,
+    TimevaluePipe,
+    CreateCatalogItemComponent
   ],
   imports: [
     CommonModule,

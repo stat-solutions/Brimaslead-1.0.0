@@ -8,8 +8,10 @@ import { DbServiceService } from 'src/app/shared/services/firestore-db/DbService
 import { CustomerData } from 'src/app/shared/models/user-profile/client_data.model';
 import { UserData } from 'src/app/shared/models/user-profile/user-data';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 export interface ClientRfqData{  clientId: string;clientName: string;phoneNumber: string; email: string};
-export interface RfqSumData{clientColRef:string;clientDocRef:string;empColRef:string;empDocRef:string; rfqSource:string; noOfItems:number; totalAmount:number; movementStatus:string;/*Forwarded,Received,Defared*/ processingStatus:string;/*Created,Costed*/movementTimestamp:firebase.firestore.FieldValue;processingTimestamp:firebase.firestore.FieldValue; createdAt: firebase.firestore.FieldValue;updatedAt:firebase.firestore.FieldValue;};
+export interface RfqSumData{clientColRef:string;clientDocRef:string;rfqSerialNumber:string;empColRef:string;empDocRef:string; rfqSource:string; noOfItems:number; totalAmount:number; movementStatus:string;/*Forwarded,Received,Defared*/ processingStatus:string;/*Created,Costed*/movementTimestamp:firebase.firestore.FieldValue;processingTimestamp:firebase.firestore.FieldValue; createdAt: firebase.firestore.FieldValue;updatedAt:firebase.firestore.FieldValue;rfqStatus:string /*Creation,returned,InternalApproval,ExternalApproval,InternalApproved,InternalApproved,InternalRejected,ExternalRejected,Completed,Archieved*/};
 export interface RfqSumDataId extends RfqSumData{id:string;};
 
 
@@ -52,13 +54,15 @@ export class RequestForQuoteComponent implements OnInit {
     private fb: FormBuilder,
     private rfqR:RfqRelatedServiceService,
     private db:DbServiceService,
-    private afa: AngularFireAuth) {}
+    private afa: AngularFireAuth,
+    private toastr:ToastrService,  
+    private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
     this.rfqForm = this.createFormGroup();
     // this.itemsForm = this.addItemsFormGroup();
     this.clients$= this.db.colWithIds$<CustomerData>('customerProfile');
-    this.rfqSummury$=this.db.colWithIds$<RfqSumDataId>('rfqSummury');
+    this.rfqSummury$=this.db.colWithIds$<RfqSumDataId>('rfqSummury',x=>x.where('rfqStatus','==','Creation').orderBy('updatedAt','desc'));
   }
 
   createFormGroup() {
@@ -140,13 +144,21 @@ export class RequestForQuoteComponent implements OnInit {
 
   get clientName(): any {
     return this.rfqForm.get('clientName');
+   
   }
-
+  
+  showSuccess() {
+    this.toastr.success('Rfq creation was successful', 'Create RFQ', {
+      timeOut: 3000,
+      positionClass: "toast-bottom-right",
+    });
+  }
  
 
 
   createRFQ(rfqForm:FormGroup){
     
+    this.spinner.show();
     
     rfqForm.patchValue({
       clientColRef:`customerProfile/${this.clientIdNumber}`,
@@ -161,7 +173,11 @@ export class RequestForQuoteComponent implements OnInit {
     });
     
     this.rfqR.createTheRfq('rfqSummury',rfqForm.value);
+    this.rfqForm.reset();
+    this.clientAdded=false;
+   
     
+    setTimeout(()=>{ this.spinner.hide();this.showSuccess();},1000)
   }
   
   

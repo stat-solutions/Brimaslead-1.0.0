@@ -5,10 +5,13 @@ import { LayoutService } from './services/other-services/layout.service';
 import { MenudropdownDirective } from './directives/menudropdown.directive';
 import { DropzoneDirective } from './directives/dropzone.directive';
 
+
 @NgModule({
   declarations: [
     MenudropdownDirective,
     DropzoneDirective,
+
+
 
   ],
   imports: [

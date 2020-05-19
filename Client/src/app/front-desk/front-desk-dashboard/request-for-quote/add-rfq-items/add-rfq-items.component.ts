@@ -11,8 +11,8 @@ import { LayoutService } from 'src/app/shared/services/other-services/layout.ser
   styleUrls: ['./add-rfq-items.component.scss']
 })
 export class AddRfqItemsComponent implements OnInit {
-  @Input() client_names: string;
-
+  @Input() clientNames: string;
+  @Input() rfqId:string;
   itemsForm: FormGroup;
   userForm: FormGroup;
   rfq_number: number;
@@ -91,7 +91,7 @@ export class AddRfqItemsComponent implements OnInit {
     this.userForm = this.createFormGroup();
   }
   updateName(name: string) {
-    this.fval.client_name.setValue(name);
+    this.fval.clientName.setValue(name);
   }
 
   get theunitCost(): any {
@@ -129,6 +129,8 @@ export class AddRfqItemsComponent implements OnInit {
 
   createFormGroup() {
     return this._formbuilder.group({
+      RfqId: [''],
+      clientName: [''],
       stockId: [
         '',
         Validators.compose([Validators.required, Validators.minLength(5)])
