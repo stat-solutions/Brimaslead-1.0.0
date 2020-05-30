@@ -14,8 +14,40 @@
 </tr>
   </thead>
   <tbody>
-<tr *ngFor="let item of rfqs">
-<td>{{item.rfq_id}}</td>
+<tr 
+
+  
+*ngFor="let item of rfqs">
+<table class="table responsive">
+  <thead>
+<tr>
+  <th>ID</th>
+   <th>ITEM ID</th>
+   <th>ITEM</th>
+    <th>UNIT</th>
+     <th>QUANTITY</th>
+      <th>UNIT COST</th>
+         <th>TOTAL COST</th>
+</tr>
+  </thead>
+  <tbody>
+<tr 
+
+  
+*ngFor="let item of rfqs">
+<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+<td >{{item.rfq_id}}</td>
 <td>{{item.stock_id}}</td>
 <td>{{item.item_name}}</td>
 <td>{{item.unit}}</td>
@@ -30,5 +62,65 @@
 
 </table>
 
+<td >{{item.rfq_id}}</td>
+<td>{{item.stock_id}}</td>
+<td>{{item.item_name}}</td>
+<td>{{item.unit}}</td>
+<td>{{item.unit_cost|number}}</td>
+<td>{{item.qty_required|number}}</td>
+<td>{{item.qty_required*item.unit_cost|number}}</td>
+</tr>
 
-</div>
+  </tbody>
+
+
+
+</table>
+
+<table class="table table-bordered tabledesign">
+  <thead>
+      <tr>
+          <th></th>
+          <th>
+              Sr #
+              <span class="sort-icons"></span>
+          </th>
+          <th class="cursor">
+              Menu Name
+              <span class="sort-icons"></span>
+          </th>
+          <th class="text-center" *ngFor="let permissionListNew of rfqs;">
+              {{permissionListNew.item_name}}
+          </th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- <ng-container *ngTemplateOutlet="treeViewTemplate; context:{ $implicit: rfqs }">
+      </ng-container>
+  </tbody>
+</table>
+<ng-template #treeViewTemplate let-menusList>
+  <ng-container *ngFor="let parameter of rfqs;let i=index;">
+      <tr [ngStyle]="{'background-color': parameter.color ? parameter.color : '' }">
+          <td class="text-left">
+              <a *ngIf="parameter.child_menus?.length > 0" (click)="parameter.expand = !parameter.expand">
+                  <i class="fa plus-icon" [ngClass]="parameter.expand ? 'fa-minus-square-o' : 'fa-plus-square-o'"></i>
+              </a>
+              <i *ngIf="parameter.child_menus?.length <= 0" class="fa fa-circle"
+                  style="font-size: 10px; padding-right: 3px;color: #f68c1f;"></i>
+          </td>
+          <td>{{parameter.sr_no}}</td>
+          <td class="text-left">{{parameter.name}}</td>
+          <td class="text-center" *ngFor="let permissionListNew of parameter.permissions;let permissionIndex=index;">
+              <input type="checkbox" class="custom-control-input"
+                  [name]="'permission_' + parameter.row_id + '_' + permissionIndex"
+                  [checked]="permissionListNew.is_permitted" [(ngModel)]="permissionListNew.is_permitted">
+          </td>
+      </tr>
+      <ng-container *ngIf="parameter.expand && parameter.child_menus?.length > 0" class="pl-4">
+          <ng-container *ngTemplateOutlet="treeViewTemplate; context:{ $implicit: parameter.child_menus }">
+          </ng-container>
+      </ng-container>
+  </ng-container>
+</ng-template>
+</div> -->

@@ -15,7 +15,8 @@ export class RfqDetailsComponent implements OnInit {
       unit: "Pieces",
       unit_cost: 10000,
       qty_required: 23,
-      total_cost: 230000
+      total_cost: 230000,
+      // parameter:{color:'Red',child_menus:{}}
     },
     {
       rfq_id: 1,

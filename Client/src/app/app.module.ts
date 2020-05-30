@@ -1,3 +1,4 @@
+import { TagInputModule } from 'ngx-chips';
 import { SharedModule } from './shared/shared.module';
 import { TransLogisticsDashboardModule } from './trans-logistics-dashboard/trans-logistics-dashboard.module';
 import { SuppliersDashboardModule } from './suppliers-dashboard/suppliers-dashboard.module';
@@ -61,6 +62,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 @NgModule({
   declarations: [AppComponent,],
   imports: [
+    TagInputModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
@@ -115,7 +117,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MatTooltipModule,
     MatTreeModule,
     ToastrModule.forRoot(), // ToastrModule added
-    // FormsModule
+
     AngularFirestoreModule,
   ],
   providers: [

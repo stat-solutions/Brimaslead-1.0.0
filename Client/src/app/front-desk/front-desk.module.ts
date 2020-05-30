@@ -1,6 +1,8 @@
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { FrontDeskLayoutComponent } from './front-desk-layout/front-desk-layout.component';
 
 import { FrontDeskRoutingModule } from './front-desk-routing.module';
@@ -17,7 +19,6 @@ import { PerformanceManagementComponent } from './front-desk-dashboard/employee-
 import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/payroll-module/payroll-module.component';
 // tslint:disable-next-line:max-line-length
 import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
 import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
@@ -28,6 +29,7 @@ import { DbDatePipe } from '../shared/pipes/db-date.pipe';
 import { FieldPathGenPipe } from '../shared/pipes/field-path-gen.pipe';
 import { TimevaluePipe } from '../shared/pipes/timevalue.pipe';
 import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
+import { AngularSlickgridModule } from 'angular-slickgrid';
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -50,12 +52,15 @@ import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalo
     CreateCatalogItemComponent
   ],
   imports: [
+    TagInputModule,
+    BrowserAnimationsModule,
     CommonModule,
     FrontDeskRoutingModule,
     FormsModule,
     ServicesModule,
     ReactiveFormsModule,
     ModalModule.forRoot(),
+    AngularSlickgridModule.forRoot(),
     FilterPipeModule,
     NgxSpinnerModule
   ],

@@ -32,13 +32,21 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/styles.scss"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/styles.scss",
+              "./node_modules/angular-slickgrid/lib/multiple-select/multiple-select.css",
+              "./node_modules/angular-slickgrid/styles/css/slickgrid-theme-bootstrap.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/jquery-ui-dist/jquery-ui.js",
+              "./node_modules/slickgrid/lib/jquery.event.drag-2.3.0.js",
+              "./node_modules/angular-slickgrid/lib/multiple-select/multiple-select.js"
             ]
+
+
           },
           "configurations": {
             "production": {

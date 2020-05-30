@@ -1,5 +1,5 @@
-import { Component, OnInit, TemplateRef, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ItemStock } from 'src/app/shared/models/other-models/rfqRelatedModels/item_stock.model';
 import { BsModalService } from 'ngx-bootstrap';
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
@@ -35,7 +35,7 @@ export class AddRfqItemsComponent implements OnInit {
     { source_name: 'Sales and Marketing' },
     { source_name: 'Bids' }
   ];
- 
+
   items_stock: ItemStock[] = [
     {
       stockId: 'BMS235',
@@ -82,8 +82,6 @@ export class AddRfqItemsComponent implements OnInit {
   ];
 
   constructor(
-    private layoutService: LayoutService,
-    private modalService: BsModalService,
     private _formbuilder: FormBuilder
   ) {}
 
@@ -169,6 +167,6 @@ export class AddRfqItemsComponent implements OnInit {
   get fval() {
     return this.userForm.controls;
   }
-  
+
   onSave(){}
 }

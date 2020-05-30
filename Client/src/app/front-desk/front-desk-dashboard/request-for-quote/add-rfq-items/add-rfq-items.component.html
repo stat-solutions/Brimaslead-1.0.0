@@ -66,7 +66,10 @@
                     formControlName="itemName"
                     placeholder="Select Item"
                     (change)="updateOtherItems()"
-                  >
+                  > <option
+                  selected
+                  >Select Item</option
+                >
                     <option
                       *ngFor="let article of items_stock"
                       >{{ article.itemName }}</option
