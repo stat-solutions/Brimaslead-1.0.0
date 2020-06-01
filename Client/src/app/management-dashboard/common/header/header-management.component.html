@@ -54,15 +54,20 @@
                 ><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i
                 >&nbsp;Profile</a
               >
-                            <a class="dropdown-item text-info" role="presentation" routerLink="/logout"
+                            <!-- <a class="dropdown-item text-info" role="presentation" routerLink="/logout"
                 ><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i
                 >&nbsp;Logout</a
-              >
+              > -->
             </div>
           </li>
-          <li>
-            <a href=""><i class="fas fa-power-off"></i></a>
-          </li>
+          <li><a (click)="logoutUser()"><i class="fas fa-power-off"></i></a></li>
+          <ngx-spinner
+          class="bg-warning bg-success"
+          size="medium"
+          type="ball-scale-multiple"
+        >
+          <p class="text-light">Loading...</p>
+        </ngx-spinner>
         </ul>
       </div>
     </div>

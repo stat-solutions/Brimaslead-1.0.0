@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from 'src/app/shared/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/other-services/layout.service';
 
 @Component({
   selector: 'app-leave-management',

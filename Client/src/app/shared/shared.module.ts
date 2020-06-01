@@ -1,12 +1,18 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LayoutService } from './services/layout.service';
+import { LayoutService } from './services/other-services/layout.service';
 import { MenudropdownDirective } from './directives/menudropdown.directive';
+import { DropzoneDirective } from './directives/dropzone.directive';
+
 
 @NgModule({
   declarations: [
-    MenudropdownDirective
+    MenudropdownDirective,
+    DropzoneDirective,
+
+
+
   ],
   imports: [
     CommonModule,
@@ -18,7 +24,7 @@ import { MenudropdownDirective } from './directives/menudropdown.directive';
   ],
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
       providers: [

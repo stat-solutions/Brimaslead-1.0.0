@@ -1,26 +1,27 @@
-import { Component, OnInit, TemplateRef, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ItemStock } from 'src/app/shared/models/item_stock.model';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ItemStock } from 'src/app/shared/models/other-models/rfqRelatedModels/item_stock.model';
 import { BsModalService } from 'ngx-bootstrap';
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
-import { LayoutService } from 'src/app/shared/services/layout.service';
+import { LayoutService } from 'src/app/shared/services/other-services/layout.service';
 
 @Component({
-  selector: "app-add-rfq-items",
-  templateUrl: "./add-rfq-items.component.html",
-  styleUrls: ["./add-rfq-items.component.scss"]
+  selector: 'app-add-rfq-items',
+  templateUrl: './add-rfq-items.component.html',
+  styleUrls: ['./add-rfq-items.component.scss']
 })
 export class AddRfqItemsComponent implements OnInit {
   @Input() clientNames: string;
-
+  @Input() rfqId:string;
+  itemsForm: FormGroup;
   userForm: FormGroup;
   rfqNumber: number;
   index: number;
   items = [];
   users = [
-    { userName: "Davis", department: "Front desk" },
-    { userName: "Maria", department: "Sales" },
-    { userName: "Sharon", department: "Front desk" }
+    { user_name: 'Davis', department: 'Front desk' },
+    { user_name: 'Maria', department: 'Sales' },
+    { user_name: 'Sharon', department: 'Front desk' }
   ];
   // users = [
   //   { userName: "Davis", department: "Front desk" },
@@ -29,60 +30,58 @@ export class AddRfqItemsComponent implements OnInit {
   // ];
 
   rfq_sources = [
-    { source_name: "Walk in" },
-    { source_name: "Email" },
-    { source_name: "Sales and Marketing" },
-    { source_name: "Bids" }
+    { source_name: 'Walk in' },
+    { source_name: 'Email' },
+    { source_name: 'Sales and Marketing' },
+    { source_name: 'Bids' }
   ];
 
   itemsStock: ItemStock[] = [
     {
-      stockId: "BMS235",
-      itemName: "pens",
-      unit: "boxes",
-      qtyRequired: null,
+      stockId: 'BMS235',
+      itemName: 'pens',
+      unit: 'boxes',
+      quantityRequired: null,
       unitCost: 30000
     },
     {
-      stockId: "BMS346",
-      itemName: "umbrellas",
-      unit: "pieces",
-      qtyRequired: null,
+      stockId: 'BMS346',
+      itemName: 'umbrellas',
+      unit: 'pieces',
+      quantityRequired: null,
       unitCost: 14000
     },
     {
-      stockId: "BMS233",
-      itemName: "bags",
-      unit: "pieces",
-      qtyRequired: null,
+      stockId: 'BMS233',
+      itemName: 'bags',
+      unit: 'pieces',
+      quantityRequired: null,
       unitCost: 45000
     },
     {
-      stockId: "BMS162",
-      itemName: "mugs",
-      unit: "pieces",
-      qtyRequired: null,
+      stockId: 'BMS162',
+      itemName: 'mugs',
+      unit: 'pieces',
+      quantityRequired: null,
       unitCost: 20000
     },
     {
-      stockId: "BMS135",
-      itemName: "diary",
-      unit: "pieces",
-      qtyRequired: null,
+      stockId: 'BMS135',
+      itemName: 'diary',
+      unit: 'pieces',
+      quantityRequired: null,
       unitCost: 25000
     },
     {
-      stockId: "BMS127",
-      itemName: "tshirts",
-      unit: "pieces",
-      qtyRequired: null,
+      stockId: 'BMS127',
+      itemName: 'tshirts',
+      unit: 'pieces',
+      quantityRequired: null,
       unitCost: 25000
     }
   ];
 
   constructor(
-    private layoutService: LayoutService,
-    private modalService: BsModalService,
     private _formbuilder: FormBuilder
   ) {}
 
@@ -90,19 +89,23 @@ export class AddRfqItemsComponent implements OnInit {
     this.userForm = this.createFormGroup();
   }
   updateName(name: string) {
-    this.fval.client_name.setValue(name);
+    this.fval.clientName.setValue(name);
   }
 
-  get unitCost(): any {
-    return this.userForm.get("unit_cost");
+  get theunitCost(): any {
+    return this.userForm.get('unitCost');
   }
   get qtyRequired(): any {
-    return this.userForm.get("qty_required");
+    return this.userForm.get('quantityRequired');
   }
+  add() {}
+  remove() {
 
+  }
+  updateOtherItems() {}
   totalCost() {
-    let unitCost = this.unitCost();
-    let quantity = this.qtyRequired();
+    const unitCost = this.theunitCost();
+    const quantity = this.qtyRequired();
     return unitCost * quantity;
   }
 
@@ -124,17 +127,19 @@ export class AddRfqItemsComponent implements OnInit {
 
   createFormGroup() {
     return this._formbuilder.group({
-      stock_id: [
-        "",
+      RfqId: [''],
+      clientName: [''],
+      stockId: [
+        '',
         Validators.compose([Validators.required, Validators.minLength(5)])
       ],
 
-      item_name: ["", Validators.compose([Validators.required])],
+      itemName: ['', Validators.compose([Validators.required])],
 
-      unit: ["", Validators.compose([Validators.required])],
+      unit: ['', Validators.compose([Validators.required])],
 
-      qty_required: [
-        "",
+      quantityRequired: [
+        '',
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -144,9 +149,9 @@ export class AddRfqItemsComponent implements OnInit {
         ])
       ],
 
-      unit_cost: ["", Validators.compose([Validators.required])],
+      unitCost: ['', Validators.compose([Validators.required])],
       total_cost: [
-        "",
+        '',
         Validators.compose([
           Validators.required,
           Validators.minLength(5),
@@ -162,4 +167,6 @@ export class AddRfqItemsComponent implements OnInit {
   get fval() {
     return this.userForm.controls;
   }
+
+  onSave(){}
 }

@@ -1,6 +1,6 @@
-<div class="d-flex flex-column">
-  <div class="container">
-    <div class="row">
+      <div class="d-flex flex-column">
+      <div class="container">
+      <div class="row">
       <div class="col-xs-12 col-lg-12">
         <div class="card shadow-lg mt-2 mb-2 pt-0 pb-1">
           <div class="row">
@@ -22,8 +22,8 @@
               <a
                 class="btn btn-info btn-sm mb-1"
                 role="button"
-                routerLink="/create-item"
-                ><i class="fas fa-cookie-bite text-white"></i>&nbsp;Create Item</a
+                routerLink="/create-catalog-item"
+                ><i class="fas fa-cookie-bite text-white"></i>&nbsp;Create Catalog Item</a
               >
             </div>
             <div
@@ -38,7 +38,6 @@
           </div>
         </div>
       </div>
-    </div>
 
     <div class="row">
       <div class=" col-xs-12 col-lg-12">
@@ -52,649 +51,411 @@
               <hr class="bottom mt-1 mb-0" />
             </h6>
           </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-lg-12 col-xs-12">
-                <!-- Main content -->
-                <section class="content">
-                  <div class="row">
-                    <div class="col">
-                      <div class="card card-primary">
-                        <div class="card-body">
-                          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-                            <div class="row">
-                              <div class="col-xs-12 col-lg-3">
-                                <div class="form-group">
-                                  <label for="rfq_number" class="text-info"
-                                    >RFQ Id no.</label
-                                  >
-                                  <input
-                                    class="form-control"
-                                    formControlName="rfq_number"
-                                    (click)="setRfqId()"
-                                    disabled
-                                  />
-                                </div>
-                              </div>
-                              <div class="col-xs-12 col-lg-5">
-                                <div class="form-group">
-                                  <label
-                                    for="clientName"
-                                    class="text-info"
-                                    [ngClass]="
-                                      fval.clientName.valid
-                                        ? 'text-success'
-                                        : ''
-                                    "
-                                    >Select Client<i
-                                      *ngIf="fval.clientName.valid"
-                                      class="material-icons"
-                                      >check_circle</i
-                                    ></label
-                                  >
-                                  <!-- <button type="button" class="btn btn-primary" (click)="openModal(template)">Add Client</button> -->
-                                  <select
-                                    (click)="openModal(template)"
-                                    class="form-control"
-                                    formControlName="clientName"
-                                  >
-                                    <!-- <option value="" selected>Select Client name</option> -->
-                                    <option *ngFor="let client of clients">{{
-                                      client.clientName
-                                    }}</option>
-                                  </select>
-                                  <div
-                                    class="text-danger col"
-                                    *ngIf="
-                                      (fval.clientName.touched ||
-                                        fval.clientName.dirty) &&
-                                      fval.clientName.errors?.required
-                                    "
-                                  >
-                                    Client is required
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-xs-12 col-lg-4">
-                                <div class="form-group">
-                                  <label
-                                    for="source_name"
-                                    class="text-info"
-                                    [ngClass]="
-                                      fval.source_name.valid
-                                        ? 'text-success'
-                                        : ''
-                                    "
-                                    >RFQ source<i
-                                      *ngIf="fval.source_name.valid"
-                                      class="material-icons"
-                                      >check_circle</i
-                                    ></label
-                                  >
-                                  <select
-                                    class="form-control"
-                                    formControlName="source_name"
-                                    placeholder="Select RFQ source"
-                                  >
-                                    <!-- <option disabled selected>Select Rfq source</option> -->
-                                    <option
-                                      *ngFor="let rfq_source of rfqSources"
-                                      >{{ rfq_source.sourceName }}</option
-                                    >
-                                  </select>
-                                  <div
-                                    class="text-danger col"
-                                    *ngIf="
-                                      (fval.source_name.touched ||
-                                        fval.source_name.dirty) &&
-                                      fval.source_name.errors?.required
-                                    "
-                                  >
-                                    RFQ source is required
-                                  </div>
-                                  <!-- <div
-                                    class="text-info col pt-3"
-                                    *ngIf="
-                                      fval.source_name.valid &&
-                                      fval.source_name.value == 'Email'
-                                    "
-                                  >
-                                    <input
-                                      type="radio"
-                                      value="Referred"
-                                      formControlName="source_status"
-                                      checked
-                                    />Referred&nbsp;
-                                    <input
-                                      type="radio"
-                                      value="Approved"
-                                      formControlName="source_status"
-                                      disabled
-                                    />Approved
-                                  </div>
-                                  <div
-                                    class="text-info col pt-3"
-                                    *ngIf="
-                                      fval.source_name.valid &&
-                                      fval.source_name.value == 'Walk in'
-                                    "
-                                  >
-                                    <input
-                                      type="radio"
-                                      class="form-control"
-                                      formControlName="source_status"
-                                      value="Referred"
-                                      disabled
-                                    />Referred&nbsp;
-                                    <input
-                                      type="radio"
-                                      value="Approved"
-                                      formControlName="source_status"
-                                      checked
-                                    />Approved
-                                  </div>
-                                  <div
-                                    class="text-info col pt-3"
-                                    *ngIf="
-                                      fval.source_name.valid &&
-                                      fval.source_name.value == 'Bids'
-                                    "
-                                  >
-                                    <input
-                                      type="radio"
-                                      value="Referred"
-                                      formControlName="source_status"
-                                      checked
-                                    />Referred&nbsp;
-                                    <input
-                                      type="radio"
-                                      value="Approved"
-                                      formControlName="source_status"
-                                      disabled
-                                    />Approved
-                                  </div>
-                                  <div
-                                    class="text-info col pt-3"
-                                    *ngIf="
-                                      fval.source_name.valid &&
-                                      fval.source_name.value ==
-                                        'Sales and Marketing'
-                                    "
-                                  >
-                                    <input
-                                      type="radio"
-                                      value="Referred"
-                                      formControlName="source_status"
-                                      disabled
-                                    />Referred&nbsp;
-                                    <input
-                                      type="radio"
-                                      value="Approved"
-                                      formControlName="source_status"
-                                      checked
-                                    />Approved
-                                  </div> -->
-                                </div>
-                              </div>
-                            </div>
-                            <div class="row m-3">
-                              <div class="col-6">
-                                <a
-                                  href="#"
-                                  class="btn btn-secondary col-5"
-                                  (click)="userForm.reset()"
-                                  >Cancel</a
-                                >&nbsp;
-                                <button
-                                  type="submit"
-                                  class="btn btn-info col-5"
-                                >
-                                  Create RFQ
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <!-- <app-add-rfq-items
-                        [clientNames]="fval.clientName"
-                      ></app-add-rfq-items> -->
+      <div class="card-body">
+      <div class="row">
+      <div class="col-lg-12 col-xs-12">
+      <!-- Main content -->
+      <section class="content">
+      <div class="row">
+      <div class="col">
+      <div class="card card-primary">
+      <div class="card-body">
+      <form [formGroup]="rfqForm">
+      <div class="row mx-3">
+      <div class="col-xs-12 col-lg-4">
+      <div class="form-group">
+      <label
+      for="clientName"
+      class="text-info"
+      [ngClass]="
+      fval.clientName.valid
+      ? 'text-success'
+      : ''
+      "
+      >{{ clientLabel}}<i
+      *ngIf="fval.clientName.valid"
+      class="material-icons"
+      >check_circle</i
+      >
+      </label>
 
-                      <legend class="text-info">
-                        <i class="fas fa-plus"></i>&nbsp;Add Item
-                      </legend>
-                      <form [formGroup]="itemsForm" (ngSubmit)="onSave()">
-                        <div class="row">
-                          <div class="col-xs-12 col-lg-6">
-                            <div class="form-group">
-                              <label for="rfq_number" class="text-info"
-                                >RFQ ID no.</label
-                              >
-                              <input
-                                class="form-control"
-                                formControlName="rfq_number"
-                                [value]="fval.rfq_number.value"
-                              />
-                            </div>
-                          </div>
-                          <div class="col-xs-12 col-lg-6">
-                            <div class="form-group">
-                              <label for="clientName" class="text-info"
-                                >Client Name</label
-                              >
-                              <input
-                                class="form-control"
-                                formControlName="clientName"
-                                [value]="fval.clientName.value"
-                              />
-                              <div
-                                class="text-danger col"
-                                *ngIf="
-                                  (fval.clientName.touched ||
-                                    fval.clientName.dirty) &&
-                                  fval.clientName.errors?.required
-                                "
-                              >
-                                Client is required
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+      <button
+      type="button"
+      class="btn btn-info form-control"
+      (click)="openModal(template)"
+      *ngIf="!clientAdded"
+      >
+      <i class="fas fa-user-plus"></i>&nbsp;
+      Select Client
+      </button>
 
-                        <table class="table table-bordered">
-                          <tbody class="text-dark">
-                            <div
-                              *ngFor="let item of items.controls; let i = index"
-                            >
-  <tr>
-                              <td>
-                                <div class="form-group">
-                                  <div class="text-info col">
-                                    <input
-                                    type="text"
-                                      class="form-control"
-                         formControlName="stock_id"
-                                    />
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="form-group">
-                                  <select
-                                    class="form-control"
-                                    formControlName="item_name"
-                                    placeholder="Select Item"
-                                    (change)="updateOtherItems($event)"
-                                  >
-                                    <option
-                                      *ngFor="let article of itemsStock"
-                                                                           >{{ article.itemName }}</option
-                                    >
-                                </select>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="form-group">
-                                  <div class="text-info col">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      formControlName="unit"
-                                    />
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <div class="form-group">
-                                  <div class="text-info col">
-                                    <input
-                                      class="form-control"
-                                      type="text"
-                                      formControlName="unitCost"
-                                    />
-                                  </div>
-                                </div>
-                              </td>
+      <input
+      *ngIf="clientAdded"
+      class="form-control"
+      formControlName="clientName"
+      [value]="fval.clientName.value"
+      />
 
-                              <td>
-                                <div class="form-group">
-                                  <input
-                                    class="form-control"
-                                    formControlName="qtyRequired"
-                                    type="text"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <div class="form-group">
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    formControlName="totalCost"
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <button
-                                  class="btn btn-info"
-                                  type="button"
-                                  (click)="add()"
-                                >
-                                  Add
-                                </button>&nbsp;
-                                <button
-                                  class="btn btn-danger"
-                                  type="button"
-                                  (click)="remove(i)"
-                                >
-                                  Delete
-                                </button>
-                              </td>
-                            </tr>
-                       </div>
-                          </tbody>
-                        </table>
-                      </form>
-                    </div>
-                    <!-- /.card-body-->
-                  </div>
-                  <!-- /.card -->
-
-                  <!-- Main content -->
-
-                  <section class="content">
-                    <!-- Default box -->
-                    <div class="card">
-                      <div class="card-body p-0">
-                        <div id="rfq-listing" class="table-responsive">
-                          <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th style="width: 2%">
-                                  #
-                                </th>
-                                <th style="width: 5%">
-                                  RFQ Serial No.
-                                </th>
-                                <th style="width: 10%">
-                                  Client Name
-                                </th>
-                                <th style="width: 5%">
-                                  RFQ Source
-                                </th>
-                                <th style="width: 5%">
-                                  No. Of Items
-                                </th>
-
-                                <th style="width: 10%">
-                                  Total Amount
-                                </th>
-
-                                <th style="width: 8%" class="text-center">
-                                  Department
-                                </th>
-                                <th style="width: 7%" class="text-center">
-                                  User Queue
-                                </th>
-                                <th style="width: 7%" class="text-center">
-                                  Movement Status
-                                </th>
-                                <th style="width: 7%">
-                                  Processing Status
-                                </th>
-
-                                <th style="width: 7%">
-                                  Movement Timestamp
-                                </th>
-
-                                <th style="width: 20%">
-                                  Action
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
-                                  1
-                                </td>
-                                <td>
-                                  <a routerLink="/requestforqoute"> </a>
-                                  <br />
-                                </td>
-                                <td>
-                                  <a routerLink="/detailquote">
-                                    kcb
-                                  </a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-
-                                <td></td>
-
-                                <td>
-                                  Michelle Ssemwogere
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-danger"
-                                    >Created</span
-                                  >
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-primary"
-                                    >Pending Costing</span
-                                  >
-                                </td>
-
-                                <td>
-                                  27/11/2019
-                                </td>
-                                <td class="project-actions text-right">
-                                  <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder"> </i>
-                                    Receive
-                                  </a>
-                                  <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt"> </i>
-                                    Cost
-                                  </a>
-                                  <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-check"> </i>
-                                    Approve
-                                  </a>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td>
-                                  2
-                                </td>
-                                <td>
-                                  <a routerLink="/requestforqoute">
-                                    RFQ000133
-                                  </a>
-                                  <br />
-                                </td>
-                                <td>
-                                  <a routerLink="/requestforqoute">
-                                    Ministry of Finance
-                                  </a>
-                                </td>
-                                <td>
-                                  Gov't Bid
-                                </td>
-                                <td>
-                                  12
-                                </td>
-                                <td>
-                                  14,000,000
-                                </td>
-
-                                <td>
-                                  Assistant Admin
-                                </td>
-
-                                <td>
-                                  Anita Arigye
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-success"
-                                    >Received</span
-                                  >
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-warning"
-                                    >Costed</span
-                                  >
-                                </td>
-
-                                <td>
-                                  27/11/2019
-                                </td>
-                                <td class="project-actions text-right">
-                                  <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder"> </i>
-                                    Forward
-                                  </a>
-                                  <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt"> </i>
-                                    Cost
-                                  </a>
-                                  <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-check"> </i>
-                                    Approve
-                                  </a>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td>
-                                  3
-                                </td>
-                                <td>
-                                  <a routerLink="/requestforqoute">
-                                    RFQ000143
-                                  </a>
-                                  <br />
-                                </td>
-                                <td>
-                                  <a routerLink="/frontdeskdashboard">
-                                    Bazirake Augustine
-                                  </a>
-                                </td>
-                                <td>
-                                  Walk In
-                                </td>
-                                <td>
-                                  36
-                                </td>
-                                <td>
-                                  3,000,000
-                                </td>
-
-                                <td>
-                                  Front Desk
-                                </td>
-
-                                <td>
-                                  Bright Iryn
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-info"
-                                    >Forwarded</span
-                                  >
-                                </td>
-
-                                <td>
-                                  <span class="badge badge-primary"
-                                    >Pending Costing</span
-                                  >
-                                </td>
-
-                                <td>
-                                  27/11/2019
-                                </td>
-                                <td class="project-actions text-right">
-                                  <a class="btn btn-primary btn-sm" href="#">
-                                    <i class="fas fa-folder"> </i>
-                                    Foward
-                                  </a>
-                                  <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fas fa-pencil-alt"> </i>
-                                    Cost
-                                  </a>
-                                  <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-check"> </i>
-                                    Approve
-                                  </a>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div id="rfq-status"></div>
-                      </div>
-                      <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                  </section>
-                  <!-- /.content -->
-                  <!-- /.content-wrapper -->
-
-                  <!-- Content Wrapper. Contains page content -->
-                </section>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div
+      class="text-danger col"
+      *ngIf="
+      (fval.clientName.touched ||
+      fval.clientName.dirty) &&
+      fval.clientName.errors?.required
+      "
+      >
+      Client is required
       </div>
-    </div>
-  </div>
+      </div>
+      </div>
 
-  <ng-template #template>
-    <div class="modal-header bg-success modal-lg">
+      <div class="col-xs-12 col-lg-4">
+      <div class="form-group">
+      <label
+      for="rfqSource"
+      class="text-info"
+      [ngClass]="
+      fval.rfqSource.valid ? 'text-success' : ''
+      "
+      >RFQ source<i
+      *ngIf="fval.rfqSource.valid"
+      class="material-icons"
+      >check_circle</i
+      ></label
+      >
+      <select
+      class="form-control"
+      formControlName="rfqSource"
+      placeholder="Select RFQ source"
+      (change)="setSelectedChanges($event)"
+      >
+      <option selected>Select RFQ source</option>
+      <option
+      *ngFor="let rfq_source of rfq_sources"
+      >
+      {{ rfq_source.rfqSource }}
+      </option>
+      </select>
+      <div
+      class="text-danger col"
+      *ngIf="
+      (fval.rfqSource.touched ||
+      fval.rfqSource.dirty) &&
+      fval.rfqSource.errors?.required
+      "
+      >
+      RFQ source is required
+      </div>
+      </div>
+      </div>
+      <div class="col-xs-12 col-lg-4">
+      <div
+      class="custom-control custom-switch p-2 mx-5 my-3"
+      *ngIf="setApprovalStatus"
+      >
+      <input
+      type="checkbox"
+      class="custom-control-input"
+      id="customSwitch1"
+      (change)="onCheckChange($event)"
+      />
+      <label
+      class="custom-control-label text-info"
+      for="customSwitch1"
+      >Skip Approval</label
+      >
+      </div>
+      </div>
+      </div>
+
+      <div class="row m-3">
+      <div class="col-6">
+      <a
+      class="btn btn-danger col-5"
+      (click)="resetForm()"
+      ><i class="material-icons">remove_circle</i
+        >Cancel</a
+      >&nbsp;
+      <button
+      type="submit"
+      class="btn btn-info col-5"
+      (click)="createRFQ(rfqForm)"
+      [disabled]="!rfqForm.valid"
+
+      ><ngx-spinner
+      class="bg-warning bg-success"
+      size="medium"
+      type="line-scale-party"
+    >
+      <p class="text-light">Wait...</p>
+    </ngx-spinner><i class="material-icons">create</i
+        >
+      Create RFQ
+      </button>
+      </div>
+      </div>
+      </form>
+      </div>
+      </div>
+      <!-- <app-add-rfq-items
+      [clientNames]="fval.clientName"
+      ></app-add-rfq-items> -->
+      </div>
+      <!-- /.card-body-->
+      </div>
+      <!-- /.card -->
+
+      <!-- Main content -->
+
+      <section class="content">
+      <!-- Default box -->
+    <div class="row">
+      <div class=" col-xs-12 col-lg-12">
+        <div class="rfqs card shadow mb-4">
+          <div class="card-body p-3">
+            <div class=" mx-auto">
+              <tabset>
+                <tab heading="RFQ Listing" class="rfq-listing text-info">
+                  <div class="card shadow mt-3 mx-3 mb-4">
+                    <div class="card-body p-4">
+                      <div class="table-responsive">
+        <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="userFilter.clientName"
+        placeholder="Enter Client Name"
+        />
+      <table
+      class="table table-striped thead-dark table-hover table-sm"
+      >
+      <thead>
+      <tr class="text-info align-items-center">
+      <th>Action</th>
+      <th>#</th>
+      <th>RFQ Serial No.</th>
+      <th>Client Name</th>
+      <th>RFQ Source</th>
+      <th>No. Of Items</th>
+      <th>Total Amount</th>
+      <th>Department</th>
+      <th>User Queue</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let summu of rfqSummury$|async|filterBy: userFilter; let i=index;let odd=odd;let first=first;let last=last'
+      [class.text-secondary]="odd"
+      [class.text-success]="!odd"
+
+      >
+      <td class="dropdown">
+      <a
+      class="text-info"
+      data-toggle="dropdown"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+      ><i class="material-icons">more_vert</i></a
+      >
+
+      <div class="dropdown-menu position-absolute">
+      <a
+      data-toggle="modal"
+      data-target="#comment"
+      class="dropdown-item d-flex align-items-center text-info btn btn-info" routerLink='/addRfqItems'
+      >
+      <i class="material-icons">add_circle</i>Add Items
+      </a>
+
+      <a
+      data-toggle="modal"
+      data-target="#defer"
+      class="dropdown-item d-flex align-items-center text-primo"
+      >
+      <i class="material-icons">visibility</i>View RFQ
+      </a>
+      <a
+      data-toggle="modal"
+      data-target="#comment"
+      class="dropdown-item d-flex align-items-center text-info"
+      >
+      <i class="material-icons">fast_rewind</i>Receive RFQ
+      </a>
+
+      <a
+      data-toggle="modal"
+      data-target="#comment"
+      class="dropdown-item d-flex align-items-center text-success"
+      >
+      <i class="material-icons">fast_forward</i
+      >Forward RFQ
+      </a>
+      </div>
+      </td>
+      <td>{{i+1}}</td>
+      <td>
+      <a routerLink="/requestforqoute">{{summu.rfqSerialNumber}}</a>
+      </td>
+      <td>
+      <a routerLink="/detailquote"
+      >{{(summu.clientColRef|doc|async)?.clientName}}</a
+      >
+      </td>
+      <td>{{summu.rfqSource}}</td>
+      <td>{{summu.noOfItems}}</td>
+      <td>{{summu.totalAmount}}</td>
+      <td>{{(summu.empColRef|doc|async)?.department}}</td>
+      <td>{{(summu.empColRef|doc|async)?.userName}}</td>
+      <td>
+      <span class="badge badge-info"
+      >{{summu.movementStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp| dbDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{summu.movementTimestamp| dbDate |timevalue }}</td>
+      <td>
+      <span class="badge badge-danger"
+      >{{summu.processingStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |date: 'dd/MM/yyyy'}}
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |timevalue}}
+      </td>
+      </tr>
+      </tbody>
+      </table>
+</div>
+</div>
+</div>
+</tab>
+                <tab heading="RFQ Status" class="rfq-status text-info">
+                  <div class="card shadow mt-3 mx-3 mb-4">
+                    <div class="card-body p-4">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                          <thead class="text-info">
+                            <tr>
+                              <th style="width: 2%">
+                                #
+                              </th>
+                              <th style="width: 13%">
+                                RFQ Serial No.
+                              </th>
+                              <th style="width: 15%">
+                                User Queue
+                              </th>
+      <th style="width: 10%">Movement Status</th>
+      <th style="width: 15%">Movement Date</th>
+      <th style="width: 15%">Movement Time</th>
+      <th style="width: 10%">Processing Status</th>
+      <th style="width: 15%">Processing Date</th>
+      <th style="width: 15%">Processing Time</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+      <tr *ngFor='let summu of rfqSummury$|async|filterBy: userFilter; let i=index;let odd=odd;let first=first;let last=last'
+      [class.text-secondary]="odd"
+      [class.text-success]="!odd"
+
+      >
+      <td>{{i+1}}</td>
+      <td>
+      <a routerLink="/requestforqoute">{{summu.rfqSerialNumber}}</a>
+      </td>
+      <td>{{(summu.empColRef|doc|async)?.userName}}</td>
+      <td>
+      <span class="badge badge-info"
+      >{{summu.movementStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp| dbDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{summu.movementTimestamp| dbDate |timevalue }}</td>
+      <td>
+      <span class="badge badge-danger"
+      >{{summu.processingStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |date: 'dd/MM/yyyy'}}
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |timevalue}}
+      </td>
+      </tr>
+</tbody></table>
+      </div>
+      </div>
+      </div>
+</tab>
+</tabset>
+      </div>
+      </div>
+      <!-- /.card-body -->
+      </div>
+      </div>
+      </div>
+      <!-- /.card -->
+      </section>
+      <!-- /.content -->
+      <!-- /.content-wrapper -->
+
+      <!-- Content Wrapper. Contains page content -->
+      </section>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <ng-template #template>
+      <div class="modal-header bg-info close pull-right modal-lg">
       <h4 class="modal-title pull-left">List Of Clients</h4>
 
       <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
-    </button> -->
-    </div>
-    <div class="modal-body">
-      <div class="jumbotron table-responsive">
-        <table class="table-bordered table-striped">
-          <thead>
-            <th></th>
-            <th>Id</th>
-            <th>Client Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let client of clients">
-              <td>
-                <button
-                  class="primary"
-                  (click)="modalRef.hide()"
-                  (click)="updateName(client.clientName)"
-                >
-                  Add
-                </button>
-              </td>
-              <td>
-                <a>{{ client.clientId }}</a>
-              </td>
-              <td>{{ client.clientName }}</td>
-              <td>{{ client.phoneNumber }}</td>
-              <td>{{ client.email }}</td>
-            </tr>
-          </tbody>
-        </table>
+      </button> -->
       </div>
-    </div>
-  </ng-template>
-</div>
+      <div class="modal-body">
+      <div class="form-group">
+      <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="userFilter.clientName"
+      placeholder="Enter Client Name"
+      />
+      </div>
+      <div class="jumbotron-fluid table-responsive mx-2 my-3">
+      <table class="table-bordered table-striped mx-3">
+      <thead>
+      <th>Action</th>
+      <!-- <th>Id</th> -->
+      <th>Client Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Approval Status</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let client of clients$ | async | filterBy: userFilter">
+      <td>
+      <button
+      class="primary"
+      (click)="modalRef.hide()"
+      (click)="updateName(client.clientName, client.id)"
+      >
+      Add
+      </button>
+      </td>
+
+      <!-- <td > {{client.id }} </td> -->
+
+      <td>{{ client.clientName }}</td>
+      <td>{{ client.phoneNumber }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.approvalStatus }}</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      </div>
+      </ng-template>
+      </div>
+

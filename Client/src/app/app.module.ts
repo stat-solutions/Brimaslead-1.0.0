@@ -1,3 +1,4 @@
+import { TagInputModule } from 'ngx-chips';
 import { SharedModule } from './shared/shared.module';
 import { TransLogisticsDashboardModule } from './trans-logistics-dashboard/trans-logistics-dashboard.module';
 import { SuppliersDashboardModule } from './suppliers-dashboard/suppliers-dashboard.module';
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { FrontDeskModule } from './front-desk/front-desk.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { RequestInterceptorServiceService } from './shared/services/request-interceptor-service.service';
+import { RequestInterceptorServiceService } from './shared/services/other-services/request-interceptor-service.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -55,11 +56,14 @@ import { MatTreeModule } from '@angular/material/tree';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TabsModule } from 'ngx-bootstrap';
 // import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    TagInputModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
@@ -115,6 +119,9 @@ import { TabsModule } from 'ngx-bootstrap';
     MatTreeModule,
     TabsModule.forRoot()
     // FormsModule
+    ToastrModule.forRoot(), // ToastrModule added
+
+    AngularFirestoreModule,
   ],
   providers: [
     {

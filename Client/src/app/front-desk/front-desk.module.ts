@@ -1,6 +1,9 @@
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // this is needed!
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { FrontDeskLayoutComponent } from './front-desk-layout/front-desk-layout.component';
 
 import { FrontDeskRoutingModule } from './front-desk-routing.module';
@@ -17,10 +20,7 @@ import { PerformanceManagementComponent } from './front-desk-dashboard/employee-
 import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/payroll-module/payroll-module.component';
 // tslint:disable-next-line:max-line-length
 import { HireComponent } from './front-desk-dashboard/employee-service/hire/hire.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
-import { ModalModule, AlertModule } from "ngx-bootstrap";
-import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
+import { AlertModule } from "ngx-bootstrap";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from "@angular/material/badge";
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
@@ -57,6 +57,16 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
+import { ModalModule } from "ngx-bootstrap";
+import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
+import { DocPipe } from '../shared/pipes/doc.pipe';
+import { DbDatePipe } from '../shared/pipes/db-date.pipe';
+import { FieldPathGenPipe } from '../shared/pipes/field-path-gen.pipe';
+import { TimevaluePipe } from '../shared/pipes/timevalue.pipe';
+import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
+import { AngularSlickgridModule } from 'angular-slickgrid';
+
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -71,9 +81,16 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     PayrollModuleComponent,
     HireComponent,
     RfqDetailsComponent,
-    AddRfqItemsComponent
+    AddRfqItemsComponent,
+    DocPipe,
+    DbDatePipe,
+    FieldPathGenPipe,
+    TimevaluePipe,
+    CreateCatalogItemComponent
   ],
   imports: [
+    TagInputModule,
+    BrowserAnimationsModule,
     CommonModule,
     FrontDeskRoutingModule,
     FormsModule,
@@ -117,6 +134,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule
+    AngularSlickgridModule.forRoot(),
+    FilterPipeModule,
+    NgxSpinnerModule
   ],
   exports: [
     FrontDeskLayoutComponent,

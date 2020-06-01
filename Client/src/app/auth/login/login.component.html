@@ -8,16 +8,17 @@
     <h3 class="card-title text-info d-flex justify-content-center">
       <span>Login</span>
     </h3>
+    <!-- <button (click)="viewIt()">Login Now</button> -->
     <div class="card-body mb-0 pb-0 text-info">
       <form [formGroup]="userForm" (ngSubmit)="login()">
         <div class="form-group">
           <label
-            for="phone_number"
+            for="email"
             [ngClass]="
-              fval.phone_number.valid ? 'text-success' : ''
+              fval.email.valid ? 'text-success' : ''
             "
-            >Phone Number<i
-              *ngIf="fval.phone_number.valid"
+            >Email<i
+              *ngIf="fval.email.valid"
               class="material-icons"
               >check_circle</i
             ></label
@@ -32,60 +33,60 @@
               </div>
             </div>
             <input
-              id="phone_number"
-              formControlName="phone_number"
+              id="email"
+              formControlName="email"
               type="text"
               class="form-control text-info "
               [ngClass]="{
                 'is-invalid':
-                  (fval.phone_number.touched ||
-                    fval.phone_number.dirty) &&
-                  fval.phone_number.errors
+                  (fval.email.touched ||
+                    fval.email.dirty) &&
+                  fval.email.errors
               }"
-              placeholder="Enter Phone number"
+              placeholder="Enter email address"
               autocomplete="off"
             />
           </div>
           <div
             class="text-danger col"
             *ngIf="
-              (fval.phone_number.touched ||
-                fval.phone_number.dirty) &&
-              fval.phone_number.errors?.required
+              (fval.email.touched ||
+                fval.email.dirty) &&
+              fval.email.errors?.required
             "
           >
-            Your phone number is required!
+            Your email is required!
           </div>
           <div
             class="text-danger col"
             *ngIf="
-              (fval.phone_number.touched ||
-                fval.phone_number.dirty) &&
-              fval.phone_number.errors?.hasNumber
+              (fval.email.touched ||
+                fval.email.dirty) &&
+              fval.email.errors?.email
             "
           >
-            The phone number should be in digits/numbers!
+            The email is not valid!
           </div>
-          <div
+          <!-- <div
             class="text-danger col"
             *ngIf="
-              (fval.phone_number.touched ||
-                fval.phone_number.dirty) &&
-              fval.phone_number.errors?.maxlength
+              (fval.email.touched ||
+                fval.email.dirty) &&
+              fval.email.errors?.maxlength
             "
           >
             The phone number should not exceed 10 digits!
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             class="text-danger col"
             *ngIf="
-              (fval.phone_number.touched ||
-                fval.phone_number.dirty) &&
-              fval.phone_number.errors?.minlength
+              (fval.email.touched ||
+                fval.email.dirty) &&
+              fval.email.errors?.minlength
             "
           >
             The phone number should have atleast 10 digits!
-          </div>
+          </div> -->
         </div>
 
         <!-- <div class="btn btn-info mr-5 " routerLink='/authpage/testing'></div> -->

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LayoutService } from '../../../shared/services/layout.service';
+import { LayoutService } from '../../../shared/services/other-services/layout.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-header",

@@ -1,6 +1,6 @@
 <div class="container-fluid shadow-lg pb-0 mx-0 px-0">
   <div class="container-fluid mt-0 mb-0 pb-0">
-    <div class="row ">
+    <div class="row">
       <div class="col-sm-6 mt-4">
         <ol class="breadcrumb float-sm-left pl-2">
           <li class="breadcrumb-item text-info">
@@ -32,54 +32,44 @@
           [linear]="true"
         >
           <mat-step [stepControl]="loginFormGroup">
-            <form
-              [formGroup]="loginFormGroup"
-              (ngSubmit)="form1()"
-              #formone="ngForm"
-            >
+            <form [formGroup]="loginFormGroup" #formone="ngForm">
               <ng-template matStepLabel>Step 1 </ng-template>
               <mat-form-field appearance="fill">
-                <mat-label for="user_name">Name</mat-label>
+                <mat-label for="userName">Name</mat-label>
                 <mat-icon matPrefix>person_outline</mat-icon>
                 <input
                   matInput
-                  formControlName="user_name"
+                  formControlName="userName"
                   placeholder="Enter your name"
                 />
                 <mat-error
                   *ngIf="
-                    this.loginFormGroup.get('user_name').hasError('required')
+                    this.loginFormGroup.get('userName').hasError('required')
                   "
                 >
                   Name is required
                 </mat-error>
                 <mat-error
                   *ngIf="
-                    !this.loginFormGroup
-                      .get('user_name')
-                      .hasError('required') &&
-                    this.loginFormGroup.get('user_name').hasError('minLength')
+                    !this.loginFormGroup.get('userName').hasError('required') &&
+                    this.loginFormGroup.get('userName').hasError('minLength')
                   "
                 >
                   Name should not be less than two characters
                 </mat-error>
                 <mat-error
                   *ngIf="
-                    !this.loginFormGroup
-                      .get('user_name')
-                      .hasError('required') &&
-                    this.loginFormGroup.get('user_name').hasError('maxLength')
+                    !this.loginFormGroup.get('userName').hasError('required') &&
+                    this.loginFormGroup.get('userName').hasError('maxLength')
                   "
                 >
                   Name should have a maximum of 128 characters
                 </mat-error>
                 <mat-error
                   *ngIf="
-                    !this.loginFormGroup
-                      .get('user_name')
-                      .hasError('required') &&
+                    !this.loginFormGroup.get('userName').hasError('required') &&
                     this.loginFormGroup
-                      .get('user_name')
+                      .get('userName')
                       .hasError('hasCharacters')
                   "
                 >
@@ -92,23 +82,21 @@
                 <mat-icon matPrefix>phone_android</mat-icon>
                 <input
                   matInput
-                  formControlName="phone_number"
+                  formControlName="phoneNumber"
                   placeholder="Enter phone number"
                 />
                 <mat-error
                   *ngIf="
-                    this.loginFormGroup.get('phone_number').hasError('required')
+                    this.loginFormGroup.get('phoneNumber').hasError('required')
                   "
                   >Phone number is required
                 </mat-error>
                 <mat-error
                   *ngIf="
                     !this.loginFormGroup
-                      .get('phone_number')
+                      .get('phoneNumber')
                       .hasError('required') &&
-                    this.loginFormGroup
-                      .get('phone_number')
-                      .hasError('hasNumber')
+                    this.loginFormGroup.get('phoneNumber').hasError('hasNumber')
                   "
                   >Phone number is invalid
                 </mat-error>
@@ -150,7 +138,9 @@
                 <mat-error
                   *ngIf="
                     !this.loginFormGroup.get('password').hasError('required') &&
-                    this.loginFormGroup.get('password').hasError('hasCapitalCase')
+                    this.loginFormGroup
+                      .get('password')
+                      .hasError('hasCapitalCase')
                   "
                   >Password should have atleast 1 capital case letter
                 </mat-error>
@@ -178,7 +168,7 @@
                   type="password"
                   matInput
                   [type]="hide ? 'password' : 'text'"
-                  formControlName="confirm_password"
+                  formControlName="confirmPassword"
                   placeholder="Confirm password"
                 />
                 <span
@@ -195,7 +185,7 @@
                 <mat-error
                   *ngIf="
                     this.loginFormGroup
-                      .get('confirm_password')
+                      .get('confirmPassword')
                       .hasError('required')
                   "
                   >Confirm password
@@ -203,19 +193,19 @@
                 <mat-error
                   *ngIf="
                     !this.loginFormGroup
-                      .get('confirm_password')
+                      .get('confirmPassword')
                       .hasError('required') &&
                     this.loginFormGroup
-                      .get('confirm_password')
+                      .get('confirmPassword')
                       .hasError('NoPasswordMatch')
                   "
                   >Passwords do not match
                 </mat-error>
               </mat-form-field>
               <div class="d-flex mt-2 pt-1 mx-auto">
-                <button type="submit" class="btn btn-secondary col-5 mx-auto">
+                <!-- <button type="submit" class="btn btn-secondary col-5 mx-auto">
                   Save
-                </button>
+                </button> -->
                 <button
                   type="button"
                   class="btn btn-info col-5 mx-auto"
@@ -227,44 +217,57 @@
             </form>
           </mat-step>
           <mat-step [stepControl]="personalFormGroup">
-            <form
-              [formGroup]="personalFormGroup"
-              (ngSubmit)="form2()"
-              #formtwo="ngForm"
-            >
+            <form [formGroup]="personalFormGroup" #formtwo="ngForm">
               <ng-template matStepLabel>Step 2 </ng-template>
               <mat-form-field appearance="fill">
                 <mat-label>National IdNo.</mat-label>
                 <mat-icon matPrefix>perm_identity</mat-icon>
                 <input
                   matInput
-                  formControlName="national_id"
+                  formControlName="nationalId"
                   placeholder="Enter national Id number"
                 />
                 <mat-error
                   *ngIf="
                     this.personalFormGroup
-                      .get('national_id')
+                      .get('nationalId')
                       .hasError('required')
                   "
                   >National Id number is required
                 </mat-error>
                 <mat-error
                   *ngIf="
-                    !this.personalFormGroup
-                      .get('national_id')
-                      .hasError('required') &&                     this.personalFormGroup
-                      .get('national_id')
-                      .hasError('nationalIdCheck')
+                    this.personalFormGroup
+                      .get('nationalId')
+                      .hasError('minLength')
                   "
-                  >National Id number is not valid
-                </mat-error>              </mat-form-field>
+                  >Please put a valid National Id No
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    this.personalFormGroup
+                      .get('nationalId')
+                      .hasError('maxLength')
+                  "
+                  >Please put a valid National Id
+                </mat-error>
+                <!-- <mat-error
+*ngIf="
+!this.personalFormGroup
+.get('nationalId')
+.hasError('required') &&                     this.personalFormGroup
+.get('nationalId')
+.hasError('nationalIdCheck')
+"
+>National Id number is not valid
+</mat-error>               -->
+              </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Date of Birth</mat-label>
                 <mat-icon matPrefix>hourglass_empty</mat-icon>
                 <input
                   matInput
-                  formControlName="date_of_birth"
+                  formControlName="dateOfBirth"
                   [matDatepicker]="picker"
                   placeholder="Enter date of birth"
                 />
@@ -276,7 +279,7 @@
                 <mat-error
                   *ngIf="
                     this.personalFormGroup
-                      .get('date_of_birth')
+                      .get('dateOfBirth')
                       .hasError('required')
                   "
                   >Date of birth is required
@@ -329,34 +332,7 @@
                 </mat-error>
               </mat-form-field>
               <div class="form-group col-xs-12 align-items-center px-auto">
-                <mat-label
-                  ><i class="fas fa-portrait"></i>&nbsp;Passport-size
-                  Photo</mat-label
-                >
-                <input
-                  type="file"
-                  class="form-control"
-                  formControlName="photo"
-                  placeholder="Upload your Passport-size photo"
-                  (change)="onFileChange($event)"
-                />
-                <div class="form-group">
-                  <button
-                    type="button"
-                    (click)="togglePhotoPreview()"
-                    class="btn btn-sm btn-primary"
-                    *ngIf="personalFormGroup.get('photo') !== null"
-                  >
-                    {{ previewPhoto ? "Hide" : "Show" }} Preview
-                  </button>
-                </div>
-                <img
-                  [src]="imageSrc"
-                  *ngIf="
-                    previewPhoto && personalFormGroup.get('photo') !== null
-                  "
-                  style="height: 120px; width:120px"
-                />
+
               </div>
               <div class="d-flex mt-2 pt-1 mx-auto">
                 <button
@@ -366,9 +342,13 @@
                 >
                   Back
                 </button>
-                <button type="submit" class="btn btn-secondary col-3 mx-auto">
+                <!-- <button
+                  type="submit"
+                  class="btn btn-secondary col-3 mx-auto"
+
+                >
                   Save
-                </button>
+                </button> -->
                 <button
                   type="button"
                   class="btn btn-info col-3 mx-auto"
@@ -381,50 +361,47 @@
           </mat-step>
 
           <mat-step [stepControl]="employeeFormGroup">
-            <form
-              [formGroup]="employeeFormGroup"
-              (ngSubmit)="form3()"
-              #formthree="ngForm"
-            >
+            <form [formGroup]="employeeFormGroup" #formthree="ngForm">
               <ng-template matStepLabel>Step 3 </ng-template>
               <mat-form-field appearance="fill">
                 <mat-label>Employee IdNo.</mat-label>
                 <mat-icon matPrefix>supervised_user_circle</mat-icon>
                 <input
                   matInput
-                  formControlName="employee_id"
+                  formControlName="employeeId"
                   placeholder="Enter employee id number"
                 />
                 <mat-error
                   *ngIf="
                     this.employeeFormGroup
-                      .get('employee_id')
+                      .get('employeeId')
                       .hasError('required')
                   "
                   >Employee Id number is required
                 </mat-error>
-               <mat-error
+                <mat-error
                   *ngIf="
                     !this.employeeFormGroup
-                      .get('employee_id')
-                      .hasError('required') &&                     this.employeeFormGroup
-                      .get('employee_id')
+                      .get('employeeId')
+                      .hasError('required') &&
+                    this.employeeFormGroup
+                      .get('employeeId')
                       .hasError('employeeIdCheck')
                   "
                   >Employee Id number is not valid
                 </mat-error>
-                            </mat-form-field>
+              </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Job title</mat-label>
                 <mat-icon matPrefix>turned_in_not</mat-icon>
                 <input
                   matInput
-                  formControlName="job_title"
+                  formControlName="jobTitle"
                   placeholder="Enter job title"
                 />
                 <mat-error
                   *ngIf="
-                    this.employeeFormGroup.get('job_title').hasError('required')
+                    this.employeeFormGroup.get('jobTitle').hasError('required')
                   "
                   >Job title is required
                 </mat-error>
@@ -438,9 +415,9 @@
                 >
                   <mat-option
                     *ngFor="let dept of department"
-                    [value]="dept.value"
+                    [value]="dept.departmentName"
                   >
-                    {{ dept.viewValue }}
+                    {{ dept.departmentName}}
                   </mat-option>
                 </mat-select>
                 <mat-error
@@ -457,7 +434,7 @@
                 <mat-icon matPrefix>hourglass_empty</mat-icon>
                 <input
                   matInput
-                  formControlName="commence_date"
+                  formControlName="commenceDate"
                   [matDatepicker]="picker2"
                   placeholder="Enter commencement date"
                 />
@@ -469,7 +446,7 @@
                 <mat-error
                   *ngIf="
                     this.employeeFormGroup
-                      .get('commence_date')
+                      .get('commenceDate')
                       .hasError('required')
                   "
                   >Commencement date is required
@@ -483,9 +460,9 @@
                 >
                   Back
                 </button>
-                <button type="submit" class="btn btn-secondary col-3 mx-auto">
-                  Save
-                </button>
+                <!-- <button type="submit" class="btn btn-secondary col-3 mx-auto">
+Save
+</button> -->
                 <button
                   type="button"
                   class="btn btn-info col-3 mx-auto"
@@ -499,7 +476,7 @@
           <mat-step>
             <ng-template matStepLabel>Done </ng-template>
             <p class="text-center text-success mt-4">You are done.</p>
-            <div class="foot d-flex  mt-5 py-5 mx-auto">
+            <div class="foot d-flex mt-5 py-5 mx-auto">
               <button
                 type="button"
                 class="btn btn-secondary col-3 mx-auto"
@@ -517,12 +494,13 @@
               <button
                 class="btn btn-info col-3"
                 type="button"
-                (click)="
-                  formone.ngSubmit.emit();
-                  formtwo.ngSubmit.emit();
-                  formthree.ngSubmit.emit()
-                "
+                (click)="onSubmit()"
               >
+                <!-- (click)="
+formone.ngSubmit.emit();
+formtwo.ngSubmit.emit();
+formthree.ngSubmit.emit()
+" -->
                 Register
               </button>
               <ngx-spinner
@@ -530,7 +508,7 @@
                 size="medium"
                 type="ball-scale-multiple"
               >
-                <p class="text-light">Loading...</p>
+                <p class="text-light">Loading!!!...</p>
               </ngx-spinner>
             </div>
           </mat-step>
@@ -551,3 +529,4 @@
   </div>
 </div>
 <!-- </footer> -->
+

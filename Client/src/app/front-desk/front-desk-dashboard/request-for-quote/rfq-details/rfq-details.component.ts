@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RfqData } from 'src/app/shared/models/rfq-data.model';
+import { RfqData } from 'src/app/shared/models/other-models/rfqRelatedModels/rfq-data.model';
 
 @Component({
   selector: "app-rfq-details",
@@ -16,6 +16,7 @@ export class RfqDetailsComponent implements OnInit {
       unitCost: 10000,
       qtyRequired: 23,
       totalCost: 230000,
+      // parameter:{color:'Red',child_menus:{}}
       isEditable: false
     },
     {

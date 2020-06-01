@@ -1,6 +1,5 @@
 import { RfqTable } from 'src/app/shared/models/rfq_table.model';
 import { Component, OnInit } from '@angular/core';
-import { RfqData } from 'src/app/shared/models/rfq-data.model';
 import { RfqStatus } from 'src/app/shared/models/rfq_status.model';
 
 @Component({

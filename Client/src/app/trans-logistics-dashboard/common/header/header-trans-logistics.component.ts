@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LayoutService } from '../../../shared/services/layout.service';
+import { LayoutService } from '../../../shared/services/other-services/layout.service';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,7 @@ export class HeaderTransLogisticsComponent implements OnInit {
   @Input() collapsedLeftHeader: boolean;
 
   constructor( private layoutService: LayoutService) { }
-
+  imageUrl: string;
   ngOnInit() {
 
   }

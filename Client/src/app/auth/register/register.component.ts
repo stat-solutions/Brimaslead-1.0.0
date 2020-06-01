@@ -1,21 +1,25 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
-import { NgxSpinnerService } from "ngx-spinner";
-import { Router } from "@angular/router";
-import { AuthServiceService } from "src/app/shared/services/auth-service.service";
-import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
-
-interface Department {
-  value: string;
-  viewValue: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-service.service';
+import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
+import { ToastrService } from 'ngx-toastr';
+import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
+import { throwIfEmpty } from 'rxjs/operators';
+export interface Department {departmentName:string};
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"]
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+
+  isHovering: boolean;
+  file: any;
+  files: File[] = [];
+ authData: AuthUser;
   hide = true;
   registered = false;
   submitted = false;
@@ -24,30 +28,33 @@ export class RegisterComponent implements OnInit {
   serviceErrors: any = {};
   value: string;
   mySubscription: any;
-
   userForm: FormGroup;
   imageSrc: string;
   previewPhoto = false;
   loginFormGroup: FormGroup;
   personalFormGroup: FormGroup;
   employeeFormGroup: FormGroup;
+  appData: any;
+  department: Department[];
 
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
-  department: Department[] = [
-    { value: "management", viewValue: "Management" },
-    { value: "front-desk", viewValue: "Front Desk" },
-    { value: "finance", viewValue: "Finance" },
-    { value: "production", viewValue: "Production" },
-    { value: "quality-assurance", viewValue: "Quality assurance" },
-    { value: "sales-marketing", viewValue: "Sales & Marketing" },
-    { value: "transport-logistics", viewValue: "Transport & Logistics" }
-  ];
+
+  // = [
+  //   { value: 'management', viewValue: 'Management' },
+  //   { value: 'front-desk', viewValue: 'Front Desk' },
+  //   { value: 'finance', viewValue: 'Finance' },
+  //   { value: 'production', viewValue: 'Production' },
+  //   { value: 'quality-assurance', viewValue: 'Quality assurance' },
+  //   { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
+  //   { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
+  // ];
 
   /** Returns a FormArray with the name 'formArray'. */
   // get formArray() {
@@ -55,10 +62,22 @@ export class RegisterComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.loginFormGroup = this._formBuilder.group(
+    this.loginFormGroup = this.createLoginFormControls();
+    this.personalFormGroup  = this.createPersonalFormControls();
+    this.employeeFormGroup = this.createEmployeeFormControls();
+    this.getDepartments();
+  }
+
+ getDepartments(){
+  this.authService.getAllDepartments().subscribe(
+    x=>{this.department=x;console.log(x[0].departmentName)}
+  );
+}
+  createLoginFormControls() {
+  return  this._formBuilder.group(
       {
-        user_name: [
-          "",
+        userName: [
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -69,8 +88,8 @@ export class RegisterComponent implements OnInit {
             })
           ])
         ],
-        phone_number: [
-          "",
+        phoneNumber: [
+          '',
           Validators.compose([
             Validators.required,
             CustomValidatorInitialCompanySetup.patternValidator(
@@ -80,140 +99,130 @@ export class RegisterComponent implements OnInit {
           ])
         ],
         password: [
-          "",
+          '',
           Validators.compose([
-            // 1. Password Field is Required
+
 
             Validators.required,
 
-            // 2. check whether the entered password has a number
-            //CustomValidatorInitialCompanySetup.patternValidator(/^(([1-9])([1-9])([1-9])([0-9]))$/, { hasNumber: true }),
-            // 6. Has a minimum length of 8 characters
             Validators.minLength(8),
-            //Validators.maxLength(4),
-            // 3. check whether the entered password has upper case letter
+
             CustomValidatorInitialCompanySetup.patternValidator(/[A-Z]/, {
               hasCapitalCase: true
             }),
-            // 4. check whether the entered password has a lower-case letter
+
             CustomValidatorInitialCompanySetup.patternValidator(/[a-z]/, {
               hasSmallCase: true
             }),
-            // 5. check whether the entered password has a special character
+
             CustomValidatorInitialCompanySetup.patternValidator(
               /[!@#$%^&*_+-=;':"|,.<>/?]/,
               { hasSpecialCharacters: true }
             )
           ])
         ],
-        confirm_password: ["", Validators.required]
+        confirmPassword: ['', Validators.required]
+
       },
       {
         validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
       }
     );
-
-    this.personalFormGroup = this._formBuilder.group({
-      national_id: [
-        "",
+  }
+    createPersonalFormControls() {
+    return this._formBuilder.group(
+      {
+      nationalId: ['',
         Validators.compose([
           Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z]))$/,
-            { nationalIdCheck: true }
-          )
+          Validators.maxLength(14),
+          Validators.minLength(14)
+
         ])
       ],
-      date_of_birth: ["", Validators.required],
-      gender: ["", Validators.required],
-      address: ["", Validators.required],
-      email: ["", Validators.email],
-      photo: ["", Validators.required],
-      fileSource: ["", [Validators.required]]
+      dateOfBirth: ['', Validators.required],
+      gender: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', Validators.email],
+
+
+
     });
+    }
 
-    this.employeeFormGroup = this._formBuilder.group({
-      employee_id: [
-        "",
+
+    createEmployeeFormControls() {
+  return this._formBuilder.group({
+      employeeId: [
+        '',
         Validators.compose([
           Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-            { employeeIdCheck: true }
-          )
+
         ])
       ],
-      job_title: ["", Validators.required],
-      department: ["", Validators.required],
-      commence_date: ["", Validators.required]
+      jobTitle: ['', Validators.required],
+      department: ['', Validators.required],
+      commenceDate: ['', Validators.required]
     });
   }
 
-  /* Called on each input in either password field */
-  // onPasswordInput() {
-  //   if (this.userForm.hasError("NoPasswordMatch")) {
-  //     this.userForm.controls.confirm_password.setErrors([{ NoPasswordMatch: true }]);
-  //   } else {
-  //     this.userForm.controls.confirm_password.setErrors(null);
-  //   }
-  // }
+  onFileChange(event: boolean) {
+    this.isHovering = event;
+  }
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
 
-  // revert() {
-  //   this.userForm.reset();
-  // }
-
-  // checkError = (controlName: string, errorName: string) => {
-  //   const control = this.userForm.get(controlName);
-  //   return control ? control.hasError(errorName) : true;
-  // };
-
-  onFileChange(event) {
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [photo] = event.target.files;
-      reader.readAsDataURL(photo);
-
-      reader.onload = () => {
-        this.imageSrc = reader.result as string;
-console.log(this.imageSrc);
-
-        this.personalFormGroup.patchValue({
-          fileSource: reader.result
-        });
-      };
+  onDrop(files: FileList) {
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files.item(i));
     }
   }
+
+
+
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
 
-  form1() {
-    console.log(this.loginFormGroup.value);
-  }
-  form2() {
-    console.log(this.personalFormGroup.value);
-  }
-  form3() {
-    console.log(this.employeeFormGroup.value);
+
+  onFileSelected(event) {
+
+    this.file = event.target.files[0];
+    console.log( this.file);
   }
 
+  showSuccess() {
+
+    this.toastr.success('Please first verify your email and then proceed to login', this.serviceErrors,
+                         {timeOut: 6000, positionClass: 'toast-top-right'});
+  }
+  showDanger() {
+
+    this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
   onSubmit() {
-    this.submitted = true;
+
     this.spinner.show();
-    if (this.userForm.invalid === true) {
-      return;
-    } else {
-      this.authService.registerUser(this.userForm).subscribe(
+    this.appData = {...this.loginFormGroup.value, ...this.personalFormGroup.value, ...this.employeeFormGroup.value};
+  //  console.log(  this.appData );
+    this.authData = {email: this.appData.email, password: this.appData.password};
+    this.submitted = true;
+    delete this.appData.password;
+    delete this.appData.confirmPassword;
+    console.log(this.authData);
+    this.authService.registerEmployee(this.authData, this.appData).subscribe(
         (data: string) => {
-          if (data === "Posted Successfully") {
-            this.serviceErrors = "Registration was Successful";
-            // this.userForm.reset();
+
+          if (data === 'User created successfully') {
+            this.serviceErrors = 'Registration was Successful';
+
             setTimeout(() => {
               this.posted = true;
               this.spinner.hide();
-              this.router.navigate(["userDashboard/dashboard"]);
+              this.showSuccess();
+              this.router.navigate(['authpage/loginpage']);
             }, 2000);
           }
         },
@@ -222,8 +231,14 @@ console.log(this.imageSrc);
           this.spinner.hide();
           this.errored = true;
           this.serviceErrors = error;
+          this.showDanger();
         }
       );
     }
+
+
+
+
+
+
   }
-}

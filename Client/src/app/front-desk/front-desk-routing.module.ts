@@ -11,6 +11,8 @@ import { PerformanceManagementComponent } from './front-desk-dashboard/employee-
 // tslint:disable-next-line:max-line-length
 import { HireComponent } from './front-desk-dashboard/employee-service/hire/hire.component';
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
+import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
+import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
 
 
 const routes: Routes = [
@@ -52,7 +54,17 @@ const routes: Routes = [
       {
         path: 'employee-service/hire',
         component: HireComponent,
+      },
+      {
+        path: 'addRfqItems',
+        component: AddRfqItemsComponent,
+      },
+      {
+        path: 'createCatalogItem',
+        component: CreateCatalogItemComponent,
       }
+
+
     ]
   }
 
