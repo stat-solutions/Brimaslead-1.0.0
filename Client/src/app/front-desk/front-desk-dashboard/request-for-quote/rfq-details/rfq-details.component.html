@@ -14,9 +14,9 @@
 </tr>
   </thead>
   <tbody>
-<tr 
+<tr
 
-  
+
 *ngFor="let item of rfqs">
 <table class="table responsive">
   <thead>
@@ -31,9 +31,9 @@
 </tr>
   </thead>
   <tbody>
-<tr 
+<tr
 
-  
+
 *ngFor="let item of rfqs">
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,13 +47,13 @@
     <a class="dropdown-item" href="#">Separated link</a>
   </div>
 </div>
-<td >{{item.rfq_id}}</td>
+<!-- <td >{{item.rfq_id}}</td>
 <td>{{item.stock_id}}</td>
 <td>{{item.item_name}}</td>
 <td>{{item.unit}}</td>
 <td>{{item.unit_cost|number}}</td>
 <td>{{item.qty_required|number}}</td>
-<td>{{item.qty_required*item.unit_cost|number}}</td>
+<td>{{item.qty_required*item.unit_cost|number}}</td> -->
 </tr>
 
   </tbody>
@@ -62,13 +62,13 @@
 
 </table>
 
-<td >{{item.rfq_id}}</td>
+<!-- <td >{{item.rfq_id}}</td>
 <td>{{item.stock_id}}</td>
 <td>{{item.item_name}}</td>
 <td>{{item.unit}}</td>
 <td>{{item.unit_cost|number}}</td>
 <td>{{item.qty_required|number}}</td>
-<td>{{item.qty_required*item.unit_cost|number}}</td>
+<td>{{item.qty_required*item.unit_cost|number}}</td> -->
 </tr>
 
   </tbody>
@@ -90,7 +90,7 @@
               <span class="sort-icons"></span>
           </th>
           <th class="text-center" *ngFor="let permissionListNew of rfqs;">
-              {{permissionListNew.item_name}}
+              <!-- {{permissionListNew.item_name}} -->
           </th>
       </tr>
   </thead>

@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ItemStock } from 'src/app/shared/models/other-models/rfqRelatedModels/item_stock.model';
-import { BsModalService } from 'ngx-bootstrap';
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
-import { LayoutService } from 'src/app/shared/services/other-services/layout.service';
 
 @Component({
   selector: 'app-add-rfq-items',
@@ -12,10 +10,10 @@ import { LayoutService } from 'src/app/shared/services/other-services/layout.ser
 })
 export class AddRfqItemsComponent implements OnInit {
   @Input() clientNames: string;
-  @Input() rfqId:string;
+  @Input() rfqId: string;
   itemsForm: FormGroup;
   userForm: FormGroup;
-  rfq_number: number;
+  rfqNumber: number;
   index: number;
   items = [];
   users = [
@@ -24,9 +22,9 @@ export class AddRfqItemsComponent implements OnInit {
     { user_name: 'Sharon', department: 'Front desk' }
   ];
   // users = [
-  //   { user_name: "Davis", department: "Front desk" },
-  //   { user_name: "Maria", department: "Sales" },
-  //   { user_name: "Sharon", department: "Front desk" }
+  //   { userName: "Davis", department: "Front desk" },
+  //   { userName: "Maria", department: "Sales" },
+  //   { userName: "Sharon", department: "Front desk" }
   // ];
 
   rfq_sources = [
@@ -36,7 +34,7 @@ export class AddRfqItemsComponent implements OnInit {
     { source_name: 'Bids' }
   ];
 
-  items_stock: ItemStock[] = [
+  itemsStock: ItemStock[] = [
     {
       stockId: 'BMS235',
       itemName: 'pens',
@@ -82,7 +80,7 @@ export class AddRfqItemsComponent implements OnInit {
   ];
 
   constructor(
-    private _formbuilder: FormBuilder
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -114,7 +112,7 @@ export class AddRfqItemsComponent implements OnInit {
   }
 
   setRfqId() {
-    this.rfq_number = this.getRandomNumberBetween(10000, 20000);
+    this.rfqNumber = this.getRandomNumberBetween(10000, 20000);
   }
 
   // pickData() {
@@ -126,7 +124,7 @@ export class AddRfqItemsComponent implements OnInit {
   // }
 
   createFormGroup() {
-    return this._formbuilder.group({
+    return this.fb.group({
       RfqId: [''],
       clientName: [''],
       stockId: [
@@ -160,7 +158,7 @@ export class AddRfqItemsComponent implements OnInit {
             { hasNumber: true }
           )
         ])
-      ],
+      ]
     });
   }
 

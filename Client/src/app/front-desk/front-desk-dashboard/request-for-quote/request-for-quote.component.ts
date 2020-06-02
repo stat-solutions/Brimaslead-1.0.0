@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { RfqRelatedServiceService } from 'src/app/shared/services/front-desk-services/rfq-related-service.service';
 import { DbServiceService } from 'src/app/shared/services/firestore-db/DbServiceService';
 import { CustomerData } from 'src/app/shared/models/user-profile/client_data.model';
+import { TabsetComponent } from "ngx-bootstrap/tabs";
 import { UserData } from 'src/app/shared/models/user-profile/user-data';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -62,7 +63,9 @@ export class RequestForQuoteComponent implements OnInit {
     this.rfqForm = this.createFormGroup();
     // this.itemsForm = this.addItemsFormGroup();
     this.clients$ = this.db.colWithIds$<CustomerData>('customerProfile');
+
     this.rfqSummury$ = this.db.colWithIds$<RfqSumDataId>('rfqSummury', x => x.where('rfqStatus', '==', 'Creation').orderBy('updatedAt', 'desc'));
+
   }
 
   createFormGroup() {
@@ -116,7 +119,7 @@ export class RequestForQuoteComponent implements OnInit {
 
   setSelectedChanges(event: any) {
 
-    if (event.target.value === 'Select Rfq source') {
+    if (event.target.value === 'Select RFQ source') {
 
       this.fval.rfqSource.setErrors({ required: true });
 

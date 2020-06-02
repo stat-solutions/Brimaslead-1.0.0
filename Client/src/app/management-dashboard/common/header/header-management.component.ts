@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LayoutService } from '../../../shared/services/other-services/layout.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthServiceService } from '../../../shared/services/auth-services/auth-service.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -19,15 +23,40 @@ export class HeaderManagementComponent implements OnInit {
   @Input() activeNavColorTheme: string;
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
-  imageUrl: string;
-  constructor( private layoutService: LayoutService) { }
 
-  ngOnInit() {
+  user = '/../../../assets/avatar3.jpg';
+  userName: string;
+  serviceErrors: any;
+  constructor(private layoutService: LayoutService,
+              private authService: AuthServiceService,
+              private spinner: NgxSpinnerService,
+              private router: Router,
+              private toastr: ToastrService) {}
 
-  }
+  ngOnInit() {}
 
   changeTheToggleStatus() {
     this.layoutService.getToggleStatus();
   }
 
+  showDanger() {
+
+    this.toastr.warning(this.serviceErrors, 'Logout Successfully!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
+
+
+
+  logoutUser() {
+    // this.spinner.show();
+    this.serviceErrors = 'Buy buy!';
+    this.showDanger();
+    setTimeout(() => {
+      this.authService.logoutUser();
+      this.router.navigate(['authpage/home']);
+
+      // this.spinner.hide();
+      }, 1000);
+
+
+  }
 }

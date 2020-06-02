@@ -1,51 +1,75 @@
-Navigation
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-1" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand logo logo-ico-widht-text js-scroll-trigger" href="#"><img class="" [src]="imageUrl" width=""
-        height="" alt="Brimas Media" />
-    </a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto my-2 my-lg-0">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" routerLink="#">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropbtn js-scroll-trigger" href="#about">About </a>
-          <div class="dropdown-content">
-            <a routerLink="./about/#whoWeAre">Who we are</a>
-            <a routerLink="./our-clients">Our Clients</a>
-            <a routerLink="./gallery">Gallery</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropbtn js-scroll-trigger" href="#services">Services </a>
-          <div class="dropdown-content">
-            <a routerLink="./services/largeFormatPrint">Large-format printing</a>
-            <a routerLink="./services/commercialPrint">Commercial printing</a>
-            <a routerLink="./services/corporateGifts">Corporate gifts</a>
-            <a routerLink="./services/promotionItems">Promotional items</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" routerLink="./loginpage">Login</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropbtn js-scroll-trigger" routerLink="/register">Register </a>
-          <div class="dropdown-content">
-            <a routerLink="./regUser">Register User</a>
-            <a routerLink="./regCustomer">Register Customer</a>
-            <a href="./regSupplier">Register Supplier</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" routerLink="/contact">Contact</a>
-        </li>
-      </ul>
+<header
+  class="flux-header clearfix"
+  [attr.nav-layout]="navLayout"
+  [attr.navbar-type]="toggleStatus ? defaultNavbar : toggleNavbar"
+  [attr.effect-type]="navbarEffect"
+  [attr.header-theme]="headerColorTheme"
+  [attr.collapsed-left-header]="collapsedLeftHeader"
+  [attr.device-type]="deviceType"
+>
+  <div class="flux-header-wrapper clearfix">
+    <div class="flux-brand" [attr.left-header-theme]="leftHeaderColorTheme">
+      <span class="flux-brand-logo"
+        ><img
+          src="../../../../assets/img/brimas_logo.svg"
+          height="60"
+          width="50"
+      /></span>
+      <span class="flux-brand-text">BRIMASLEAD</span>
+    </div>
+    <div class="flux-header-navbar">
+      <div class="flux-left-header clearfix">
+        <div class="sidebarToggle" (click)="changeTheToggleStatus()">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+      <span
+        class="dashHead text-info align-self-baseline mt-4 mb-0 ml-1 mr-0 px-0 pt-2 pb-0"
+        style="font-size: 14px"
+        >MANAGEMENT DASHBOARD</span
+      >
+      <div class="flux-right-header mt-0 mx-0 p-0">
+        <ul class="align-items-center mt-2 mx-0 px-0">
+          <li>
+            <a
+              class="dropdown-toggle nav-link mt-0 ml-3 mr-0 pl-0 pr-0 pt-0"
+              data-toggle="dropdown"
+              aria-expanded="false"
+              href="#"
+              ><span class="d-none d-lg-inline mr-0 text-gray-600 small">{{
+                userName
+              }}</span
+              ><img
+                class="border rounded-circle img-profile"
+                style="width: 30px; height: 30px"
+                [src]="user"
+              />
+            </a>
+
+            <div
+              class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
+              role="menu"
+            >
+              <a class="dropdown-item text-info" role="presentation" routerLink="/profile"
+                ><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i
+                >&nbsp;Profile</a
+              >
+                            <!-- <a class="dropdown-item text-info" role="presentation" routerLink="/logout"
+                ><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i
+                >&nbsp;Logout</a
+              > -->
+            </div>
+          </li>
+          <li><a (click)="logoutUser()"><i class="fas fa-power-off"></i></a></li>
+          <ngx-spinner
+          class="bg-warning bg-success"
+          size="medium"
+          type="ball-scale-multiple"
+        >
+          <p class="text-light">Loading...</p>
+        </ngx-spinner>
+        </ul>
+      </div>
     </div>
   </div>
-</nav>
+</header>

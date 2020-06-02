@@ -53,20 +53,20 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { NgxSpinnerModule } from 'ngx-spinner';
+
+
 // import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   imports: [
     TagInputModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    NgxSpinnerModule,
     AdminDashboardModule,
     CustomerDashboardModule,
     FinanceDashboardModule,
@@ -125,7 +125,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptorServiceService,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

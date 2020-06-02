@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   employeeFormGroup: FormGroup;
   appData: any;
   department: Department[];
-  
+
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
@@ -144,12 +144,12 @@ export class RegisterComponent implements OnInit {
       gender: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', Validators.email],
-  
+
 
 
     });
     }
-   
+
 
     createEmployeeFormControls() {
   return this._formBuilder.group({
@@ -186,7 +186,7 @@ export class RegisterComponent implements OnInit {
     this.previewPhoto = !this.previewPhoto;
   }
 
- 
+
   onFileSelected(event) {
 
     this.file = event.target.files[0];
@@ -214,7 +214,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.authData);
     this.authService.registerEmployee(this.authData, this.appData).subscribe(
         (data: string) => {
-         
+
           if (data === 'User created successfully') {
             this.serviceErrors = 'Registration was Successful';
 

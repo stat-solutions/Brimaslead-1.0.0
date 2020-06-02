@@ -16,11 +16,11 @@ const routes: Routes = [
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "dashboard"
+        redirectTo: "admindashboard"
       },
 
       {
-        path: "dashboardadmin",
+        path: "admindashboard",
         component: AdminDashboardComponent
       },
       {

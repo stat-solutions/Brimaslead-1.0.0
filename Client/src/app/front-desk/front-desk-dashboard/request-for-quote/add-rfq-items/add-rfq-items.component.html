@@ -71,11 +71,11 @@
                   >Select Item</option
                 >
                     <option
-                      *ngFor="let article of items_stock"
+                      *ngFor="let article of itemsStock"
                       >{{ article.itemName }}</option
                     >
                   </select>
-          
+
                   <!-- <div
                   class="text-danger col" *ngIf="item[i].itemName.valid"
                 >
@@ -104,7 +104,7 @@
                   </div>
                 </div>
               </td>
-          
+
               <td>
                 <div class="form-group">
                   <input
@@ -188,7 +188,7 @@
                 >
                 <select class="form-control" formControlName="stockId">
                    <!-- <option disabled selected>Select Item Id No.</option> -->
-                  <option *ngFor="let item of items_stock">{{
+                  <option *ngFor="let item of itemsStock">{{
                     item.stockId
                   }}</option>
                 </select>
@@ -215,7 +215,7 @@
                   ></label
                 >
                 <select class="form-control" formControlName="itemName">
-                  <option *ngFor="let item of items_stock">{{
+                  <option *ngFor="let item of itemsStock">{{
                     item.itemName
                   }}</option>
                 </select>
@@ -240,7 +240,7 @@
                   ></label
                   >
                 <select class="form-control" formControlName="unit">
-                  <option *ngFor="let item of items_stock">{{
+                  <option *ngFor="let item of itemsStock">{{
                     item.unit
                   }}</option>
                 </select>
@@ -268,7 +268,7 @@
                       >check_circle</i
                     ></label
                   >
-                  <div  *ngFor="let item of items_stock">
+                  <div  *ngFor="let item of itemsStock">
                   <input type="text" class="form-control" formControlName="qty_required"></div>
                   <div
                     class="text-danger col"
@@ -293,7 +293,7 @@
                     ></label
                   >
                   <select class="form-control" formControlName="unitCost">
-                    <option *ngFor="let item of items_stock">{{
+                    <option *ngFor="let item of itemsStock">{{
                       item.unitCost | number
                     }}</option>
                   </select>

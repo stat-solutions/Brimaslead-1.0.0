@@ -14,8 +14,10 @@ import { ContentSectionManagementComponent } from './content-section/content-sec
 import { ManagementDashboardComponent } from './components/management-dashboard/management-dashboard.component';
 import { ManagementNotificationsComponent } from './components/management-notifications/management-notifications.component';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.component';
+import { TabsModule } from "ngx-bootstrap/tabs";
+import { EditRfqComponent } from './components/rfq-approval/edit-rfq.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     PagesCoreManagementComponent,
@@ -27,12 +29,16 @@ import { SharedModule } from '../shared/shared.module';
     ManagementDashboardComponent,
     UpdateManagementProfileComponent,
     ManagementNotificationsComponent,
+    RfqApprovalComponent,
+    EditRfqComponent
   ],
   imports: [
     CommonModule,
     ManagementDashboardRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabsModule.forRoot(),
+    NgxSpinnerModule
   ]
 })
 export class ManagementDashboardModule { }

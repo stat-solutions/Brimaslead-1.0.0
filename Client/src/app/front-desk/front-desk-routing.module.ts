@@ -9,7 +9,7 @@ import { PayrollModuleComponent } from './front-desk-dashboard/employee-service/
 // tslint:disable-next-line:max-line-length
 import { PerformanceManagementComponent } from './front-desk-dashboard/employee-service/performance-management/performance-management.component';
 // tslint:disable-next-line:max-line-length
-import { HiringRetirementResignationComponent } from './front-desk-dashboard/employee-service/hiring-retirement-resignation/hiring-retirement-resignation.component';
+import { HireComponent } from './front-desk-dashboard/employee-service/hire/hire.component';
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
@@ -52,8 +52,8 @@ const routes: Routes = [
         component: PerformanceManagementComponent,
       },
       {
-        path: 'hiringretirementresignation',
-        component: HiringRetirementResignationComponent,
+        path: 'employee-service/hire',
+        component: HireComponent,
       },
       {
         path: 'addRfqItems',
@@ -63,8 +63,8 @@ const routes: Routes = [
         path: 'createCatalogItem',
         component: CreateCatalogItemComponent,
       }
-      
-      
+
+
     ]
   }
 

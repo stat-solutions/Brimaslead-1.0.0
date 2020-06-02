@@ -2,56 +2,55 @@
       <div class="container">
       <div class="row">
       <div class="col-xs-12 col-lg-12">
-      <div class="card shadow-lg mt-2 mb-2 pt-0 pb-1">
-      <div class="row">
-      <div class="col-xs-12 col-lg-5 justify-content-left ml-3 mt-4 pt-2">
-      <a
-      class="btn btn-info btn-sm"
-      role="button"
-      routerLink="/frontdesk-reports"
-      ><i class="fas fa-chart-line fa-sm text-white"></i> Reports</a
-      >&nbsp;
-      <a
-      class="btn btn-info btn-sm"
-      role="button"
-      routerLink="authpage/register-client"
-      ><i class="fas fa-briefcase text-white"></i>&nbsp;Register
-      Client</a
-      >
-      &nbsp;
-      <a
-      class="btn btn-info btn-sm"
-      role="button"
-      routerLink="/createCatalogItem"
-      ><i class="fas fa-umbrella text-white"></i>&nbsp;Create Catalog Item</a
-      >
+        <div class="card shadow-lg mt-2 mb-2 pt-0 pb-1">
+          <div class="row">
+            <div class="col-xs-12 col-lg-5 justify-content-left ml-3 mt-4 pt-2">
+              <a
+                class="btn btn-info btn-sm mb-1"
+                role="button"
+                routerLink="/frontdesk-reports"
+                ><i class="fas fa-chart-line fa-sm text-white"></i> Reports</a
+              >&nbsp;
+              <a
+                class="btn btn-info btn-sm mb-1"
+                role="button"
+                routerLink="authpage/register-client"
+                ><i class="fas fa-briefcase text-white"></i>&nbsp;Register
+                Client</a
+              >
+              &nbsp;
+              <a
+                class="btn btn-info btn-sm mb-1"
+                role="button"
+                routerLink="/create-catalog-item"
+                ><i class="fas fa-cookie-bite text-white"></i>&nbsp;Create Catalog Item</a
+              >
+            </div>
+            <div
+              class="d-sm-flex col-xs-12 col-offset-lg-6 col-lg-6 justify-content-end align-items-end ml-3 mr -0 mt-3 pt-0 px-0"
+            >
+              <h5 class="text-info font-weight-bold mt-0 pt-0 pl-3 ml-0 mr-0 ">
+                <hr class="top mt-1 mb-0" />
+                REQUEST FOR QUOTATION(RFQ)
+                <hr class="bottom mt-1 mb-0" />
+              </h5>
+            </div>
+          </div>
+        </div>
       </div>
-      <div
-      class="d-sm-flex col-xs-12 col-offset-lg-6 col-lg-6 justify-content-end align-items-end ml-3 mr -0 mt-3 pt-0 px-0"
-      >
-      <h5 class="text-info font-weight-bold mt-0 pt-0 pl-3 ml-0 mr-0">
-      <hr class="top mt-1 mb-0" />
-      REQUEST FOR QUOTATION(RFQ)
-      <hr class="bottom mt-1 mb-0" />
-      </h5>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      
-      <div class="row">
-      <div class="col-xs-12 col-lg-12">
-      <div class="rfqs card shadow mb-4">
-      <div
-      class="card-header d-flex justify-content-between align-items-center"
-      >
-      <h6 class="text-info pull-right font-weight-bold m-0">
-      <hr class="top mt-1 mb-0" />
-      CREATE RFQ
-      <hr class="bottom mt-1 mb-0" />
-      </h6>
-      </div>
+
+    <div class="row">
+      <div class=" col-xs-12 col-lg-12">
+        <div class="rfqs card shadow mb-4">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <h6 class="text-info pull-right font-weight-bold m-0">
+              <hr class="top mt-1 mb-0" />
+              CREATE RFQ
+              <hr class="bottom mt-1 mb-0" />
+            </h6>
+          </div>
       <div class="card-body">
       <div class="row">
       <div class="col-lg-12 col-xs-12">
@@ -79,24 +78,24 @@
       >check_circle</i
       >
       </label>
-      
+
       <button
       type="button"
-      class="btn btn-primary form-control"
+      class="btn btn-info form-control"
       (click)="openModal(template)"
       *ngIf="!clientAdded"
       >
-      <i class="fas fa-user-plus"></i>
+      <i class="fas fa-user-plus"></i>&nbsp;
       Select Client
       </button>
-      
+
       <input
       *ngIf="clientAdded"
       class="form-control"
       formControlName="clientName"
       [value]="fval.clientName.value"
       />
-      
+
       <div
       class="text-danger col"
       *ngIf="
@@ -109,7 +108,7 @@
       </div>
       </div>
       </div>
-      
+
       <div class="col-xs-12 col-lg-4">
       <div class="form-group">
       <label
@@ -130,7 +129,7 @@
       placeholder="Select RFQ source"
       (change)="setSelectedChanges($event)"
       >
-      <option selected>Select Rfq source</option>
+      <option selected>Select RFQ source</option>
       <option
       *ngFor="let rfq_source of rfq_sources"
       >
@@ -161,14 +160,14 @@
       (change)="onCheckChange($event)"
       />
       <label
-      class="custom-control-label text-primary"
+      class="custom-control-label text-info"
       for="customSwitch1"
       >Skip Approval</label
       >
       </div>
       </div>
       </div>
-      
+
       <div class="row m-3">
       <div class="col-6">
       <a
@@ -182,7 +181,7 @@
       class="btn btn-info col-5"
       (click)="createRFQ(rfqForm)"
       [disabled]="!rfqForm.valid"
-      
+
       ><ngx-spinner
       class="bg-warning bg-success"
       size="medium"
@@ -205,14 +204,22 @@
       <!-- /.card-body-->
       </div>
       <!-- /.card -->
-      
+
       <!-- Main content -->
-      
+
       <section class="content">
       <!-- Default box -->
-      <div class="card">
-      <div class="card-body p-0">
-      <div id="rfq-listing" class="table-responsive">
+    <div class="row">
+      <div class=" col-xs-12 col-lg-12">
+        <div class="rfqs card shadow mb-4">
+          <div class="card-body p-3">
+            <div class=" mx-auto">
+            
+              <tabset>
+                <tab heading="RFQ Listing" class="rfq-listing text-info">
+                  <div class="card shadow mt-3 mx-3 mb-4">
+                    <div class="card-body p-4">
+                      <div class="table-responsive">
         <input
         type="text"
         class="form-control"
@@ -233,21 +240,14 @@
       <th>Total Amount</th>
       <th>Department</th>
       <th>User Queue</th>
-      <th>Movement Status</th>
-      <th>Movement Date</th>
-      <th>Movement Time</th>
-      <th>Processing Status</th>
-      <th>Processing Date</th>
-      <th>Processing Time</th>
-      
       </tr>
       </thead>
       <tbody>
       <tr *ngFor='let summu of rfqSummury$|async|filterBy: userFilter; let i=index;let odd=odd;let first=first;let last=last'
       [class.text-secondary]="odd"
       [class.text-success]="!odd"
-      
-      > 
+
+      >
       <td class="dropdown">
       <a
       class="text-info"
@@ -257,7 +257,7 @@
       aria-expanded="false"
       ><i class="material-icons">more_vert</i></a
       >
-      
+
       <div class="dropdown-menu position-absolute">
       <a
       data-toggle="modal"
@@ -266,11 +266,11 @@
       >
       <i class="material-icons">add_circle</i>Add Items
       </a>
-      
+
       <a
       data-toggle="modal"
       data-target="#defer"
-      class="dropdown-item d-flex align-items-center text-warning"
+      class="dropdown-item d-flex align-items-center text-primo"
       >
       <i class="material-icons">visibility</i>View RFQ
       </a>
@@ -281,11 +281,11 @@
       >
       <i class="material-icons">fast_rewind</i>Receive RFQ
       </a>
-      
+
       <a
       data-toggle="modal"
       data-target="#comment"
-      class="dropdown-item d-flex align-items-center text-danger"
+      class="dropdown-item d-flex align-items-center text-success"
       >
       <i class="material-icons">fast_forward</i
       >Forward RFQ
@@ -307,14 +307,14 @@
       <td>{{(summu.empColRef|doc|async)?.department}}</td>
       <td>{{(summu.empColRef|doc|async)?.userName}}</td>
       <td>
-      <span class="badge badge-success"
+      <span class="badge badge-info"
       >{{summu.movementStatus}}</span
       >
       </td>
       <td>{{summu.movementTimestamp| dbDate | date: 'dd/MM/yyyy' }}</td>
       <td>{{summu.movementTimestamp| dbDate |timevalue }}</td>
       <td>
-      <span class="badge badge-warning"
+      <span class="badge badge-danger"
       >{{summu.processingStatus}}</span
       >
       </td>
@@ -325,16 +325,79 @@
       </tr>
       </tbody>
       </table>
+</div>
+</div>
+</div>
+</tab>
+                <tab heading="RFQ Status" class="rfq-status text-info">
+                  <div class="card shadow mt-3 mx-3 mb-4">
+                    <div class="card-body p-4">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                          <thead class="text-info">
+                            <tr>
+                              <th style="width: 2%">
+                                #
+                              </th>
+                              <th style="width: 13%">
+                                RFQ Serial No.
+                              </th>
+                              <th style="width: 15%">
+                                User Queue
+                              </th>
+      <th style="width: 10%">Movement Status</th>
+      <th style="width: 15%">Movement Date</th>
+      <th style="width: 15%">Movement Time</th>
+      <th style="width: 10%">Processing Status</th>
+      <th style="width: 15%">Processing Date</th>
+      <th style="width: 15%">Processing Time</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+      <tr *ngFor='let summu of rfqSummury$|async|filterBy: userFilter; let i=index;let odd=odd;let first=first;let last=last'
+      [class.text-secondary]="odd"
+      [class.text-success]="!odd"
+
+      >
+      <td>{{i+1}}</td>
+      <td>
+      <a routerLink="/requestforqoute">{{summu.rfqSerialNumber}}</a>
+      </td>
+      <td>{{(summu.empColRef|doc|async)?.userName}}</td>
+      <td>
+      <span class="badge badge-info"
+      >{{summu.movementStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp| dbDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{summu.movementTimestamp| dbDate |timevalue }}</td>
+      <td>
+      <span class="badge badge-danger"
+      >{{summu.processingStatus}}</span
+      >
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |date: 'dd/MM/yyyy'}}
+      </td>
+      <td>{{summu.movementTimestamp | dbDate |timevalue}}
+      </td>
+      </tr>
+</tbody></table>
       </div>
-      <div id="rfq-status"></div>
+      </div>
+      </div>
+</tab>
+</tabset>
+      </div>
       </div>
       <!-- /.card-body -->
+      </div>
+      </div>
       </div>
       <!-- /.card -->
       </section>
       <!-- /.content -->
       <!-- /.content-wrapper -->
-      
+
       <!-- Content Wrapper. Contains page content -->
       </section>
       </div>
@@ -343,12 +406,11 @@
       </div>
       </div>
       </div>
-      </div>
-      
+
       <ng-template #template>
       <div class="modal-header bg-info close pull-right modal-lg">
       <h4 class="modal-title pull-left">List Of Clients</h4>
-      
+
       <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
       </button> -->
@@ -362,7 +424,7 @@
       placeholder="Enter Client Name"
       />
       </div>
-      <div class="jumbotron-fluid table-responsive mx-5 my-5">
+      <div class="jumbotron-fluid table-responsive mx-2 my-3">
       <table class="table-bordered table-striped mx-3">
       <thead>
       <th>Action</th>
@@ -383,9 +445,9 @@
       Add
       </button>
       </td>
-      
+
       <!-- <td > {{client.id }} </td> -->
-      
+
       <td>{{ client.clientName }}</td>
       <td>{{ client.phoneNumber }}</td>
       <td>{{ client.email }}</td>
@@ -397,4 +459,4 @@
       </div>
       </ng-template>
       </div>
-      
+

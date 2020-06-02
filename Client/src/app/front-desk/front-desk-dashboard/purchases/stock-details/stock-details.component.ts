@@ -7,48 +7,48 @@ import { ItemStock } from 'src/app/shared/other-models/item_stock.model';
   styleUrls: ["./stock-details.component.sass"]
 })
 export class StockDetailsComponent implements OnInit {
-  items_stock: ItemStock[] = [
+  itemsStock: ItemStock[] = [
     {
-      stock_id: "BMS235",
-      item_name: "pens",
+      stockId: "BMS235",
+      itemName: "pens",
       unit: "boxes",
-      qty_required: null,
-      unit_cost: 30000
+      qtyRequired: null,
+      unitCost: 30000
     },
     {
-      stock_id: "BMS346",
-      item_name: "umbrellas",
+      stockId: "BMS346",
+      itemName: "umbrellas",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 14000
+      qtyRequired: null,
+      unitCost: 14000
     },
     {
-      stock_id: "BMS233",
-      item_name: "bags",
+      stockId: "BMS233",
+      itemName: "bags",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 45000
+      qtyRequired: null,
+      unitCost: 45000
     },
     {
-      stock_id: "BMS162",
-      item_name: "mugs",
+      stockId: "BMS162",
+      itemName: "mugs",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 20000
+      qtyRequired: null,
+      unitCost: 20000
     },
     {
-      stock_id: "BMS135",
-      item_name: "diary",
+      stockId: "BMS135",
+      itemName: "diary",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     },
     {
-      stock_id: "BMS127",
-      item_name: "tshirts",
+      stockId: "BMS127",
+      itemName: "tshirts",
       unit: "pieces",
-      qty_required: null,
-      unit_cost: 25000
+      qtyRequired: null,
+      unitCost: 25000
     }
   ];
 

@@ -2,9 +2,9 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { LayoutService } from '../../../shared/services/other-services/layout.service';
 
 @Component({
-  selector: 'app-left-panel',
-  templateUrl: './left-panel-management.component.html',
-  styleUrls: ['./left-panel-management.component.scss']
+  selector: "app-left-panel",
+  templateUrl: "./left-panel-management.component.html",
+  styleUrls: ["./left-panel-management.component.scss"]
 })
 export class LeftPanelManagementComponent implements OnInit {
   asidebarHeight: number;
@@ -18,7 +18,7 @@ export class LeftPanelManagementComponent implements OnInit {
   @Input() headerColorTheme: string;
   @Input() navbarColorTheme: string;
   @Input() activeNavColorTheme: string;
-  imageurl = '../../../../assets/avatar3.jpg';
+  imageurl = "../../../../assets/avatar3.jpg";
   title: any;
   menuList: any;
   selected: any;
@@ -36,7 +36,7 @@ export class LeftPanelManagementComponent implements OnInit {
     this.selected = this.selected === item ? item : item;
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener("window:resize", ["$event"])
   onResizeHeight(event: any) {
     this.asidebarHeight = window.innerHeight;
   }
@@ -46,75 +46,100 @@ export class LeftPanelManagementComponent implements OnInit {
       setSidebarHeight => (this.asidebarHeight = setSidebarHeight)
     );
 
-    this.title = 'Navigation';
+    this.title = "Navigation";
 
     this.menuList = [
-      {
-        name: this.userName,
-        icon: 'far fa-user-circle',
-        url: '/none',
-        image: this.imageurl
-      },
+      // {
+      //   name: this.userName,
+      //   icon: 'far fa-user-circle',
+      //   url: '/none',
+      //   image: this.imageurl
+      // },
 
       {
-        name: 'management Dashboard',
-        icon: 'far fa-clone',
-        url: '/dashboard'
+        name: "Management Dashboard",
+        icon: "fas fa-tachometer-alt",
+        url: "/managementdashboard"
         // badge: '2',
         // badgeBg: 'bg-success',
       },
 
       {
-        name: 'Add Tokens To Stock',
-        icon: 'far fa-calendar-alt text-danger',
-        url: '/addtokens'
+        name: "Request for Quotation(RFQ)",
+        icon: "fas fa-clipboard-list",
+        url: "/rfq-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: 'Sell Tokens',
-        icon: 'far fa-user-circle text-success',
-        url: '/selltokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-      ,
-      {
-        name: 'Transfer Tokens To Savings',
-        icon: 'far fa-user-circle text-info',
-        url: '/transfertokenstosavingsbox'
+        name: "Purchases",
+        icon: "fas fa-warehouse",
+        url: "/purchases-approval"
         // badge: '3',
         // badgeBg: 'bg-danger',
       },
       {
-        name: 'Withdraw Tokens',
-        icon: 'far fa-clone text-warning',
-        url: '/withdrawTokens'
+        name: "Production",
+        icon: "fas fa-building",
+        url: "/production-approvals"
+        // badge: '3',
+        // badgeBg: 'bg-danger',
+      },
+      {
+        name: "Quality Assurance(QA)",
+        icon: "fas fa-gem",
+        url: "/qa-approvals"
+        // badge: '3',
+        // badgeBg: 'bg-danger',
+      },
+      {
+        name: "HR Management",
+        icon: "fas fa-users",
+        url: "/hr-approvals"
         // badge: '2',
         // badgeBg: 'bg-success',
       },
-
+      // {
+      //   name: "Leave Approval",
+      //   icon: "far fa-calendar-minus",
+      //   url: "/leave-approval"
+      //   // badge: '2',
+      //   // badgeBg: 'bg-success',
+      // },
+      // {
+      //   name: "Hiring Approval",
+      //   icon: "fas fa-hourglass-start",
+      //   url: "/hiring-approval"
+      //   // badge: '2',
+      //   // badgeBg: 'bg-success',
+      // },
+      {
+        name: "Appointments",
+        icon: "far fa-calendar-plus",
+        url: "/appointments",
+        badge: "2",
+        badgeBg: "bg-warning"
+      },
 
       {
-        name: 'Update Profile',
-        icon: 'far fa-user text-danger',
-        url: '/updatemanagementprofile'
+        name: "Finance",
+        icon: "fas fa-coins",
+        url: "/finance-approvals"
         // badge: '3',
         // badgeBg: 'bg-danger',
-      }
-
-      ,
-
-
+      },
       {
-        name: 'Notifications',
-        icon: 'fas fa-envelope text-info',
-        url: '/notifications',
-        badge: '8',
-        badgeBg: 'bg-danger',
+        name: "Reports and Analysis",
+        icon: "fa fa-chart-line",
+        url: "/reports-analysis"
+      },
+      {
+        name: "Notifications",
+        icon: "fas fa-envelope",
+        url: "/notifications",
+        badge: "8",
+        badgeBg: "bg-warning"
       }
-
-
     ];
   }
 }
