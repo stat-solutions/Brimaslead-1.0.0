@@ -1,20 +1,25 @@
 
 
-// regular style toast 
+// regular style toast
 // @import '~ngx-toastr/toastr';
- 
-// bootstrap style toast 
-// or import a bootstrap 4 alert styled design (SASS ONLY) 
-// should be after your bootstrap imports, it uses bs4 variables, mixins, functions 
+
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
 // @import '~ngx-toastr/toastr-bs4-alert';
- 
-// if you'd like to use it without importing all of bootstrap it requires 
+
+// if you'd like to use it without importing all of bootstrap it requires
 // @import '~bootstrap/scss/functions';
 // @import '~bootstrap/scss/variables';
 // @import '~bootstrap/scss/mixins';
 // @import '~ngx-toastr/toastr-bs4-alert';
-
-
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material.scss";
+// .ag-theme-alpine {
+//     @include ag-theme-alpine();
+// }
+// .ag-theme-balham{ @include ag-theme-balham(); }
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -10171,7 +10176,7 @@ header.masthead div, p {
     bottom: 12px;
     left: 12px;
   }
-  
+
   /* toast styles */
   .toast-title {
     font-weight: bold;
@@ -10318,4 +10323,34 @@ header.masthead div, p {
       padding: 15px 15px 15px 50px;
       width: 25em;
     }
+  }
+  .italic {
+    font-style: italic;
+  }
+  .subtitle {
+    font-size: 15px;
+    font-style: italic;
+    color: grey;
+    margin-bottom: 10px;
+  }
+  .lightblue {
+    color: lightblue;
+  }
+  .red {
+      color: red;
+  }
+  .faded {
+      opacity: 0.2;
+  }
+  .faded:hover {
+      opacity: 0.5;
+  }
+  .pointer {
+    cursor: pointer !important;
+  }
+  .padding10 {
+    padding: 10px !important;
+  }
+  .text-danger {
+    color: red !important;
   }

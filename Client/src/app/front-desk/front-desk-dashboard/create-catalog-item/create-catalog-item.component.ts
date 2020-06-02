@@ -9,6 +9,7 @@ import { RfqRelatedServiceService } from 'src/app/shared/services/front-desk-ser
 import { Observable } from 'rxjs';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { Column, GridOption } from 'angular-slickgrid';
+import { Module } from 'ag-grid-community';
 
 // tslint:disable-next-line: max-line-length
 export interface TradingProductCatalog {tradingProductId: string; /*Generated*/ tradingProductName: string; tradingProductCategory: string; /*Stockable=Stockable items are physical objects whose quantity should be tracked,composite=Serialized products are objects that have a unique serial number on each unit.,non-stoked=Non-stocked products are not tracked by quantity, but you can assign costs and prices to them,service=Services are not tracked by quantity, but you can assign costs and prices to them.*/tradingProductType: string; /*Standard=This item has one variant which is itself,Variant=This item has different attributes, like size or color. Each variant can be uniquely tracked,Composite=A composite contains one or more standard items. It can be tracked as one item for all the standard items linked to it*/tradingProductDescription: string; /**/tradingProductUnitOfMeasure: string; /*Cases,Packs,Pieces,Each,Weight={kilogram(kg),gram(g),milligram(mg)},Height={metre(m),centimetre (cm),millimetre (mm), inch (in), the foot (ft), the yard (yd)},Width={metre(m),centimetre (cm),millimetre (mm), inch (in), the foot (ft), the yard (yd)},Length{metre(m),centimetre (cm),millimetre (mm), inch (in), the foot (ft), the yard (yd),volume={litres,millitres}}*/tradingProductAverageCostPrice: number; tradingProductAverageMarkUp: number; tradingProductAverageSellingPrice: number; tradingProductInventoryStatus: string; /*Available,Not Available*/ inventoryColRef: string; inventoryDocRef: string; supplierColRef: string; supplierDocRef: string; employeeColRefCB: string; /*Created by*/employeeDocRefCB: string; /*Created by*/employeeColRefFA: string; /*First Approved by*/employeeDocRefCBSA: string; /*First Approved*/employeeColRefSA: string; /*Second Approved by*/employeeDocRefSA: string; /*Second Approved*/tradingProductVariants: any; }
@@ -66,9 +67,13 @@ tradingProductType: PType[] = [
    ];
 
    attiCount: number[] = [];
+   private gridApi: any;
+   private gridColumnApi: any;
+
 
   public modalRef: BsModalRef;
   columnDefinitions: Column[] = [];
+  columnDefs: any[] = [];
   gridOptions: GridOption = {};
   dataset: TradingProductCatalog[] = [];
   constructor(private fb: FormBuilder,
@@ -107,23 +112,41 @@ tradingProductType: PType[] = [
     this.tradingProductForm = this.creatFormGroup();
     this.theTradingProducts$ = this.rfqR.getAllProductDetails();
     this. unitOfMeasure$ = this.db.colWithIds$<UomData>('unitOfMeasures');
-    this.gridOptions = {enableAutoResize: true, enableCellNavigation: true};
-    this.columnDefinitions = [
-      { id: 'id', name: '#', field: 'id', sortable: true },
-      { id: 'name', name: 'Trading Product Name', field: 'tradingProductName', sortable: true },
-      { id: 'cat', name: 'Trading Product Category', field: 'tradingProductCategory', sortable: true },
-      { id: 'type', name: 'Trading Product Type', field: 'tradingProductType', sortable: true },
-      { id: 'description', name: 'Trading Product Description', field: 'tradingProductDescription' },
-      { id: 'effort-driven', name: 'Trading Product UnitOfMeasure', field: 'tradingProductUnitOfMeasure', sortable: true }
-      ,
-      { id: 'effort-driven', name: 'Trading Product Average CostPrice', field: 'tradingProductAverageCostPrice', sortable: true },
-      { id: 'effort-driven', name: 'Trading Product Average MarkUp', field: 'tradingProductAverageMarkUp', sortable: true },
-      { id: 'effort-driven', name: 'Trading Product Average Selling Price', field: 'tradingProductAverageSellingPrice', sortable: true }
-    ];
-    this.rfqR.getAllProductDetails().subscribe(data => this.dataset = data);
-  }
 
-  creatFormGroup() {
+
+    this. columnDefs = [
+      {headerName: '#', field: 'id', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Name', field: 'tradingProductName', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Category', field: 'tradingProductCategory', sortable: true, filter: true, checkboxSelection: true, resizable: true},
+      {headerName: 'Trading Product Type', field: 'tradingProductType', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Description', field: 'tradingProductDescription', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product UnitOfMeasure', field: 'tradingProductUnitOfMeasure', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Average CostPrice', field: 'tradingProductAverageCostPrice', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Average MarkUp', field: 'tradingProductAverageMarkUp', sortable: true, filter: true, resizable: true},
+      {headerName: 'Trading Product Average Selling Price', field: 'tradingProductAverageSellingPrice', sortable: true, filter: true, resizable: true}
+  ];
+
+    this.gridOptions = {enableAutoResize: true, enableCellNavigation: true};
+
+
+  }
+  onGridReady(params) {
+
+    // this.rfqR.getAllProductDetails().subscribe(data => this.dataset = data);
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
+    this.gridApi.sizeColumnsToFit();
+
+    }
+
+exportExcel(params){
+  console.log(params);
+  this.gridApi = params.api;
+  this.gridColumnApi = params.columnApi;
+  this.gridApi.exportDataAsCsv(params);
+}
+creatFormGroup() {
    return  this.fb.group({
 
     tradingProductId: this.fb.control(''),
@@ -145,7 +168,7 @@ tradingProductType: PType[] = [
     });
    }
 
-   addVariant() {
+addVariant() {
      ((this.tradingProductForm.get('tradingProductVariants') as FormArray).push(this.variants));
    }
 
@@ -247,19 +270,19 @@ validateForm() {
 
   this.triggerAtValidate();
 
-this.averageSellingPrice = parseInt(
+  this.averageSellingPrice = parseInt(
  this.fval.tradingProductAverageCostPrice.value.replace(/[\D\s\._\-]+/g, ''), 10 ) + parseInt(
     this.fval.tradingProductAverageCostPrice.value.
      replace(/[\D\s\._\-]+/g, ''), 10 )  * (this.fval.tradingProductAverageMarkUp.value / 100);
 
     // console.log(  Math.round(this.averageSellingPrice)  );
-const price = Math.round(this.averageSellingPrice);
+  const price = Math.round(this.averageSellingPrice);
 
 
-this.values =
+  this.values =
       price === 0 ? '' : price.toLocaleString('en-US');
 
-this.tradingProductForm.controls.tradingProductAverageSellingPrice.setValue(this.values);
+  this.tradingProductForm.controls.tradingProductAverageSellingPrice.setValue(this.values);
 
 
   }
@@ -268,33 +291,33 @@ this.tradingProductForm.controls.tradingProductAverageSellingPrice.setValue(this
 setTypeChanges(selectedChange: any) {
     switch (selectedChange.target.value) {
       case 'Standard':
-        this.standard = true;
-        this.composite = false;
-        this.variant = false;
-        break;
+           this.standard = true;
+           this.composite = false;
+           this.variant = false;
+           break;
 
 
       case 'Composite':
-        this.composite = true;
-        this.standard = false;
-        this.variant = false;
-        this.fval.tradingProductVariants.setErrors({ required: false });
+           this.composite = true;
+           this.standard = false;
+           this.variant = false;
+           this.fval.tradingProductVariants.setErrors({ required: false });
         // this.fval.tradingProductComposites.setErrors({ required: true });
-        break;
+           break;
       case 'Variants':
-        this.composite = false;
-        this.standard = false;
-        this.variant = true;
-        this.fval.tradingProductVariants.setErrors({ required: true });
+           this.composite = false;
+           this.standard = false;
+           this.variant = true;
+           this.fval.tradingProductVariants.setErrors({ required: true });
         // this.fval.tradingProductComposites.setErrors({ required: false });
 
-        break;
+           break;
       default:
-        this.composite = false;
-        this.standard = false;
-        this.stocked = false;
+           this.composite = false;
+           this.standard = false;
+           this.stocked = false;
         // this.fval.tradingProductType.setErrors({ required: true });
-        this.fval.tradingProductVariants.setErrors({ required: false });
+           this.fval.tradingProductVariants.setErrors({ required: false });
         // this.fval.tradingProductComposites.setErrors({ required: false });
     } }
 

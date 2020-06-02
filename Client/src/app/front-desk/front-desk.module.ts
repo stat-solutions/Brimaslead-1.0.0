@@ -30,6 +30,8 @@ import { FieldPathGenPipe } from '../shared/pipes/field-path-gen.pipe';
 import { TimevaluePipe } from '../shared/pipes/timevalue.pipe';
 import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
 import { AngularSlickgridModule } from 'angular-slickgrid';
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     FrontDeskLayoutComponent,
@@ -61,6 +63,7 @@ import { AngularSlickgridModule } from 'angular-slickgrid';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     AngularSlickgridModule.forRoot(),
+    AgGridModule.withComponents([]),
     FilterPipeModule,
     NgxSpinnerModule
   ],
