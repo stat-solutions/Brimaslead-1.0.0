@@ -12,8 +12,6 @@
   font-weight: 700;
   border-radius: 2px;
   width: 100%;
-  //  border-bottom: solid 4px #c63685;
-  // border-left: solid 4px #070707;
 }
 .breadcrumb-item a:hover {
   color: #eee206 !important;
@@ -21,10 +19,11 @@
 .breadcrumb-item.active {
   color: #c63685 !important;
 }
-.card {
+.employee-card {
   width: 90%;
   min-width: 150px;
   max-width: 500px;
+  height: 100%;
   padding-right: 2px;
   padding-left: 2px;
   border: 0rem;
@@ -34,9 +33,9 @@
   width: 100%;
   font-size: 16px !important;
   font-weight: 700 !important;
-  align-items: center
+  align-items: center;
 }
-hr.top{
+hr.top {
   width: 10%;
   min-width: 30px;
   max-width: 80px;
@@ -45,7 +44,7 @@ hr.top{
   background-color: #c63685f3;
   height: 4px;
 }
-hr.bottom{
+hr.bottom {
   width: 10%;
   min-width: 30px;
   max-width: 80px;
@@ -54,41 +53,60 @@ hr.bottom{
   background-color: #eee206ef;
   height: 4px;
 }
+.employee-card hr.top {
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 75px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.employee-card hr.bottom {
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 75px;
+  background-color: #eee206ef;
+  height: 4px;
+}
 .pointerCursor {
   cursor: pointer;
 }
 
- ::ng-deep .mat-step-header {
-   pointer-events: none !important;
-   color: #54a9c9 !important;
-   background-color: none;
+::ng-deep .mat-step-header {
+  pointer-events: none !important;
+  color: #54a9c9 !important;
+  background-color: none;
 }
 
-::ng-deep ng-template .mat-step-header:active, .mat-step-header:focus {
-   pointer-events: none !important;
-   color: #54a9c9 !important;
-   background-color: none !important;
- }
+::ng-deep ng-template .mat-step-header:active,
+.mat-step-header:focus {
+  pointer-events: none !important;
+  color: #54a9c9 !important;
+  background-color: none !important;
+}
 //mat-icon-stepper selected color change
-::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-   background-color: #54a9c9d5!important;
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #54a9c9d5 !important;
 }
-
-//input outline color
-//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
- //   color: red!important;
-    // opacity: 1!important;
-//}
 
 //mat-input focused color
-::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-fill-thick {
-    color: #54a9c9d5 !important;
+::ng-deep
+  .mat-form-field-appearance-fill.mat-focused
+  .mat-form-field-fill-thick {
+  color: #54a9c9d5 !important;
 }
 
 // mat-input error fill color
-::ng-deep .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-fill-thick{
-    color: #c63685f3!important;
-    opacity: 0.8!important;
+::ng-deep
+  .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-fill-thick {
+  color: #c63685f3 !important;
+  opacity: 0.8 !important;
 }
 
 .mat-form-field {
@@ -115,11 +133,13 @@ mat-error {
   width: 100% !important;
   font-size: 22px !important;
 }
-.dropzone { 
+
+
+.dropzone {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
   min-width: 80vw;
   font-weight: 200;
   height: 300px;
@@ -141,3 +161,139 @@ mat-error {
 progress::-webkit-progress-value {
   transition: width 0.1s ease;
 }
+
+
+//Media queries
+@media (min-width: 290px) {
+  .breadcrumb {
+    font-size: 15px !important;
+    margin-top: 20px !important;
+    font-weight: 700;
+  }
+  .employee-card hr.top {
+    min-width: 15px;
+    max-width: 30px;
+    margin-left: 60px;
+  }
+  .employee-card hr.bottom {
+    min-width: 15px;
+    max-width: 30px;
+    margin-right: 60px;
+  }
+  .employee-card {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+  }
+  .card .card-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+}
+
+@media (min-width: 360px) {
+  .breadcrumb {
+    font-size: 17px !important;
+  }
+  .employee-card hr.top {
+    margin-left: 75px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 75px;
+  }
+}
+
+@media (min-width: 375px) {
+  .employee-card hr.top {
+    margin-left: 85px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 85px;
+  }
+}
+
+@media (min-width: 400px) {
+  .employee-card hr.top {
+    margin-left: 100px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .breadcrumb {
+    font-size: 20px !important;
+    margin-top: 25px !important;
+  }
+  .employee-card hr.top {
+    margin-left: 155px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 155px;
+  }
+  .employee-card {
+    margin-top: 15px !important;
+    margin-bottom: 170px !important;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px !important;
+  }
+  .card .card-title {
+    font-size: 18px !important;
+  }
+  ::ng-deep .mat-step-header {
+    pointer-events: none !important;
+    color: #54a9c9 !important;
+    background-color: none;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 30px !important;
+    font-weight: 800;
+  }
+  .employee-card hr.top {
+    margin-left: 145px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 145px;
+  }
+  .employee-card {
+    margin-top: 15px !important;
+    margin-bottom: 450px !important;
+  }
+  .card .card-title {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 1100px) {
+}
+
+@media (min-width: 1280px) {
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 25px !important;
+  }
+  .employee-card hr.top {
+    margin-left: 145px;
+  }
+  .employee-card hr.bottom {
+    margin-right: 145px;
+  }
+  .employee-card {
+    margin-top: 5px !important;
+    margin-bottom: 70px !important;
+  }
+}
+
+@media (min-width: 1320px) {
+  .employee-card {
+    margin-bottom: 40px !important;
+    padding-top: 10px !important;
+  }
+}
+

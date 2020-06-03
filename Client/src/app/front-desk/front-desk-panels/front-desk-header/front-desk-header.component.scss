@@ -1,3 +1,67 @@
+// #################### Media queries for Header Style ######################################
+@media(min-width: 290px)
+{
+  .flux-right-header{
+   margin-right: -8px !important;
+   padding-right: -2px !important;
+ }
+  .dashHead{
+  font-size: 12px !important;
+  padding-top: 8px !important;
+  padding-left: 2px !important;
+}
+}
+
+
+@media(min-width: 360px)
+{
+    .flux-right-header{
+   margin-right: 0px !important;
+   padding-right: 0px !important;
+ }
+  .dashHead{
+  font-size: 14px !important;
+  padding-top: 8px !important;
+  padding-left: 5px !important;
+}
+}
+
+
+@media(min-width: 768px)
+{
+//  .flux-header-navbar{
+//    margin-left: 10px !important;
+//  }
+  .flux-left-header{
+  padding-top: 5px !important;
+   padding-left: 50px !important;
+ }
+  .flux-right-header{
+   margin-right: 65px !important;
+ }
+  .dashHead{
+  font-size: 22px !important;
+  padding-top: 5px !important;
+  padding-left: 20px !important;
+}
+  .flux-brand-logo img {
+    width: 90px !important;
+}
+}
+
+
+@media(min-width: 1260px)
+{
+  .flux-left-header{
+  padding-top: 5px !important;
+ }
+  .flux-right-header{
+   margin-right: 25px !important;
+ }
+}
+
+
+
 // #################### Common Header Style ######################################
 .flux-header {
   width: 100%;
@@ -15,6 +79,8 @@
   display: block;
   clear: both;
 }
+
+
 
 .dropdown-menu {
   background-color: #354052 !important;

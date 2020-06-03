@@ -12,19 +12,18 @@
   font-weight: 700;
   border-radius: 2px;
   width: 100%;
-  //  border-bottom: solid 4px #c63685;
-  // border-left: solid 4px #070707;
 }
 .breadcrumb-item a:hover {
-  color: #eee206ef !important;
+  color: #eee206 !important;
 }
 .breadcrumb-item.active {
-  color: #c63685f3 !important;
+  color: #c63685 !important;
 }
-.card {
+.supplier-card {
   width: 90%;
   min-width: 150px;
   max-width: 500px;
+  height: 100%;
   padding-right: 2px;
   padding-left: 2px;
   border: 0rem;
@@ -34,63 +33,48 @@
   width: 100%;
   font-size: 16px !important;
   font-weight: 700 !important;
-  align-items: center
+  align-items: center;
 }
-hr.top{
+hr.top {
   width: 10%;
   min-width: 30px;
   max-width: 80px;
   position: relative;
-  margin-left: 90px;
+  margin-left: 85px;
   background-color: #c63685f3;
   height: 4px;
 }
-hr.bottom{
+hr.bottom {
   width: 10%;
   min-width: 30px;
   max-width: 80px;
   position: relative;
-  margin-right: 90px;
+  margin-right: 85px;
   background-color: #eee206ef;
   height: 4px;
 }
-
+.supplier-card hr.top {
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 75px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.supplier-card hr.bottom {
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 75px;
+  background-color: #eee206ef;
+  height: 4px;
+}
 .pointerCursor {
   cursor: pointer;
 }
 
- ::ng-deep .mat-step-header {
-   pointer-events: none !important;
-   color: #54a9c9d5 !important;
-   background-color: none;
-}
-
-::ng-deep .mat-step-header:active, .mat-step-header:focus {
-   pointer-events: none !important;
-   color: #54a9c9d5 !important;
-   background-color: none !important;
- }
-//mat-icon-stepper selected color change
-::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-   background-color: #54a9c9d5!important;
-}
-
-//input outline color
-//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
- //   color: red!important;
-    // opacity: 1!important;
-//}
-
-//mat-input focused color
-::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-fill-thick {
-    color: #54a9c9d5 !important;
-}
-
-// mat-input error fill color
-::ng-deep .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-fill-thick{
-    color: #c63685f3!important;
-    opacity: 0.8!important;
-}
 .mat-form-field {
   width: 100%;
   margin-left: 0 !important;
@@ -113,4 +97,200 @@ mat-error {
   min-width: 110px !important;
   max-width: 500px !important;
   width: 100% !important;
+  font-size: 22px !important;
+}
+
+//Media queries
+@media (min-width: 320px) {
+  .breadcrumb {
+    font-size: 15px !important;
+    margin-top: 20px !important;
+    font-weight: 700;
+  }
+  .supplier-card hr.top {
+    min-width: 15px;
+    max-width: 25px;
+    margin-left: 63px;
+  }
+  .supplier-card hr.bottom {
+    min-width: 15px;
+    max-width: 25px;
+    margin-right: 63px;
+  }
+  .supplier-card {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    margin-bottom: 20px !important;
+  }
+  .card .card-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+}
+
+@media (min-width: 360px) {
+  .breadcrumb {
+    font-size: 17px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 83px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 83px;
+  }
+}
+
+@media (min-width: 375px) {
+  .supplier-card hr.top {
+    margin-left: 89px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 89px;
+  }
+  .supplier-card {
+    margin-bottom: 30px !important;
+  }
+}
+
+@media (min-width: 400px) {
+  .supplier-card hr.top {
+    margin-left: 105px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 105px;
+  }
+  .supplier-card {
+    margin-bottom: 35px !important;
+  }
+}
+
+
+@media (min-width: 568px) {
+  .breadcrumb {
+    font-size: 17px !important;
+    margin-top: 20px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 170px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 170px;
+  }
+  .supplier-card {
+  margin-top: 0px !important;
+  margin-bottom: 40px !important;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 0px !important;
+  }
+  .card .card-title {
+    font-size: 16px !important;
+  }
+}
+
+
+@media (min-width: 640px) {
+  .breadcrumb {
+    font-size: 17px !important;
+    margin-top: 20px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 163px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 163px;
+  }
+  .card .card-title {
+    font-size: 16px !important;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .breadcrumb {
+    font-size: 20px !important;
+    margin-top: 25px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 159px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 159px;
+  }
+  .supplier-card {
+    margin-top: 5px !important;
+    margin-bottom: 170px !important;
+    padding-top: 10px !important;
+  }
+  .card .card-title {
+    font-size: 18px !important;
+  }
+}
+
+
+@media (min-width: 812px) {
+  .breadcrumb {
+    font-size: 20px !important;
+    margin-top: 25px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 160px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 160px;
+  }
+  .supplier-card {
+    margin-top: 5px !important;
+    margin-bottom: 50px !important;
+    padding-top: 10px !important;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 30px !important;
+    font-weight: 800;
+  }
+  .supplier-card hr.top {
+    margin-left: 149px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 149px;
+  }
+  .supplier-card {
+    margin-top: 5px !important;
+    margin-bottom: 450px !important;
+  }
+  .card .card-title {
+    font-size: 20px !important;
+  }
+}
+
+@media (min-width: 1100px) {
+}
+
+@media (min-width: 1280px) {
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 25px !important;
+  }
+  .supplier-card hr.top {
+    margin-left: 149px;
+  }
+  .supplier-card hr.bottom {
+    margin-right: 149px;
+  }
+  .supplier-card {
+    margin-top: 5px !important;
+    margin-bottom: 60px !important;
+  }
+}
+
+@media (min-width: 1320px) {
+  .supplier-card {
+    margin-bottom: 60px !important;
+    padding-top: 10px !important;
+  }
 }

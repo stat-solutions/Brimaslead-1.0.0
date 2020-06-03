@@ -1,3 +1,99 @@
+// #################### Media queries for Header Style ######################################
+@media(min-width: 290px)
+{
+//  .flux-header-navbar{
+//    margin-left: 0px !important;
+//  }
+  .flux-left-header{
+   margin-left: -10px !important;
+   padding-left: 3px !important;
+ }
+  .flux-right-header{
+   margin-right: -8px !important;
+   padding-right: -2px !important;
+ }
+  .dashHead{
+  font-size: 12px !important;
+  padding-top: 8px !important;
+  padding-left: 2px !important;
+}
+}
+
+
+@media(min-width: 360px)
+{
+  .flux-left-header{
+   margin-left: 0px !important;
+   padding-left: 0px !important;
+ }
+    .flux-right-header{
+   margin-right: 0px !important;
+   padding-right: 0px !important;
+ }
+  .dashHead{
+  font-size: 13px !important;
+  padding-top: 8px !important;
+  padding-left: 5px !important;
+}
+}
+
+
+@media(min-width: 375px)
+{
+  .dashHead{
+  font-size: 13px !important;
+  padding-top: 8px !important;
+  padding-left: 5px !important;
+}
+}
+
+
+@media(min-width: 400px)
+{
+  .dashHead{
+  font-size: 15px !important;
+  padding-top: 8px !important;
+  padding-left: 5px !important;
+}
+}
+
+@media(min-width: 768px)
+{
+  .flux-left-header{
+  padding-top: 5px !important;
+   padding-left: 50px !important;
+ }
+  .flux-right-header{
+   margin-right: 65px !important;
+ }
+  .dashHead{
+  font-size: 22px !important;
+  padding-top: 8px !important;
+  padding-left: 20px !important;
+}
+  .flux-brand-logo img {
+    width: 90px !important;
+}
+}
+
+
+@media(min-width: 1260px)
+{
+  .flux-left-header{
+  padding-top: 5px !important;
+ }
+  .flux-right-header{
+   margin-right: 25px !important;
+ }
+  .dashHead{
+  font-size: 22px !important;
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  padding-left: 20px !important;
+}
+}
+
+
 // #################### Common Header Style ######################################
 .flux-header {
   width: 100%;
