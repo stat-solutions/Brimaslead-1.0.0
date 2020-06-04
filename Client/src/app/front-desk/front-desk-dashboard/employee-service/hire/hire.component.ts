@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
-import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Router } from "@angular/router";
+import { AuthServiceService } from "src/app/shared/services/auth-services/auth-service.service";
+import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
 
 interface Department {
   value: string;
@@ -10,9 +11,9 @@ interface Department {
 }
 
 @Component({
-  selector: 'app-hire',
-  templateUrl: './hire.component.html',
-  styleUrls: ['./hire.component.scss']
+  selector: "app-hire",
+  templateUrl: "./hire.component.html",
+  styleUrls: ["./hire.component.scss"]
 })
 export class HireComponent implements OnInit {
   hide = true;
@@ -31,18 +32,20 @@ export class HireComponent implements OnInit {
   employeeFormGroup: FormGroup;
 
   constructor(
+    private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
-    private fb: FormBuilder
+    private router: Router,
+    private _formBuilder: FormBuilder
   ) {}
 
   department: Department[] = [
-    { value: 'management', viewValue: 'Management' },
-    { value: 'front-desk', viewValue: 'Front Desk' },
-    { value: 'finance', viewValue: 'Finance' },
-    { value: 'production', viewValue: 'Production' },
-    { value: 'quality-assurance', viewValue: 'Quality assurance' },
-    { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
-    { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
+    { value: "management", viewValue: "Management" },
+    { value: "front-desk", viewValue: "Front Desk" },
+    { value: "finance", viewValue: "Finance" },
+    { value: "production", viewValue: "Production" },
+    { value: "quality-assurance", viewValue: "Quality assurance" },
+    { value: "sales-marketing", viewValue: "Sales & Marketing" },
+    { value: "transport-logistics", viewValue: "Transport & Logistics" }
   ];
 
   /** Returns a FormArray with the name 'formArray'. */
@@ -51,9 +54,9 @@ export class HireComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.personalFormGroup = this.fb.group({
+    this.personalFormGroup = this._formBuilder.group({
       userName: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           Validators.minLength(2),
@@ -65,7 +68,7 @@ export class HireComponent implements OnInit {
         ])
       ],
       phoneNumber: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -74,13 +77,13 @@ export class HireComponent implements OnInit {
           )
         ])
       ],
-      kinRelation: ['', Validators.required],
-      kinName: ['', Validators.required],
-      dateOfBirth2: ['', Validators.required],
-      emergencyName: ['', Validators.required],
-      emergencyRelation: ['', Validators.required],
+      kinRelation: ["", Validators.required],
+      kinName: ["", Validators.required],
+      dateOfBirth2: ["", Validators.required],
+      emergencyName: ["", Validators.required],
+      emergencyRelation: ["", Validators.required],
       emergencyNumber: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -89,10 +92,10 @@ export class HireComponent implements OnInit {
           )
         ])
       ],
-      bankName: ['', Validators.required],
-      accountName: ['', Validators.required],
+      bankName: ["", Validators.required],
+      accountName: ["", Validators.required],
       accountNumber: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -102,7 +105,7 @@ export class HireComponent implements OnInit {
         ])
       ],
       national_id: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -111,17 +114,17 @@ export class HireComponent implements OnInit {
           )
         ])
       ],
-      date_of_birth: ['', Validators.required],
-      gender: ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', Validators.email],
-      photo: ['', Validators.required],
-      fileSource: ['', [Validators.required]]
+      date_of_birth: ["", Validators.required],
+      gender: ["", Validators.required],
+      address: ["", Validators.required],
+      email: ["", Validators.email],
+      photo: ["", Validators.required],
+      fileSource: ["", [Validators.required]]
     });
 
-    this.employeeFormGroup = this.fb.group({
+    this.employeeFormGroup = this._formBuilder.group({
       employeeId: [
-        '',
+        "",
         Validators.compose([
           Validators.required,
           CustomValidatorInitialCompanySetup.patternValidator(
@@ -130,11 +133,11 @@ export class HireComponent implements OnInit {
           )
         ])
       ],
-      jobTitle: ['', Validators.required],
-      salaryScale: ['', Validators.required],
-      supervisor: ['', Validators.required],
-      department: ['', Validators.required],
-      commenceDate: ['', Validators.required]
+      jobTitle: ["", Validators.required],
+      salaryScale: ["", Validators.required],
+      supervisor: ["", Validators.required],
+      department: ["", Validators.required],
+      commenceDate: ["", Validators.required]
     });
   }
 
@@ -186,30 +189,30 @@ export class HireComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.spinner.show();
-    if (this.userForm.invalid === true) {
-      return;
-    } else {
-      // this.authService.registerUser(this.userForm).subscribe(
-      //   (data: string) => {
-      //     if (data === "Posted Successfully") {
-      //       this.serviceErrors = "Registration was Successful";
-            // this.userForm.reset();
-            // setTimeout(() => {
-            //   this.posted = true;
-            //   this.spinner.hide();
-            //   this.router.navigate(["userDashboard/dashboard"]);
-            // }, 2000);
-          // }
-        // },
+    // this.submitted = true;
+    // this.spinner.show();
+    // if (this.userForm.invalid === true) {
+    //   return;
+    // } else {
+    //   this.authService.registerUser(this.userForm).subscribe(
+    //     (data: string) => {
+    //       if (data === "Posted Successfully") {
+    //         this.serviceErrors = "Registration was Successful";
+    //         // this.userForm.reset();
+    //         setTimeout(() => {
+    //           this.posted = true;
+    //           this.spinner.hide();
+    //           this.router.navigate(["userDashboard/dashboard"]);
+    //         }, 2000);
+    //       }
+    //     },
 
-      //   (error: string) => {
-      //     this.spinner.hide();
-      //     this.errored = true;
-      //     this.serviceErrors = error;
-      //   }
-      // );
-    }
+    //     (error: string) => {
+    //       this.spinner.hide();
+    //       this.errored = true;
+    //       this.serviceErrors = error;
+    //     }
+    //   );
+    // }
   }
 }

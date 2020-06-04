@@ -12,20 +12,19 @@
   font-weight: 700;
   border-radius: 2px;
   width: 100%;
-  //  border-bottom: solid 4px #c63685;
-  // border-left: solid 4px #070707;
 }
 .breadcrumb-item a:hover {
-  color: #eee206ef !important;
+  color: #eee206 !important;
 }
 .breadcrumb-item.active {
-  color: #c63685f3 !important;
+  color: #c63685 !important;
 }
-.card {
+.customer-card {
   width: 90%;
   min-width: 150px;
   max-width: 500px;
-  padding-right: 2px;
+  height: 100%;
+padding-right: 2px;
   padding-left: 2px;
   border: 0rem;
   padding-bottom: 20px;
@@ -41,7 +40,7 @@ hr.top{
   min-width: 30px;
   max-width: 80px;
   position: relative;
-  margin-left: 90px;
+  margin-left: 85px;
   background-color: #c63685f3;
   height: 4px;
 }
@@ -50,47 +49,32 @@ hr.bottom{
   min-width: 30px;
   max-width: 80px;
   position: relative;
-  margin-right: 90px;
+  margin-right: 85px;
   background-color: #eee206ef;
   height: 4px;
 }
-
+.customer-card hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 20px;
+  position: relative;
+  margin-left: 65px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.customer-card hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 20px;
+  position: relative;
+  margin-right: 65px;
+  background-color: #eee206ef;
+  height: 4px;
+}
 .pointerCursor {
   cursor: pointer;
 }
 
- ::ng-deep .mat-step-header {
-   pointer-events: none !important;
-   color: #54a9c9d5 !important;
-   background-color: none;
-}
-
-::ng-deep .mat-step-header:active, .mat-step-header:focus {
-   pointer-events: none !important;
-   color: #54a9c9d5 !important;
-   background-color: none !important;
- }
-//mat-icon-stepper selected color change
-::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-   background-color: #54a9c9d5!important;
-}
-
-//input outline color
-//::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
- //   color: red!important;
-    // opacity: 1!important;
-//}
-
-//mat-input focused color
-::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-fill-thick {
-   background-color: #54a9c9d5 !important;
-}
-
-// mat-input error fill color
-::ng-deep .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-fill-thick{
-    background-color: #c63685f3!important;
-    opacity: 0.8!important;
-}
 .mat-form-field {
   width: 100%;
   margin-left: 0 !important;
@@ -113,4 +97,234 @@ mat-error {
   min-width: 110px !important;
   max-width: 500px !important;
   width: 100% !important;
+  font-size: 22px !important;
+}
+
+//Media queries
+@media (min-width:320px){
+  .breadcrumb {
+    font-size: 15px !important;
+    margin-top: 20px !important;
+    font-weight: 700;
+  }
+.customer-card hr.top{
+  min-width: 15px;
+  max-width: 20px;
+  margin-left: 75px;
+}
+.customer-card hr.bottom{
+  min-width: 15px;
+  max-width: 20px;
+  margin-right: 75px;
+}
+.customer-card {
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+.card .card-title {
+  font-size: 16px !important;
+  margin-bottom: 20px !important;
+}
+}
+
+
+@media (min-width:360px){
+  .breadcrumb {
+    font-size: 17px !important;
+    margin-top: 20px !important;
+  }
+.customer-card hr.top{
+  margin-left: 93px;
+}
+.customer-card hr.bottom{
+  margin-right: 93px;
+}
+}
+
+
+@media (min-width:375px){
+  .breadcrumb {
+    font-size: 17px !important;
+    margin-top: 20px !important;
+  }
+.customer-card hr.top{
+  margin-left: 98px;
+}
+.customer-card hr.bottom{
+  margin-right: 98px;
+}
+.customer-card {
+  margin-bottom: 30px !important;
+}
+}
+
+
+@media (min-width:400px){
+.customer-card hr.top{
+  margin-left: 115px;
+}
+.customer-card hr.bottom{
+  margin-right: 115px;
+}
+.card .card-title {
+  font-size: 16px !important;
+}
+.customer-card {
+  margin-bottom: 35px !important;
+}
+}
+
+
+@media (min-width:568px){
+.customer-card hr.top{
+  margin-left: 180px;
+}
+.customer-card hr.bottom{
+  margin-right: 180px;
+}
+.card .card-title {
+  font-size: 16px !important;
+  margin-bottom: 20px !important;
+}
+.customer-card {
+  margin-top: 0px !important;
+  margin-bottom: 40px !important;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 0px !important;
+}
+}
+
+
+@media (min-width:640px){
+.customer-card hr.top{
+  margin-left: 174px;
+}
+.customer-card hr.bottom{
+  margin-right: 174px;
+}
+.card .card-title {
+  font-size: 16px !important;
+  margin-bottom: 20px !important;
+}
+}
+
+
+@media (min-width: 731px){
+.customer-card hr.top{
+  margin-left: 174px;
+}
+.customer-card hr.bottom{
+  margin-right: 174px;
+}
+.card .card-title {
+  font-size: 16px !important;
+  margin-bottom: 20px !important;
+}
+}
+
+
+@media (min-width: 768px){
+  .breadcrumb {
+    font-size: 20px !important;
+    margin-top: 25px !important;
+  }
+.customer-card hr.top{
+  min-width: 15px;
+  max-width: 25px;
+  margin-left: 170px;
+}
+.customer-card hr.bottom{
+  min-width: 15px;
+  max-width: 25px;
+  margin-right: 170px;
+}
+.customer-card {
+  margin-top: 5px !important;
+  margin-bottom: 170px !important;
+  padding-top: 10px !important;
+}
+.card .card-title {
+  font-size: 18px !important;
+  margin-bottom: 20px !important;
+}
+
+}
+
+
+@media (min-width: 812px){
+  .breadcrumb {
+    font-size: 20px !important;
+    margin-top: 25px !important;
+  }
+.customer-card hr.top{
+  min-width: 15px;
+  max-width: 25px;
+  margin-left: 172px;
+}
+.customer-card hr.bottom{
+  min-width: 15px;
+  max-width: 25px;
+  margin-right: 172px;
+}
+.customer-card {
+  margin-bottom: 40px !important;
+  padding-top: 10px !important;
+}
+}
+
+
+@media (min-width: 1024px){
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 30px !important;
+    font-weight: 800;
+  }
+.customer-card hr.top{
+  min-width: 15px;
+  max-width: 30px;
+  margin-left: 163px;
+}
+.customer-card hr.bottom{
+  min-width: 15px;
+  max-width: 30px;
+  margin-right: 163px;
+}
+.customer-card {
+  margin-bottom: 380px !important;
+}
+.card .card-title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-bottom: 25px !important;
+}
+}
+
+
+@media (min-width:1100px){
+}
+
+@media (min-width:1280px){
+  .breadcrumb {
+    font-size: 24px !important;
+    margin-top: 25px !important;
+  }
+.customer-card hr.top{
+  margin-left: 163px;
+}
+.customer-card hr.bottom{
+  margin-right: 163px;
+}
+.customer-card {
+  margin-bottom: 60px !important;
+}
+}
+
+
+@media (min-width:1320px)
+{
+.customer-card {
+  margin-bottom: 60px !important;
+  padding-top: 10px !important;
+}
 }

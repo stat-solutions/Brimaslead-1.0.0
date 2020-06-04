@@ -21,30 +21,6 @@
 h5 {
   font-size: 19px !important;
 }
-// h6 {
-//   font-size: 18px !important;
-// }
-
-// hr.top {
-//   width: 10%;
-//   min-width: 30px;
-//   max-width: 50px;
-//   position: relative;
-//   margin-top: 0px;
-//   margin-left: 0px;
-//   background-color: #c63685f3;
-//   height: 4px;
-// }
-// hr.bottom {
-//   width: 10%;
-//   min-width: 30px;
-//   max-width: 50px;
-//   position: relative;
-//   right: 12px;
-//   margin-right: 25px;
-//   background-color: #eee206ef;
-//   height: 4px;
-// }
 .rfqs hr.top {
   width: 10%;
   min-width: 25px;
@@ -153,3 +129,291 @@ h4.modal-title {
   width: 140% !important;
   max-width: 1000px !important;
 }
+
+
+@media (min-width:290px){
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 13px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+h5 {
+  margin-left: 10px !important;
+  padding-left: 5px !important;
+}
+
+}
+
+
+@media (min-width:360px){
+.rfq-col{
+  margin-bottom: 15px !important;
+}
+.orders-col{
+  padding-left: 0px !important;
+  margin-bottom: 15px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 29px;
+}
+h5 {
+  margin-left: 10px !important;
+  padding-left: 20px !important;
+}
+.rfq-listing {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.listing-card {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.listing-table {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.status-card {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.status-table {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+}
+
+
+@media (min-width:375px){
+.tickets-card2 hr.bottom{
+  margin-right: 29px;
+}
+h5 {
+  margin-left: 10px !important;
+  padding-left: 30px !important;
+}
+
+}
+
+
+@media (min-width:400px){
+.tickets-card2 hr.bottom{
+  margin-right: 33px;
+}
+h5 {
+  margin-left: 10px !important;
+  padding-left: 50px !important;
+}
+}
+
+
+@media (min-width:568px){
+.tickets-card2 hr.bottom{
+  margin-right: 50px;
+}
+h5 {
+  margin-left: 93px !important;
+}
+}
+
+
+@media (min-width: 640px){
+.tickets-card2 hr.bottom{
+  margin-right: 38px;
+}
+h5 {
+  margin-left: 90px !important;
+}
+}
+
+
+@media (min-width: 768px){
+.container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 50px;
+}
+h5 {
+  font-size: 20px !important;
+  margin-left: 160px !important;
+  padding-left: 80px !important;
+}
+}
+
+
+@media (min-width: 812px){
+.container {
+  margin-left: 20px !important;
+}
+}
+
+
+@media (min-width: 823px){
+.container {
+  margin-left: 25px !important;
+}
+}
+
+
+@media (min-width: 1024px){
+.container {
+  margin-left: 5px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 60px;
+}
+h5 {
+  margin-left: 180px !important;
+  padding-left: 130px !important;
+}
+.rfq-listing {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: auto !important;
+  padding-left: auto !important;
+}
+.listing-card {
+  width: 895px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+.listing-card .card-body {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+.listing-table {
+  width: 100% !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+.rfq-status {
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: auto !important;
+  padding-left: auto !important;
+}
+.status-card {
+  width: 895px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: auto !important;
+  padding-left: auto !important;
+}
+.status-card .card-body {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  padding-right: 50px !important;
+  padding-left: 50px !important;
+  }
+  .status-table {
+    width: 100% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: auto !important;
+  padding-left: auto !important;
+}
+}
+
+
+@media (min-width:1100px){
+.rfq-col{
+  margin-bottom: 15px !important;
+}
+.orders-col{
+  margin-bottom: 15px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 72px;
+}
+.tickets-card2 {
+  width: 100%;
+  padding-right: 2px;
+  padding-left: 2px;
+  border: 0rem;
+  padding-top: 5px !important;
+  padding-bottom: 8px !important;
+}
+h5 {
+  font-size: 20px !important;
+  margin-left: 200px !important;
+  padding-left: 80px !important;
+}
+
+}
+
+@media (min-width:1280px){
+h5 {
+  font-size: 20px !important;
+  margin-left: 210px !important;
+  padding-left: 140px !important;
+}
+.listing-card {
+  width: 986px !important;
+}
+.listing-card .card-body {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+.status-card {
+  width: 986px !important;
+}
+.status-card .card-body {
+  padding-right: 30px !important;
+  padding-left: 80px !important;
+  }
+
+}
+
+
+@media (min-width:1320px)
+{
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 72px;
+}
+h5 {
+  font-size: 20px !important;
+  margin-left: 260px !important;
+  padding-left: 140px !important;
+}
+.listing-card {
+  width: 1076px !important;
+}
+.listing-card .card-body {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+.status-card {
+  width: 1076px !important;
+}
+.status-card .card-body {
+  padding-right: 80px !important;
+  padding-left: 130px !important;
+  }
+  }
+
+
