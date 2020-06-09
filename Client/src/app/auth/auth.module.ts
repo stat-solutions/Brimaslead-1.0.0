@@ -48,11 +48,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { GoogoComponent } from './googo/googo.component';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../../environments/environment';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 
 
@@ -109,13 +105,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    AngularFireAuthModule
-
-  ],
-  providers: [
-    { provide: StorageBucket, useValue: 'gs://brimaslead/' }, AngularFirestore,
   ]
 })
 export class AuthModule {}

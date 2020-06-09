@@ -60,9 +60,56 @@ rfqSerialNumber(): Observable<firebase.firestore.FieldValue>{
 
 }
 
+tradingProductSerialNumber(): Observable<firebase.firestore.FieldValue>{
+
+  const updateDbFirst = (fireUser: firebase.firestore.FieldValue): Observable<firebase.firestore.FieldValue> => {
+    return from(
+      this.db.doc('brimasleadSerials/Gd60tBVY30dXZqovzTyA').update({serialNumber: this.db.increaseFieldByOne})
+    ).pipe(take(1), mapTo(fireUser));
+  };
+
+  const getTheUpdatedNumber = (): Observable<firebase.firestore.FieldValue> => {
+    return this.db.doc$<BrimasleadSerialNumbers>('brimasleadSerials/Gd60tBVY30dXZqovzTyA').pipe(
+      take(1),
+    map(xx => xx.serialNumber)
+    ); };
+
+  return this.db.doc$<BrimasleadSerialNumbers>('brimasleadSerials/Gd60tBVY30dXZqovzTyA').pipe(
+  take(1),
+    tap(x => {this.existingSerialNumber = x.serialNumber; }),
+    concatMap(() => updateDbFirst(this.existingSerialNumber)),
+    concatMap(() => getTheUpdatedNumber())
+  );
 
 
 
+}
+
+
+variantSerialNumber(): Observable<firebase.firestore.FieldValue>{
+
+  const updateDbFirst = (fireUser: firebase.firestore.FieldValue): Observable<firebase.firestore.FieldValue> => {
+    return from(
+      this.db.doc('brimasleadSerials/2uekpzIHQf6yFsJRvedQ').update({serialNumber: this.db.increaseFieldByOne})
+    ).pipe(take(1), mapTo(fireUser));
+  };
+
+  const getTheUpdatedNumber = (): Observable<firebase.firestore.FieldValue> => {
+    return this.db.doc$<BrimasleadSerialNumbers>('brimasleadSerials/2uekpzIHQf6yFsJRvedQ').pipe(
+      take(1),
+    map(xx => xx.serialNumber)
+    ); };
+
+  return this.db.doc$<BrimasleadSerialNumbers>('brimasleadSerials/2uekpzIHQf6yFsJRvedQ').pipe(
+  take(1),
+    tap(x => {this.existingSerialNumber = x.serialNumber; }),
+    concatMap(() => updateDbFirst(this.existingSerialNumber)),
+    concatMap(() => getTheUpdatedNumber())
+  );
+
+
+
+}
 
 
 

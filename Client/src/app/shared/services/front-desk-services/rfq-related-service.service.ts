@@ -8,6 +8,8 @@ import { CollectionPredicate } from '../firestore-db/CollectionPredicate';
 import { RfqSumData } from 'src/app/front-desk/front-desk-dashboard/request-for-quote/request-for-quote.component';
 import { RfqSerialNumberService } from './rfq-serial-number.service';
 import { TradingProductCatalog } from 'src/app/front-desk/front-desk-dashboard/create-catalog-item/create-catalog-item.component';
+import { TradingProductVariants,
+         TradingProductCatalogWithVId } from '../../../front-desk/front-desk-dashboard/create-catalog-item/create-catalog-item.component';
 export interface ListCustomers extends CustomerData {id: string; approvalStatus: string; }
 
 export interface AuthUserId extends AuthUser { id: string; }
@@ -17,7 +19,8 @@ export interface CustomerDataId extends CustomerData { id: string; }
   providedIn: 'root'
 })
 export class RfqRelatedServiceService {
-
+  newData: TradingProductCatalog;
+  newDataV: TradingProductCatalogWithVId;
   constructor(private db: DbServiceService, private serial: RfqSerialNumberService) { }
 
 
@@ -56,27 +59,89 @@ this.db.col(ref).add(newData).then(docRef => docRef.collection('rfqsumAuditTrail
 
 
 
-  createTheProduct(ref: CollectionPredicate<TradingProductCatalog>, mydata: TradingProductCatalog): Observable<string> {
-return from(this.db.col(ref).add(mydata).then(
-  docRef => {
-    
-    console.log(`mydata=${mydata.tradingProductVariants[0].variantAttributes[0].display}`);
+  createTheProductStandard(ref: CollectionPredicate<TradingProductCatalog>, mydata: TradingProductCatalog): Observable<string> {
 
-    console.log(`mydata=${mydata.tradingProductVariants[0].variantAttributes.length}`);
+   return this.serial.tradingProductSerialNumber().pipe(
 
-    console.log(`mydata=${mydata.tradingProductVariants.length}`);
 
-    docRef.collection('rfqsumAuditTrail').add(mydata);
+      map(theSerial => {
 
-    }
-  )).pipe(
-  mapTo('User created successfully')
-  );
+
+       this.newData = { ...mydata ,
+        tradingProductId: `P${theSerial}`,
+        tradingProductInventoryStatus: 'NOT AVAILABLE',
+         createdAt: this.db.serverTimeStamp,
+         updatedAt: this.db.serverTimeStamp,
+          };
+
+       this.db.col(ref).add(this.newData);
+      }),
+      mapTo('User created successfully')
+      );
+
   }
+
+
+
+  createTheProductVariants(ref: CollectionPredicate<TradingProductCatalog>, mydata: TradingProductCatalogWithVId): Observable<string> {
+
+   return this.serial.variantSerialNumber().pipe(
+
+
+    map(vSerialNo => {
+
+      mydata.tradingProductVariants.forEach(
+        variant => {
+console.log(vSerialNo);
+console.log(variant);
+this.newDataV = { ...mydata ,
+            variantId: `VAR${vSerialNo}`,
+            tradingProductName: `${mydata.tradingProductName}/${variant.variantAttributesValues}`,
+            tradingProductInventoryStatus: 'NOT AVAILABLE',
+             createdAt: this.db.serverTimeStamp,
+             updatedAt: this.db.serverTimeStamp,
+              };
+console.log( this.newDataV);
+this.postVariant(ref, this.newDataV);
+
+          }
+
+
+           );
+
+    }),
+    mapTo('User created successfully')
+    );
+
+   }
 
   getAllProductDetails(): Observable<TradingProductCatalog[]> {
 return this.db.colWithIds$<TradingProductCatalog>('tradingProductData');
   }
+
+
+
+postVariant(ref: CollectionPredicate<TradingProductCatalog>, mydata: TradingProductCatalogWithVId) {
+
+console.log(mydata);
+  return this.serial.tradingProductSerialNumber().pipe(
+
+
+    map(theSerial => {
+
+
+     this.newDataV = { ...mydata ,
+      tradingProductId: `P${theSerial}`
+        };
+
+     this.db.col(ref).add(this.newDataV);
+    })
+    );
+
+
+}
+
+
 
 }
 
