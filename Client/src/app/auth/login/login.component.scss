@@ -1,14 +1,44 @@
 .card{
   height: 40% !important;
-  margin-bottom: 0rem;
+min-height: 380px !important;
+max-height: 440px !important;
+margin-bottom: 0rem;
 }
 button.btn{
   width: 100% !important;
   border-radius: 15px;
 }
-.card-title{
-  border-radius: 2px;
-}
 .pointerCursor{
   cursor: pointer;
+}
+
+
+//Media queries
+@media (min-width: 290px){
+  .card{
+  height: 20% !important;
+min-height: 900px !important;
+max-height: 1000px !important;
+padding-bottom: 0px !important
+}
+.card-title span{
+  font-size: 16px !important;
+margin-top: 0px !important;
+margin-bottom: 0px !important;
+padding-bottom: 0px !important
+}
+.fa-sign-in-alt {
+  font-size: 50px !important
+}
+}
+
+
+@media (min-width: 360px){
+}
+
+
+@media (min-width: 568px){
+.fa-sign-in-alt {
+  font-size: 60px !important
+}
 }

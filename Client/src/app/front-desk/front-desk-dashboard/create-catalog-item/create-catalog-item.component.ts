@@ -22,7 +22,7 @@ export interface PCat {pCatName: string; }
 @Component({
   selector: 'app-create-catalog-item',
   templateUrl: './create-catalog-item.component.html',
-  styleUrls: ['./create-catalog-item.component.sass']
+  styleUrls: ['./create-catalog-item.component.scss']
 })
 export class CreateCatalogItemComponent implements OnInit {
   stocked = false; standard = false; composite = false; variant = false; service = false; selectitemtype = false;

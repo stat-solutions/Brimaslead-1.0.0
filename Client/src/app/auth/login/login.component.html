@@ -1,14 +1,14 @@
-<div class="container d-flex justify-content-center mb-0 pb-0">
+<div class="container d-flex justify-content-center mb-0 mt-md-5 mt-3 pt-md-5 pt-5 pb-0">
   <div
-    class="card mt-4 mb-2 mx-3 shadow-lg col-xs-12 col-lg-4 pt-2 pb-0 px-3 center"
+    class="login-card card mt-md-5 mt-5 mb-md-5 mb-2 mx-3 shadow-lg col-xs-12 col-sm-8 col-md-6 col-lg-4 pt-2 pb-0 px-2 center"
   >
-    <h1 class="d-flex flex-row justify-content-center mt-3 mx-auto">
-      <i class="fas fa-sign-in-alt text-info mx-auto" style="size: 50px"></i>
-    </h1>
+    <h2 class="d-flex flex-row justify-content-center mt-3">
+      <i class="fas fa-sign-in-alt text-info mx-auto"></i>
+    </h2>
     <h3 class="card-title text-info d-flex justify-content-center">
       <span>Login</span>
     </h3>
-    <div class="card-body mb-0 pb-0 text-info">
+    <div class="card-body pt-2 mb-0 pb-0 text-info">
       <form [formGroup]="userForm" (ngSubmit)="login()">
         <div class="form-group">
           <label
@@ -152,12 +152,12 @@
               </ngx-spinner>
             </div>
           </div>
-          <div class="col-5"></div>
+          <!-- <div class="col-5"></div>
           <div class="col-3 d-flex flex-row justify-content-start mr-auto">
             <div class="form-group">
               <!-- <button  class="btn btn-info mr-5" routerLink='/authpage/registeruser'>Register</button> -->
-            </div>
-          </div>
+            <!-- </div>
+          </div> -->
         </div>
 
         <div class="row">
@@ -178,8 +178,8 @@
         </div>
 
         <div class="row d-flex flex-row">
-          <ul class="navbar-nav mr-3 my-0 pt-0 pb-5">
-            <li class="nav-item ">
+          <ul class="navbar-nav ml-3 mt-0 pt-0 pb-4">
+            <li class="nav-item">
               <a class="nav-link text-info pointerCursor">
                 <i class="fas fa-arrow-right"></i>Forgot Password<span></span
               ></a>
@@ -190,12 +190,11 @@
     </div>
   </div>
 </div>
-          <!-- <footer class="main-footer"> -->
-    <div class="container mt-3 pb-2">
+          <!-- footer main -->
+    <div class="foot container mt-2 pt-0 pb-2">
     <div class="col-xs-12 col-lg-12">
       <div class="small text-center text-danger">
         Copyright &copy; 2020 - Brimasmedia Ltd
       </div>
     </div>
     </div>
-          <!-- </footer> -->
