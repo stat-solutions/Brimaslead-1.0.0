@@ -57,8 +57,12 @@ import { MatTreeModule } from '@angular/material/tree';
 
 // import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 
 @NgModule({
   declarations: [AppComponent],
@@ -117,16 +121,21 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MatTooltipModule,
     MatTreeModule,
     ToastrModule.forRoot(), // ToastrModule added
-
     AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    AngularFireAuthModule,
+    AngularFireFunctionsModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptorServiceService,
       multi: true
-    }
+    },
+    { provide: StorageBucket, useValue: 'gs://brimaslead/' }, AngularFirestore,
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

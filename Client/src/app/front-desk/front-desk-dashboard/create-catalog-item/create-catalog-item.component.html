@@ -159,11 +159,6 @@
      <i class="fas fa-suitcase text-info mx-auto" style="size: 50px"></i>
      </div>
      </div>
-
-     <!-- <tag-input [theme]="'bootstrap'" [maxItems]='4' formControlName='variantAttributesValues'
-     name="items" id="variantAttributes" [editable]='true' placeholder="Enter another value" secondaryPlaceholder="Enter attribute value">
-     </tag-input> -->
-
      <input
               id="variantAttributesValues"
               formControlName="variantAttributesValues"
@@ -183,30 +178,95 @@
 
      </label>
      <label class="text-danger col" *ngIf="
-     (variantsX.touched || variantsX.dirty) &&
-     variantsX.errors?.required
+     (variantsX['controls'].variantAttributesValues.touched || variantsX['controls'].variantAttributesValues.dirty) &&
+     variantsX['controls'].variantAttributesValues.errors?.required
      ">
      The product variant description is required
      </label>
      </div>
     </div>
 
-    <label class="text-danger col" *ngIf="
-    (fval.tradingProductVariants.touched ||fval.tradingProductVariants.dirty) &&
-    fval.tradingProductVariants.errors?.errorsNow
-    ">
-   The number of Product attributes should be equal to number of product values!
-    </label>
+    <div class="col-xs-1-12">
 
-    <label class="text-danger col" *ngIf="
-    (fval.tradingProductVariants.touched ||fval.tradingProductVariants.dirty) &&
-    fval.tradingProductVariants.errors?.required
-    ">
-   Either attribute or attribute value is required!!!
-    </label>
+      <div class="form-group">
+      <label for="variantCostPrice" [ngClass]="variantsX.valid ? 'text-info' : ''">Variant Cost Price<i
+      *ngIf="variantsX.valid" class="material-icons">check_circle</i>
+
+      <div class="input-group mb-2">
+      <div class="input-group-prepend">
+      <div class="input-group-text">
+      <i class="fas fa-money-bill-alt text-info mx-auto" style="size: 50px"></i>
+      </div>
+      </div>
+      <input
+               id="variantCostPrice"
+               formControlName="variantCostPrice"
+               type="text"
+               class="form-control text-info "
+               [ngClass]="{
+                 'is-invalid':
+                   (variantsX.touched ||
+                   variantsX.dirty) &&
+                   variantsX.errors
+               }"
+               placeholder="Enter variants cost price"
+               autocomplete="off"
+             />
+
+      </div>
+
+      </label>
+      <label class="text-danger col" *ngIf="
+      (variantsX['controls'].variantCostPrice.touched || variantsX['controls'].variantCostPrice.dirty) &&
+      variantsX['controls'].variantCostPrice.errors?.required
+      ">
+      The product variant cost price is required
+      </label>
+      </div>
      </div>
 
-     <button type="button" class="btn btn-danger mx-2" (click)='addVariant()'  (click)="addToAttCount()"><i class="fa fa-plus-circle"
+    <div class="col-xs-1-12">
+
+      <div class="form-group">
+      <label for="variantMarkUp" [ngClass]="variantsX.valid ? 'text-info' : ''">Variant Mark Up<i
+      *ngIf="variantsX.valid" class="material-icons">check_circle</i>
+
+      <div class="input-group mb-2">
+      <div class="input-group-prepend">
+      <div class="input-group-text">
+      <i class="fa fa-percent text-info mx-auto" style="size: 50px"></i>
+      </div>
+      </div>
+      <input
+               id="variantMarkUp"
+               formControlName="variantMarkUp"
+               type="text"
+               class="form-control text-info "
+               [ngClass]="{
+                 'is-invalid':
+                   (variantsX.touched ||
+                   variantsX.dirty) &&
+                   variantsX.errors
+               }"
+               placeholder="Enter variants mark up"
+               autocomplete="off"
+             />
+
+      </div>
+
+      </label>
+      <label class="text-danger col" *ngIf="
+      (variantsX['controls'].variantMarkUp.touched || variantsX['controls'].variantMarkUp.dirty) &&
+      variantsX['controls'].variantMarkUp.errors?.required
+      ">
+      The product variant mark up is required
+      </label>
+      </div>
+     </div>
+
+     </div>
+
+     <button type="button" class="btn btn-danger mx-2" (click)='addVariant()' (click)="addToAttCount()"><i class="fa fa-plus-circle"
       aria-hidden="true"></i>Add Variant</button>
 
      </div>
@@ -351,7 +411,7 @@
 
 
 
-     <div class="form-group">
+     <div class="form-group" *ngIf="!(variant||composite)">
      <label
      for="tradingProductAverageCostPrice"
      [ngClass]="fval.tradingProductAverageCostPrice.valid ? 'text-info' : ''"
@@ -394,7 +454,7 @@
 
 
 
-     <div class="form-group">
+     <div class="form-group" *ngIf="!(variant||composite)">
      <label
      for="tradingProductAverageMarkUp"
      [ngClass]="fval.tradingProductAverageMarkUp.valid ? 'text-info' : ''"
@@ -434,7 +494,7 @@
      </div>
 
 
-     <div class="form-group">
+     <!-- <div class="form-group">
      <label
      for="tradingProductAverageSellingPrice"
      [ngClass]="fval.tradingProductAverageSellingPrice.valid ? 'text-info' : ''"
@@ -473,9 +533,9 @@
      >
      Average cost price  is Required!
      </label>
-     </div>
+     </div> -->
      <!-- (click)="t()" -->
-     <button class="btn btn-success btn-lg mx-2" (click)="validateForm()" >Validate</button>
+     <!-- <button class="btn btn-success btn-lg mx-2" (click)="validateForm()" >Validate</button> -->
      </div>
      </div>
 
