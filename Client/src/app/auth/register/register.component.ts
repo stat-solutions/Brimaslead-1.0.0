@@ -202,6 +202,7 @@ export class RegisterComponent implements OnInit {
 
     this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
   }
+  
   onSubmit() {
 
     this.spinner.show();

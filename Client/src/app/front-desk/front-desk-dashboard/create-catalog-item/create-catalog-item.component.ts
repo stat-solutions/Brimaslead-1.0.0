@@ -63,7 +63,7 @@ export class CreateCatalogItemComponent implements OnInit {
   department: Department[];
   userFilter: any = { stage: '' };
   unitOfMeasure$: Observable< UomData[]>;
-theTradingProducts$: Observable< TradingProductCatalog[]>;
+theTradingProducts$: Observable<TradingProductCatalog[]>;
 tradingProductType: PType[] = [
 
    {pTypeName: 'Standard'},
@@ -100,7 +100,7 @@ tradingProductType: PType[] = [
    get variants(): FormGroup {
      return this.fb.group({
     variantAttributesValues: this.fb.control( { value: '', disabled: true }, [Validators.required]),
-    
+
 
     variantCostPrice: this.fb.control( { value: '', disabled: true }, [Validators.required]),
     variantMarkUp: this.fb.control( { value: '', disabled: true }, [Validators.required])
@@ -471,7 +471,7 @@ case 'Composite':
 
 case 'Variants':
   delete this.tradingProductForm.value.tradingProductComposites;
-  
+
   console.table(this.tradingProductForm.value.tradingProductVariants);
   console.table(this.tradingProductForm.value);
 

@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { RfqRelatedServiceService } from 'src/app/shared/services/front-desk-services/rfq-related-service.service';
 import { DbServiceService } from 'src/app/shared/services/firestore-db/DbServiceService';
 import { CustomerData } from 'src/app/shared/models/user-profile/client_data.model';
-import { TabsetComponent } from "ngx-bootstrap/tabs";
 import { UserData } from 'src/app/shared/models/user-profile/user-data';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
