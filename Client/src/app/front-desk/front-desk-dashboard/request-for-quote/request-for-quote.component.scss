@@ -373,10 +373,14 @@ border-radius: 12px
   .rfqs-card {
     min-width: 1110px !important;
     max-width: 1200px !important;
+    padding-left: auto !important;
+    padding-right: auto !important;
   }
   .form-card {
     min-width: 968px !important;
     max-width: 1060px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   .post-buttons {
     padding-left: 140px !important;

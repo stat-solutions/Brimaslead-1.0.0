@@ -6,8 +6,8 @@
    import { DatabaseServiceService } from './database-auth-service.service';
    import { UserData } from '../../models/user-profile/user-data';
    import { Department } from '../../../auth/register/register.component';
-import { DbServiceService } from "../firestore-db/DbServiceService";
-import { CustomerData } from '../../models/user-profile/client_data.model';
+   import { DbServiceService } from '../firestore-db/DbServiceService';
+   import { CustomerData } from '../../models/user-profile/client_data.model';
 
 
    @Injectable({
@@ -27,20 +27,20 @@ import { CustomerData } from '../../models/user-profile/client_data.model';
    ) {
 
    }
-    
-   
-   logoutUser(){
-      
+
+
+   logoutUser() {
+
       this.sendEmail.signOut();
-      
+
    }
-    
-    
-    
-   getAllDepartments():Observable<Department[]>{
+
+
+
+   getAllDepartments():Observable<Department[]> {
       return this.db.col$('department');
     }
-    
+
    registerEmployee(authUser: AuthUser, userProfile: UserData): Observable<string> {
 
   return this. sendEmail.signUpEmployee(authUser, userProfile).pipe(
@@ -52,29 +52,29 @@ import { CustomerData } from '../../models/user-profile/client_data.model';
            }));
 
       }
-     
-       registerCustomer(authUser: AuthUser, userProfile: CustomerData): Observable<string>{
+
+       registerCustomer(authUser: AuthUser, userProfile: CustomerData): Observable<string> {
          return this. sendEmail.signUpCustomerByHimself(authUser, userProfile).pipe(
             mapTo('User created successfully'),
-    
+
             catchError((errorc) => {
              console.log(errorc);
              return     throwError(errorc);
                }));
       }
 
-       registerSupplier(authUser: AuthUser, userProfile: UserData): Observable<string>{
+       registerSupplier(authUser: AuthUser, userProfile: UserData): Observable<string> {
          return this. sendEmail.signUpSupplier(authUser, userProfile).pipe(
             mapTo('User created successfully'),
-    
+
             catchError((errorc) => {
              console.log(errorc);
              return     throwError(errorc);
                }));
-         
-         
+
+
       }
-   
+
        loginEmployee(userCredetials:AuthUser):Observable<firebase.User> {
           return this.sendEmail.signIn(userCredetials);
        }

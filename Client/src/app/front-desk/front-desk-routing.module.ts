@@ -16,58 +16,54 @@ import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalo
 
 
 const routes: Routes = [
-
   {
-    path: '',
+    path: "",
     component: FrontDeskLayoutComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'frontdeskdashboard'
+        path: "",
+        pathMatch: "full",
+        redirectTo: "frontdeskdashboard"
       },
       {
-        path: 'frontdeskdashboard',
-        component: FrontDeskDashboardComponent,
+        path: "frontdeskdashboard",
+        component: FrontDeskDashboardComponent
       },
       {
-        path: 'requestforquote',
-        component: RequestForQuoteComponent,
+        path: "requestforquote",
+        component: RequestForQuoteComponent
       },
-          {
-            path: 'detailquote',
-            component: RfqDetailsComponent
-              },
       {
-        path: 'leavemanagement',
-        component: LeaveManagementComponent,
+        path: "detailquote",
+        component: RfqDetailsComponent
+      },
+      {
+        path: "employee-service/leavemanagement",
+        component: LeaveManagementComponent
       },
 
       {
-        path: 'payrollmodule',
-        component: PayrollModuleComponent,
+        path: "payrollmodule",
+        component: PayrollModuleComponent
       },
       {
-        path: 'performancemanagement',
-        component: PerformanceManagementComponent,
+        path: "performancemanagement",
+        component: PerformanceManagementComponent
       },
       {
-        path: 'employee-service/hire',
-        component: HireComponent,
+        path: "employee-service/hire",
+        component: HireComponent
       },
       {
-        path: 'addRfqItems',
-        component: AddRfqItemsComponent,
+        path: "addRfqItems",
+        component: AddRfqItemsComponent
       },
       {
-        path: 'createCatalogItem',
-        component: CreateCatalogItemComponent,
+        path: "createCatalogItem",
+        component: CreateCatalogItemComponent
       }
-
-
     ]
   }
-
 ];
 
 @NgModule({
