@@ -196,6 +196,8 @@ this.aa.rfqSerialNumber().subscribe(x => console.log(x));
                         }
                       });
                   } else if (accessRights.accessType === 'customerAccess') {
+
+                    
                   } else if (accessRights.accessType === 'supplierAccess') {
                   }} else if (this.empAccess === 'NOTAPPROVED') {
 

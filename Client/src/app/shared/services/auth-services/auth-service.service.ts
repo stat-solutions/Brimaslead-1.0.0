@@ -37,7 +37,7 @@
 
 
 
-   getAllDepartments():Observable<Department[]> {
+   getAllDepartments(): Observable<Department[]> {
       return this.db.col$('department');
     }
 

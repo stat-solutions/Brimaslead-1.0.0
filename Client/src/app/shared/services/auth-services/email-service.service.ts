@@ -149,46 +149,107 @@ export class EmailServiceService {
 
   signUpSupplier(
     user: AuthUser,
-    data: UserData
+    data: CustomerData
   ): Observable<firebase.auth.UserCredential> {
 
- // update the auth user displayname
- const updateAuthUser = (
-  fireUser: firebase.auth.UserCredential,
-  _data: any
-): Observable<firebase.auth.UserCredential> => {
-  return from(
-    fireUser.user.updateProfile({
-      displayName: _data.userName,
-      photoURL: 'Missing',
-    })
-  ).pipe(mapTo(fireUser));
-};
-
-
-    // update the Employee profile data on firestore
- const updateDatabase = (
+    // update the auth user displayname
+    const updateAuthUserSupplier = (
       fireUser: firebase.auth.UserCredential,
-      _data: UserData
+      _data: CustomerData
+    ): Observable<firebase.auth.UserCredential> => {
+      console.log(_data);
+      return from(
+        fireUser.user.updateProfile({
+          displayName: _data.clientName,
+          photoURL: 'Missing',
+        })
+      ).pipe(mapTo(fireUser));
+    };
+
+    // update the user profile data on firestore
+    const updateDatabaseCustomer = (
+      fireUser: firebase.auth.UserCredential,
+      _data: CustomerData
     ): Observable<firebase.auth.UserCredential> => {
       return from(
-        this.db.addEmployeeeProfile(
-          `employeeProfile/${fireUser.user.uid}`,
+        this.db.addCustomerProfile(
+          `customerProfile/${fireUser.user.uid}`,
           _data,
           fireUser
         )
       ).pipe(mapTo(fireUser));
     };
 
- return this.createAuthUser(user.email, user.password).pipe(
-      concatMap((firstReturn) => updateAuthUser(firstReturn, data)),
+    //  update the user profile data on firestore
+    const updateCommonUserCustomer = (
+      fireUser: firebase.auth.UserCredential,
+      _data: AuthUser
+    ): Observable<firebase.auth.UserCredential> => {
+      return from(
+        this.db.addCommonUserCustomer(
+          `commonUser/${fireUser.user.uid}`,
+          _data,
+          fireUser
+        )
+      ).pipe(mapTo(fireUser));
+    };
+
+
+
+    return this.createAuthUser(user.email, user.password).pipe(
+      concatMap((firstReturn) => updateAuthUserSupplier(firstReturn, data)),
       concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
-      concatMap((thirdReturn) => updateDatabase(thirdReturn, data)),
+      concatMap((thirdReturn) => updateDatabaseCustomer(thirdReturn, data)),
+      concatMap((thirdReturn) => updateCommonUserCustomer(thirdReturn, user)),
       catchError((error) => {
         return throwError(error.message);
       })
     );
   }
+
+
+//   signUpSupplier(
+//     user: AuthUser,
+//     data: UserData
+//   ): Observable<firebase.auth.UserCredential> {
+
+//  // update the auth user displayname
+//  const updateAuthUser = (
+//   fireUser: firebase.auth.UserCredential,
+//   _data: any
+// ): Observable<firebase.auth.UserCredential> => {
+//   return from(
+//     fireUser.user.updateProfile({
+//       displayName: _data.userName,
+//       photoURL: 'Missing',
+//     })
+//   ).pipe(mapTo(fireUser));
+// };
+
+
+//     // update the Employee profile data on firestore
+//  const updateDatabase = (
+//       fireUser: firebase.auth.UserCredential,
+//       _data: UserData
+//     ): Observable<firebase.auth.UserCredential> => {
+//       return from(
+//         this.db.addEmployeeeProfile(
+//           `employeeProfile/${fireUser.user.uid}`,
+//           _data,
+//           fireUser
+//         )
+//       ).pipe(mapTo(fireUser));
+//     };
+
+//  return this.createAuthUser(user.email, user.password).pipe(
+//       concatMap((firstReturn) => updateAuthUser(firstReturn, data)),
+//       concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
+//       concatMap((thirdReturn) => updateDatabase(thirdReturn, data)),
+//       catchError((error) => {
+//         return throwError(error.message);
+//       })
+//     );
+//   }
 
   // send verifcation email to current user
   sendVerificationEmail(

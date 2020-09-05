@@ -13,11 +13,11 @@ import { CollectionPredicate, DocPredicate } from '../firestore-db/CollectionPre
 })
 export class DatabaseServiceService {
 
-  constructor(private db:DbServiceService) { }
-  
- 
-  
-  addDoc<UserData>(ref: CollectionPredicate<UserData>, mydata:UserData) {
+  constructor(private db: DbServiceService) { }
+
+
+
+  addDoc<UserData>(ref: CollectionPredicate<UserData>, mydata: UserData) {
     from(this.db.col(ref).add(mydata)).pipe(
       catchError((error) => {
         return throwError(error.message);
@@ -26,68 +26,68 @@ export class DatabaseServiceService {
 
 
 
-  addEmployeeeProfile(ref: DocPredicate<UserData>, mydata:UserData, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential> {
-    
-  const departmentsRefs$=this.db.colId$('department',x=>x.where('departmentName', '==', mydata.department));
-  const roleRefs$=this.db.colId$('userAccessRights',x=>x.where('accessType', '==','employeeAccess')); 
+  addEmployeeeProfile(ref: DocPredicate<UserData>, mydata: UserData, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential> {
 
-    return combineLatest([roleRefs$,departmentsRefs$]).pipe(
+  const departmentsRefs$ = this.db.colId$('department', x => x.where('departmentName', '==', mydata.department));
+  const roleRefs$ = this.db.colId$('userAccessRights', x => x.where('accessType', '==', 'employeeAccess'));
 
-       map( x => { this.db.doc(ref).set({ ...mydata, 
+  return combineLatest([roleRefs$, departmentsRefs$]).pipe(
+
+       map( x => { this.db.doc(ref).set({ ...mydata,
       departmentColRef: `department/${x[1][0]}`,
       departmentDocRef: x[1][0],
       accessColRef:  `userAccessRights/${x[0][0]}`,
       accessDocRef:  x[0][0],
-       createdAt: this.db.serverTimeStamp, 
+       createdAt: this.db.serverTimeStamp,
        updatedAt: this.db.serverTimeStamp ,
-       approvalStatus:'NOTAPPROVED'
-       }) }),
+       approvalStatus: 'NOTAPPROVED'
+       }); }),
          mapTo(credentials),
         catchError((error) => {
           return throwError(error.message);
         }
     ));
-    
+
     // return of(credentials);
   }
-  
-  addCustomerProfile(ref: DocPredicate<CustomerData>, mydata:CustomerData, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
- 
-    const roleRefsc$=this.db.colId$('userAccessRights',x=>x.where('accessType', '==','customerAccess')); 
-  
-      return roleRefsc$.pipe(
-      
-    
+
+  addCustomerProfile(ref: DocPredicate<CustomerData>, mydata: CustomerData, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
+
+    const roleRefsc$ = this.db.colId$('userAccessRights', x => x.where('accessType', '==', 'customerAccess'));
+
+    return roleRefsc$.pipe(
+
+
          map( accessR => { this.db.doc(ref).set({ ...mydata ,
         accessColRef:  `userAccessRights/${accessR[0]}`,
         accessDocRef:  accessR[0],
-         createdAt: this.db.serverTimeStamp, 
+         createdAt: this.db.serverTimeStamp,
          updatedAt: this.db.serverTimeStamp,
-         createdByColRef:`customerProfile/${credentials.user.uid}`,
-         createdByDocRef:credentials.user.uid,
-         firstApprovedByColRef:`customerProfile/${credentials.user.uid}`,
-         firstApprovedByDocRef:credentials.user.uid,
-         secondApprovedByColRef:`customerProfile/${credentials.user.uid}`,
-         secondApprovedByDocRef:credentials.user.uid,
-         empRelationshipColRef:`customerProfile/${credentials.user.uid}`,
+         createdByColRef: `customerProfile/${credentials.user.uid}`,
+         createdByDocRef: credentials.user.uid,
+         firstApprovedByColRef: `customerProfile/${credentials.user.uid}`,
+         firstApprovedByDocRef: credentials.user.uid,
+         secondApprovedByColRef: `customerProfile/${credentials.user.uid}`,
+         secondApprovedByDocRef: credentials.user.uid,
+         empRelationshipColRef: `customerProfile/${credentials.user.uid}`,
          empRelationshipDocRef: credentials.user.uid ,
-         approvalStatus:'NOTAPPROVED'
-         }) }),
+         approvalStatus: 'NOTAPPROVED'
+         }); }),
            mapTo(credentials),
           catchError((error) => {
             return throwError(error.message);
           }
       ));
   }
- 
+
   // Create commmon users data
-  
-  addCommonUserCustomer(ref: DocPredicate<AuthUser>, mydata:AuthUser, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
+
+  addCommonUserCustomer(ref: DocPredicate<AuthUser>, mydata: AuthUser, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
 
     return from(this.db.doc(ref).set({ ...mydata ,
     profileColRef:  `customerProfile/${credentials.user.uid}`,
     profileDocRef: credentials.user.uid,
-     createdAt: this.db.serverTimeStamp, 
+     createdAt: this.db.serverTimeStamp,
      updatedAt: this.db.serverTimeStamp,
       }),
     ) .pipe(
@@ -97,12 +97,12 @@ export class DatabaseServiceService {
           }
       ));
   }
- 
-  
-  
+
+
+
    // Create commmon users data
-  
-   addCommonUserEmployee(ref: DocPredicate<AuthUser>, mydata:AuthUser, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
+
+   addCommonUserEmployee(ref: DocPredicate<AuthUser>, mydata: AuthUser, credentials: firebase.auth.UserCredential): Observable<firebase.auth.UserCredential>{
 
     return from(this.db.doc(ref).set({ ...mydata ,
     profileColRef:  `employeeProfile/${credentials.user.uid}`,
@@ -117,16 +117,16 @@ export class DatabaseServiceService {
           }
       ));
   }
-  
-  
-  
+
+
+
   //Firebase Server Timestamp
 
- 
- 
-  reference(fields:string) {
+
+
+  reference(fields: string) {
     return new firebase.firestore.FieldPath(fields);
   }
 
-  
+
 }

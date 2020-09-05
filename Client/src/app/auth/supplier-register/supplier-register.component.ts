@@ -161,7 +161,7 @@ export class SupplierRegisterComponent implements OnInit {
     if (this.userForm.invalid === true) {
       return;
     } else {
-      this.authService.registerUser(this.userForm).subscribe(
+      this.authService.signUpSupplier(this.userForm).subscribe(
         (data: string) => {
           if (data === "Posted Successfully") {
             this.serviceErrors = "Registration was Successful";
