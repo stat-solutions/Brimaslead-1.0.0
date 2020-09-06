@@ -41,7 +41,7 @@ export class CustomerRegisterComponent implements OnInit {
     private _formBuilder: FormBuilder
   ) {}
 
- 
+
 
   ngOnInit() {
     this.userForm = this._formBuilder.group(
@@ -117,7 +117,7 @@ export class CustomerRegisterComponent implements OnInit {
   }
 
   onSubmit() {
-   
+
     this.spinner.show();
     this.appData = {...this.userForm.value};
     this.authData = {email: this.appData.email, password: this.appData.password};
@@ -125,10 +125,10 @@ export class CustomerRegisterComponent implements OnInit {
     delete this.appData.password;
     delete this.appData.confirmPassword;
     console.log(this.authData);
-    
+
     this.authService.registerCustomer(this.authData, this.appData).subscribe(
         (data: string) => {
-         
+
           if (data === 'User created successfully') {
             this.serviceErrors = 'Registration was Successful';
 

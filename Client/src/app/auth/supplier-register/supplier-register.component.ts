@@ -1,10 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, FormArray } from "@angular/forms";
-import { NgxSpinnerService } from "ngx-spinner";
-import { Router } from "@angular/router";
-import { AuthServiceService } from "src/app/shared/services/auth-services/auth-service.service";
-import { CustomValidatorInitialCompanySetup } from "src/app/shared/validators/custom-validator-initial-company-setup";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-service.service';
+import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
 import { OtherBackendApiService } from 'src/app/shared/services/auth-services/other-backend-api.service';
+import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
+import { ToastrService } from 'ngx-toastr';
 
 interface Department {
   value: string;
@@ -12,9 +14,9 @@ interface Department {
 }
 
 @Component({
-  selector: "app-supplier-register",
-  templateUrl: "./supplier-register.component.html",
-  styleUrls: ["./supplier-register.component.scss"]
+  selector: 'app-supplier-register',
+  templateUrl: './supplier-register.component.html',
+  styleUrls: ['./supplier-register.component.scss']
 })
 export class SupplierRegisterComponent implements OnInit {
   hide = true;
@@ -29,22 +31,24 @@ export class SupplierRegisterComponent implements OnInit {
   userForm: FormGroup;
   imageSrc: string;
   previewPhoto = false;
-
+  authData: AuthUser;
+  appData: any;
   constructor(
-    private authService: OtherBackendApiService,
+    private authService: AuthServiceService,
+    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
     private router: Router,
     private _formBuilder: FormBuilder
   ) {}
 
   department: Department[] = [
-    { value: "management", viewValue: "Management" },
-    { value: "front-desk", viewValue: "Front Desk" },
-    { value: "finance", viewValue: "Finance" },
-    { value: "production", viewValue: "Production" },
-    { value: "quality-assurance", viewValue: "Quality assurance" },
-    { value: "sales-marketing", viewValue: "Sales & Marketing" },
-    { value: "transport-logistics", viewValue: "Transport & Logistics" }
+    { value: 'management', viewValue: 'Management' },
+    { value: 'front-desk', viewValue: 'Front Desk' },
+    { value: 'finance', viewValue: 'Finance' },
+    { value: 'production', viewValue: 'Production' },
+    { value: 'quality-assurance', viewValue: 'Quality assurance' },
+    { value: 'sales-marketing', viewValue: 'Sales & Marketing' },
+    { value: 'transport-logistics', viewValue: 'Transport & Logistics' }
   ];
 
   /** Returns a FormArray with the name 'formArray'. */
@@ -56,7 +60,7 @@ export class SupplierRegisterComponent implements OnInit {
     this.userForm = this._formBuilder.group(
       {
         user_name: [
-          "",
+          '',
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
@@ -68,7 +72,7 @@ export class SupplierRegisterComponent implements OnInit {
           ])
         ],
         phone_number: [
-          "",
+          '',
           Validators.compose([
             Validators.required,
             CustomValidatorInitialCompanySetup.patternValidator(
@@ -77,9 +81,9 @@ export class SupplierRegisterComponent implements OnInit {
             )
           ])
         ],
-        email: ["", Validators.email],
+        email: ['', Validators.email],
         password: [
-          "",
+          '',
           Validators.compose([
             // 1. Password Field is Required
 
@@ -105,7 +109,7 @@ export class SupplierRegisterComponent implements OnInit {
             )
           ])
         ],
-        confirmPassword: ["", Validators.required]
+        confirmPassword: ['', Validators.required]
       },
       {
         validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
@@ -113,63 +117,44 @@ export class SupplierRegisterComponent implements OnInit {
     );
 
   }
+  showSuccess() {
 
-  // /* Called on each input in either password field */
-  // onPasswordInput() {
-  //   if (this.userForm.hasError("NoPasswordMatch")) {
-  //      this.userForm.controls.confirm_password.setErrors([{ NoPasswordMatch: true }]);
-  //    } else {
-  //      this.userForm.controls.confirm_password.setErrors(null);
-  //    }
-  // }
+    this.toastr.success('Please first verify your email and then proceed to login', this.serviceErrors,
+                         {timeOut: 6000, positionClass: 'toast-top-right'});
+  }
+  showDanger() {
 
-  // revert() {
-  //   this.userForm.reset();
-  // }
-
-  // checkError = (controlName: string, errorName: string) => {
-  //   const control = this.userForm.get(controlName);
-  //   return control ? control.hasError(errorName) : true;
-  // };
-
-  // onFileChange(event) {
-  //   const reader = new FileReader();
-
-  //   if (event.target.files && event.target.files.length) {
-  //     const [photo] = event.target.files;
-  //     reader.readAsDataURL(photo);
-
-  //     reader.onload = () => {
-  //       this.imageSrc = reader.result as string;
-
-  //       this.userForm.patchValue({
-  //         fileSource: reader.result
-  //       });
-  //     };
-  //   }
-  // }
-
-  // togglePhotoPreview() {
-  //   this.previewPhoto = !this.previewPhoto;
-  // }
+    this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
 
   onSubmit() {
-    console.log(this.userForm.value);
+    // console.log(this.userForm.value);
 
     this.submitted = true;
     this.spinner.show();
     if (this.userForm.invalid === true) {
       return;
     } else {
-      this.authService.signUpSupplier(this.userForm).subscribe(
+
+      this.appData = {...this.userForm.value};
+      this.authData = {email: this.appData.email, password: this.appData.password};
+      this.submitted = true;
+      delete this.appData.password;
+      delete this.appData.confirmPassword;
+      // console.log(this.authData);
+
+      this.authService.registerSupplier(this.authData, this.appData).subscribe(
+
+
         (data: string) => {
-          if (data === "Posted Successfully") {
-            this.serviceErrors = "Registration was Successful";
+          if (data === 'Posted Successfully') {
+            this.serviceErrors = 'Registration was Successful';
             // this.userForm.reset();
             setTimeout(() => {
               this.posted = true;
               this.spinner.hide();
-              this.router.navigate(["userDashboard/dashboard"]);
+              this.showSuccess();
+              this.router.navigate(['authpage/loginpage']);
             }, 2000);
           }
         },
@@ -178,6 +163,7 @@ export class SupplierRegisterComponent implements OnInit {
           this.spinner.hide();
           this.errored = true;
           this.serviceErrors = error;
+          this.showDanger();
         }
       );
     }

@@ -14,7 +14,6 @@ thirdApprovedByAt: firebase.firestore.FieldValue;
 fourthApprovedByAt: firebase.firestore.FieldValue;
 fifthApprovedByAt: firebase.firestore.FieldValue;
 
-
 updatedBy: string;
 firstUpdateApprovedBy: string;
 secondUpdateApprovedBy: string;

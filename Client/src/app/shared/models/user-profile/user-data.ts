@@ -16,13 +16,13 @@ export interface UserData {
     phoneNumber: string;
     photo: string;
     userName: string;
-    accessColRef:string;
-    accessDocRef:string;
-    departmentColRef:string;
-    departmentDocRef:string;
-    createdAt:firebase.firestore.FieldValue;
-    updatedAt:firebase.firestore.FieldValue
-    approvalStatus?:string;//APPROVED,NOTAPPROVED
+    accessColRef: string;
+    accessDocRef: string;
+    departmentColRef: string;
+    departmentDocRef: string;
+    approvalDetailsColRef: string;
+    approvalDetailsDocRef: string;
+    approvalStatus?: string; //APPROVED,NOTAPPROVED
 
 
 

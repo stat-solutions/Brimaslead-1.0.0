@@ -1,13 +1,13 @@
    import { Injectable } from '@angular/core';
    import { Observable, throwError } from 'rxjs';
-   import { tap, catchError, mapTo, map } from 'rxjs/operators';
+   import { catchError, mapTo } from 'rxjs/operators';
    import { AuthUser } from '../../models/user-profile/auth-user';
    import { EmailServiceService } from './email-service.service';
-   import { DatabaseServiceService } from './database-auth-service.service';
    import { UserData } from '../../models/user-profile/user-data';
    import { Department } from '../../../auth/register/register.component';
    import { DbServiceService } from '../firestore-db/DbServiceService';
    import { CustomerData } from '../../models/user-profile/client_data.model';
+   import { SupplierData } from '../../models/user-profile/supplier-data';
 
 
    @Injectable({
@@ -44,7 +44,7 @@
    registerEmployee(authUser: AuthUser, userProfile: UserData): Observable<string> {
 
   return this. sendEmail.signUpEmployee(authUser, userProfile).pipe(
-        mapTo('User created successfully'),
+        mapTo('Employee account created successfully'),
 
         catchError((errorc) => {
          console.log(errorc);
@@ -55,7 +55,7 @@
 
        registerCustomer(authUser: AuthUser, userProfile: CustomerData): Observable<string> {
          return this. sendEmail.signUpCustomerByHimself(authUser, userProfile).pipe(
-            mapTo('User created successfully'),
+            mapTo('Customer account created successfully'),
 
             catchError((errorc) => {
              console.log(errorc);
@@ -63,9 +63,9 @@
                }));
       }
 
-       registerSupplier(authUser: AuthUser, userProfile: UserData): Observable<string> {
+       registerSupplier(authUser: AuthUser, userProfile: SupplierData): Observable<string> {
          return this. sendEmail.signUpSupplier(authUser, userProfile).pipe(
-            mapTo('User created successfully'),
+            mapTo('Supplier account created successfully'),
 
             catchError((errorc) => {
              console.log(errorc);
@@ -74,6 +74,8 @@
 
 
       }
+
+
 
        loginEmployee(userCredetials:AuthUser):Observable<firebase.User> {
           return this.sendEmail.signIn(userCredetials);

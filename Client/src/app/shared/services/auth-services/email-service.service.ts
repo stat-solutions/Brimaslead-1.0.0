@@ -7,6 +7,7 @@ import { UserData } from '../../models/user-profile/user-data';
 import * as firebase from 'firebase';
 import { DatabaseServiceService } from './database-auth-service.service';
 import { CustomerData } from '../../models/user-profile/client_data.model';
+import { SupplierData } from '../../models/user-profile/supplier-data';
 
 @Injectable({
   providedIn: 'root',
@@ -149,31 +150,31 @@ export class EmailServiceService {
 
   signUpSupplier(
     user: AuthUser,
-    data: CustomerData
+    data: SupplierData
   ): Observable<firebase.auth.UserCredential> {
 
     // update the auth user displayname
     const updateAuthUserSupplier = (
       fireUser: firebase.auth.UserCredential,
-      _data: CustomerData
+      _data: SupplierData
     ): Observable<firebase.auth.UserCredential> => {
       console.log(_data);
       return from(
         fireUser.user.updateProfile({
-          displayName: _data.clientName,
+          displayName: _data.supplierName,
           photoURL: 'Missing',
         })
       ).pipe(mapTo(fireUser));
     };
 
     // update the user profile data on firestore
-    const updateDatabaseCustomer = (
+    const updateDatabaseSupplier = (
       fireUser: firebase.auth.UserCredential,
-      _data: CustomerData
+      _data: SupplierData
     ): Observable<firebase.auth.UserCredential> => {
       return from(
-        this.db.addCustomerProfile(
-          `customerProfile/${fireUser.user.uid}`,
+        this.db.addSupplierProfile(
+          `supplierProfile/${fireUser.user.uid}`,
           _data,
           fireUser
         )
@@ -181,12 +182,12 @@ export class EmailServiceService {
     };
 
     //  update the user profile data on firestore
-    const updateCommonUserCustomer = (
+    const updateCommonUserSupplier = (
       fireUser: firebase.auth.UserCredential,
       _data: AuthUser
     ): Observable<firebase.auth.UserCredential> => {
       return from(
-        this.db.addCommonUserCustomer(
+        this.db.addCommonUserSupplier(
           `commonUser/${fireUser.user.uid}`,
           _data,
           fireUser
@@ -199,8 +200,8 @@ export class EmailServiceService {
     return this.createAuthUser(user.email, user.password).pipe(
       concatMap((firstReturn) => updateAuthUserSupplier(firstReturn, data)),
       concatMap((thirdReturn) => this.sendVerificationEmail(thirdReturn)),
-      concatMap((thirdReturn) => updateDatabaseCustomer(thirdReturn, data)),
-      concatMap((thirdReturn) => updateCommonUserCustomer(thirdReturn, user)),
+      concatMap((thirdReturn) => updateDatabaseSupplier(thirdReturn, data)),
+      concatMap((thirdReturn) => updateCommonUserSupplier(thirdReturn, user)),
       catchError((error) => {
         return throwError(error.message);
       })
