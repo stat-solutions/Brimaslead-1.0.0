@@ -202,7 +202,7 @@ export class RegisterComponent implements OnInit {
 
     this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
   }
-  
+
   onSubmit() {
 
     this.spinner.show();
@@ -212,11 +212,11 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     delete this.appData.password;
     delete this.appData.confirmPassword;
-    console.log(this.authData);
+    // console.log(this.authData);
     this.authService.registerEmployee(this.authData, this.appData).subscribe(
         (data: string) => {
 
-          if (data === 'User created successfully') {
+          if (data === 'Employee account created successfully') {
             this.serviceErrors = 'Registration was Successful';
 
             setTimeout(() => {
