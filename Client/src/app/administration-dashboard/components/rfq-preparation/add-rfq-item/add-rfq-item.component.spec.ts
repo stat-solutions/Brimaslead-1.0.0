@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoogoComponent } from './googo.component';
+import { AddRfqItemComponent } from './add-rfq-item.component';
 
-describe('GoogoComponent', () => {
-  let component: GoogoComponent;
-  let fixture: ComponentFixture<GoogoComponent>;
+describe('AddRfqItemComponent', () => {
+  let component: AddRfqItemComponent;
+  let fixture: ComponentFixture<AddRfqItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoogoComponent ]
+      declarations: [ AddRfqItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoogoComponent);
+    fixture = TestBed.createComponent(AddRfqItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

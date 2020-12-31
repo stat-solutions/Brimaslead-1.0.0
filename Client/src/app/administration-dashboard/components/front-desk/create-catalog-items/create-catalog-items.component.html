@@ -1,0 +1,848 @@
+<div class="d-flex flex-column">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+        <div class="tickets-card2 card shadow-lg mt-2 mb-2 pt-0 pb-1">
+          <div class="row">
+            <div class="col-4 col-lg-5 pt-3 pl-4">
+              <a
+                class="btn btn-info btn-sm px-1 col-12 col-md-7 col-lg-5"
+                role="button"
+                routerLink="authpage/webmail"
+                ><i class="fas fa-envelope text-white"></i>&nbsp;Email</a
+              >
+            </div>
+            <div class="col-8 col-offset-lg-5 col-lg-7 pt-2 pl-4">
+              <h5 class="text-info font-weight-bold pl-2">
+                <hr class="top mt-1 mb-0" />
+                CREATE CATALOG ITEM
+                <hr class="bottom mt-1 mb-0" />
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-self-center">
+      <div
+        class="form-card card shadow mt-2 mb-4 d-flex flex-column col-offset-lg-6"
+      >
+        <div
+          class="card-header d-flex justify-content-between align-items-center"
+        >
+          <h6 class="text-info pull-right font-weight-bold m-0">
+            <hr class="top mt-1 mb-0" />
+            TRADING PRODUCT DETAILS
+            <hr class="bottom mt-1 mb-0" />
+          </h6>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="tradingProductForm">
+            <div class="row">
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label
+                    for="tradingProductName"
+                    class="text-info mb-2"
+                    [ngClass]="
+                      fval.tradingProductName.valid ? 'text-success' : ''
+                    "
+                    >Trading Product Name<i
+                      *ngIf="fval.tradingProductName.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    >
+                    <input
+                      type="tradingProductName"
+                      formControlName="tradingProductName"
+                      class="form-control mt-2"
+                      autocomplete="off"
+                      id="exampleInputEmail1"
+                      aria-describedby="tradingProductNameHelp"
+                    />
+                    <!-- <input type="text" formControlName="tradingProductName" class="form-control" autocomplete="off"
+     id="exampleInputEmail1" aria-describedby="tradingProductNameHelp" /> -->
+                    <small
+                      *ngIf="
+                        fval.tradingProductName.touched ||
+                        fval.tradingProductName.dirty
+                      "
+                      id="tradingProductNameHelp"
+                      class="form-text text-info"
+                      >Name of the product like T-shirt printing</small
+                    ></label
+                  >
+
+                  <label
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.tradingProductName.touched ||
+                        fval.tradingProductName.dirty) &&
+                      fval.tradingProductName.errors?.required
+                    "
+                  >
+                    The trading product Name is Required!
+                  </label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label
+                    for="tradingProductCategory"
+                    class="text-info mb-2"
+                    [ngClass]="
+                      fval.tradingProductCategory.valid ? 'text-success' : ''
+                    "
+                    >Trading Product Category<i
+                      *ngIf="fval.tradingProductCategory.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    >
+                    <select
+                      class="form-control mt-2"
+                      formControlName="tradingProductCategory"
+                      (change)="setSelectedChanges($event)"
+                    >
+                      <option selected>Select Trading Product Category</option>
+                      <option *ngFor="let cat of tradingProductCategory">
+                        {{ cat.pCatName }}
+                      </option>
+                    </select>
+                    <small *ngIf="stocked" class="form-text text-info"
+                      >Stockable items are physical objects whose quantity
+                      should be tracked</small
+                    >
+                    <small *ngIf="service" class="form-text text-info"
+                      >Services are non pysical items which cannot be stocked,
+                      but you can assign costs and prices to them.</small
+                    ></label
+                  >
+
+                  <label
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.tradingProductCategory.touched ||
+                        fval.tradingProductCategory.dirty) &&
+                      fval.tradingProductCategory.errors?.required
+                    "
+                  >
+                    The trading product category is Required!
+                  </label>
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label
+                    for="tradingProductType"
+                    class="text-info"
+                    [ngClass]="
+                      fval.tradingProductType.valid ? 'text-success' : ''
+                    "
+                    >Trading Product Type<i
+                      *ngIf="fval.tradingProductType.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    >
+                    <select
+                      class="form-control mt-2"
+                      formControlName="tradingProductType"
+                      (change)="setTypeChanges($event)"
+                    >
+                      <option selected>Select Trading Product Type</option>
+                      <option *ngFor="let type of tradingProductType">
+                        {{ type.pTypeName }}
+                      </option>
+                    </select>
+
+                    <small *ngIf="composite" class="form-text text-info"
+                      >A composite contains one or more standard items. It can
+                      be tracked as one item for all the standard items linked
+                      to it</small
+                    >
+                    <small *ngIf="standard" class="form-text text-secondary"
+                      >This item has one variant which is itself</small
+                    >
+                    <small *ngIf="variant" class="form-text text-info"
+                      >This item has different attributes, like size or color.
+                      Each variant can be uniquely tracked</small
+                    ></label
+                  >
+                  <label
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.tradingProductType.touched ||
+                        fval.tradingProductType.dirty) &&
+                      fval.tradingProductType.errors?.required
+                    "
+                  >
+                    The trading product type is Required!
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-xs-12"
+              *ngIf="variant"
+              formArrayName="tradingProductVariants"
+            >
+              <div
+                class="card shadow mt-2 mb-3 d-flex flex-column col-offset-lg-6"
+              >
+                <div class="card-body p-2">
+                  <div
+                    class="row"
+                    *ngFor="
+                      let variantsX of tradingProductForm.get(
+                        'tradingProductVariants'
+                      )['controls'];
+                      let variantIndex = index
+                    "
+                    [formGroupName]="variantIndex"
+                  >
+                    <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                      <div class="form-group">
+                        <label
+                          for="variantAttributes"
+                          [ngClass]="variantsX.valid ? 'text-info' : ''"
+                          >Variant Description<i
+                            *ngIf="variantsX.valid"
+                            class="material-icons"
+                            >check_circle</i
+                          >
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fas fa-suitcase text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <input
+                              id="variantAttributesValues"
+                              formControlName="variantAttributesValues"
+                              type="text"
+                              class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (variantsX.touched || variantsX.dirty) &&
+                                  variantsX.errors
+                              }"
+                              placeholder="Enter variants description"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </label>
+                        <label
+                          class="text-danger col"
+                          *ngIf="
+                            (variantsX['controls'].variantAttributesValues
+                              .touched ||
+                              variantsX['controls'].variantAttributesValues
+                                .dirty) &&
+                            variantsX['controls'].variantAttributesValues.errors
+                              ?.required
+                          "
+                        >
+                          The product variant description is required
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                      <div class="form-group">
+                        <label
+                          for="variantCostPrice"
+                          [ngClass]="variantsX.valid ? 'text-info' : ''"
+                          >Variant Cost Price<i
+                            *ngIf="variantsX.valid"
+                            class="material-icons"
+                            >check_circle</i
+                          >
+
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fas fa-money-bill-alt text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <input
+                              id="variantCostPrice"
+                              formControlName="variantCostPrice"
+                              type="text"
+                              class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (variantsX.touched || variantsX.dirty) &&
+                                  variantsX.errors
+                              }"
+                              placeholder="Enter variants cost price"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </label>
+                        <label
+                          class="text-danger col"
+                          *ngIf="
+                            (variantsX['controls'].variantCostPrice.touched ||
+                              variantsX['controls'].variantCostPrice.dirty) &&
+                            variantsX['controls'].variantCostPrice.errors
+                              ?.required
+                          "
+                        >
+                          The product variant cost price is required
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                      <div class="form-group">
+                        <label
+                          for="variantMarkUp"
+                          [ngClass]="variantsX.valid ? 'text-info' : ''"
+                          >Variant Mark Up<i
+                            *ngIf="variantsX.valid"
+                            class="material-icons"
+                            >check_circle</i
+                          >
+
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fa fa-percent text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <input
+                              id="variantMarkUp"
+                              formControlName="variantMarkUp"
+                              type="text"
+                              class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (variantsX.touched || variantsX.dirty) &&
+                                  variantsX.errors
+                              }"
+                              placeholder="Enter variants mark up"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </label>
+                        <label
+                          class="text-danger col"
+                          *ngIf="
+                            (variantsX['controls'].variantMarkUp.touched ||
+                              variantsX['controls'].variantMarkUp.dirty) &&
+                            variantsX['controls'].variantMarkUp.errors?.required
+                          "
+                        >
+                          The product variant mark up is required
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button
+                      type="button"
+                      class="btn btn-info mx-2"
+                      (click)="addVariant()"
+                      (click)="addToAttCount()"
+                    >
+                      <i class="fa fa-plus-circle" aria-hidden="true"></i>Add
+                      Variant
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-xs-1-12"
+                *ngIf="composite"
+                formArrayName="tradingProductVariants"
+              >
+                <div
+                  class="col-xs-12"
+                  *ngIf="variant"
+                  formArrayName="tradingProductVariants"
+                >
+                  <div
+                    class="card shadow mt-2 mb-3 d-flex flex-column col-offset-lg-6"
+                  >
+                    <div
+                      class="card-header d-flex justify-content-between align-items-center"
+                    >
+                      <h6 class="text-info pull-right font-weight-bold m-0">
+                        <hr class="top mt-1 mb-0" />
+                        Add Composite
+                        <hr class="bottom mt-1 mb-0" />
+                      </h6>
+                    </div>
+                    <div class="card-body p-2">
+                      <button
+                        type="button"
+                        class="btn btn-info mx-2"
+                        (click)="openModal(template)"
+                      >
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>Add
+                      </button>
+
+                      <div class="row">
+                        <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              [(ngModel)]="userFilter.stage"
+                              placeholder="Enter Stage Name"
+                            />
+                          </div>
+
+                          <div class="table-responsive">
+                            <!-- <table class="table table-striped table-bordered  table-hover"  >
+     <thead >
+     <tr class="text-info">
+     <th>#</th>
+     <th>Trading Product Name</th>
+     <th>Trading Product Category</th>
+     <th>Trading Product Type</th>
+     <th >Trading Product Description</th>
+     <th >Trading Product UnitOfMeasure</th>
+     <th >Trading Product Average CostPrice</th>
+     <th >Trading Product Average MarkUp</th>
+     <th >Trading Product Average Selling Price</th>
+
+     </tr>
+     </thead>
+     <tbody> -->
+                            <!-- |filterBy: userFilter  [class.bg-warning]="products.aging_days>=5" [class.text-light]="products.aging_days>=5"
+     [class.bg-danger]="products.aging_days>=10" -->
+                            <!-- <tr *ngFor="let products of theTradingProducts$|async; let i=index"  class="text-info">
+     <td>{{ i+1}}</td>
+     <td>{{ products.tradingProductName }}</td>
+     <td>{{ products.tradingProductCategory }}</td>
+     <td>{{ products.tradingProductType }}</td>
+     <td>{{ products.tradingProductDescription }}</td>
+     <td>{{ products.tradingProductUnitOfMeasure }}</td>
+     <td>{{ products.tradingProductAverageCostPrice }}</td>
+     <td>{{ products.tradingProductAverageMarkUp }}</td>
+     <td>{{ products.tradingProductAverageSellingPrice }}</td>
+
+     </tr>
+     </tbody>
+     </table> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                        <div class="form-group">
+                          <label
+                            for="tradingProductDescription"
+                            [ngClass]="
+                              fval.tradingProductDescription.valid
+                                ? 'text-info'
+                                : ''
+                            "
+                            >Description<i
+                              *ngIf="fval.tradingProductDescription.valid"
+                              class="material-icons"
+                              >check_circle</i
+                            ></label
+                          >
+
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fas fa-lock text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <textarea
+                              id="tradingProductDescription"
+                              formControlName="tradingProductDescription"
+                              type="textarea"
+                              rows="4"
+                              cols="50"
+                              class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (fval.tradingProductDescription.touched ||
+                                    fval.tradingProductDescription.dirty) &&
+                                  fval.tradingProductDescription.errors
+                              }"
+                              placeholder="Enter Trading Product description"
+                              autocomplete="off"
+                            ></textarea>
+                          </div>
+                          <label
+                            class="text-danger col"
+                            *ngIf="
+                              (fval.tradingProductDescription.touched ||
+                                fval.tradingProductDescription.dirty) &&
+                              fval.tradingProductDescription.errors?.required
+                            "
+                          >
+                            Product description is Required!
+                          </label>
+                          <label
+                            class="text-danger col"
+                            *ngIf="
+                              (fval.tradingProductDescription.touched ||
+                                fval.tradingProductDescription.dirty) &&
+                              fval.tradingProductDescription.errors?.minlength
+                            "
+                          >
+                            At least 5 characters should be typed!
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                        <div class="form-group">
+                          <label
+                            class="text-info"
+                            [ngClass]="
+                              fval.tradingProductUnitOfMeasure.valid
+                                ? 'text-info'
+                                : ''
+                            "
+                            >Unit Of Measure<i
+                              *ngIf="fval.tradingProductUnitOfMeasure.valid"
+                              class="material-icons"
+                              >check_circle</i
+                            ></label
+                          >
+                          <select
+                            class="form-control"
+                            formControlName="tradingProductUnitOfMeasure"
+                            placeholder="Select Unit Of Measure"
+                            (change)="setSelectedChanges($event)"
+                          >
+                            <option selected>Select Unit Of Measure</option>
+                            <option *ngFor="let uom of unitOfMeasure$ | async">
+                              {{
+                                uom.uomName + "(" + uom.uomAbbreviation + ")"
+                              }}
+                            </option>
+                          </select>
+
+                          <div
+                            class="text-danger col"
+                            *ngIf="
+                              (fval.tradingProductUnitOfMeasure.touched ||
+                                fval.tradingProductUnitOfMeasure.dirty) &&
+                              fval.tradingProductUnitOfMeasure.errors?.required
+                            "
+                          >
+                            Unit of measure is required
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                        <div class="form-group" *ngIf="!(variant || composite)">
+                          <label
+                            for="tradingProductAverageCostPrice"
+                            [ngClass]="
+                              fval.tradingProductAverageCostPrice.valid
+                                ? 'text-info'
+                                : ''
+                            "
+                            >Average Cost Price<i
+                              *ngIf="fval.tradingProductAverageCostPrice.valid"
+                              class="material-icons"
+                              >check_circle</i
+                            ></label
+                          >
+
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fas fa-lock text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <input
+                              id="tradingProductAverageCostPrice"
+                              formControlName="tradingProductAverageCostPrice"
+                              type="text"
+                              class="form-control"
+                              (keyup)="onKey($event)"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (fval.tradingProductAverageCostPrice
+                                    .touched ||
+                                    fval.tradingProductAverageCostPrice
+                                      .dirty) &&
+                                  fval.tradingProductAverageCostPrice.errors
+                              }"
+                              placeholder="Enter The Average Cost Price"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <label
+                            class="text-danger col"
+                            *ngIf="
+                              (fval.tradingProductAverageCostPrice.touched ||
+                                fval.tradingProductAverageCostPrice.dirty) &&
+                              fval.tradingProductAverageCostPrice.errors
+                                ?.required
+                            "
+                          >
+                            Average cost price is Required!
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-xs-12 col-md-6 col-lg-4 ml-1">
+                        <div class="form-group" *ngIf="!(variant || composite)">
+                          <label
+                            for="tradingProductAverageMarkUp"
+                            [ngClass]="
+                              fval.tradingProductAverageMarkUp.valid
+                                ? 'text-info'
+                                : ''
+                            "
+                            >Mark Up<i
+                              *ngIf="fval.tradingProductAverageMarkUp.valid"
+                              class="material-icons"
+                              >check_circle</i
+                            ></label
+                          >
+
+                          <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i
+                                  class="fas fa-lock text-info mx-auto"
+                                  style="size: 50px"
+                                ></i>
+                              </div>
+                            </div>
+                            <input
+                              id="tradingProductAverageMarkUp"
+                              formControlName="tradingProductAverageMarkUp"
+                              type="text"
+                              class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  (fval.tradingProductAverageMarkUp.touched ||
+                                    fval.tradingProductAverageMarkUp.dirty) &&
+                                  fval.tradingProductAverageMarkUp.errors
+                              }"
+                              placeholder="Enter Average Mark Up"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <label
+                            class="text-danger col"
+                            *ngIf="
+                              (fval.tradingProductAverageMarkUp.touched ||
+                                fval.tradingProductAverageMarkUp.dirty) &&
+                              fval.tradingProductAverageMarkUp.errors?.required
+                            "
+                          >
+                            Mark up rate is Required!
+                          </label>
+                        </div>
+
+                        <!-- <div class="form-group">
+     <label
+     for="tradingProductAverageSellingPrice"
+     [ngClass]="fval.tradingProductAverageSellingPrice.valid ? 'text-info' : ''"
+     >Average selling price<i *ngIf="fval.tradingProductAverageSellingPrice.valid" class="material-icons"
+     >check_circle</i
+     ></label>
+
+     <div class="input-group mb-2">
+     <div class="input-group-prepend">
+     <div class="input-group-text">
+     <i
+     class="fas fa-lock text-info mx-auto"
+     style="size: 50px"></i>
+     </div>
+     </div>
+     <input
+     id="tradingProductAverageSellingPrice"
+     formControlName="tradingProductAverageSellingPrice"
+     type="text"
+     class="form-control text-info"
+     [ngClass]="{
+     'is-invalid':
+     (fval.tradingProductAverageSellingPrice.touched || fval.tradingProductAverageSellingPrice.dirty) &&
+     fval.tradingProductAverageSellingPrice.errors
+     }"
+
+     autocomplete="off"
+     >
+     </div>
+     <label
+     class="text-danger col"
+     *ngIf="
+     (fval.tradingProductAverageSellingPrice.touched || fval.tradingProductAverageSellingPrice.dirty) &&
+     fval.tradingProductAverageSellingPrice.errors?.required
+     "
+     >
+     Average cost price  is Required!
+     </label>
+     </div> -->
+                        <!-- (click)="t()" -->
+                        <!-- <button class="btn btn-success btn-lg mx-2" (click)="validateForm()" >Validate</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="form-group" id="navId"> -->
+            <!-- <li class="nav-item ">
+    <button class="btn btn-success btn-lg mx-2" (click)="setSellingPrice()">Validate</button>
+  </li> -->
+            <div class="post-buttons form-group">
+              <button
+                class="btn btn-primary btn-sm px-2 col-5 col-md-3"
+                [disabled]="!tradingProductForm.valid"
+                (click)="uploadForm()"
+              >
+                Submit</button
+              >&nbsp;
+              <button
+                class="btn btn-danger btn-sm px-2 col-5 col-md-3"
+                (click)="check()"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+        <div class="d-flex justify-content-between align-self-center">
+          <ag-grid-angular
+            style="width: 100%; height: 400px"
+            class="ag-theme-material text-danger"
+            [rowData]="theTradingProducts$ | async"
+            [columnDefs]="columnDefs"
+            (gridReady)="onGridReady($event)"
+            (cellClicked)="exportExcel($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="container mt-1 pt-0 mb-2 pb-2">
+    <div class="col-xs-12 col-lg-12">
+      <div class="small text-center text-danger">
+        Copyright &copy; 2020 - Brimasmedia Ltd
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="form-group">
+     <input type="text" class="form-control" [(ngModel)]="userFilter.stage"  placeholder="Enter Stage Name">
+     </div> -->
+
+<!-- <div class="table-responsive jumbotron jumbotron-fluid"> -->
+<!-- <table class="table table-striped table-bordered  table-hover"  >
+     <thead >
+     <tr class="text-info">
+     <th>#</th>
+     <th>Name</th>
+     <th>Date Taken</th>
+     <th>Time Taken</th>
+     <th >Amount Taken</th>
+     <th >Loan+Interest Expected</th>
+     <th >Loan+Interest Paid</th>
+     <th >Loan+Interest Remaining</th>
+     <th >Days Unpaid</th>
+
+
+     </tr>
+     </thead>
+     <tbody> -->
+<!-- |filterBy: userFilter  [class.bg-warning]="products.aging_days>=5" [class.text-light]="products.aging_days>=5"
+     [class.bg-danger]="products.aging_days>=10" -->
+<!-- <tr *ngFor="let products of theTradingProducts$|async; let i=index"  class="text-info">
+     <td>{{ i+1}}</td>
+     <td>{{ products.tradingProductName }}</td>
+     <td>{{ products.tradingProductCategory }}</td>
+     <td>{{ products.tradingProductType }}</td>
+     <td>{{ products.tradingProductDescription }}</td>
+     <td>{{ products.tradingProductUnitOfMeasure }}</td>
+     <td>{{ products.tradingProductAverageCostPrice }}</td>
+     <td>{{ products.tradingProductAverageMarkUp }}</td>
+     <td>{{ products.tradingProductAverageSellingPrice }}</td>
+
+     </tr>
+     </tbody>
+     </table> -->
+
+<!-- <div class="container"> -->
+
+<!-- </div> -->
+<!-- </div> -->
+
+<ng-template #template>
+  <div class="modal-header bg-info close pull-right modal-lg">
+    <h5 class="modal-title pull-left">List Of Clients</h5>
+
+    <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+     <span aria-hidden="true">&times;</span>
+     </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="form-group col-xs-12 col-md-7">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="userFilter.clientName"
+        placeholder="Enter Client Name"
+      />
+    </div>
+    <div class="jumbotron-fluid table-responsive mx-3 my-3">
+      <table class="table-striped table-hover mx-3">
+        <thead class="text-info">
+          <th>Action</th>
+          <!-- <th>Id</th> -->
+          <th>Client Name</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Approval Status</th>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let client of theTradingProducts$ | async | filterBy: userFilter
+            "
+          >
+            <td>
+              <button class="btn-info" (click)="modalRef.hide()">
+                <!-- (click)="updateName(client.clientName, client.id)"  -->
+                Add
+              </button>
+            </td>
+
+            <!-- <td > {{client.id }} </td> -->
+
+            <td>{{ client.clientName }}</td>
+            <td>{{ client.phoneNumber }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.approvalStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-template>

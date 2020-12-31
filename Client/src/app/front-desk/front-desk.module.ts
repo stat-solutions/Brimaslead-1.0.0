@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FrontDeskLayoutComponent } from './front-desk-layout/front-desk-layout.component';
-
 import { FrontDeskRoutingModule } from './front-desk-routing.module';
 import { FrontDeskDashboardComponent } from './front-desk-dashboard/front-desk-dashboard.component';
 import { FrontDeskHeaderComponent } from './front-desk-panels/front-desk-header/front-desk-header.component';
@@ -56,7 +55,6 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { NgxSpinnerModule } from 'ngx-spinner';
-
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
 import { ModalModule } from "ngx-bootstrap";
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
@@ -139,8 +137,7 @@ import { TabsModule } from 'ngx-bootstrap';
     AngularSlickgridModule.forRoot(),
     AgGridModule.withComponents([]),
     TabsModule.forRoot(),
-    FilterPipeModule,
-    NgxSpinnerModule
+    FilterPipeModule
   ],
   exports: [
     FrontDeskLayoutComponent,

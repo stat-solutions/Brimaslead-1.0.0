@@ -2,82 +2,89 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'authpage', redirectTo: 'authpage/home', pathMatch: 'full' },
+  { path: "authpage", redirectTo: "authpage/home", pathMatch: "full" },
 
-  { path: '', redirectTo: 'authpage/home', pathMatch: 'full' },
+  { path: "", redirectTo: "authpage/home", pathMatch: "full" },
   {
-    path: 'admindashboard',
+    path: "admindashboard",
     loadChildren: () =>
-      import('./admin-dashboard/admin-dashboard.module').then(
-        m => m.AdminDashboardModule
-      )
+      import("./admin-dashboard/admin-dashboard.module").then(
+        (m) => m.AdminDashboardModule
+      ),
   },
   {
-    path: 'customersdashboard',
+    path: "administration",
     loadChildren: () =>
-      import('./customers-dashboard/customer-dashboard.module').then(
-        m => m.CustomerDashboardModule
-      )
+      import("./administration-dashboard/administration-dashboard.module").then(
+        (m) => m.AdministrationDashboardModule
+      ),
   },
   {
-    path: 'financedashboard',
+    path: "customersdashboard",
     loadChildren: () =>
-      import('./finance-dashboard/finance-dashboard.module').then(
-        m => m.FinanceDashboardModule
-      )
+      import("./customers-dashboard/customer-dashboard.module").then(
+        (m) => m.CustomerDashboardModule
+      ),
   },
   {
-    path: 'frontdesk',
+    path: "financedashboard",
     loadChildren: () =>
-      import('./front-desk/front-desk.module').then(m => m.FrontDeskModule)
+      import("./finance-dashboard/finance-dashboard.module").then(
+        (m) => m.FinanceDashboardModule
+      ),
   },
   {
-    path: 'managementdashboard',
+    path: "frontdesk",
     loadChildren: () =>
-      import('./management-dashboard/management-dashboard.module').then(
-        m => m.ManagementDashboardModule
-      )
+      import("./front-desk/front-desk.module").then((m) => m.FrontDeskModule),
   },
   {
-    path: 'productiondashboard',
-
+    path: "managementdashboard",
     loadChildren: () =>
-      import('./production-dashboard/production-dashboard.module').then(
-        m => m.ProductionDashboardModule
-      )
+      import("./management-dashboard/management-dashboard.module").then(
+        (m) => m.ManagementDashboardModule
+      ),
   },
   {
-    path: 'qadashboard',
-
-    loadChildren: () =>
-      import('./qa-dashboard/qa-dashboard.module').then(
-        m => m.QaDashboardModule
-      )
-  },
-  {
-    path: 'salesmarketdashboard',
+    path: "productiondashboard",
 
     loadChildren: () =>
-      import('./sales-market-dashboard/sales-market-dashboard.module').then(
-        m => m.SalesMarketDashboardModule
-      )
+      import("./production-dashboard/production-dashboard.module").then(
+        (m) => m.ProductionDashboardModule
+      ),
   },
   {
-    path: 'suppliersdashboard',
+    path: "qadashboard",
 
     loadChildren: () =>
-      import('./suppliers-dashboard/suppliers-dashboard.module').then(
-        m => m.SuppliersDashboardModule
-      )
+      import("./qa-dashboard/qa-dashboard.module").then(
+        (m) => m.QaDashboardModule
+      ),
   },
   {
-    path: 'translogisticsdashboard',
+    path: "salesmarketdashboard",
+
+    loadChildren: () =>
+      import("./sales-market-dashboard/sales-market-dashboard.module").then(
+        (m) => m.SalesMarketDashboardModule
+      ),
+  },
+  {
+    path: "suppliersdashboard",
+
+    loadChildren: () =>
+      import("./suppliers-dashboard/suppliers-dashboard.module").then(
+        (m) => m.SuppliersDashboardModule
+      ),
+  },
+  {
+    path: "translogisticsdashboard",
 
     loadChildren: () =>
       import(
-        './trans-logistics-dashboard/trans-logistics-dashboard.module'
-      ).then(m => m.TransLogisticsDashboardModule)
-  }
+        "./trans-logistics-dashboard/trans-logistics-dashboard.module"
+      ).then((m) => m.TransLogisticsDashboardModule),
+  },
 ];
 
 @NgModule({

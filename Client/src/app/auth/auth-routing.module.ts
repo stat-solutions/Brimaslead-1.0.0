@@ -6,7 +6,8 @@ import { CustomerRegisterComponent } from './customer-register/customer-register
 import { SupplierRegisterComponent } from './supplier-register/supplier-register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth.component';
-import { GoogoComponent } from './googo/googo.component';
+import { ChangePasswordComponent } from "./change-password/change-password.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
 
 const routes: Routes = [
   {
@@ -15,15 +16,16 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        component: HomeComponent
+        component: HomeComponent,
       },
       { path: "loginpage", component: LoginComponent },
-      { path: "googo", component: GoogoComponent },
+      { path: "forgotpassword", component: ForgotPasswordComponent },
+      { path: "changepassword", component: ChangePasswordComponent },
       { path: "registeruser", component: RegisterComponent },
       { path: "register-client", component: CustomerRegisterComponent },
-      { path: "registersupplier", component: SupplierRegisterComponent }
-    ]
-  }
+      { path: "registersupplier", component: SupplierRegisterComponent },
+    ],
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,367 @@
+<div class="row">
+  <div class="col">
+    <div class="card card-primary">
+      <div class="card-body">
+        <form [formGroup]="itemsForm" (ngSubmit)="onSave()">
+          <div class="row">
+          <div class="col-xs-12 col-lg-6">
+          <div class="form-group">
+            <label for="rfq_number" class="text-info"
+              >RFQ ID no.</label
+            >
+            <input
+              class="form-control"
+              formControlName="rfq_number"
+              [value]="fval.rfq_number.value"
+            />
+          </div>
+          </div>
+          <div class="col-xs-12 col-lg-6">
+          <div class="form-group">
+            <label for="clientName" class="text-info"
+              >Client Name</label
+            >
+            <input
+              class="form-control"
+              formControlName="clientName"
+              [value]="fval.clientName.value"
+            />
+            <div
+              class="text-danger col"
+              *ngIf="
+                (fval.clientName.touched ||
+                  fval.clientName.dirty) &&
+                fval.clientName.errors?.required
+              "
+            >
+              Client is required
+            </div>
+          </div>
+          </div>
+          </div>
+          <legend class="text-info">
+            <i class="fas fa-plus"></i>&nbsp;Add Item
+            </legend>
+          <table class="table table-bordered">
+          <tbody class="text-dark">
+          <div
+            *ngFor="let item of items; let i = index"
+          >
+            <tr>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="stockId"
+                    />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <select
+                    class="form-control"
+                    formControlName="itemName"
+                    placeholder="Select Item"
+                    (change)="updateOtherItems()"
+                  > <option
+                  selected
+                  >Select Item</option
+                >
+                    <option
+                      *ngFor="let article of itemsStock"
+                      >{{ article.itemName }}</option
+                    >
+                  </select>
+
+                  <!-- <div
+                  class="text-danger col" *ngIf="item[i].itemName.valid"
+                >
+                </div> -->
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="unit"
+                    />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <div class="text-info col">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="unitCost"
+                    />
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    formControlName="qty_required"
+                    type="text"
+                  />
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="total_cost"
+                  />
+                </div>
+              </td>
+              <td>
+                <button
+                  class="btn btn-info"
+                  type="button"
+                  (click)="add()"
+                >
+                  Add</button
+                >&nbsp;
+                <button
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="remove()"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </div>
+          </tbody>
+          </table>
+          </form>
+        <form [formGroup]="userForm">
+          <legend class="text-info">Items</legend>
+          <div class="row">
+            <div class="col-xs-12 col-lg-4">
+              <div class="">
+                {{setRfqId()}}
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="">
+                {{clientNames}}
+                <!-- <label
+                  class="text-info"
+                  [ngClass]="fval.clientName.valid ? 'text-success' : ''"
+                  >Client Name<i
+                    *ngIf="fval.clientName.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="clientName"
+                  [value]="clientName"
+                  name="clientName" disabled
+                /> -->
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.stockId.valid ? 'text-success' : ''"
+                  >Item Id No.<i
+                    *ngIf="fval.stockId.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="stockId">
+                   <!-- <option disabled selected>Select Item Id No.</option> -->
+                  <option *ngFor="let item of itemsStock">{{
+                    item.stockId
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.stockId.touched || fval.stockId.dirty) &&
+                    fval.stockId.errors?.required
+                  "
+                >
+                  Item Id number is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.itemName.valid ? 'text-success' : ''"
+                  >Item Name<i
+                    *ngIf="fval.itemName.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="itemName">
+                  <option *ngFor="let item of itemsStock">{{
+                    item.itemName
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.itemName.touched || fval.itemName.dirty) &&
+                    fval.itemName.errors?.required
+                  "
+                >
+                  Item name is required
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.unit.valid ? 'text-success' : ''"
+                  >Unit<i *ngIf="fval.unit.valid" class="material-icons"
+                  >check_circle</i
+                  ></label
+                  >
+                <select class="form-control" formControlName="unit">
+                  <option *ngFor="let item of itemsStock">{{
+                    item.unit
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.unit.touched || fval.unit.dirty) &&
+                    fval.unit.errors?.required
+                  "
+                >
+                  Unit is required
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.qty_required.valid ? 'text-success' : ''"
+                    >Quantity<i
+                      *ngIf="fval.qty_required.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div  *ngFor="let item of itemsStock">
+                  <input type="text" class="form-control" formControlName="qty_required"></div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.qty_required.touched || fval.qty_required.dirty) &&
+                      fval.qty_required.errors?.required
+                    "
+                  >
+                    Quantity is required
+                  </div>
+                </div>
+              </div>
+                           <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.unitCost.valid ? 'text-success' : ''"
+                    >Unit Cost<i
+                      *ngIf="fval.unitCost.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <select class="form-control" formControlName="unitCost">
+                    <option *ngFor="let item of itemsStock">{{
+                      item.unitCost | number
+                    }}</option>
+                  </select>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.unitCost.touched || fval.unitCost.dirty) &&
+                      fval.unitCost.errors?.required
+                    "
+                  >
+                    Unit cost is required
+                  </div>
+                </div>
+              </div>
+ <div class="col-xs-12 col-lg-4">
+                <div class="form-group">
+                  <label
+                    class="text-info"
+                    [ngClass]="fval.total_cost.valid ? 'text-success' : ''"
+                    >Total Cost<i
+                      *ngIf="fval.total_cost.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <input type="text" class="form-control" formControlName="total_cost" (click)="totalCost()">
+
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.total_cost.touched || fval.total_cost.dirty) &&
+                      fval.total_cost.errors?.required
+                    "
+                  >
+                    Total cost is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <div class="form-group">
+                <label
+                  class="text-info"
+                  [ngClass]="fval.user_name.valid ? 'text-success' : ''"
+                  >Created by<i
+                    *ngIf="fval.user_name.valid"
+                    class="material-icons"
+                    >check_circle</i
+                  ></label
+                >
+                <select class="form-control" formControlName="user_name">
+                  <option *ngFor="let user of users">{{
+                    user.user_name
+                  }}</option>
+                </select>
+                <div
+                  class="text-danger col"
+                  *ngIf="
+                    (fval.user_name.touched || fval.user_name.dirty) &&
+                    fval.user_name.errors?.required
+                  "
+                >
+                  User name is required
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

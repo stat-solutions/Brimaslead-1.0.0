@@ -1,0 +1,237 @@
+h5 {
+font-size: 14px;
+}
+hr.top{
+  width: 10%;
+  min-width: 30px;
+  max-width: 50px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+hr.bottom{
+  width: 10%;
+  min-width: 30px;
+  max-width: 50px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%
+}
+.post-buttons button{
+  // border-radius: 12px !important;
+}
+
+//Media queries
+@media (min-width:290px){
+.tickets-card2 hr.bottom{
+  margin-right: 9px;
+}
+h5 {
+  margin-left: 0px !important;
+  padding-left: 3px !important;
+}
+h6 {
+font-size: 13px;
+}
+
+.input-group {
+  min-width:240px !important;
+  max-width:270px !important
+}
+.input-group-prepend {
+  margin-left: 10px !important;
+    margin-right: -1px
+}
+}
+
+
+@media (min-width:360px){
+.tickets-card2 hr.bottom{
+  margin-right: 23px;
+}
+h5 {
+  padding-left: 16px !important;
+}
+.form-card {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+}
+
+
+@media (min-width:375px){
+h5 {
+  padding-left: 26px !important;
+}
+}
+
+
+@media (min-width:400px){
+h5 {
+  padding-left: 50px !important;
+}
+}
+
+
+@media (min-width:414px){
+h5 {
+  padding-left: 51px !important;
+}
+}
+
+
+@media (min-width:568px){
+.tickets-card2 hr.bottom{
+  margin-right: 32px;
+}
+h5 {
+  margin-left: 94px !important;
+}
+}
+
+
+@media (min-width: 640px){
+.tickets-card2 hr.bottom{
+  margin-right: 28px;
+}
+h5 {
+  margin-left: 85px !important;
+}
+}
+
+
+@media (min-width: 640px){
+.tickets-card2 hr.bottom{
+  margin-right: 28px;
+}
+h5 {
+  margin-left: 85px !important;
+}
+}
+
+
+@media (min-width: 768px){
+.container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 45px;
+}
+h5 {
+  font-size: 20px !important;
+  margin-left: 122px !important;
+  padding-left: 50px !important;
+}
+h6 {
+  font-size: 16px !important;
+}
+}
+
+
+@media (min-width: 812px){
+.container {
+  margin-left: 20px !important;
+}
+}
+
+
+@media (min-width: 823px){
+.container {
+  margin-left: 25px !important;
+}
+}
+
+
+@media (min-width: 1024px){
+.container {
+  margin-left: 5px !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 62px;
+}
+h5 {
+  margin-left: 120px !important;
+  padding-left: 115px !important;
+}
+.form-card {
+  width: 100% !important;
+}
+.form-card .card-body {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}
+}
+
+
+@media (min-width:1100px){
+.tickets-card2 hr.bottom{
+  margin-right: 72px;
+}
+.tickets-card2 {
+  width: 100%;
+  padding-right: 2px;
+  padding-left: 2px;
+  border: 0rem;
+  padding-top: 5px !important;
+  padding-bottom: 8px !important;
+}
+h6 {
+  font-size: 17px !important;
+}
+}
+
+@media (min-width:1280px){
+h5 {
+  margin-left: 192px !important;
+  padding-left: 82px !important;
+}
+}
+
+
+@media (min-width:1320px){
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.tickets-card2 hr.bottom{
+  margin-right: 72px;
+}
+h5 {
+  margin-left: 180px !important;
+  padding-left: 146px !important;
+}
+  }
+
