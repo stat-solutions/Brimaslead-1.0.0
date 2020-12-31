@@ -47,7 +47,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { GoogoComponent } from './googo/googo.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -60,7 +61,8 @@ import { GoogoComponent } from './googo/googo.component';
     SupplierRegisterComponent,
     CustomerRegisterComponent,
     HomeComponent,
-    GoogoComponent,
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -105,6 +107,6 @@ import { GoogoComponent } from './googo/googo.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-  ]
+  ],
 })
 export class AuthModule {}

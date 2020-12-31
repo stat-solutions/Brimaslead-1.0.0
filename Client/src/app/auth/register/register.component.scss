@@ -71,9 +71,6 @@ hr.bottom {
   background-color: #eee206ef;
   height: 4px;
 }
-.pointerCursor {
-  cursor: pointer;
-}
 
 ::ng-deep .mat-step-header {
   pointer-events: none !important;
@@ -116,9 +113,6 @@ hr.bottom {
   padding-right: 2px;
   padding-left: 2px;
 }
-button.btn {
-  border-radius: 13px;
-}
 mat-icon,
 mat-label {
   color: #54a9c9;
@@ -132,30 +126,6 @@ mat-error {
   max-width: 500px !important;
   width: 100% !important;
   font-size: 22px !important;
-}
-
-
-.dropzone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-width: 80vw;
-  font-weight: 200;
-  height: 300px;
-  border: 2px dashed #f16624;
-  border-radius: 5px;
-  background: white;
-  margin: 10px 0;
-
-  &.hovering {
-      border: 2px solid #f16624;
-      color: #dadada !important;
-  }
-
-  .file-label {
-      font-size: 1.2em;
-  }
 }
 
 progress::-webkit-progress-value {

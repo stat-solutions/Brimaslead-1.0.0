@@ -14,7 +14,6 @@ import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rf
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
 
-
 const routes: Routes = [
   {
     path: "",
