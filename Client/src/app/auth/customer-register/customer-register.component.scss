@@ -8,9 +8,8 @@
 .breadcrumb {
   position: relative;
   background: transparent !important;
-  font-size: 16px !important;
+    font-size: 15px !important;
   font-weight: 700;
-  border-radius: 2px;
   width: 100%;
 }
 .breadcrumb-item a:hover {
@@ -20,59 +19,63 @@
   color: #c63685 !important;
 }
 .customer-card {
-  width: 90%;
-  min-width: 150px;
-  max-width: 500px;
-  height: 100%;
-padding-right: 2px;
-  padding-left: 2px;
-  border: 0rem;
-  padding-bottom: 20px;
-}
-.card .card-title {
   width: 100%;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  align-items: center
+  min-width: 150px;
+  max-width: 400px;
+  height: auto;
+  border: 0rem;
 }
-hr.top{
+.customer-card hr.top {
   width: 10%;
-  min-width: 30px;
-  max-width: 80px;
+  min-width: 15px;
+  max-width: 30px;
   position: relative;
-  margin-left: 85px;
+  margin-left: 0px;
   background-color: #c63685f3;
   height: 4px;
 }
-hr.bottom{
+.customer-card hr.bottom {
   width: 10%;
-  min-width: 30px;
-  max-width: 80px;
+  min-width: 15px;
+  max-width: 30px;
   position: relative;
-  margin-right: 85px;
+  margin-right: 0px;
   background-color: #eee206ef;
   height: 4px;
 }
-.customer-card hr.top{
-  width: 10%;
-  min-width: 15px;
-  max-width: 20px;
-  position: relative;
-  margin-left: 65px;
-  background-color: #c63685f3;
-  height: 4px;
+
+::ng-deep .mat-step-header {
+  pointer-events: none !important;
+  color: #54a9c9 !important;
+  background-color: none;
 }
-.customer-card hr.bottom{
-  width: 10%;
-  min-width: 15px;
-  max-width: 20px;
-  position: relative;
-  margin-right: 65px;
-  background-color: #eee206ef;
-  height: 4px;
+
+::ng-deep ng-template .mat-step-header:active,
+.mat-step-header:focus {
+  pointer-events: none !important;
+  color: #54a9c9 !important;
+  background-color: none !important;
 }
-.pointerCursor {
-  cursor: pointer;
+//mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #54a9c9d5 !important;
+}
+
+//mat-input focused color
+::ng-deep
+  .mat-form-field-appearance-fill.mat-focused
+  .mat-form-field-fill-thick {
+  color: #54a9c9d5 !important;
+}
+
+// mat-input error fill color
+::ng-deep
+  .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-fill-thick {
+  color: #c63685f3 !important;
+  opacity: 0.8 !important;
 }
 
 .mat-form-field {
@@ -82,9 +85,6 @@ hr.bottom{
   padding-right: 2px;
   padding-left: 2px;
 }
-button.btn {
-  border-radius: 13px;
-}
 mat-icon,
 mat-label {
   color: #54a9c9;
@@ -93,238 +93,80 @@ mat-error {
   color: #c63685;
 }
 
-.foot {
-  min-width: 110px !important;
-  max-width: 500px !important;
-  width: 100% !important;
-  font-size: 22px !important;
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
 }
+
+
 
 //Media queries
-@media (min-width:320px){
-  .breadcrumb {
-    font-size: 15px !important;
-    margin-top: 20px !important;
-    font-weight: 700;
-  }
-.customer-card hr.top{
-  min-width: 15px;
-  max-width: 20px;
-  margin-left: 75px;
-}
-.customer-card hr.bottom{
-  min-width: 15px;
-  max-width: 20px;
-  margin-right: 75px;
-}
-.customer-card {
-  margin-top: 0px !important;
-  padding-top: 0px !important;
-}
-.card .card-title {
-  font-size: 16px !important;
-  margin-bottom: 20px !important;
-}
+@media (min-width: 290px) {
 }
 
-
-@media (min-width:360px){
+@media (min-width: 360px) {
   .breadcrumb {
     font-size: 17px !important;
-    margin-top: 20px !important;
   }
-.customer-card hr.top{
-  margin-left: 93px;
 }
-.customer-card hr.bottom{
-  margin-right: 93px;
-}
+
+@media (min-width: 375px) {
 }
 
 
-@media (min-width:375px){
+@media (min-width: 400px) {
+}
+
+
+@media (min-width: 568px) {
   .breadcrumb {
-    font-size: 17px !important;
-    margin-top: 20px !important;
+    font-size: 18px !important;
   }
-.customer-card hr.top{
-  margin-left: 98px;
-}
-.customer-card hr.bottom{
-  margin-right: 98px;
-}
-.customer-card {
-  margin-bottom: 30px !important;
-}
 }
 
 
-@media (min-width:400px){
-.customer-card hr.top{
-  margin-left: 115px;
-}
-.customer-card hr.bottom{
-  margin-right: 115px;
-}
-.card .card-title {
-  font-size: 16px !important;
-}
-.customer-card {
-  margin-bottom: 35px !important;
-}
+@media (min-width: 640px) {
 }
 
 
-@media (min-width:568px){
-.customer-card hr.top{
-  margin-left: 180px;
-}
-.customer-card hr.bottom{
-  margin-right: 180px;
-}
-.card .card-title {
-  font-size: 16px !important;
-  margin-bottom: 20px !important;
-}
-.customer-card {
-  margin-top: 0px !important;
-  margin-bottom: 40px !important;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 0px !important;
-}
-}
-
-
-@media (min-width:640px){
-.customer-card hr.top{
-  margin-left: 174px;
-}
-.customer-card hr.bottom{
-  margin-right: 174px;
-}
-.card .card-title {
-  font-size: 16px !important;
-  margin-bottom: 20px !important;
-}
-}
-
-
-@media (min-width: 731px){
-.customer-card hr.top{
-  margin-left: 174px;
-}
-.customer-card hr.bottom{
-  margin-right: 174px;
-}
-.card .card-title {
-  font-size: 16px !important;
-  margin-bottom: 20px !important;
-}
-}
-
-
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .breadcrumb {
     font-size: 20px !important;
-    margin-top: 25px !important;
   }
-.customer-card hr.top{
-  min-width: 15px;
-  max-width: 25px;
-  margin-left: 170px;
-}
-.customer-card hr.bottom{
-  min-width: 15px;
-  max-width: 25px;
-  margin-right: 170px;
-}
-.customer-card {
-  margin-top: 5px !important;
-  margin-bottom: 170px !important;
-  padding-top: 10px !important;
-}
-.card .card-title {
-  font-size: 18px !important;
-  margin-bottom: 20px !important;
-}
-
-}
-
-
-@media (min-width: 812px){
-  .breadcrumb {
-    font-size: 20px !important;
-    margin-top: 25px !important;
+  ::ng-deep .mat-step-header {
+    pointer-events: none !important;
+    color: #54a9c9 !important;
+    background-color: none;
+    margin-bottom: 20px !important;
   }
-.customer-card hr.top{
-  min-width: 15px;
-  max-width: 25px;
-  margin-left: 172px;
-}
-.customer-card hr.bottom{
-  min-width: 15px;
-  max-width: 25px;
-  margin-right: 172px;
-}
-.customer-card {
-  margin-bottom: 40px !important;
-  padding-top: 10px !important;
-}
 }
 
 
-@media (min-width: 1024px){
+@media (min-width: 823px) {
+  ::ng-deep .mat-step-header {
+    pointer-events: none !important;
+    color: #54a9c9 !important;
+    background-color: none;
+    margin-bottom: 0px !important;
+  }
+}
+
+
+@media (min-width: 1024px) {
   .breadcrumb {
     font-size: 24px !important;
-    margin-top: 30px !important;
     font-weight: 800;
   }
-.customer-card hr.top{
-  min-width: 15px;
-  max-width: 30px;
-  margin-left: 163px;
-}
-.customer-card hr.bottom{
-  min-width: 15px;
-  max-width: 30px;
-  margin-right: 163px;
-}
-.customer-card {
-  margin-bottom: 380px !important;
-}
-.card .card-title {
-  font-size: 20px !important;
-  font-weight: 700 !important;
-  margin-bottom: 25px !important;
-}
 }
 
-
-@media (min-width:1100px){
+@media (min-width: 1100px) {
 }
 
-@media (min-width:1280px){
+@media (min-width: 1280px) {
   .breadcrumb {
     font-size: 24px !important;
-    margin-top: 25px !important;
   }
-.customer-card hr.top{
-  margin-left: 163px;
-}
-.customer-card hr.bottom{
-  margin-right: 163px;
-}
-.customer-card {
-  margin-bottom: 60px !important;
-}
 }
 
+@media (min-width: 1320px) {
+}
 
-@media (min-width:1320px)
-{
-.customer-card {
-  margin-bottom: 60px !important;
-  padding-top: 10px !important;
-}
-}

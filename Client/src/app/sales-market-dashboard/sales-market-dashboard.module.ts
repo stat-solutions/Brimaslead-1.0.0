@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesCoreSalesMarketComponent } from './pages-core/pages-core-sales-market.component';
 
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { UpdateSalesMarketProfileComponent } from './components/update-sales-market-profile/update-sales-market-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeftPanelSalesMarketComponent } from './common/left-panel/left-panel-sales-market.component';
 import { RightPanelSalesMarketComponent } from './common/right-panel/right-panel-sales-market.component';
@@ -15,6 +14,9 @@ import { HeaderSalesMarketComponent } from './common/header/header-sales-market.
 import { ContentSectionSalesMarketComponent } from './content-section/content-section-sales-market.component';
 import { SalesMarketDashboardComponent } from './components/sales-market-dashboard/sales-market-dashboard.component';
 import { SalesMarketNotificationsComponent } from './components/sales-market-notifications/sales-market-notifications.component';
+import { FieldRfqsComponent } from './components/field-rfqs/field-rfqs.component';
+import { SalesMarketProfileComponent } from './components/sales-market-profile/sales-market-profile.component';
+import { SalesMarketReportsComponent } from './components/sales-market-reports/sales-market-reports.component';
 
 
 @NgModule({
@@ -26,8 +28,10 @@ import { SalesMarketNotificationsComponent } from './components/sales-market-not
     ContentSectionSalesMarketComponent,
     AuthenticationComponent,
     SalesMarketDashboardComponent,
-    UpdateSalesMarketProfileComponent,
     SalesMarketNotificationsComponent,
+    FieldRfqsComponent,
+    SalesMarketProfileComponent,
+    SalesMarketReportsComponent,
 
   ],
   imports: [

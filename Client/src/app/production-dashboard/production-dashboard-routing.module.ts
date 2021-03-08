@@ -2,35 +2,42 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesCoreProductionComponent } from './pages-core/pages-core-production.component';
 import { ProductionDashboardComponent } from './components/production-dashboard/production-dashboard.component';
-import { UpdateProductionProfileComponent } from './components/update-production-profile/update-production-profile.component';
+import { ProductionProfileComponent } from './components/production-profile/production-profile.component';
 import { ProductionNotificationsComponent } from './components/production-notifications/production-notifications.component';
+import { DesignImplementationComponent } from './components/design-implementation/design-implementation.component';
+import { ProductionReportsComponent } from './components/production-reports/production-reports.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesCoreProductionComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard'
-      },
-
-      {
-        path: 'dashboardproduction',
-       component: ProductionDashboardComponent,
+        path: "",
+        pathMatch: "full",
+        redirectTo: "production",
       },
       {
-        path: 'updateproductionprofile',
-       component: UpdateProductionProfileComponent,
-      }
-      ,
+        path: "production",
+        component: ProductionDashboardComponent,
+      },
       {
-        path: 'notifications',
-       component: ProductionNotificationsComponent,
-      }
-
-    ]
+        path: "designimplementation",
+        component: DesignImplementationComponent,
+      },
+      {
+        path: "productionreports",
+        component: ProductionReportsComponent,
+      },
+      {
+        path: "productionprofile",
+        component: ProductionProfileComponent,
+      },
+      {
+        path: "productionnotifications",
+        component: ProductionNotificationsComponent,
+      },
+    ],
   },
 ];
 

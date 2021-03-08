@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesCoreProductionComponent } from './pages-core/pages-core-production.component';
 
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { UpdateProductionProfileComponent } from './components/update-production-profile/update-production-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeftPanelProductionComponent } from './common/left-panel/left-panel-production.component';
 import { RightPanelProductionComponent } from './common/right-panel/right-panel-production.component';
@@ -15,6 +14,9 @@ import { HeaderProductionComponent } from './common/header/header-production.com
 import { ContentSectionProductionComponent } from './content-section/content-section-production.component';
 import { ProductionDashboardComponent } from './components/production-dashboard/production-dashboard.component';
 import { ProductionNotificationsComponent } from './components/production-notifications/production-notifications.component';
+import { ProductionProfileComponent } from './components/production-profile/production-profile.component';
+import { ProductionReportsComponent } from './components/production-reports/production-reports.component';
+import { DesignImplementationComponent } from './components/design-implementation/design-implementation.component';
 
 
 @NgModule({
@@ -26,8 +28,10 @@ import { ProductionNotificationsComponent } from './components/production-notifi
     ContentSectionProductionComponent,
     AuthenticationComponent,
     ProductionDashboardComponent,
-    UpdateProductionProfileComponent,
     ProductionNotificationsComponent,
+    ProductionProfileComponent,
+    ProductionReportsComponent,
+    DesignImplementationComponent,
 
   ],
   imports: [

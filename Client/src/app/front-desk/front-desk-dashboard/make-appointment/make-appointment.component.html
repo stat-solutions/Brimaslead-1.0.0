@@ -1,0 +1,213 @@
+<div class="d-flex flex-column">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="tickets-card2 card shadow-lg mt-2 mb-0 pt-2 pb-1 px-4 px-md-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-0">
+              <h4 class="text-info text-uppercase font-weight-bold pull-right">
+                <hr class="top mt-1 mb-0" />
+                make appointment
+                <hr class="bottom mt-0 mb-0" />
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-self-center">
+      <div
+        class="form-card card shadow mt-2 mb-4 d-flex"
+      >
+        <div class="card-body pt-4 pb-4 pb-md-5 px-auto">
+              <form
+                [formGroup]="personalFormGroup"
+                (ngSubmit)="form1()"
+                #formone="ngForm"
+              >
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label for="userName">Name</mat-label>
+                        <mat-icon matPrefix>person_outline</mat-icon>
+                        <input
+                          matInput
+                          formControlName="userName"
+                          placeholder="Enter your name"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('required')
+                          "
+                        >
+                          Name is required!
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('userName')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('minLength')
+                          "
+                        >
+                          Name should not be less than two characters!
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('userName')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('maxLength')
+                          "
+                        >
+                          Name should have a maximum of 128 characters!
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('userName')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('hasCharacters')
+                          "
+                        >
+                          Name should not include digits!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Phone number</mat-label>
+                        <mat-icon matPrefix>phone_android</mat-icon>
+                        <input
+                          matInput
+                          formControlName="phoneNumber"
+                          placeholder="Enter phone number"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('phoneNumber')
+                              .hasError('required')
+                          "
+                          >Phone number is required!
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('phoneNumber')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('phoneNumber')
+                              .hasError('hasNumber')
+                          "
+                          >Phone number is invalid!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <mat-icon matPrefix>my_location</mat-icon>
+                        <input
+                          matInput
+                          formControlName="address"
+                          placeholder="Enter your address"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('address')
+                              .hasError('required')
+                          "
+                          >Address is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Office to Visit</mat-label>
+                        <mat-icon matPrefix>perm_identity</mat-icon>
+                        <input
+                          matInput
+                          formControlName="national_id"
+                          placeholder="Enter Office to Visit"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('national_id')
+                              .hasError('required')
+                          "
+                          >Office to Visit is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Reason</mat-label>
+                        <mat-icon matPrefix>mail</mat-icon>
+                        <input
+                          matInput
+                          formControlName="email"
+                          placeholder="Enter reason for visit"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('email')
+                              .hasError('required')
+                          "
+                          >Reason for visit is required!
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                      <div class="col-xs-12 col-md-6">
+                        <mat-form-field appearance="fill">
+                          <mat-label>Time</mat-label>
+                          <mat-icon matPrefix>person_outline</mat-icon>
+                          <input
+                            matInput
+                            formControlName="emergencyName"
+                            placeholder="Enter time for appointment"
+                          />
+                          <mat-error
+                            *ngIf="
+                              this.personalFormGroup
+                                .get('emergencyName')
+                                .hasError('required')
+                            "
+                            >The time for appointment is required!
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                <div class="d-flex mt-2 pt-1 mx-auto">
+                  <button type="submit" class="btn btn-primary col-5 col-md-3 mx-auto">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger col-5 col-md-3 mx-auto"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

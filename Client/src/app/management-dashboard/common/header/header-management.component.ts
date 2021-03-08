@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header-management.component.html',
-  styleUrls: ['./header-management.component.scss']
+  selector: "app-header",
+  templateUrl: "./header-management.component.html",
+  styleUrls: ["./header-management.component.scss"],
 })
 export class HeaderManagementComponent implements OnInit {
   @Input() navLayout: string;
@@ -24,14 +24,16 @@ export class HeaderManagementComponent implements OnInit {
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
 
-  user = '/../../../assets/avatar3.jpg';
+  user = "../../../assets/img/man.svg";
   userName: string;
   serviceErrors: any;
-  constructor(private layoutService: LayoutService,
-              private authService: AuthServiceService,
-              private spinner: NgxSpinnerService,
-              private router: Router,
-              private toastr: ToastrService) {}
+  constructor(
+    private layoutService: LayoutService,
+    private authService: AuthServiceService,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {}
 
@@ -40,23 +42,21 @@ export class HeaderManagementComponent implements OnInit {
   }
 
   showDanger() {
-
-    this.toastr.warning(this.serviceErrors, 'Logout Successfully!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+    this.toastr.warning(this.serviceErrors, "Logout Successfully!!", {
+      timeOut: 6000,
+      positionClass: "toast-bottom-left",
+    });
   }
-
-
 
   logoutUser() {
     // this.spinner.show();
-    this.serviceErrors = 'Buy buy!';
+    this.serviceErrors = "Buy buy!";
     this.showDanger();
     setTimeout(() => {
       this.authService.logoutUser();
-      this.router.navigate(['authpage/home']);
+      this.router.navigate(["authpage/home"]);
 
       // this.spinner.hide();
-      }, 1000);
-
-
+    }, 1000);
   }
 }

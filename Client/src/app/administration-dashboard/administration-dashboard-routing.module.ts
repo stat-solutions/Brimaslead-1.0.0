@@ -18,6 +18,7 @@ import { CreateClientsComponent } from './components/front-desk/create-clients/c
 import { FileAndArchiveComponent } from './components/front-desk/file-and-archive/file-and-archive.component';
 import { MakeAppointmentComponent } from './components/front-desk/make-appointment/make-appointment.component';
 import { PhoneRfqsComponent } from './components/front-desk/phone-rfqs/phone-rfqs.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -93,6 +94,10 @@ const routes: Routes = [
             component: PhoneRfqsComponent,
           },
         ],
+      },
+      {
+        path: "reports",
+        component: ReportsComponent,
       },
       {
         path: "profile",

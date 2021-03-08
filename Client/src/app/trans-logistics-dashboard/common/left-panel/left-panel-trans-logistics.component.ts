@@ -50,71 +50,37 @@ export class LeftPanelTransLogisticsComponent implements OnInit {
 
     this.menuList = [
       {
-        name: this.userName,
-        icon: 'far fa-user-circle',
-        url: '/none',
-        image: this.imageurl
-      },
-
-      {
-        name: 'trans-logistics Dashboard',
-        icon: 'far fa-clone',
-        url: '/dashboard'
-        // badge: '2',
-        // badgeBg: 'bg-success',
-      },
-
-      {
-        name: 'Add Tokens To Stock',
-        icon: 'far fa-calendar-alt text-danger',
-        url: '/addtokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: "Dashboard",
+        icon: "fas fa-tachometer-alt",
+        url: "/translogistics",
       },
       {
-        name: 'Sell Tokens',
-        icon: 'far fa-user-circle text-success',
-        url: '/selltokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-      ,
-      {
-        name: 'Transfer Tokens To Savings',
-        icon: 'far fa-user-circle text-info',
-        url: '/transfertokenstosavingsbox'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: "Order Delivery",
+        icon: "fas fa-truck",
+        url: "/orderdelivery",
       },
       {
-        name: 'Withdraw Tokens',
-        icon: 'far fa-clone text-warning',
-        url: '/withdrawTokens'
-        // badge: '2',
-        // badgeBg: 'bg-success',
+        name: "Invoice Delivery",
+        icon: "fas fa-file",
+        url: "/invoicedelivery",
       },
-
-
       {
-        name: 'Update Profile',
-        icon: 'far fa-user text-danger',
-        url: '/updatetranslogisticsprofile'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-
-      ,
-
-
+        name: "Reports",
+        icon: "fas fa-chart-line",
+        url: "/translogisticsreports",
+      },
       {
-        name: 'Notifications',
-        icon: 'fas fa-envelope text-info',
-        url: '/notifications',
-        badge: '8',
-        badgeBg: 'bg-danger',
-      }
-
-
+        name: "Profile",
+        icon: "fas fa-user-cog",
+        url: "/translogisticsprofile",
+      },
+      {
+        name: "Notifications",
+        icon: "fas fa-envelope",
+        url: "/transnotifications",
+        badge: "8",
+        badgeBg: "bg-warning",
+      },
     ];
   }
 }

@@ -120,7 +120,7 @@ export class RfqsComponent implements OnInit {
   public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: "white modal-lg" })
+      Object.assign({}, { class: "modal-xl modal-dialog-center" })
     );
   }
 
