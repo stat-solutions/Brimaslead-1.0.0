@@ -13,6 +13,13 @@ import { HireComponent } from './front-desk-dashboard/employee-service/hire/hire
 import { RfqDetailsComponent } from './front-desk-dashboard/request-for-quote/rfq-details/rfq-details.component';
 import { AddRfqItemsComponent } from './front-desk-dashboard/request-for-quote/add-rfq-items/add-rfq-items.component';
 import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalog-item/create-catalog-item.component';
+import { CreateClientsComponent } from './front-desk-dashboard/create-clients/create-clients.component';
+import { PhoneRfqsComponent } from './front-desk-dashboard/phone-rfqs/phone-rfqs.component';
+import { MakeAppointmentComponent } from './front-desk-dashboard/make-appointment/make-appointment.component';
+import { FileArchiveComponent } from './front-desk-dashboard/file-archive/file-archive.component';
+import { FrontDeskNotificationsComponent } from './front-desk-dashboard/front-desk-notifications/front-desk-notifications.component';
+import { FrontDeskProfileComponent } from './front-desk-dashboard/front-desk-profile/front-desk-profile.component';
+import { FrontDeskReportsComponent } from './front-desk-dashboard/front-desk-reports/front-desk-reports.component';
 
 const routes: Routes = [
   {
@@ -22,47 +29,46 @@ const routes: Routes = [
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "frontdeskdashboard"
+        redirectTo: "frontdeskdashboard",
       },
       {
         path: "frontdeskdashboard",
-        component: FrontDeskDashboardComponent
+        component: FrontDeskDashboardComponent,
       },
       {
-        path: "requestforquote",
-        component: RequestForQuoteComponent
+        path: "filearchive",
+        component: FileArchiveComponent,
       },
       {
-        path: "detailquote",
-        component: RfqDetailsComponent
+        path: "makeappointment",
+        component: MakeAppointmentComponent,
       },
       {
-        path: "employee-service/leavemanagement",
-        component: LeaveManagementComponent
-      },
-
-      {
-        path: "payrollmodule",
-        component: PayrollModuleComponent
+        path: "phonerfqs",
+        component: PhoneRfqsComponent,
       },
       {
-        path: "performancemanagement",
-        component: PerformanceManagementComponent
+        path: "createclient",
+        component: CreateClientsComponent,
       },
       {
-        path: "employee-service/hire",
-        component: HireComponent
+        path: "frontdeskreports",
+        component: FrontDeskReportsComponent,
       },
       {
-        path: "addRfqItems",
-        component: AddRfqItemsComponent
+        path: "frontdeskprofile",
+        component: FrontDeskProfileComponent,
       },
       {
-        path: "createCatalogItem",
-        component: CreateCatalogItemComponent
-      }
-    ]
-  }
+        path: "frontdesknotifications",
+        component: FrontDeskNotificationsComponent,
+      },
+      {
+        path: "createcatalogitem",
+        component: CreateCatalogItemComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

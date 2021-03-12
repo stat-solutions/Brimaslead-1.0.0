@@ -66,6 +66,15 @@ import { CreateCatalogItemComponent } from './front-desk-dashboard/create-catalo
 import { AngularSlickgridModule } from 'angular-slickgrid';
 import { AgGridModule } from 'ag-grid-angular';
 import { TabsModule } from 'ngx-bootstrap';
+import { CreateClientsComponent } from './front-desk-dashboard/create-clients/create-clients.component';
+import { PhoneRfqsComponent } from './front-desk-dashboard/phone-rfqs/phone-rfqs.component';
+import { MakeAppointmentComponent } from './front-desk-dashboard/make-appointment/make-appointment.component';
+import { FileArchiveComponent } from './front-desk-dashboard/file-archive/file-archive.component';
+import { FrontDeskNotificationsComponent } from './front-desk-dashboard/front-desk-notifications/front-desk-notifications.component';
+import { FrontDeskReportsComponent } from './front-desk-dashboard/front-desk-reports/front-desk-reports.component';
+import { FrontDeskProfileComponent } from './front-desk-dashboard/front-desk-profile/front-desk-profile.component';
+import { DatepickerModule, BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -86,7 +95,14 @@ import { TabsModule } from 'ngx-bootstrap';
     DbDatePipe,
     FieldPathGenPipe,
     TimevaluePipe,
-    CreateCatalogItemComponent
+    CreateCatalogItemComponent,
+    CreateClientsComponent,
+    PhoneRfqsComponent,
+    MakeAppointmentComponent,
+    FileArchiveComponent,
+    FrontDeskNotificationsComponent,
+    FrontDeskReportsComponent,
+    FrontDeskProfileComponent,
   ],
   imports: [
     TagInputModule,
@@ -98,6 +114,9 @@ import { TabsModule } from 'ngx-bootstrap';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NgxSpinnerModule,
+    DatepickerModule,
+    BsDatepickerModule,
+NgbModule,
     AlertModule.forRoot(),
     MatAutocompleteModule,
     MatBadgeModule,
@@ -137,7 +156,7 @@ import { TabsModule } from 'ngx-bootstrap';
     AngularSlickgridModule.forRoot(),
     AgGridModule.withComponents([]),
     TabsModule.forRoot(),
-    FilterPipeModule
+    FilterPipeModule,
   ],
   exports: [
     FrontDeskLayoutComponent,
@@ -145,7 +164,7 @@ import { TabsModule } from 'ngx-bootstrap';
     FrontDeskHeaderComponent,
     FrontDeskLeftPanelComponent,
     FrontDeskRightPanelComponent,
-    FrontDeskComponent
-  ]
+    FrontDeskComponent,
+  ],
 })
 export class FrontDeskModule {}

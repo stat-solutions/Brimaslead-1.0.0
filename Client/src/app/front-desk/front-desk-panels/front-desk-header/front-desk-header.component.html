@@ -12,16 +12,11 @@
       <div class="flux-left-header clearfix">
         <div class="sidebarToggle clearfix" (click)="changeTheToggleStatus()"><i class="fas fa-bars"></i></div>
       </div>
-    <span class="dashHead text-info flux-left-header">FRONT DESK DASHBOARD</span>
+    <span class="dashHead text-info flux-left-header">FRONT DESK</span>
       <div class="flux-right-header mt-2 mx-0 p-0">
         <ul class="align-items-center mt-0 mx-0 px-0">
           <li>
-            <a
-              class="dropdown-toggle nav-link mt-0 ml-3 pt-0"
-              data-toggle="dropdown"
-              aria-expanded="false"
-              href="#"
-              ><span class="d-none d-lg-inline mr-0 text-gray-600 small">{{
+<span class="d-none d-lg-inline mr-0 text-gray-600 small">{{
                 userName
               }}</span
               ><img
@@ -29,28 +24,19 @@
                 style="width: 30px; height: 30px"
                 [src]="user"
               />
-            </a>
-
-            <div
-              class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
-              role="menu"
-            >
-              <a class="dropdown-item text-info" role="presentation" routerLink="/update-profile"
-                ><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i
-                >&nbsp;Profile</a
-              >
-                        </div>
           </li>
-          <li><a (click)="logoutUser()"><i class="fas fa-power-off"></i></a></li>
-          <ngx-spinner
+          <li><a (click)="logoutUser()" tooltip="Logout"
+            placement="bottom"><i class="fas fa-power-off"></i></a></li>
+          <!-- <ngx-spinner
           class="bg-warning bg-success"
           size="medium"
           type="ball-scale-multiple"
         >
           <p class="text-light">Loading...</p>
-        </ngx-spinner>
+        </ngx-spinner> -->
         </ul>
       </div>
     </div>
   </div>
 </header>
+

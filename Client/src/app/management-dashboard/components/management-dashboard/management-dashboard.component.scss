@@ -1,49 +1,33 @@
+.sm-card-1 {
+  border-left: 12px solid #54a9c9;
+  border-bottom: 3px solid #54a9c9;
+}
+
+.sm-card-2 {
+  border-left: 12px solid #c63685f3;
+  border-bottom: 3px solid #c63685f3;
+}
+
+.sm-card-3 {
+  border-left: 12px solid #54a9c9;
+  border-bottom: 3px solid #54a9c9;
+}
+
+.sm-card-4 {
+  border-left: 12px solid #c63685f3;
+  border-bottom: 3px solid #c63685f3;
+}
+
+.sm-card-5 {
+  border-left: 12px solid #54a9c9;
+  border-bottom: 3px solid #54a9c9;
+}
+
 .text-danger{
   color: #c63685f3 !important;
 }
 .text-warning{
   color: #eee206ef !important;
-}
-.bg-danger{
-  background-color: #c63685 !important;
-}
-
-.rfqs-card{
-  border-left: 12px solid #c63685f3;
-  border-bottom: 3px solid #c63685f3;
-}
-.orders-card{
-  border-left: 12px solid #54a9c9;
-  border-bottom: 3px solid #54a9c9;
-}
-.purchases-card{
-  border-left: 12px solid #c63685f3;
-  border-bottom: 3px solid #c63685f3;
-}
-.appointments-card{
-  border-left: 12px solid #54a9c9;
-  border-bottom: 3px solid #54a9c9;
-}
-// h6{
-//   float: right !important;
-// }
-hr.top{
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-left: 0px;
-  background-color: #c63685f3;
-  height: 4px;
-}
-hr.bottom{
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-right: 0px;
-  background-color: #eee206ef;
-  height: 4px;
 }
 .tickets-card2 hr.top{
   width: 10%;
@@ -63,507 +47,261 @@ hr.bottom{
   background-color: #eee206ef;
   height: 4px;
 }
-.rfq{
-  height: 100%;
-  max-height: 250px;
+.card1{
+  max-height: 340px;
+  min-height: 190px;
+}
+.card2{
+  max-height: 340px;
+  min-height: 190px;
+}
+.invest-card{
+  max-height: 240px;
+  min-height: 90px;
   overflow-y: auto;
 }
-
-
-@media (min-width:360px){
-.links{
-margin-top: 10px !important;
-margin-bottom: 8px !important;
+.invest-card-1{
+  max-height: 540px;
+  min-height: 90px;
+  overflow-y: auto;
 }
-.rfq-col{
-  margin-bottom: 5px !important;
+.list-card {
+  width: 100%!important;
+  height: auto;
+  border-radius: 8px;
+  border-left: 3px solid #84868ace;
+  contain: auto;
 }
-.orders-col{
-  margin-bottom: 5px !important;
+.list-card-body {
+  width: 100% !important;
+  height: auto;
 }
-.purchase-col{
-  margin-bottom: 5px !important;
-}
-.appoint-col{
-  margin-bottom: 5px !important;
-}
- .fa-clipboard-list{
-   font-size: 20px !important;
- }
- .orders-card{
-padding-left: 0px !important;
-padding-right: 3px !important;
-}
-.orders-title{
-  font-size: 11px !important;
-margin-left: 2px !important;
-padding-left: 0px !important;
-padding-right: 3px !important;
-}
- .fa-coins{
-   font-size: 20px !important;
- }
-.purchases-card{
-padding-left: 0px !important;
-padding-right: 0px !important;
-}
-.purchase-title{
-  font-size: 11px !important;
-margin-left: 5px !important;
-padding-left: 0px !important;
-padding-right: 0px !important;
-}
-.fa-building{
-  font-size: 15px !important;
-}
-.appointments-card {
-padding-left: 0px !important;
-padding-right: 0px !important;
-}
-.appoint-title{
-  font-size: 11px !important;
-margin-left: 0px !important;
-padding-left: 3px !important;
-padding-right: 3px !important;
-}
-.fa-gem{
-  font-size: 20px !important;
-}
-
-.components{
-  margin-top: 6px !important;
-}
-.components h6{
-font-size: 14px !important;
-}
+.list-card:hover{
+  border-left: 3px solid #17aae0ee;
 }
 
 
-@media (min-width:375px){
+
+//media queries
+@media(min-width: 360px){
+    .thunder-col-1 {
+      margin-bottom: 5px !important;
+  }
+  .thunder-col-2 {
+      padding-left: 0px !important;
+      margin-bottom: 5px !important;
+  }
+  .thunder-col-3 {
+      margin-bottom: 5px !important;
+  }
+  .thunder-col-4 {
+      padding-left: 0px !important;
+      margin-bottom: 5px !important;
+  }
+  .sm-card-1 {
+      padding-left: 2px !important;
+      padding-right: 2px !important;
+  }
+  .sm-card-2 {
+      padding-left: 2px !important;
+      padding-right: 2px !important;
+  }
+  .sm-card-title-2 {
+      font-size: 11px !important;
+      margin-left: 0px !important;
+      padding-left: 3px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-3 {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-title-3 {
+      font-size: 11px !important;
+      margin-left: 0px !important;
+      padding-left: 2px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-4 {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-title-4 {
+      font-size: 11px !important;
+      margin-left: 0px !important;
+      padding-left: 2px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-5 {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+  .sm-card-title-5 {
+      font-size: 11px !important;
+      margin-left: 0px !important;
+      padding-left: 2px !important;
+      padding-right: 0px !important;
+  }
+
 }
 
-
-@media (min-width:400px){
-h5 {
-  margin-left: 10px !important;
-  padding-left: 20px !important;
+@media (min-width:445px) {
+  .sm-card-1 {
+      padding-left: .2rem !important;
+      padding-right: .2rem !important;
+  }
+  .sm-card-2 {
+      padding-left: .2rem !important;
+      padding-right: .2rem !important;
+  }
+  .sm-card-title-2 {
+      font-size: .8rem !important;
+      padding-left: .35rem !important;
+  }
+  .sm-card-3 {
+      padding-left: .2rem !important;
+      padding-right: .2rem !important;
+  }
+  .sm-card-title-3 {
+      font-size: .8rem !important;
+      padding-left: .35rem !important;
+  }
+  .sm-card-4 {
+      padding-left: .2rem !important;
+      padding-right: .2rem !important;
+  }
+  .sm-card-title-4 {
+      font-size: .8rem !important;
+      padding-left: .35rem !important;
+  }
+  .sm-card-5 {
+      padding-left: .2rem !important;
+      padding-right: .2rem !important;
+  }
+  .sm-card-title-5 {
+      font-size: .8rem !important;
+      padding-left: .35rem !important;
+  }
 }
 
+@media (min-width: 640px) {
+  .sm-card-title-2 {
+      font-size: .9rem !important;
+      padding-left: .5rem !important;
+  }
+  .sm-card-title-3 {
+      font-size: .9rem !important;
+      padding-left: .5rem !important;
+  }
+  .sm-card-title-4 {
+      font-size: .9rem !important;
+      padding-left: .5rem !important;
+  }
+  .sm-card-title-5 {
+      font-size: .9rem !important;
+      padding-left: .5rem !important;
+  }
 }
 
-
-@media (min-width: 768px){
-.container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
+@media (min-width: 768px) {
+  .container {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+  }
+  .sm-card-1 {
+    width: 100%;
+  }
+  .sm-card-2 {
+    width: 100%;
+  }
+  .sm-card-3 {
+    width: 100%;
+  }
+  .sm-card-4 {
+    width: 100%;
+  }
+  .sm-card-5 {
+    width: 100%;
+  }
 .card1{
-  height: 270px;
-  padding-bottom: 15px !important;
+  max-height: 320px;
 }
 .card2{
-  height: 300px;
+  max-height: 320px;
 }
-.card2b{
-  height: 214px !important;
-  margin-top: 3px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 10px !important;
+.invest-card{
+  max-height: 220px;
 }
-.card2b .table{
-  height: 160px !important;
-  margin-top: 3px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
-}
-.card2b .btn{
-  margin-top: 0px !important;
-  margin-bottom: 5px !important;
-}
-.card2b .card-tools{
-  margin-top: 0px !important;
-  padding-top: 0px !important;
-  margin-bottom: 5px !important;
-  padding-bottom: 0px !important;
-}
-.card3{
-  height: 320px;
-}
-.card3b{
-  height: 230px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 10px !important;
-}
-.card3b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-.card3b .btn{
-  width: 80px !important;
-  margin-top: 3px !important;
-  margin-left: 13px !important;
-  margin-bottom: 0px !important;
-  font-size: 10px;
-}
-.card3b .card-tools{
-  margin-top: 3px !important;
-  padding-top: 0px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
-}
-.card4{
-  height: 250px;
-}
-.card5{
-  height: 320px;
-  padding-bottom: 6px !important;
-}
-.card5b{
-  height: 230px;
-}
-.card5b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-.card6{
-  height: 320px;
-  padding-bottom: 6px !important;
-}
-.card6b{
-  height: 230px;
-}
-.card6b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-h5 {
-  font-size: 20px !important;
-  margin-left: 120px !important;
-  padding-left: 80px !important;
-}
-.links{
-margin-top: 14px !important;
-margin-bottom: 12px !important;
+.invest-card-1{
+  max-height: 720px;
 }
 }
 
+@media (min-width: 812px) {
+  .container {
+      margin-left: auto !important;
+      margin-right: auto !important;
+  }
+}
 
-@media(min-width: 812px){
+@media (min-width: 1024px) {
+  .container {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+  }
 .card1{
-  height: 280px;
-  padding-bottom: 15px !important;
+  max-height: 380px;
 }
 .card2{
-  height: 320px;
+  max-height: 380px;
 }
-.card2b{
-  height: 225px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 10px !important;
+.invest-card{
+  max-height: 280px;
 }
-.card2b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
-}
-.card2b .btn{
-  margin-top: 0px !important;
-  margin-bottom: 7px !important;
-}
-.card3{
-  height: 330px;
-}
-.card3b{
-  height: 240px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 10px !important;
-}
-.card3b .table{
-  height: 175px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-.card3b .btn{
-  width: 80px !important;
-  margin-top: 3px !important;
-  margin-left: 13px !important;
-  margin-bottom: 0px !important;
-  font-size: 10px;
-}
-.card4{
-  height: 270px;
-}
-.card5{
-  height: 320px;
-  padding-bottom: 6px !important;
-}
-.card5b{
-  height: 230px;
-  margin-bottom: 6px !important;
-}
-.card5b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-.card6{
-  height: 320px;
-  padding-bottom: 6px !important;
-}
-.card6b{
-  height: 230px;
-  margin-bottom: 6px !important;
-}
-.card6b .table{
-  height: 165px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 6px !important;
-}
-
-}
-@media (min-width: 1024px){
-.container {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
-h5 {
-  font-size: 20px !important;
-  margin-left: 180px !important;
-  padding-left: 80px !important;
-}
-.links{
-margin-top: 14px !important;
-margin-bottom: 12px !important;
-}
-.components{
-  margin-top: 10px !important;
-}
-.card1{
-  height: 300px;
-  padding-bottom: 5px !important;
-}
-.card2{
-  height: 400px;
-}
-.card2b{
-  height: 284px !important;
-  margin-bottom: 6px !important;
-  padding-bottom: 10px !important;
-}
-.card2b .table{
-  height: 217px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
-}
-.card2b .btn{
-  margin-top: 5px !important;
-  margin-bottom: 12px !important;
-}
-.card2b .card-tools{
-  margin-top: 5px !important;
-  padding-top: 0px !important;
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
-}
-.card3{
-  height: 380px;
-}
-.card3b{
-  height: 270px !important;
-  margin-bottom: 6px !important;
-  padding-bottom: 10px !important;
-}
-.card3b .table{
-  height: 195px !important;
-  margin-bottom: 12px !important;
-  padding-bottom: 0px !important;
-}
-.card3b .btn{
-  width: 100px !important;
-  margin-top: 3px !important;
-  margin-left: 1px !important;
-  margin-bottom: 10px !important;
-  font-size: 14px;
-}
-.card3b .card-tools{
-  margin-top: 3px !important;
-  padding-top: 0px !important;
-  margin-bottom: 10px !important;
-  padding-bottom: 0px !important;
-}
-.card4{
-  height: 320px;
+.invest-card-1{
+  max-height: 920px;
 }
 }
 
-
-@media (min-width:1100px){
-.rfq-col{
-  margin-bottom: 15px !important;
-}
-.orders-col{
-  margin-bottom: 15px !important;
-}
-h5 {
-  font-size: 20px !important;
-  margin-left: 200px !important;
-  padding-left: 80px !important;
-}
-
-}
-
-@media (min-width:1280px){
-h5 {
-  font-size: 20px !important;
-  margin-left: 210px !important;
-  padding-left: 80px !important;
-}
-.rfq-col{
-  margin-bottom: 0px !important;
-}
-.orders-col{
-  margin-bottom: 0px !important;
-}
-.purchase-col{
-  margin-bottom: 0px !important;
-}
-.appoint-col{
-  margin-bottom: 0px !important;
-}
- .fa-clipboard-list{
-   font-size: 28px !important;
- }
- .rfqs-card{
-padding-bottom: 0px !important;
- }
- .rfqs-title{
-  font-size: 16px !important;
-}
- .orders-card{
-padding-left: 8px !important;
-padding-right: 8px !important;
-}
-.orders-title{
-  font-size: 16px !important;
-margin-left: 0px !important;
-padding-left: 2px !important;
-padding-right: 3px !important;
-}
- .fa-coins{
-   font-size: 28px !important;
- }
-.purchases-card{
-padding-left: 8px !important;
-padding-right: 8px !important;
-}
-.purchase-title{
-  font-size: 16px !important;
-margin-left: 0px !important;
-padding-left: 2px !important;
-padding-right: 3px !important;
-}
-.fa-building{
-  font-size: 26px !important;
-}
-.appointments-card {
-padding-left: 8px !important;
-padding-right: 8px !important;
-}
-.appoint-title{
-  font-size: 16px !important;
-margin-left: 0px !important;
-padding-left: 2px !important;
-padding-right: 3px !important;
-}
-.fa-gem{
-  font-size: 26px !important;
-}
-
-.components{
-  margin-top: 12px !important;
-}
-.components h6{
-font-size: 16px !important;
-}
-.card5{
-  height: 330px;
-  padding-bottom: 6px !important;
-}
-.card6{
-  height: 330px;
-  padding-bottom: 6px !important;
-}
-}
-
-
-@media (min-width:1320px){
+@media (min-width:1100px) {
 .container {
   margin-left: auto !important;
   margin-right: auto !important;
 }
-h5 {
-  font-size: 20px !important;
-  margin-left: 210px !important;
-  padding-left: 80px !important;
+  .sm-card-title-2 {
+      font-size: .8rem !important;
+      padding-left: 0rem !important;
+  }
+  .sm-card-title-3 {
+      font-size: .8rem !important;
+      padding-left: 0rem !important;
+  }
+  .sm-card-title-4 {
+      font-size: .8rem !important;
+      padding-left: 0rem !important;
+  }
+  .sm-card-title-5 {
+      font-size: .8rem !important;
+      padding-left: 0rem !important;
+  }
+.card1{
+  max-height: 340px;
 }
- .fa-clipboard-list{
-   font-size: 30px !important;
- }
- .rfqs-card{
-padding-bottom: 0px !important;
- }
- .rfqs-title{
-  font-size: 18px !important;
+.card2{
+  max-height: 340px;
 }
- .orders-card{
-padding-left: 10px !important;
-padding-right: 10px !important;
+.invest-card{
+  max-height: 230px;
 }
-.orders-title{
-  font-size: 18px !important;
-margin-left: 0px !important;
-padding-left: 4px !important;
-padding-right: 5px !important;
+.invest-card-1{
+  max-height: 460px;
 }
- .fa-coins{
-   font-size: 30px !important;
- }
-.purchases-card{
-padding-left: 10px !important;
-padding-right: 10px !important;
-}
-.purchase-title{
-  font-size: 18px !important;
-margin-left: 0px !important;
-padding-left: 4px !important;
-padding-right: 5px !important;
-}
-.fa-building{
-  font-size: 28px !important;
-}
-.appointments-card {
-padding-left: 10px !important;
-padding-right: 10px !important;
-}
-.appoint-title{
-  font-size: 18px !important;
-margin-left: 0px !important;
-padding-left: 4px !important;
-padding-right: 5px !important;
-}
-.fa-gem{
-  font-size: 28px !important;
 }
 
-.components{
-  margin-top: 14px !important;
+@media (min-width:1280px) {
 }
-.components h6{
-font-size: 18px !important;
-}
+
+@media (min-width:1320px) {
 }
 
 

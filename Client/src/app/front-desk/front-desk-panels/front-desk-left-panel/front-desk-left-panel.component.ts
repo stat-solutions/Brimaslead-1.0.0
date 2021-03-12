@@ -48,52 +48,55 @@ export class FrontDeskLeftPanelComponent implements OnInit {
     this.title = 'Navigation';
     this.menuList = [
       {
-        name: "Front Desk Dashboard",
+        name: "Dashboard",
         icon: "fas fa-tachometer-alt",
-        url: "/frontdeskdashboard"
+        url: "/frontdeskdashboard",
       },
 
       {
-        name: "Request For Quotation(RFQ)",
+        name: "RFQ Preparation",
         icon: "fas fa-clipboard-list",
-        url: "/requestforquote",
+        url: "/phonerfqs",
       },
       {
-        name: "Register Client",
-        icon: "fas fa-briefcase",
-        url: "authpage/register-client"
+        name: "Create Catalog Item",
+        icon: "fas fa-cart-plus",
+        url: "/createcatalogitem",
       },
-
       {
-        name: "Purchases",
-        icon: "fas fa-warehouse",
-        url: "/purchases"
+        name: "Create Client",
+        icon: "fas fa-users",
+        url: "/createclient",
       },
-
       {
         name: "Appointments",
         icon: "far fa-calendar-plus",
-        url: "/appointments",
+        url: "/makeappointment",
         badge: "2",
-        badgeBg: "bg-warning"
+        badgeBg: "bg-warning",
       },
       {
-        name: "HR Management",
-        icon: "fas fa-users",
-        url: "/hr-management"
+        name: "File and Archive",
+        icon: "fas fa-file",
+        url: "/filearchive",
       },
       {
-        name: "Reports and Analysis",
+        name: "Reports",
         icon: "fa fa-chart-line",
-        url: "/reports-analysis"
+        url: "/frontdeskreports",
+      },
+      {
+        name: "Profile",
+        icon: "fas fa-user-cog",
+        url: "/frontdeskprofile",
       },
       {
         name: "Notifications",
         icon: "fas fa-envelope",
-        url: "/notifications",
+        url: "/frontdesknotifications",
         badge: "2",
-        badgeBg: "bg-warning"
-      }
+        badgeBg: "bg-warning",
+      },
     ];
   }
 

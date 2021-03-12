@@ -2,35 +2,42 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesCoreSalesMarketComponent } from './pages-core/pages-core-sales-market.component';
 import { SalesMarketDashboardComponent } from './components/sales-market-dashboard/sales-market-dashboard.component';
-import { UpdateSalesMarketProfileComponent } from './components/update-sales-market-profile/update-sales-market-profile.component';
-import { SalesMarketNotificationsComponent } from './components/sales-market-notifications/sales-market-notifications.component';
+import { SalesMarketNotificationsComponent } from "./components/sales-market-notifications/sales-market-notifications.component";
+import { SalesMarketProfileComponent } from "./components/sales-market-profile/sales-market-profile.component";
+import { SalesMarketReportsComponent } from "./components/sales-market-reports/sales-market-reports.component";
+import { FieldRfqsComponent } from './components/field-rfqs/field-rfqs.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesCoreSalesMarketComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard'
-      },
-
-      {
-        path: 'dashboardsalesmarket',
-       component: SalesMarketDashboardComponent,
+        path: "",
+        pathMatch: "full",
+        redirectTo: "salesmarket",
       },
       {
-        path: 'updatealesmarketprofile',
-       component: UpdateSalesMarketProfileComponent,
-      }
-      ,
+        path: "salesmarket",
+        component: SalesMarketDashboardComponent,
+      },
       {
-        path: 'notifications',
-       component: SalesMarketNotificationsComponent,
-      }
-
-    ]
+        path: "fieldrfqs",
+        component: FieldRfqsComponent,
+      },
+      {
+        path: "salesmarketreports",
+        component: SalesMarketReportsComponent,
+      },
+      {
+        path: "salesmarketprofile",
+        component: SalesMarketProfileComponent,
+      },
+      {
+        path: "salesnotifications",
+        component: SalesMarketNotificationsComponent,
+      },
+    ],
   },
 ];
 

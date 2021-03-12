@@ -819,7 +819,10 @@
       -webkit-transform: rotate(45deg);
       -webkit-transition: all 0.5s;
       transition: all 0.5s;
-    }
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+}
   }
 
 }

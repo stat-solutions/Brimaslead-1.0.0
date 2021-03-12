@@ -1,0 +1,145 @@
+.form-card {
+  width: 100%;
+  min-width: 190px;
+  max-width: 900px;
+  border: 0rem;
+}
+
+.tickets-card2 {
+  width: 100%;
+  border: 0rem;
+}
+
+ ::ng-deep .mat-step-header {
+   pointer-events: none !important;
+   color: #54a9c9 !important;
+   background-color: none;
+}
+
+::ng-deep ng-template .mat-step-header:active, .mat-step-header:focus {
+   pointer-events: none !important;
+   color: #54a9c9 !important;
+   background-color: none !important;
+ }
+//mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+   background-color: #54a9c9d5!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-fill-thick {
+    color: #54a9c9d5 !important;
+}
+
+// mat-input error fill color
+::ng-deep .mat-form-field-appearance-fill.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-fill-thick{
+    color: #c63685f3!important;
+    opacity: 0.8!important;
+}
+.mat-form-field {
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+mat-icon,
+mat-label {
+  color: #54a9c9;
+}
+mat-error {
+  color: #c63685;
+}
+
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+
+
+
+//media queries
+@media (min-width: 290px) {
+ ::ng-deep .mat-step-header {
+    margin-bottom: 5px !important;
+    padding-bottom: 3px !important;
+}
+}
+
+
+@media (min-width: 360px) {
+}
+
+@media (min-width: 375px) {
+ ::ng-deep .mat-step-header {
+    margin-bottom: 8px !important;
+}
+}
+
+@media (min-width: 400px) {
+}
+
+@media (min-width: 568px) {
+ ::ng-deep .mat-step-header {
+    margin-top: 5px !important;
+    margin-bottom: 12px !important;
+}
+}
+
+
+@media (min-width: 640px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+
+@media (min-width: 812px) {
+}
+
+@media (min-width: 1024px) {
+ ::ng-deep .mat-step-header {
+    margin-top: 10px !important;
+    margin-bottom: 16px !important;
+}
+}
+
+@media (min-width: 1100px) {
+}
+
+@media (min-width: 1280px) {
+  .container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+
+@media (min-width: 1320px) {
+}
+
+
+@media (min-width: 1440px) {
+}

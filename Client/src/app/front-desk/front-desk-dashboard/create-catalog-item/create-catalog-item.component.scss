@@ -1,23 +1,7 @@
-.pointerCursor {
-  cursor: pointer;
-}
-.text-danger{
-  color: #c63685f3 !important;
-}
-.text-warning{
-  color: #eee206ef !important;
-}
-.bg-danger{
-  background-color: #c63685 !important;
-}
-
-h5 {
-font-size: 14px;
-}
 hr.top{
   width: 10%;
-  min-width: 30px;
-  max-width: 50px;
+  min-width: 15px;
+  max-width: 30px;
   position: relative;
   margin-left: 0px;
   background-color: #c63685f3;
@@ -25,12 +9,15 @@ hr.top{
 }
 hr.bottom{
   width: 10%;
-  min-width: 30px;
-  max-width: 50px;
+  min-width: 15px;
+  max-width: 30px;
   position: relative;
   margin-right: 0px;
   background-color: #eee206ef;
   height: 4px;
+}
+.tickets-card2 {
+  border: 0rem;
 }
 .tickets-card2 hr.top{
   width: 10%;
@@ -50,109 +37,71 @@ hr.bottom{
   background-color: #eee206ef;
   height: 4px;
 }
-
-.input-group {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    width: 100%
-}
 .post-buttons button{
-  border-radius: 12px !important;
+  // border-radius: 12px !important;
 }
+.list-card {
+  width: 100%!important;
+  height: auto;
+  border-radius: 8px;
+  contain: auto;
+  border-left: 3px solid #84868ace;
+}
+.list-card:hover{
+  border-left: 3px solid #17aae0ee;
+}
+.list-card-body {
+  width: 100% !important;
+  height: auto;
+}
+.list-card-1{
+  border-left: 3px solid #84868ace;
+}
+.list-card-1:hover{
+  border-left: 3px solid #17aae0ee;
+}
+.img-circle{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.img-circle-1{
+  width: 130px;
+  height: 130px;
+}
+
+
 
 //Media queries
 @media (min-width:290px){
-.tickets-card2 hr.bottom{
-  margin-right: 9px;
-}
-h5 {
-  margin-left: 0px !important;
-  padding-left: 3px !important;
-}
-h6 {
-font-size: 13px;
-}
-
-.input-group {
-  min-width:240px !important;
-  max-width:270px !important
-}
-.input-group-prepend {
-  margin-left: 10px !important;
-    margin-right: -1px
-}
-.post-buttons button{
-  border-radius: 12px !important;
-}
 }
 
 
 @media (min-width:360px){
-.tickets-card2 hr.bottom{
-  margin-right: 23px;
-}
-h5 {
-  padding-left: 16px !important;
-}
-.form-card {
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-  padding-right: 0px !important;
-  padding-left: 0px !important;
-}
 }
 
 
 @media (min-width:375px){
-h5 {
-  padding-left: 26px !important;
-}
 }
 
 
 @media (min-width:400px){
-h5 {
-  padding-left: 50px !important;
-}
 }
 
 
 @media (min-width:414px){
-h5 {
-  padding-left: 51px !important;
-}
 }
 
 
 @media (min-width:568px){
-.tickets-card2 hr.bottom{
-  margin-right: 32px;
-}
-h5 {
-  margin-left: 94px !important;
-}
 }
 
 
 @media (min-width: 640px){
-.tickets-card2 hr.bottom{
-  margin-right: 28px;
-}
-h5 {
-  margin-left: 85px !important;
-}
 }
 
 
 @media (min-width: 640px){
-.tickets-card2 hr.bottom{
-  margin-right: 28px;
-}
-h5 {
-  margin-left: 85px !important;
-}
 }
 
 
@@ -161,45 +110,18 @@ h5 {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
-.tickets-card2 hr.bottom{
-  margin-right: 45px;
-}
-h5 {
-  font-size: 20px !important;
-  margin-left: 122px !important;
-  padding-left: 50px !important;
-}
-h6 {
-  font-size: 16px !important;
-}
 }
 
 
 @media (min-width: 812px){
-.container {
-  margin-left: 20px !important;
-}
 }
 
 
 @media (min-width: 823px){
-.container {
-  margin-left: 25px !important;
-}
 }
 
 
 @media (min-width: 1024px){
-.container {
-  margin-left: 5px !important;
-}
-.tickets-card2 hr.bottom{
-  margin-right: 62px;
-}
-h5 {
-  margin-left: 120px !important;
-  padding-left: 115px !important;
-}
 .form-card {
   width: 100% !important;
 }
@@ -209,45 +131,30 @@ h5 {
   padding-right: 15px !important;
   padding-left: 15px !important;
 }
+.img-circle{
+  width: 40px;
+  height: 40px;
+}
+.img-circle-1{
+  width: 160px;
+  height: 160px;
+}
 }
 
-
-@media (min-width:1100px){
-.tickets-card2 hr.bottom{
-  margin-right: 72px;
-}
-.tickets-card2 {
-  width: 100%;
-  padding-right: 2px;
-  padding-left: 2px;
-  border: 0rem;
-  padding-top: 5px !important;
-  padding-bottom: 8px !important;
-}
-h6 {
-  font-size: 17px !important;
+@media (min-width: 1100px) {
+.img-circle{
+  width: 35px;
+  height: 35px;
 }
 }
 
 @media (min-width:1280px){
-h5 {
-  margin-left: 192px !important;
-  padding-left: 82px !important;
-}
-}
-
-
-@media (min-width:1320px){
 .container {
   margin-left: auto !important;
   margin-right: auto !important;
 }
-.tickets-card2 hr.bottom{
-  margin-right: 72px;
 }
-h5 {
-  margin-left: 180px !important;
-  padding-left: 146px !important;
-}
+
+@media (min-width:1320px){
   }
 

@@ -1,10 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LayoutService } from '../../../shared/services/other-services/layout.service';
+import { Component, OnInit, Input } from "@angular/core";
+// import { LayoutService } from "../../../shared/services/layout.service";
+// import { AuthServiceService } from "src/app/shared/services/auth-service.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-header-admin',
-  templateUrl: './header-admin.component.html',
-  styleUrls: ['./header-admin.component.scss']
+  selector: "app-header-admin",
+  templateUrl: "./header-admin.component.html",
+  styleUrls: ["./header-admin.component.scss"],
 })
 export class HeaderAdminComponent implements OnInit {
   @Input() navLayout: string;
@@ -20,13 +23,30 @@ export class HeaderAdminComponent implements OnInit {
   @Input() headerHeight: number;
   @Input() collapsedLeftHeader: boolean;
 
-  imageUrl = '../assets/img/brimas_logo.svg';
-
-  constructor(private layoutService: LayoutService) {}
+  user = "../../../assets/img/man.svg";
+  userName: string;
+  serviceErrors: any;
+  constructor(
+    private spinner: NgxSpinnerService,
+    private router: Router // private toastr: ToastrService
+  ) {}
 
   ngOnInit() {}
 
   changeTheToggleStatus() {
-    this.layoutService.getToggleStatus();
+    // this.layoutService.getToggleStatus();
+  }
+
+  showDanger() {
+    // this.toastr.warning(this.serviceErrors, 'Logout Successfully!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+  }
+
+  logoutUser() {
+    this.serviceErrors = "Bye bye!";
+    this.showDanger();
+    setTimeout(() => {
+      // this.authService.doLogoutUser();
+      this.router.navigate(["authpage/loginpage"]);
+    }, 1000);
   }
 }

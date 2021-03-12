@@ -2,610 +2,987 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="card shadow-lg my-2 py-0">
-          <div class="row">
-            <div class="col-xs-12 col-lg-5 justify-content-left ml-3 mt-3 mb-2 py-2">
-              <a
-                class="btn btn-info btn-sm mb-0"
-                role="button"
-                routerLink="authpage/register-client"
-                ><i class="fas fa-briefcase text-info"></i>&nbsp;Register
-                Client</a
-              >
-              &nbsp;
-              <a
-                class="btn btn-info btn-sm mb-0"
-                role="button"
-                routerLink="/createCatalogItem"
-                ><i class="fas fa-cookie-bite text-info"></i>&nbsp;Create
-                Catalog Item</a
-              >
-            </div>
-            <div
-              class="tickets-card2 col-12 col-offset-lg-6 col-lg-6 justify-content-end align-items-end ml-2  my-0 pt-2 px-2"
-            >
-              <h5 class="text-info text-uppercase font-weight-bold my-0 py-0 pl-2 pl-xl-5 pr-xl-0 mx-0 ml-xl-5 mr-xl-0">
+        <div
+          class="tickets-card2 card shadow-lg mt-2 mb-0 pt-2 pb-1 px-4 px-md-5"
+        >
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-0">
+              <h4 class="text-info text-uppercase font-weight-bold pull-right">
                 <hr class="top mt-1 mb-0" />
-                request for quotation(RFQ)
-                <hr class="bottom mt-1 mb-0" />
-              </h5>
+                RFQ Preparation
+                <hr class="bottom my-0" />
+              </h4>
             </div>
           </div>
         </div>
       </div>
 
-        <div class=" col-12">
-          <div class="rfqs-card card shadow mb-4">
-            <div
-              class="card-header d-flex justify-content-between align-items-center"
-            >
-              <h6 class="text-info text-uppercase pull-right font-weight-bold m-0">
-                <hr class="top mt-1 mb-0" />
-                CREATE RFQ
-                <hr class="bottom mt-1 mb-0" />
-              </h6>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-12">
-                  <!-- Main content -->
-                  <!-- <section class="content"> -->
-                    <div class="form-card card">
-                      <div class="card-body mx-0 px-0">
-                        <form [formGroup]="rfqForm">
-                          <div class="row mx-2">
-                            <div class="col-12 col-md-4">
-                              <div class="form-group text-primary">
-                                <label
-                                  for="clientName"
-                                  [ngClass]="
-                                    fval.clientName.valid ? 'text-success' : ''
-                                  "
-                                  >{{ clientLabel
-                                  }}<i
-                                    *ngIf="fval.clientName.valid"
-                                    class="material-icons"
-                                    >check_circle</i
-                                  >
-                                </label>
-
-                                <button
-                                  type="button"
-                                  class="btn btn-info form-control"
-                                  (click)="openModal(template)"
-                                  *ngIf="!clientAdded"
-                                >
-                                  <i class="fas fa-user-plus"></i>&nbsp; Select
-                                  Client
-                                </button>
-
-                                <input
-                                  *ngIf="clientAdded"
-                                  class="form-control"
-                                  formControlName="clientName"
-                                  [value]="fval.clientName.value"
-                                />
-
-                                <div
-                                  class="text-danger col"
-                                  *ngIf="
-                                    (fval.clientName.touched ||
-                                      fval.clientName.dirty) &&
-                                    fval.clientName.errors?.required
-                                  "
-                                >
-                                  Client is required!
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="rfq-source col-12 col-md-5 col-lg-4">
-                              <div class="form-group text-primary">
-                                <label
-                                  for="rfqSource"
-                                  [ngClass]="
-                                    fval.rfqSource.valid ? 'text-success' : ''
-                                  "
-                                  >RFQ source<i
-                                    *ngIf="fval.rfqSource.valid"
-                                    class="material-icons"
-                                    >check_circle</i
-                                  ></label
-                                >
-                                <select
-                                  class="form-control"
-                                  formControlName="rfqSource"
-                                  placeholder="Select RFQ source"
-                                  (change)="setSelectedChanges($event)"
-                                >
-                                  <option selected>Select RFQ source</option>
-                                  <option
-                                    *ngFor="let rfq_source of rfq_sources"
-                                  >
-                                    {{ rfq_source.rfqSource }}
-                                  </option>
-                                </select>
-                                <div
-                                  class="text-danger col"
-                                  *ngIf="
-                                    (fval.rfqSource.touched ||
-                                      fval.rfqSource.dirty) &&
-                                    fval.rfqSource.errors?.required
-                                  "
-                                >
-                                  RFQ source is required!
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-xs-12 col-md-3 col-lg-4">
-                              <div
-                                class="custom-control custom-switch p-2 mx-5 my-3"
-                                *ngIf="setApprovalStatus"
+      <div class="col-12">
+        <div class="rfqs-card card shadow my-2">
+          <div class="card-header d-flex justify-content-between pt-1 pb-2">
+            <h5 class="text-info font-weight-bold m-0">
+              <hr class="top mt-1 mb-0" />
+              CREATE RFQ
+              <hr class="bottom my-0" />
+            </h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <!-- Main content -->
+                <div class="card">
+                  <div class="card-body pt-2 mx-0 px-0">
+                    <form [formGroup]="rfqForm">
+                      <div class="row mx-2">
+                        <div class="col-12 col-md-4">
+                          <div class="form-group">
+                            <label
+                              for="clientName"
+                              [ngClass]="
+                                fval.clientName.valid ? 'text-success' : ''
+                              "
+                              >{{ clientLabel
+                              }}<i
+                                *ngIf="fval.clientName.valid"
+                                class="material-icons"
+                                >check_circle</i
                               >
-                                <input
-                                  type="checkbox"
-                                  class="custom-control-input"
-                                  id="customSwitch1"
-                                  (change)="onCheckChange($event)"
-                                />
-                                <label
-                                  class="custom-control-label text-info"
-                                  for="customSwitch1"
-                                  >Skip Approval</label
-                                >
-                              </div>
+                            </label>
+
+                            <button
+                              type="button"
+                              class="btn btn-info form-control"
+                              (click)="openModal(template)"
+                              *ngIf="!clientAdded"
+                            >
+                              <i class="fas fa-user-plus"></i>&nbsp; Select
+                              Client
+                            </button>
+
+                            <input
+                              *ngIf="clientAdded"
+                              class="form-control"
+                              formControlName="clientName"
+                              [value]="fval.clientName.value"
+                            />
+
+                            <div
+                              class="text-danger col"
+                              *ngIf="
+                                (fval.clientName.touched ||
+                                  fval.clientName.dirty) &&
+                                fval.clientName.errors?.required
+                              "
+                            >
+                              Client is required
                             </div>
                           </div>
+                        </div>
 
-                            <div class="post-buttons col-12 col-offset-md-6 col-md-12 mx-3">
-                              <button
-                                class="btn btn-danger col-5 col-md-2"
-                                (click)="resetForm()"
-                                ><i class="material-icons">remove_circle</i
-                                >Cancel</button
-                              >&nbsp;
-                              <button
-                                type="submit"
-                                class="btn btn-primary col-5 col-md-2"
-                                (click)="createRFQ(rfqForm)"
-                                [disabled]="!rfqForm.valid"
-                              >
-                                <ngx-spinner
+                        <div class="rfq-source col-12 col-md-5 col-lg-4">
+                          <div class="form-group">
+                            <label
+                              for="rfqSource"
+                              [ngClass]="
+                                fval.rfqSource.valid ? 'text-success' : ''
+                              "
+                              >RFQ source<i
+                                *ngIf="fval.rfqSource.valid"
+                                class="material-icons"
+                                >check_circle</i
+                              ></label
+                            >
+                            <select
+                              class="form-control"
+                              formControlName="rfqSource"
+                              placeholder="Select RFQ source"
+                              (change)="setSelectedChanges($event)"
+                            >
+                              <option selected>Select RFQ source</option>
+                              <option *ngFor="let rfq_source of rfq_sources">
+                                {{ rfq_source.rfqSource }}
+                              </option>
+                            </select>
+                            <div
+                              class="text-danger col"
+                              *ngIf="
+                                (fval.rfqSource.touched ||
+                                  fval.rfqSource.dirty) &&
+                                fval.rfqSource.errors?.required
+                              "
+                            >
+                              RFQ source is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-4">
+                          <div
+                            class="custom-control custom-switch px-2 px-md-3 px-lg-4 px-xl-5 pb-3 mx-5 mx-md-2 mx-lg-5 mt-md-4 my-xl-3"
+                            *ngIf="setApprovalStatus"
+                          >
+                            <input
+                              type="checkbox"
+                              class="custom-control-input"
+                              id="customSwitch1"
+                              (change)="onCheckChange($event)"
+                            />
+                            <label
+                              class="custom-control-label text-info"
+                              for="customSwitch1"
+                              >Skip Approval</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 mx-auto">
+                        <button
+                          type="submit"
+                          class="btn btn-primary col-5 col-md-2 mx-1"
+                          (click)="createRFQ(rfqForm)"
+                          [disabled]="!rfqForm.valid"
+                        >
+                          <!-- <ngx-spinner
                                   class="bg-warning bg-success"
                                   size="medium"
                                   type="line-scale-party"
                                 >
                                   <p class="text-light">
-                                    Wait...
+                                    Please Wait...
                                   </p> </ngx-spinner
-                                ><i class="material-icons">create</i>
-                                Create RFQ
-                              </button>
-                            </div>
-                        </form>
+                                > -->
+                          <i class="fas fa-plus"></i>
+                          Create RFQ
+                        </button>
+                        <button
+                          class="btn btn-danger col-5 col-md-2 mx-1"
+                          (click)="resetForm()"
+                        >
+                          <i class="fas fa-times"></i> Cancel
+                        </button>
                       </div>
-                    </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-                        <div class=" col-12">
-                          <div class="rfqs card shadow mb-4">
-                            <div class="card-body p-2">
-                              <div class=" mx-auto">
-                                <tabset>
-                                  <tab
-                                    heading="RFQ Listing"
-                                    class="rfq-listing text-info"
+      </div>
+      <div class="col-12">
+        <div class="rfqs card shadow mb-4 mx-md-0 px-md-0">
+          <div class="card-body pt-2 mx-auto mx-md-1 px-1">
+            <tabset>
+              <tab heading="RFQ Listing" class="rfq-listing text-info">
+                <div class="pt-3 px-2">
+                  <input
+                    type="text"
+                    class="form-control col-md-7 col-xl-4"
+                    [(ngModel)]="userFilter.clientName"
+                    placeholder="Enter Client Name"
+                  />
+
+                  <!--record container-->
+                  <!--to be displayed if no rfqs to work on-->
+                  <!-- <div
+                      class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg"
+                    >
+                      <div class="col-12 my-5 py-5 justify-content-between">
+                        <h4 class="text-center text-info">
+                          No Received Loans yet
+                        </h4>
+                      </div>
+                    </div> -->
+                  <div
+                    class="invest-card card mt-1 py-2 mb-0 mx-auto px-2 shadow-lg"
+                  >
+                    <div class="iteration">
+                      <div class="item-container-1 mt-1">
+                        <div
+                          class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                          *ngFor="
+                            let summu of rfqSummury$
+                              | async
+                              | filterBy: userFilter;
+                            let i = index;
+                            let odd = odd;
+                            let first = first;
+                            let last = last
+                          "
+                          [class.text-secondary]="odd"
+                          [class.text-success]="!odd"
+                        >
+                          <div class="list-card-body card-body my-0 py-0 mx-0">
+                            <div
+                              class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0"
+                            >
+                              <div
+                                class="col-1 pl-1 pr-0 mx-md-0 px-md-0 d-flex justify-content-center"
+                              >
+                                <div class="dropdown">
+                                  <button
+                                    class="btn btn-outline-primary dropdown-toggle"
+                                    id="dropdownMenuButton"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    tooltip="Options"
                                   >
-                                        <div class="table-responsive pt-3 px-2">
-                                          <input
-                                            type="text"
-                                            class="form-control col-8 col-xl-4"
-                                            [(ngModel)]="userFilter.clientName"
-                                            placeholder="Enter Client Name"
-                                          />
-                                          <table
-                                            class="table table-striped table-hover table-sm mt-3"
-                                          >
-                                            <thead class="bg-secondary text-white">
-                                              <tr
-                                                class="align-items-center"
-                                              >
-                                                <th scope="col">Action</th>
-                                                <th scope="col">#</th>
-                                                <th scope="col">SerialNo.</th>
-                                                <th scope="col">Client</th>
-                                                <th scope="col">Source</th>
-                                                <th scope="col">No.OfItems</th>
-                                                <th scope="col">Total Amount</th>
-                                                <th scope="col">Department</th>
-                                                <th scope="col">User Queue</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr
-                                                *ngFor="
-                                                  let summu of rfqSummury$
-                                                    | async
-                                                    | filterBy: userFilter;
-                                                  let i = index;
-                                                  let odd = odd;
-                                                  let first = first;
-                                                  let last = last
-                                                "
-                                                [class.text-secondary]="odd"
-                                                [class.text-success]="!odd"
-                                              >
-                                                <td class="dropdown">
-                                                  <a
-                                                    class="text-info"
-                                                    data-toggle="dropdown"
-                                                    role="button"
-                                                    aria-haspopup="true"
-                                                    aria-expanded="false"
-                                                    ><i class="material-icons"
-                                                      >more_vert</i
-                                                    ></a
-                                                  >
-
-                                                  <div
-                                                    class="dropdown-menu position-absolute"
-                                                  >
-                                                    <a
-                                                      data-toggle="modal"
-                                                      data-target="#comment"
-                                                      class="dropdown-item d-flex align-items-center text-info btn btn-info"
-                                                      routerLink="/addRfqItems"
-                                                    >
-                                                      <i class="material-icons"
-                                                        >add_circle</i
-                                                      >Add Items
-                                                    </a>
-
-                                                    <a
-                                                      data-toggle="modal"
-                                                      data-target="#defer"
-                                                      class="dropdown-item d-flex align-items-center text-primo"
-                                                    >
-                                                      <i class="material-icons"
-                                                        >visibility</i
-                                                      >View RFQ
-                                                    </a>
-                                                    <a
-                                                      data-toggle="modal"
-                                                      data-target="#comment"
-                                                      class="dropdown-item d-flex align-items-center text-info"
-                                                    >
-                                                      <i class="material-icons"
-                                                        >fast_rewind</i
-                                                      >Receive RFQ
-                                                    </a>
-
-                                                    <a
-                                                      data-toggle="modal"
-                                                      data-target="#comment"
-                                                      class="dropdown-item d-flex align-items-center text-success"
-                                                    >
-                                                      <i class="material-icons"
-                                                        >fast_forward</i
-                                                      >Forward RFQ
-                                                    </a>
-                                                  </div>
-                                                </td>
-                                                <td>{{ i + 1 }}</td>
-                                                <td>
-                                                  <a
-                                                    routerLink="/requestforqoute"
-                                                    >{{
-                                                      summu.rfqSerialNumber
-                                                    }}</a
-                                                  >
-                                                </td>
-<!-- {{
-                                                      (
-                                                        summu.clientColRef
-                                                        | doc
-                                                        | async
-                                                      )?.clientName
-                                                    }} -->
-                                                    <td>
-                                                  <a
-                                                    routerLink="/detailquote"
-                                                    >{{
-                                                      (
-                                                        summu.clientColRef
-                                                      )?.clientName
-                                                    }}</a
-                                                  >
-                                                </td>
-                                                <td>{{ summu.rfqSource }}</td>
-                                                <td>{{ summu.noOfItems }}</td>
-                                                <td>{{ summu.totalAmount }}</td>
-                                                  <!-- {{
-                                                    (
-                                                      summu.empColRef
-                                                      | doc
-                                                      | async
-                                                    )?.department
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    (
-                                                      summu.empColRef
-                                                    )?.department
-                                                  }}
-                                                </td>
-                                                  <!-- {{
-                                                    (
-                                                      summu.empColRef
-                                                      | doc
-                                                      | async
-                                                    )?.userName
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    (
-                                                      summu.empColRef
-                                                    )?.userName
-                                                  }}
-                                                </td>
-                                                <td>
-                                                  <span
-                                                    class="badge badge-info"
-                                                    >{{
-                                                      summu.movementStatus
-                                                    }}</span
-                                                  >
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | date: "dd/MM/yyyy"
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | timevalue
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                <td>
-                                                  <span
-                                                    class="badge badge-danger"
-                                                    >{{
-                                                      summu.processingStatus
-                                                    }}</span
-                                                  >
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | date: "dd/MM/yyyy"
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | timevalue
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                  </tab>
-                                  <tab
-                                    heading="RFQ Status"
-                                    class="rfq-status text-info"
+                                    <i
+                                      class="fas fa-ellipsis-v fa-2x text-info"
+                                    ></i>
+                                  </button>
+                                  <div
+                                    class="dropdown-menu"
+                                    aria-labelledby="dropdownMenuButton"
                                   >
-                                        <div class="table-responsive pt-3 px-2">
-                                          <table
-                                            class="table table-striped table-hover table-sm mt-3"
-                                          >
-                                            <thead class="bg-secondary text-white">
-                                              <tr>
-                                                <th style="width: 3%">
-                                                  #
-                                                </th>
-                                                <th style="width: 10%">
-                                                  SerialNo.
-                                                </th>
-                                                <th style="width: 15%">
-                                                  User Queue
-                                                </th>
-                                                <th style="width: 15%">
-                                                  Mov't Status
-                                                </th>
-                                                <th style="width: 10%">
-                                                  Mov't Date
-                                                </th>
-                                                <th style="width: 10%">
-                                                  Mov't Time
-                                                </th>
-                                                <th style="width: 15%">
-                                                  Processing Status
-                                                </th>
-                                                <th style="width: 11%">
-                                                  Processing Date
-                                                </th>
-                                                <th style="width: 11%">
-                                                  Processing Time
-                                                </th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr
-                                                *ngFor="
-                                                  let summu of rfqSummury$
-                                                    | async
-                                                    | filterBy: userFilter;
-                                                  let i = index;
-                                                  let odd = odd;
-                                                  let first = first;
-                                                  let last = last
-                                                "
-                                                [class.text-secondary]="odd"
-                                                [class.text-success]="!odd"
-                                              >
-                                                <td>{{ i + 1 }}</td>
-                                                <td>
-                                                  <a
-                                                    routerLink="/requestforqoute"
-                                                    >{{
-                                                      summu.rfqSerialNumber
-                                                    }}</a
-                                                  >
-                                                </td>
-                                                  <!-- {{
-                                                    (
-                                                      summu.empColRef
-                                                      | doc
-                                                      | async
-                                                    )?.userName
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    (
-                                                      summu.empColRef
-                                                    )?.userName
-                                                  }}
-                                                </td>
-                                                <td>
-                                                  <span
-                                                    class="badge badge-info"
-                                                    >{{
-                                                      summu.movementStatus
-                                                    }}</span
-                                                  >
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | date: "dd/MM/yyyy"
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | timevalue
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                <td>
-                                                  <span
-                                                    class="badge badge-danger"
-                                                    >{{
-                                                      summu.processingStatus
-                                                    }}</span
-                                                  >
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | date: "dd/MM/yyyy"
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                                  <!-- {{
-                                                    summu.movementTimestamp
-                                                      | dbDate
-                                                      | timevalue
-                                                  }} -->
-                                                <td>
-                                                  {{
-                                                    summu.movementTimestamp
-                                                  }}
-                                                </td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                  </tab>
-                                </tabset>
+                                    <a
+                                      class="dropdown-item text-primo pointerCursor"
+                                      (click)="openModal(newItem)"
+                                      ><i class="fas fa-plus"></i>
+                                      Add Items
+                                    </a>
+                                    <a
+                                      class="dropdown-item text-primo pointerCursor"
+                                      (click)="openModal(rfqItems)"
+                                      ><i class="fas fa-eye"></i>
+                                      View RFQ
+                                    </a>
+                                    <!-- <a
+                                  class="dropdown-item text-primo-1 pointerCursor"
+                                  ><i class="fas fa-chevron-right"></i>
+                                  Approve
+                                </a> -->
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-11 mx-lg-0 px-lg-0">
+                                <div class="row mx-md-0 px-md-0">
+                                  <div
+                                    class="col-12 col-md-6 col-xl-3 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Serial No.:</span>
+                                      </div>
+                                      <div
+                                        class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.rfqSerialNumber }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-5 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-4 col-md-3 col-xl-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Client:</span>
+                                      </div>
+                                      <div
+                                        class="col-8 col-md-9 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.clientColRef?.clientName }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-5 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Source:</span>
+                                      </div>
+                                      <div
+                                        class="col-7 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.rfqSource }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">No. Of Items:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.noOfItems }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Total Amount:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.totalAmount }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Department:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.empColRef?.department }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Username:</span>
+                                      </div>
+                                      <div
+                                        class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated">
+                                          {{ summu.empColRef?.userName }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <!-- /.card-body -->
                           </div>
                         </div>
-                      <!-- </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ end of record container-->
+                </div>
+              </tab>
+              <tab heading="RFQ Status" class="rfq-status text-info">
+                <div class="pt-3 px-2">
+                  <!-- <input
+                    type="text"
+                    class="form-control col-md-7 col-xl-4"
+                    [(ngModel)]="userFilter.clientName"
+                    placeholder="Enter Client Name"
+                  />
+ -->
+                  <!--record container-->
+                  <!--to be displayed if no rfqs to work on-->
+                  <!-- <div
+                      class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg"
+                    >
+                      <div class="col-12 my-5 py-5 justify-content-between">
+                        <h4 class="text-center text-info">
+                          No Received Loans yet
+                        </h4>
+                      </div>
+                    </div> -->
+                  <div
+                    class="invest-card card mt-1 py-2 mb-2 mx-auto px-2 shadow-lg"
+                  >
+                    <div class="iteration">
+                      <div class="item-container-1 mt-1">
+                        <div
+                          class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                          *ngFor="
+                            let summu of rfqSummury$
+                              | async
+                              | filterBy: userFilter;
+                            let i = index;
+                            let odd = odd;
+                            let first = first;
+                            let last = last
+                          "
+                          [class.text-secondary]="odd"
+                          [class.text-success]="!odd"
+                        >
+                          <div class="list-card-body card-body my-0 py-0 mx-0">
+                            <div
+                              class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0"
+                            >
+                              <div class="col-12 mx-lg-0 px-lg-0">
+                                <div class="row mx-md-0 px-md-0">
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Serial No.:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.rfqSerialNumber }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Mov't Status:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0 mb-xl-1"
+                                      >
+                                        <span class="badge badge-info">
+                                          {{ summu.movementStatus }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Mov't Date:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.movementTimeStamp }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Mov't Time:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.movementTimeStamp }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-7 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Processing Status:</span>
+                                      </div>
+                                      <div
+                                        class="col-5 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0 mt-xl-1"
+                                      >
+                                        <span class="badge badge-danger"
+                                          >{{ summu.processingStatus }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Processing Date:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated"
+                                          >{{ summu.processingDate }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0"
+                                  >
+                                    <div class="row">
+                                      <div
+                                        class="col-6 col-md-5 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                      >
+                                        <span class="">Processing Time:</span>
+                                      </div>
+                                      <div
+                                        class="col-6 col-md-7 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                      >
+                                        <span class="itemCreated">
+                                          {{ summu.processingTime }}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ end of record container-->
+                </div>
+              </tab>
+            </tabset>
+          </div>
+          <!-- </div> -->
+          <!-- /.card-body -->
+        </div>
+      </div>
+      <!-- </div> -->
 
       <ng-template #template>
-        <div class="modal-header bg-info close pull-right modal-lg">
-          <h4 class="modal-title pull-left">List Of Clients</h4>
-
-          <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-      </button> -->
+        <div class="modal-header bg-info text-white close">
+          <h4 class="modal-title">List Of Clients</h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <input
               type="text"
-              class="form-control"
+              class="form-control col-md-5"
               [(ngModel)]="userFilter.clientName"
-              placeholder="Enter Client Name"
+              placeholder="Enter Client Phone Number"
             />
           </div>
-          <div class="jumbotron-fluid table-responsive my-2">
-            <table class="table-striped table-hover mx-0">
-              <thead class="text-info">
-                <th>Action</th>
-                <th>Client Name</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Approval Status</th>
-              </thead>
-              <tbody>
-                <tr
+          <div class="table-responsive my-2">
+            <!--record container-->
+            <div class="invest-card card mt-1 py-2 mb-2 mx-auto px-2 shadow-lg">
+              <div class="item-container-1 mt-1">
+                <div
+                  class="list-card-1 card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
                   *ngFor="let client of clients$ | async | filterBy: userFilter"
                 >
-                  <td>
-                    <button
-                      class="primary"
-                      (click)="modalRef.hide()"
-                      (click)="updateName(client.clientName, client.id)"
+                  <div class="list-card-body card-body my-0 py-0 mx-0">
+                    <div class="row my-0 py-0">
+                      <div
+                        class="col-2 col-md-1 mx-md-0 px-md-0 d-flex justify-content-center"
+                      >
+                        <img
+                          class="img-circle mx-auto mt-2 mt-md-0 mt-xl-1 mb-1 pb-0"
+                          (click)="openModal(template)"
+                          src="assets/img/man.svg"
+                        />
+                      </div>
+                      <div class="col-10 col-md-11 mx-lg-0 px-lg-0">
+                        <div class="row mx-md-0 px-md-0">
+                          <div class="col-12 col-md-6 col-xl-5 mx-xl-0 px-xl-0">
+                            <div class="row">
+                              <div
+                                class="col-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Name:</span>
+                              </div>
+                              <div
+                                class="col-10 d-flex justify-content-start font-weight-bold"
+                              >
+                                <span class="itemCreated">{{
+                                  client.clientName
+                                }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-4 col-xl-3 mx-md-0 px-md-0">
+                            <div class="row">
+                              <div
+                                class="col-4 col-xl-3 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Phone No.:</span>
+                              </div>
+                              <div
+                                class="col-8 col-xl-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated">
+                                  {{ client.phoneNumber }}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-xl-0 px-xl-0">
+                            <div class="row">
+                              <div
+                                class="col-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Email:</span>
+                              </div>
+                              <div
+                                class="col-10 d-flex justify-content-start font-weight-bold"
+                              >
+                                <span class="itemCreated"
+                                  >{{ client.email }}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-4 col-xl-8 mx-md-0 px-md-0">
+                            <div class="row">
+                              <div
+                                class="col-6 col-md-6 col-lg-4 col-xl-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Approval Status:</span>
+                              </div>
+                              <div
+                                class="col-6 col-md-6 col-lg-8 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated"
+                                  >{{ client.approvalStatus }}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-2">
+                            <div class="row">
+                              <div class="col d-flex justify-content-end">
+                                <button
+                                  class="btn btn-info mt-1"
+                                  tooltip="Add Customer"
+                                  (click)="modalRef.hide()"
+                                  (click)="
+                                    updateName(client.clientName, client.id)
+                                  "
+                                >
+                                  <i class="fas fa-plus"></i> Add
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #newItem>
+        <div class="modal-header bg-info text-white close">
+          <h4 class="modal-title">Add RFQ Items</h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--record container-->
+          <div
+            class="invest-card card mt-1 py-3 mb-2 mx-auto px-2 px-lg-4 shadow-lg"
+          >
+            <div class="row d-flex justify-content-center px-md-3 pb-md-2">
+              <div class="col-12 col-md-5">
+                <div class="row">
+                  <div
+                    class="col-5 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                  >
+                    <span class="">Serial No.:</span>
+                  </div>
+                  <div
+                    class="col-7 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                  >
+                    <span class="itemCreated"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-7">
+                <div class="row">
+                  <div
+                    class="col-4 col-xl-3 d-flex justify-content-start mx-md-0 px-md-0"
+                  >
+                    <span class="">Client:</span>
+                  </div>
+                  <div
+                    class="col-8 col-xl-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                  >
+                    <span class="itemCreated"> </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <fieldset
+              name="item"
+              class="border border-secondary px-4 pt-0 pb-3 mb-1"
+            >
+              <legend class="text-info">Add Item</legend>
+
+              <form [formGroup]="rfqForm">
+                <div class="row">
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-group text-primary">
+                      <label for="rfq_number">Select Item</label>
+                      <select
+                        class="form-control"
+                        formControlName="itemName"
+                      >
+                        <option selected>Select an item to add</option>
+                        <option>books</option>
+                        <option>bags</option>
+                        <option>mugs</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-group text-primary">
+                      <label for="clientName">Unit</label>
+                      <input
+                        class="form-control"
+                        formControlName="clientName"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-group text-primary">
+                      <label for="clientName">Unit Cost</label>
+                      <input
+                        class="form-control"
+                        formControlName="clientName"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-group text-primary">
+                      <label for="clientName">Quantity</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="total_cost"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-xl-4">
+                    <div class="form-group text-primary">
+                      <label for="clientName">Total Cost</label>
+                      <input
+                        class="form-control"
+                        formControlName="clientName"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div
+                      class="d-flex justify-content-start mt-0 pt-1 mx-auto pull-left"
                     >
-                      Add
-                    </button>
-                  </td>
-
-                  <!-- <td > {{client.id }} </td> -->
-
-                  <td>{{ client.clientName }}</td>
-                  <td>{{ client.phoneNumber }}</td>
-                  <td>{{ client.email }}</td>
-                  <td>{{ client.approvalStatus }}</td>
-                </tr>
-              </tbody>
-            </table>
+                      <button type="button" class="btn btn-info mx-auto">
+                        <i class="fas fa-plus"></i> Add
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </fieldset>
+            <div class="col-12">
+              <div class="d-flex justify-content-center mt-2 pt-1 mx-auto">
+                <button
+                  type="button"
+                  class="btn btn-primary col-5 col-md-3 col-xl-2 mx-auto"
+                >
+                  <i class="fas fa-save"></i> Save
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger col-5 col-md-3 col-xl-2 mx-auto"
+                >
+                  <i class="fas fa-times"></i>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ end of record container-->
+      </ng-template>
+      <ng-template #rfqItems>
+        <div class="modal-header bg-info text-white close">
+          <h4 class="modal-title">RFQ Details</h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- <div class="form-group">
+            <input
+              type="text"
+              class="form-control col-md-5"
+              [(ngModel)]="userFilter.clientName"
+              placeholder="Enter Client Phone Number"
+            />
+          </div> -->
+          <div class="table-responsive my-2">
+            <!--record container-->
+            <div class="invest-card card mt-1 py-2 mb-2 mx-auto px-2 shadow-lg">
+              <div class="item-container-1 mt-1">
+                <div
+                  class="list-card-1 card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                >
+                  <div class="list-card-body card-body my-0 py-0">
+                    <div class="row my-0 py-0">
+                      <div class="col-12">
+                        <div class="row mx-md-0">
+                          <div class="col-12 col-md-6 col-xl-4 mx-xl-0 px-xl-0">
+                            <div class="row">
+                              <div
+                                class="col-3 col-lg-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Item ID:</span>
+                              </div>
+                              <div
+                                class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-md-0 px-md-0"
+                              >
+                                <span class="itemCreated"></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0">
+                            <div class="row">
+                              <div
+                                class="col-3 col-xl-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Item:</span>
+                              </div>
+                              <div
+                                class="col-9 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated"> </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-xl-0 px-xl-0">
+                            <div class="row">
+                              <div
+                                class="col-3 col-lg-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Unit:</span>
+                              </div>
+                              <div
+                                class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-md-0 px-md-0"
+                              >
+                                <span class="itemCreated"> </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0">
+                            <div class="row">
+                              <div
+                                class="col-4 col-lg-3 col-xl-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Unit Cost:</span>
+                              </div>
+                              <div
+                                class="col-8 col-lg-9 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated"> </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-xl-0 px-xl-0">
+                            <div class="row">
+                              <div
+                                class="col-4 col-lg-4 col-xl-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Quantity:</span>
+                              </div>
+                              <div
+                                class="col-8 col-lg-8 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated"> </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12 col-md-6 col-xl-4 mx-md-0 px-md-0">
+                            <div class="row">
+                              <div
+                                class="col-4 col-lg-4 col-xl-2 d-flex justify-content-start mx-0 px-0"
+                              >
+                                <span class="">Total Cost:</span>
+                              </div>
+                              <div
+                                class="col-8 col-lg-8 col-xl-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                              >
+                                <span class="itemCreated"> </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
           </div>
         </div>
       </ng-template>

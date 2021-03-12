@@ -7,30 +7,27 @@ import { SuppliersNotificationsComponent } from './components/suppliers-notifica
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesCoreSuppliersComponent,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard'
-      },
-
-      {
-        path: 'dashboardsuppliers',
-       component: SuppliersDashboardComponent,
+        path: "",
+        pathMatch: "full",
+        redirectTo: "suppliers",
       },
       {
-        path: 'updatesuppliersprofile',
-       component: UpdateSuppliersProfileComponent,
-      }
-      ,
+        path: "suppliers",
+        component: SuppliersDashboardComponent,
+      },
       {
-        path: 'notifications',
-       component: SuppliersNotificationsComponent,
-      }
-
-    ]
+        path: "updatesuppliersprofile",
+        component: UpdateSuppliersProfileComponent,
+      },
+      {
+        path: "suppliernotifications",
+        component: SuppliersNotificationsComponent,
+      },
+    ],
   },
 ];
 
