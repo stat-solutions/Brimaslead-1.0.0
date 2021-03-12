@@ -49,97 +49,33 @@ export class LeftPanelManagementComponent implements OnInit {
     this.title = "Navigation";
 
     this.menuList = [
-      // {
-      //   name: this.userName,
-      //   icon: 'far fa-user-circle',
-      //   url: '/none',
-      //   image: this.imageurl
-      // },
-
       {
-        name: "Management Dashboard",
+        name: "Dashboard",
         icon: "fas fa-tachometer-alt",
-        url: "/managementdashboard"
-        // badge: '2',
-        // badgeBg: 'bg-success',
+        url: "/management",
       },
-
       {
-        name: "Request for Quotation(RFQ)",
+        name: "RFQ Approval",
         icon: "fas fa-clipboard-list",
-        url: "/rfq-approval"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        url: "/rfq-approval",
       },
       {
-        name: "Purchases",
-        icon: "fas fa-warehouse",
-        url: "/purchases-approval"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: "Reports",
+        icon: "fas fa-chart-line",
+        url: "/managementreports",
       },
       {
-        name: "Production",
-        icon: "fas fa-building",
-        url: "/production-approvals"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      },
-      {
-        name: "Quality Assurance(QA)",
-        icon: "fas fa-gem",
-        url: "/qa-approvals"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      },
-      {
-        name: "HR Management",
-        icon: "fas fa-users",
-        url: "/hr-approvals"
-        // badge: '2',
-        // badgeBg: 'bg-success',
-      },
-      // {
-      //   name: "Leave Approval",
-      //   icon: "far fa-calendar-minus",
-      //   url: "/leave-approval"
-      //   // badge: '2',
-      //   // badgeBg: 'bg-success',
-      // },
-      // {
-      //   name: "Hiring Approval",
-      //   icon: "fas fa-hourglass-start",
-      //   url: "/hiring-approval"
-      //   // badge: '2',
-      //   // badgeBg: 'bg-success',
-      // },
-      {
-        name: "Appointments",
-        icon: "far fa-calendar-plus",
-        url: "/appointments",
-        badge: "2",
-        badgeBg: "bg-warning"
-      },
-
-      {
-        name: "Finance",
-        icon: "fas fa-coins",
-        url: "/finance-approvals"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      },
-      {
-        name: "Reports and Analysis",
-        icon: "fa fa-chart-line",
-        url: "/reports-analysis"
+        name: "Profile",
+        icon: "fas fa-user-cog",
+        url: "/managementprofile",
       },
       {
         name: "Notifications",
         icon: "fas fa-envelope",
-        url: "/notifications",
+        url: "/managementnotifications",
         badge: "8",
-        badgeBg: "bg-warning"
-      }
+        badgeBg: "bg-warning",
+      },
     ];
   }
 }

@@ -165,6 +165,10 @@ body {
     background-color: #d9dbddbb;
 }
 
+div{
+    word-break: break-word;
+}
+
 [tabindex="-1"]:focus {
     outline: 0 !important
 }
@@ -523,32 +527,32 @@ h6 {
 
 .h1,
 h1 {
-    font-size: 2.5rem
+    font-size: 2.3rem
 }
 
 .h2,
 h2 {
-    font-size: 1.70rem
+    font-size: 1.5rem
 }
 
 .h3,
 h3 {
-    font-size: 1.5rem
+    font-size: 1.35rem
 }
 
 .h4,
 h4 {
-    font-size: 1.38rem
+    font-size: 1.2rem
 }
 
 .h5,
 h5 {
-    font-size: 1.25rem
+    font-size: 1.1rem
 }
 
 .h6,
 h6 {
-    font-size: 1rem
+    font-size: .9rem
 }
 
 .lead {
@@ -2533,7 +2537,8 @@ fieldset:disabled a.btn {
 .btn-primary {
     color: #ececec;
     background-color: #54a9c9d5;
-    border-color: #54a9c9d5
+    border-color: #54a9c9d5;
+    box-shadow: 0 .085rem 0 .09rem rgba(112, 117, 121, 0.25);
 }
 
 .btn-primary:hover {
@@ -2652,6 +2657,7 @@ fieldset:disabled a.btn {
   background-color: transparent;
   border-color: #17aae0ee;
   outline: 0;
+    box-shadow: 0 .085rem 0 .09rem rgba(112, 117, 121, 0.25);
 }
   .btn-info:hover, .btn-info:focus {
     color: #ececec;
@@ -2760,7 +2766,8 @@ fieldset:disabled a.btn {
 .btn-danger {
     color: #ececec;
     background-color: #464545ee;
-    border-color: #464545ee
+    border-color: #464545ee;
+    box-shadow: 0 .085rem 0 .09rem rgba(112, 117, 121, 0.25);
 }
 
 .btn-danger:hover {
@@ -2873,19 +2880,20 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-    color: #f4623a;
-    border-color: #f4623a
+    color: none;
+    background-color: transparent;
+    border-color: transparent;
 }
 
-.btn-outline-primary:hover {
-    color: #fff;
-    background-color: #f4623a;
-    border-color: #f4623a
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    color: none;
+    background-color: transparent;
+    border-color: transparent;
 }
-
 .btn-outline-primary.focus,
 .btn-outline-primary:focus {
-    box-shadow: 0 0 0 .2rem rgba(244, 98, 58, .5)
+  box-shadow: 0 0 0 0.12rem  transparent;
 }
 
 .btn-outline-primary.disabled,
@@ -2897,15 +2905,15 @@ fieldset:disabled a.btn {
 .btn-outline-primary:not(:disabled):not(.disabled).active,
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .show>.btn-outline-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #f4623a;
-    border-color: #f4623a
+    color: none;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
 .show>.btn-outline-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(244, 98, 58, .5)
+    box-shadow: 0 0 0 .2rem transparent
 }
 
 .btn-outline-secondary {
@@ -3466,7 +3474,7 @@ input[type=submit].btn-block {
 .dropdown-item:hover {
     color: #17aae0;
     text-decoration: none;
-    background-color: #eeeaea
+    background-color: #dad8d8
 }
 
 .dropdown-item.active,
@@ -5830,7 +5838,7 @@ a.badge-dark:focus {
 }
 
 .close:hover {
-    color: #000;
+    color: #fff;
     text-decoration: none
 }
 
@@ -6029,7 +6037,8 @@ a.close.disabled {
 .modal-header .close {
     padding: 0.5rem .5rem;
     border: 0px;
-    margin: -0.5rem -0.5rem -0.5rem auto
+    margin: -0.5rem -0.5rem -0.5rem auto;
+    outline: 0;
 }
 
 .modal-title {
@@ -6041,7 +6050,8 @@ a.close.disabled {
 .modal-body {
     position: relative;
     flex: 1 1 auto;
-    padding: 1rem
+    padding: 1rem;
+    font-size: .8rem
 }
 
 .modal-footer {
@@ -6092,10 +6102,20 @@ a.close.disabled {
     }
 }
 
+@media (min-width:768px) {
+    .modal-xl {
+        max-width: 720px
+    }
+}
 @media (min-width:992px) {
     .modal-lg,
     .modal-xl {
         max-width: 800px
+    }
+}
+@media (min-width:1024px) {
+    .modal-xl {
+        max-width: 930px
     }
 }
 
@@ -9895,12 +9915,30 @@ a.text-success:hover {
 }
 
 .text-primo {
-    color: #159eddea !important
+    color: #556166ea !important
 }
 
 a.text-primo:focus,
 a.text-primo:hover {
     color: #35b0e9ee !important
+}
+
+.text-primo-1 {
+    color: #556166ea !important
+}
+
+a.text-primo-1:focus,
+a.text-primo-1:hover {
+    color: #19692c !important
+}
+
+.text-primo-2 {
+    color: #173444 !important
+}
+
+a.text-primo-2:focus,
+a.text-primo-2:hover {
+    color: #c21224 !important
 }
 
 .text-info {

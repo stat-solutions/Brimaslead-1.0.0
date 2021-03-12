@@ -68,6 +68,7 @@ import { CreateCatalogItemsComponent } from './components/front-desk/create-cata
 import { CreateClientsComponent } from './components/front-desk/create-clients/create-clients.component';
 import { PhoneRfqsComponent } from './components/front-desk/phone-rfqs/phone-rfqs.component';
 import { FileAndArchiveComponent } from './components/front-desk/file-and-archive/file-and-archive.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 
 @NgModule({
@@ -94,6 +95,7 @@ import { FileAndArchiveComponent } from './components/front-desk/file-and-archiv
     CreateClientsComponent,
     PhoneRfqsComponent,
     FileAndArchiveComponent,
+    ReportsComponent,
   ],
   imports: [
     CommonModule,

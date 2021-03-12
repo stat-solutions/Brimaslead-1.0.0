@@ -50,71 +50,32 @@ export class LeftPanelSalesMarketComponent implements OnInit {
 
     this.menuList = [
       {
-        name: this.userName,
-        icon: 'far fa-user-circle',
-        url: '/none',
-        image: this.imageurl
-      },
-
-      {
-        name: 'sales-market Dashboard',
-        icon: 'far fa-clone',
-        url: '/dashboard'
-        // badge: '2',
-        // badgeBg: 'bg-success',
-      },
-
-      {
-        name: 'Add Tokens To Stock',
-        icon: 'far fa-calendar-alt text-danger',
-        url: '/addtokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: 'Dashboard',
+        icon: 'fas fa-tachometer-alt',
+        url: '/salesmarket'
       },
       {
-        name: 'Sell Tokens',
-        icon: 'far fa-user-circle text-success',
-        url: '/selltokens'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-      ,
-      {
-        name: 'Transfer Tokens To Savings',
-        icon: 'far fa-user-circle text-info',
-        url: '/transfertokenstosavingsbox'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: 'Field Rfqs',
+        icon: 'fas fa-list',
+        url: '/fieldrfqs'
       },
       {
-        name: 'Withdraw Tokens',
-        icon: 'far fa-clone text-warning',
-        url: '/withdrawTokens'
-        // badge: '2',
-        // badgeBg: 'bg-success',
+        name: 'Reports',
+        icon: 'fas fa-chart-line',
+        url: '/salesmarketreports'
       },
-
-
       {
-        name: 'Update Profile',
-        icon: 'far fa-user text-danger',
-        url: '/updatesales-marketprofile'
-        // badge: '3',
-        // badgeBg: 'bg-danger',
-      }
-
-      ,
-
-
+        name: 'Profile',
+        icon: 'fas fa-user-cog',
+        url: '/salesmarketprofile'
+      },
       {
         name: 'Notifications',
-        icon: 'fas fa-envelope text-info',
-        url: '/notifications',
+        icon: 'fas fa-envelope',
+        url: '/salesmarketnotifications',
         badge: '8',
-        badgeBg: 'bg-danger',
+        badgeBg: 'bg-warning',
       }
-
-
     ];
   }
 }

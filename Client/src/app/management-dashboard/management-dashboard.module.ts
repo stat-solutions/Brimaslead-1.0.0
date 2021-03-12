@@ -5,7 +5,6 @@ import { ManagementDashboardRoutingModule } from './management-dashboard-routing
 import { PagesCoreManagementComponent } from './pages-core/pages-core-management.component';
 
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { UpdateManagementProfileComponent } from './components/update-management-profile/update-management-profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeftPanelManagementComponent } from './common/left-panel/left-panel-management.component';
 import { RightPanelManagementComponent } from './common/right-panel/right-panel-management.component';
@@ -18,6 +17,8 @@ import { RfqApprovalComponent } from './components/rfq-approval/rfq-approval.com
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { EditRfqComponent } from './components/rfq-approval/edit-rfq.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ManagementProfileComponent } from './components/management-profile/management-profile.component';
+import { ManagementReportsComponent } from './components/management-reports/management-reports.component';
 @NgModule({
   declarations: [
     PagesCoreManagementComponent,
@@ -27,10 +28,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ContentSectionManagementComponent,
     AuthenticationComponent,
     ManagementDashboardComponent,
-    UpdateManagementProfileComponent,
     ManagementNotificationsComponent,
     RfqApprovalComponent,
-    EditRfqComponent
+    EditRfqComponent,
+    ManagementProfileComponent,
+    ManagementReportsComponent
   ],
   imports: [
     CommonModule,

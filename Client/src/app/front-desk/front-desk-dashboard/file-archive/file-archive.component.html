@@ -1,0 +1,179 @@
+<div class="d-flex flex-column">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="tickets-card2 card shadow-lg mt-2 mb-0 pt-2 pb-1 px-4 px-md-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-0">
+              <h4 class="text-info text-uppercase font-weight-bold pull-right">
+                <hr class="top mt-1 mb-0" />
+                file and archive
+                <hr class="bottom mt-0 mb-0" />
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-self-center">
+      <div
+        class="card shadow mt-2 mb-4 col-12 col-md-6 col-lg-5 col-xl-4"
+      >
+        <div class="card-body mb-3 py-4 px-auto">
+              <form
+                [formGroup]="personalFormGroup"
+                (ngSubmit)="form1()"
+                #formone="ngForm"
+              >
+                  <div class="row">
+                    <div class="col-12">
+                      <mat-form-field appearance="fill">
+                        <mat-label>File ID</mat-label>
+                        <!-- <mat-icon matPrefix>person_outline</mat-icon> -->
+                        <input
+                          matInput
+                          formControlName="file" disabled
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Document Type</mat-label>
+                        <mat-select
+                          formControlName="docType"
+                          placeholder="Select Document Type"
+                        >
+                          <mat-option
+                            *ngFor="let dept of department"
+                            [value]="dept.value"
+                          >
+                            {{ dept.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('docType')
+                              .hasError('required')
+                          "
+                          >Document type is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                      <mat-form-field appearance="fill">
+                        <mat-label for="userName">Document Name</mat-label>
+                        <input
+                          matInput
+                          formControlName="userName"
+                          placeholder="Enter document name"
+                        />
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('required')
+                          "
+                        >
+                          Document Name is required
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('userName')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('minLength')
+                          "
+                        >
+                          Document Name should not be less than two characters
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            !this.personalFormGroup
+                              .get('userName')
+                              .hasError('required') &&
+                            this.personalFormGroup
+                              .get('userName')
+                              .hasError('maxLength')
+                          "
+                        >
+                         Document Name should have a maximum of 128 characters
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Date created</mat-label>
+                        <input
+                          matInput
+                          formControlName="dateOfBirth2"
+                          [matDatepicker]="picker2"
+                          placeholder="Enter date of birth"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="picker2"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                        <mat-error
+                          *ngIf="
+                            this.personalFormGroup
+                              .get('dateOfBirth2')
+                              .hasError('required')
+                          "
+                          >Date of creation is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                <div
+                  class="col-12"
+                >
+                  <label class="mb-2"
+                    >Upload Image</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    formControlName="photo"
+                    placeholder="Upload document image"
+                    (change)="onFileChange($event)"
+                  />
+                  <div class="form-group mt-2">
+                    <button
+                      type="button"
+                      (click)="togglePhotoPreview()"
+                      class="btn btn-sm btn-primary"
+                      *ngIf="personalFormGroup.get('photo') !== null"
+                    >
+                      {{ previewPhoto ? "Hide" : "Show" }} Preview
+                    </button>
+                  </div>
+                  <img
+                    [src]="imageSrc"
+                    *ngIf="
+                      previewPhoto && personalFormGroup.get('photo') !== null
+                    "
+                    style="height: 120px; width:120px"
+                  />
+                </div>
+                  </div>
+                <div class="d-flex mt-0 pt-1 mx-auto">
+                  <button type="submit" class="btn btn-primary col-5 mx-auto">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger col-5 mx-auto"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

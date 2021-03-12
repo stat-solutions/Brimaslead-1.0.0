@@ -27,7 +27,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: "financedashboard",
+    path: "finance",
     loadChildren: () =>
       import("./finance-dashboard/finance-dashboard.module").then(
         (m) => m.FinanceDashboardModule
@@ -54,15 +54,15 @@ const routes: Routes = [
       ),
   },
   {
-    path: "qadashboard",
+    path: "designcreative",
 
     loadChildren: () =>
-      import("./qa-dashboard/qa-dashboard.module").then(
-        (m) => m.QaDashboardModule
+      import("./design-creative-dashboard/design-creative-dashboard.module").then(
+        (m) => m.DesignCreativeDashboardModule
       ),
   },
   {
-    path: "salesmarketdashboard",
+    path: "salesmarket",
 
     loadChildren: () =>
       import("./sales-market-dashboard/sales-market-dashboard.module").then(

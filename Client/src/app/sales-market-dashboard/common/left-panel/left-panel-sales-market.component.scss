@@ -104,7 +104,7 @@
     }
 
     .bg-danger {
-      background-color: #dc3545;
+      background-color: #c63685;
       color: #FFF;
     }
 
@@ -327,9 +327,9 @@
 
 // #################### Asidebar ColorTheme Style ######################################
 
-@mixin navbarColorTheme($theme-name, $nav-bg, $menuItem-color, $menuItem-border-color, $micon-bg, $menuItem-bg-onHover,
+@mixin navbarColorTheme($theme-name, $nav-bg, $menuItem-color, $menuItem-border-color, $micon-bg, $micon-bg-onHover, $micon-color-onHover, $menuItem-bg-onHover,
   $menuItem-color-onHover, $subMenu-bg, $sunMenuItem-link-color, $sunMenuItem-link-onHover, $sub-micon-bg-onhover,
-  $sub-micon-color-onhover, $mcaret-bg, $mcaret-bg-onHover, $menuItem-bg-onActive, $menuItem-color-onActive, $subMenuItem-link-color-onActive,
+  $sub-micon-color-onhover, $mcaret-bg, $mcaret-bg-onHover, $menuItem-bg-onActive, $menuItem-color-onActive, $micon-bg-onActive, $micon-color-onActive, $subMenuItem-link-color-onActive,
   $sub-micon-bg-onActive, $sub-micon-color-onActive, $mcaret-bg-onActive) {
   .flux-left-panel[navbar-theme=#{$theme-name}] {
     background: $nav-bg;
@@ -345,12 +345,17 @@
       .flux-micon {
         background: $micon-bg;
       }
-
     }
 
     ul.menu-list>li.menu-item>a:hover {
       background: $menuItem-bg-onHover;
       color: $menuItem-color-onHover;
+
+  .flux-micon {
+        background: $micon-bg-onHover;
+      color: $micon-color-onHover;
+      }
+
     }
 
     li.menu-item.hasMenu {
@@ -387,6 +392,13 @@
     ul.menu-list>li.menu-item.active>a {
       background: $menuItem-bg-onActive !important;
       color: $menuItem-color-onActive;
+
+      .flux-micon {
+        background: $micon-bg-onActive;
+      color: $micon-color-onActive;
+      }
+
+    }
     }
 
     li.menu-item.hasMenu {
@@ -406,28 +418,28 @@
       border-color: $mcaret-bg-onActive;
     }
   }
-}
 
-@include navbarColorTheme(theme1, #ffffff, #678098, #f5f5f5, #ecf0f8, #f2f6f9, #5c9acf, #e4eaf5 , #666669,
-  #5c9acf, #5c9acf, #5c9acf, #678098, #5c9acf, #f2f6f9, #5c9acf, #5c9acf, #5c9acf, #5c9acf, #5c9acf);
 
-@include navbarColorTheme(theme2, #354052, #b4bcc8, #485468, #1c232e, #2b3544, #FFFFFF, #2a3444, #b4bcc8,
-  #FFFFFF, #FFFFFF, #FFFFFF, #b4bcc8, #FFFFFF, #2b3544, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+@include navbarColorTheme(theme1, #ffffff, #678098, #f5f5f5, #ecf0f8, #f2f6f9, #c63685f3, #2b3544, #5c9acf, #e4eaf5 , #666669,
+  #5c9acf, #5c9acf, #5c9acf, #678098, #5c9acf, #f2f6f9, #5c9acf, #2b3544, #c63685f3, #5c9acf, #5c9acf, #5c9acf, #5c9acf);
 
-  @include navbarColorTheme(theme3, #3f5485, #d8e3fc, #4a5f90, #2f4475, #2f4475, #FFFFFF, #2f4475, #90a2cc,
-  #FFFFFF, #FFFFFF, #FFFFFF, #d8e3fc, #FFFFFF, #2f4475, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+@include navbarColorTheme(theme2, #354052, #54a9c9, #485468, #354052, #2b3544, #c63685f3, #2b3544, #c63685f3, #2a3444, #b4bcc8,
+  #FFFFFF, #FFFFFF, #FFFFFF, #b4bcc8, #FFFFFF, #2b3544, #c63685f3, #2b3544, #c63685f3, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 
-  @include navbarColorTheme(theme4, #3c75b5, #b9d4f2, #4f82bc, #2b64a4, #2b64a4, #FFFFFF, #2b64a4, #b9d4f2,
-  #FFFFFF, #FFFFFF, #FFFFFF, #b9d4f2, #FFFFFF, #2b64a4, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+  @include navbarColorTheme(theme3, #3f5485, #d8e3fc, #4a5f90, #2f4475, #2f4475, #c63685f3, #2b3544, #FFFFFF, #2f4475, #90a2cc,
+  #FFFFFF, #FFFFFF, #FFFFFF, #d8e3fc, #FFFFFF, #2f4475, #FFFFFF, #2b3544, #c63685f3, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 
-  @include navbarColorTheme(theme5, #583a63, #ccbad2, #5d4865, #4b3154, #4b3154, #FFFFFF, #4b3154, #a492aa,
-  #FFFFFF, #FFFFFF, #FFFFFF, #ccbad2, #FFFFFF, #4b3154, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+  @include navbarColorTheme(theme4, #3c75b5, #b9d4f2, #4f82bc, #2b64a4, #2b64a4, #c63685f3, #2b3544, #FFFFFF, #2b64a4, #b9d4f2,
+  #FFFFFF, #FFFFFF, #FFFFFF, #b9d4f2, #FFFFFF, #2b64a4, #FFFFFF, #2b3544, #c63685f3, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 
-  @include navbarColorTheme(theme6, #ededed, #787878, #e4e5e5, #e1e1e1, #e1e1e1, #000000, #e1e1e1, #787878,
-  #000000, #787878, #787878, #787878, #000000, #e1e1e1, #000000, #000000, #787878, #787878, #000000);
+  @include navbarColorTheme(theme5, #583a63, #ccbad2, #5d4865, #4b3154, #4b3154, #c63685f3, #2b3544, #FFFFFF, #4b3154, #a492aa,
+  #FFFFFF, #FFFFFF, #FFFFFF, #ccbad2, #FFFFFF, #4b3154, #FFFFFF, #2b3544, #c63685f3, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 
-  @include navbarColorTheme(theme7, #0aa699, #FFFFFF, #1ab0a3, #0b9c8f, #0b9c8f, #FFFFFF, #0b9c8f, #10e3d0,
-  #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #0b9c8f, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
+  @include navbarColorTheme(theme6, #ededed, #787878, #e4e5e5, #e1e1e1, #e1e1e1, #c63685f3, #2b3544, #000000, #e1e1e1, #787878,
+  #000000, #787878, #787878, #787878, #000000, #e1e1e1, #000000, #2b3544, #c63685f3, #000000, #787878, #787878, #000000);
+
+  @include navbarColorTheme(theme7, #0aa699, #FFFFFF, #1ab0a3, #0b9c8f, #0b9c8f, #c63685f3, #2b3544, #FFFFFF, #0b9c8f, #10e3d0,
+  #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #0b9c8f, #FFFFFF, #2b3544, #c63685f3, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 
 
 
@@ -810,4 +822,8 @@
     }
   }
 
+}
+
+.bg-danger{
+  background-color: #c63685;
 }

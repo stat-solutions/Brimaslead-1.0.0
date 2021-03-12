@@ -3,7 +3,8 @@ import { SharedModule } from './shared/shared.module';
 import { TransLogisticsDashboardModule } from './trans-logistics-dashboard/trans-logistics-dashboard.module';
 import { SuppliersDashboardModule } from './suppliers-dashboard/suppliers-dashboard.module';
 import { SalesMarketDashboardModule } from './sales-market-dashboard/sales-market-dashboard.module';
-import { QaDashboardModule } from './qa-dashboard/qa-dashboard.module';
+import { DesignCreativeDashboardModule } from './design-creative-dashboard/design-creative-dashboard.module';
+import { ProcurementDashboardModule } from './procurement-dashboard/procurement-dashboard.module';
 import { ProductionDashboardModule } from './production-dashboard/production-dashboard.module';
 import { ManagementDashboardModule } from './management-dashboard/management-dashboard.module';
 import { FinanceDashboardModule } from './finance-dashboard/finance-dashboard.module';
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { FrontDeskModule } from './front-desk/front-desk.module';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RequestInterceptorServiceService } from './shared/services/other-services/request-interceptor-service.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -53,6 +55,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 
 // import { FormsModule } from '@angular/forms';
@@ -76,11 +79,14 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
     FinanceDashboardModule,
     FrontDeskModule,
     SharedModule,
+    NgxSpinnerModule,
+    NgbModule,
     ManagementDashboardModule,
     ProductionDashboardModule,
-    QaDashboardModule,
+    DesignCreativeDashboardModule,
     SalesMarketDashboardModule,
     SuppliersDashboardModule,
+    ProcurementDashboardModule,
     TransLogisticsDashboardModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -120,22 +126,25 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    DatepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     ToastrModule.forRoot(), // ToastrModule added
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     AngularFireAuthModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptorServiceService,
-      multi: true
+      multi: true,
     },
-    { provide: StorageBucket, useValue: 'gs://brimaslead/' }, AngularFirestore,
+    { provide: StorageBucket, useValue: "gs://brimaslead/" },
+    AngularFirestore,
   ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
