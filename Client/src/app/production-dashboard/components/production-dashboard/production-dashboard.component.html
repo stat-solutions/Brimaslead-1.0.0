@@ -1,318 +1,1142 @@
-
-
-
-        <div class="d-flex flex-column">
-
-          <!-- <nav class="navbar navbar-light navbar-expand bg-white shadow-lg mb-4 ">
-
-
-              <button class="btn btn-link  rounded-circle mr-3" (click)="toggleSideBar()"
-                type="button"><i class="fas fa-bars"></i></button> -->
-
-                <!-- <button class=" btn btn-link  navbar-toggler bg-info" type="button"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" [attr.aria-expanded]="isCollapsed" aria-label="Toggle navigation"(click)="toggleArial()">
-                  <span class="navbar-toggler-icon"></span>
-                </button> -->
-
-
-              <!-- <ul class="nav navbar-nav flex-nowrap ml-auto">
-
-
-                <li class="nav-item dropdown no-arrow">
-                  <a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                    aria-expanded="false" href="#">
-                   <i  class="fas fa-bell fa-fw text-success"></i> <span *ngIf='notRead' (click)='readAlread()' class="badge badge-danger badge-counter">{{numberOfItems}}+</span></a>
-
-                  <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in no-arrow"
-                    role="menu">
-
-                    <h6 class="dropdown-header">Edad Transaction Alerts</h6>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
-                      <div class="mr-1">
-                        <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
-                      </div>
-                      <div><span class="small text-gray-500">December 12, 2019</span>
-                        <p>A new monthly report is ready to download!</p>
-                      </div>
-                    </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
-                      <div class="mr-3">
-                        <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
-                      </div>
-                      <div><span class="small text-gray-500">December 7, 2019</span>
-                        <p>$290.29 has been deposited into your account!</p>
-                      </div>
-                    </a>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
-                      <div class="mr-3">
-                        <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
-                      </div>
-                      <div><span class="small text-gray-500">December 2, 2019</span>
-                        <p>Spending Alert: We've noticed unusually high spending for your account.</p>
-                      </div>
-                    </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a>
-                  </div>
-                </li> -->
-                <!-- </li> -->
-                <!-- <li class="nav-item dropdown no-arrow mx-1" role="presentation"> -->
-                <!-- <li class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                    aria-expanded="false" href="#"><i class="fas fa-envelope text-success fa-fw"></i><span
-                      class="badge badge-danger badge-counter">7+</span></a>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
-                    role="menu">
-                    <h6 class="dropdown-header">Message Center</h6>
-                    <a class="d-flex align-items-center dropdown-item" href="#">
-                      <div class="dropdown-list-image mr-3"><img class="rounded-circle" [src]="user">
-                        <div class="bg-success status-indicator"></div>
-                      </div>
-                      <div class="font-weight-bold">
-                        <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been
-                            having.</span></div>
-                        <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                      </div>
-                    </a>
-
-
-                   <a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a>
-                  </div>
-
-                </li>
-
-                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div> -->
-                <!-- </li> -->
-                <!-- <div class="d-none d-sm-block topbar-divider"></div>
-
-                <li class="nav-item dropdown no-arrow">
-
-                  <a class="dropdown-toggle nav-link" data-toggle="dropdown"
-                    aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">{{userName}}</span><img class="border rounded-circle img-profile" [src]="user">
-                  </a>
-
-                  <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item"
-                      role="presentation" href="#"><i
-                        class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item"
-                      role="presentation" href="#"><i
-                        class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                    <a class="dropdown-item" role="presentation" href="#"><i
-                        class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i
-                        class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
-                  </div>
-                </li>
-
-              </ul>
-
-          </nav> -->
-
-
-
-
-
-
-
-
-
-
-
-          <div class="container">
-<div class="row d-flex flex-row justify-content-center">
- <div class="col-xs-12 "></div>
- <div class="col-xs-12 mx-2"><h3 class="text-primary mb-0">PRODUCTION DASHBOARD</h3> </div>
- <div class="col-xs-12"></div>
-
-</div>
-          <div class="container">
-            <div class="d-sm-flex justify-content-between align-items-center my-4">
-
-
-              <!-- <button class="btn btn-info btn-sm "
-              role="button" routerLink='/userDashboard/add-box-tokens' routerLinkActive="active-link"><i class="fas fa-box-open fa-sm text-white"></i>Add Box Tokens</button>
-
-              <button class="btn btn-info btn-sm "
-              role="button" routerLink='/userDashboard/add-box-tokens' routerLinkActive="active-link"><i class="fas fa-box-open fa-sm text-white"></i>Withdraw Interest</button> -->
-
-
-              <a class="btn btn-primary btn-sm"
-                role="button" routerLink='/userDashboard/add-box-tokens'><i class="fas fa-download fa-sm text-white-50"></i>Generate Report</a>
-            </div>
-
+<div class="d-flex flex-column">
+  <div class="container mt-2 mb-0 mb-md-1 mb-xl-2 px-0">
+    <div class="row mx-0 px-0">
+        <div
+          class="thunder-col-1 col-6 col-md-4 col-xl-2 mx-0 mb-1 mb-lg-2"
+        >
+        <div class="sm-card-1 card shadow mx-0 py-0">
+          <div class="card-body py-2 py-md-3">
             <div class="row">
-              <div class="col-md-6 col-xl-4 mb-4">
-                <div class="card shadow border-left-primary py-2 border border-warning">
-                  <div class="card-body">
-                    <div class="row align-items-center no-gutters">
-                      <div class="col mr-2">
-                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>MY TOKEN SAVINGS BALANCE</span>
-                        </div>
-                        <div class="text-secondary font-weight-bold h5 mb-0"><span>EDT {{boxBalance}}</span></div>
-                      </div>
-                      <div class="col-auto"><i class="fas fa-box-open fa-2x text-secondary"></i></div>
-                    </div>
-                  </div>
+              <div class="col mx-0 px-0 mx-lg-1">
+                <div class="text-uppercase text-danger font-weight-bold mb-1">
+                  <span class="sm-card-title-2">rfqs</span>
                 </div>
-              </div>
-
-              <div class="col-md-6 col-xl-4 mb-4">
-                <div class="card shadow border-left-info py-2 border border-danger">
-                  <div class="card-body ">
-                    <div class="row align-items-center no-gutters">
-                      <div class="col mr-2">
-                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>MY INTEREST EARNINGS</span></div>
-                        <div class="row no-gutters align-items-center">
-                          <div class="col-auto">
-                            <div class="text-secondary font-weight-bold h5 mb-0 mr-3"><span>EDT {{interestEarnings}}</span></div>
-                          </div>
-
-                        </div>
-                      </div>
-                      <div class="col-auto"><i class="fas fa-clipboard-list fa-2x  text-secondary"></i></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-4 mb-4">
-                <div class="card shadow border-left-warning py-2 border border-info">
-                  <div class="card-body">
-                    <div class="row align-items-center no-gutters">
-                      <div class="col mr-2">
-                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>MY TOKENS STOCK</span>
-                        </div>
-                        <div class="text-secondary font-weight-bold h5 mb-0"><span>EDT {{agencyEarnings}}</span></div>
-                      </div>
-                      <div class="col-auto"><i class="fas fa-comments fa-2x text-secondary"></i></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-12 col-xs-12">
-                <div class="card shadow mb-4">
-                  <div class="card-header d-flex justify-content-between align-items-center">
-                    <h6 class="text-primary font-weight-bold m-0">Transactions Overview</h6>
-
-                  </div>
-                  <div class="card-body table-responsive-lg">
-                           <div class="row">
-                          <div class="col-lg-12 col-xs-12">
-                      <table class="table table-striped">
-                          <thead class="thead-dark">
-                              <tr class="text-info">
-                                <th >Txn Date</th>
-                                <th >Txn Details</th>
-                                <th >Tokens Out</th>
-                                <th >Tokens In</th>
-                                <th >Balance</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                                                   <tr *ngFor="let tokens of TxnsHistory" class="text-success">
-                              <td>{{ tokens.txn_date }}</td>
-                              <td>{{ tokens.trn_narration }}</td>
-                              <td>{{ tokens.tokens_credit|number }}</td>
-                              <td>{{ tokens.tokens_debit|number }}</td>
-
-                              <td>{{ tokens.individual_box_balance|number }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <!-- <div class="row">
-              <div class="col-lg-6 mb-4">
-                <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                    <h6 class="text-primary font-weight-bold m-0">Projections</h6>
-                  </div>
-                  <div class="card-body">
-                    <h4 class="small font-weight-bold">Smart Savings<span class="float-right">20%</span></h4>
-                    <div class="progress mb-4">
-                      <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 20%;"><span class="sr-only">20%</span></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Smart Agency Earnings<span class="float-right">40%</span></h4>
-                    <div class="progress mb-4">
-                      <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 40%;"><span class="sr-only">40%</span></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Smart Vending<span class="float-right">60%</span></h4>
-                    <div class="progress mb-4">
-                      <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 60%;"><span class="sr-only">60%</span></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Payout Details<span class="float-right">80%</span></h4>
-                    <div class="progress mb-4">
-                      <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 80%;"><span class="sr-only">80%</span></div>
-                    </div>
-                    <h4 class="small font-weight-bold">Account setup<span class="float-right">Complete!</span></h4>
-                    <div class="progress mb-4">
-                      <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 100%;"><span class="sr-only">100%</span></div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="col">
                 <div class="row">
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-primary shadow">
-                      <div class="card-body">
-                        <p class="m-0">Box Balance</p>
-                        <p class="text-white-50 small m-0">EDT {{boxBalance}}</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-success shadow">
-                      <div class="card-body">
-                        <p class="m-0">Smart Savings</p>
-                        <p class="text-white-50 small m-0">EDT 20,000</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-info shadow">
-                      <div class="card-body">
-                        <p class="m-0">Total Vending Transactions</p>
-                        <p class="text-white-50 small m-0">EDT 4,000</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-warning shadow">
-                      <div class="card-body">
-                        <p class="m-0">Agency Earnings</p>
-                        <p class="text-white-50 small m-0">EDT 200</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-danger shadow">
-                      <div class="card-body">
-                        <p class="m-0">Transfers In</p>
-                        <p class="text-white-50 small m-0">EDT 30,000</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 mb-4">
-                    <div class="card text-white bg-secondary shadow">
-                      <div class="card-body">
-                        <p class="m-0">Withdraws</p>
-                        <p class="text-white-50 small m-0">EDT 10,000</p>
-                      </div>
+                  <div class="col-auto">
+                    <div class="text-secondary font-weight-bold h5 mb-0 pb-0">
+                      <span class="pl-2 pl-md-3 pl-xl-2 pb-0">11</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div> -->
+              <div class="col-auto align-self-baseline">
+                <i class="fas fa-list text-info"></i>
+              </div>
+            </div>
           </div>
-
+        </div>
+      </div>
+        <div
+          class="thunder-col-2 col-6 col-md-4 col-xl-3 mx-0 mb-1 mb-lg-2"
+        >
+        <div class="sm-card-2 card shadow mx-0 mx-md-2 py-0">
+          <div class="card-body py-2 py-md-3">
+            <div class="row">
+              <div class="col mx-0 px-0 mx-lg-1">
+                <div class="text-uppercase text-info font-weight-bold mb-1">
+                  <span class="sm-card-title-2">procurement</span>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="text-secondary font-weight-bold h5 mb-0 pb-0">
+                      <span class="pl-1 pl-md-3 pl-xl-2 pb-0">37,700,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto align-self-baseline mx-0 px-1 px-xl-3">
+                <i class="fas fa-warehouse text-danger"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
+        <div
+          class="thunder-col-3 col-6 col-md-4 col-xl-2 mx-0 mb-0 mb-lg-2"
+        >
+        <div class="sm-card-3 card shadow mx-0 py-0">
+          <div class="card-body py-2 py-md-3">
+            <div class="row">
+              <div class="col mx-0 px-0 mx-lg-1">
+                <div class="text-uppercase text-danger font-weight-bold mb-1">
+                  <span class="sm-card-title-3">bids</span>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="text-secondary font-weight-bold h5 mb-0 pb-0">
+                      <span class="pl-2 pl-md-3 pl-xl-2 pb-0">5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto align-self-baseline">
+                <i class="fas fa-file text-info"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div
+          class="thunder-col-4 col-6 col-xl-2 mx-0 mb-1 mb-lg-2"
+        >
+        <div class="sm-card-4 card shadow mx-md-3 mx-xl-2 py-0">
+          <div class="card-body py-2 py-md-3">
+            <div class="row">
+              <div class="col mx-0 px-0 mx-lg-2">
+                <div class="text-uppercase text-info font-weight-bold mb-1">
+                  <span class="sm-card-title-4">sms left</span>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="text-secondary font-weight-bold h5 mb-0 pb-0">
+                      <span class="pl-2 pl-md-3 pl-xl-2 pb-0">40</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto align-self-baseline">
+                <i class="fas fa-sms text-danger"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div
+          class="thunder-col-5 col-8 col-md-6 col-xl-3 mx-5 mx-md-0 mb-2"
+        >
+        <div class="sm-card-5 card shadow mx-md-0 py-0">
+          <div class="card-body py-2 py-md-3">
+            <div class="row">
+              <div class="col mx-0 px-0 mx-lg-1">
+                <div class="text-uppercase text-danger font-weight-bold mb-1">
+                  <span class="sm-card-title-5">debt management</span>
+                </div>
+                <div class="row">
+                  <div class="col-auto">
+                    <div class="text-secondary font-weight-bold h5 mb-0 pb-0">
+                      <span class="pl-2 pl-md-3 pl-xl-2 pb-0">34,300,000</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto align-self-baseline">
+                <i class="fas fa-balance-scale text-info"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mb-xl-3">
+    <div class="row mt-0 pt-0">
+      <div class="col-12 col-xl-6">
+        <div class="tickets-card2 card2 card shadow mx-0 mb-2 pb-3">
+          <div
+            class="card-header d-flex justify-content-between align-items-center pt-1 pb-2"
+          >
+            <h5
+              class="text-info text-uppercase pull-right font-weight-bold m-0"
+            >
+              <hr class="top mt-1 mb-0" />
+              request for quotation (rfq)
+              <hr class="bottom my-0" />
+            </h5>
+          </div>
+          <div class="card-body mx-0 px-1 px-md-1 mb-4 pt-1 pb-4 pb-md-1">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card card mt-1 py-2 mb-2 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 col-xl-5 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-5 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-7 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-7 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="d-flex justify-content-start mx-2 mx-md-4">
+              <a class="text-decoration-none text-info pointerCursor" (click)="openModal(rfqs)">Expand View >></a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-12 col-xl-6">
+          <div class="tickets-card2 card2 card shadow mx-0 mb-2">
+            <div
+              class="card-header d-flex justify-content-between align-items-center pt-1 pb-2"
+            >
+              <h5
+                class="text-info text-uppercase pull-right font-weight-bold m-0"
+              >
+                <hr class="top mt-1 mb-0" />
+                bids
+                <hr class="bottom my-0" />
+              </h5>
+            </div>
+
+                      <div class="card-body mx-0 px-1 px-md-1 mb-4 pt-1 pb-4 pb-md-1">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card card mt-1 py-2 mb-2 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 col-xl-5 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-5 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-7 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-7 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="d-flex justify-content-start mx-2 mx-md-4">
+              <a class="text-decoration-none text-info pointerCursor" (click)="openModal(bids)">Expand View >></a>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+                    <div class="row">
+        <div class="col-12 col-xl-6">
+          <div class="tickets-card2 card2 card shadow mx-0 mb-2">
+            <div
+              class="card-header d-flex justify-content-between align-items-center pt-1 pb-2"
+            >
+              <h5
+                class="text-info text-uppercase pull-right font-weight-bold m-0"
+              >
+                <hr class="top mt-1 mb-0" />
+                debt management
+                <hr class="bottom my-0" />
+              </h5>
+            </div>
+                      <div class="card-body mx-0 px-1 px-md-1 mb-4 pt-1 pb-4 pb-md-1">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card card mt-1 py-2 mb-2 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 col-xl-5 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-5 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-7 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-7 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="d-flex justify-content-start mx-2 mx-md-4">
+              <a class="text-decoration-none text-info pointerCursor" (click)="openModal(bids)">Expand View >></a>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-6">
+          <div class="tickets-card2 card2 card shadow mx-0 mb-2">
+            <div
+              class="card-header d-flex justify-content-between align-items-center pt-1 pb-2"
+            >
+              <h5
+                class="text-info text-uppercase pull-right font-weight-bold m-0"
+              >
+                <hr class="top mt-1 mb-0" />
+                procurement
+                <hr class="bottom my-0" />
+              </h5>
+            </div>
+                      <div class="card-body mx-0 px-1 px-md-1 mb-4 pt-1 pb-4 pb-md-1">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card card mt-1 py-2 mb-2 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 col-xl-5 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-5 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-7 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-7 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 col-xl-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="d-flex justify-content-start mx-2 mx-md-4">
+              <a class="text-decoration-none text-info pointerCursor" (click)="openModal(bids)">Expand View >></a>
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+      <ng-template #rfqs>
+        <div class="modal-header bg-info text-white close">
+          <h4 class="modal-title">List Of RFQs</h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mt-2 mb-0 py-0">
+          <!-- <div class="form-group">
+            <input
+              type="text"
+              class="form-control col-md-5"
+              [(ngModel)]="userFilter.clientName"
+              placeholder="Enter Client Phone Number"
+            />
+          </div> -->
+          <div class="table-responsive my-0 py-0">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card-1 card mt-1 py-2 mb-2 mb-xl-1 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="card-tools mx-2 mb-5 mb-md-3 mb-xl-4 pt-0 pt-md-3 px-auto">
+              <ul
+                class="pagination pagination-sm text-info align-items-center"
+              >
+                <li class="page-item">
+                  <a href="#" class="page-link">&laquo;</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">&raquo;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #bids>
+        <div class="modal-header bg-info text-white close">
+          <h4 class="modal-title">List Of Bids</h4>
+          <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mt-2 mb-0 py-0">
+          <!-- <div class="form-group">
+            <input
+              type="text"
+              class="form-control col-md-5"
+              [(ngModel)]="userFilter.clientName"
+              placeholder="Enter Client Phone Number"
+            />
+          </div> -->
+          <div class="table-responsive my-0 py-0">
+            <!--record container-->
+            <!--to be displayed if no rfqs to work on-->
+            <!-- <div class="invest-card card my-2 py-2 mx-auto px-2 shadow-lg">
+              <div class="col-12 my-5 py-5 justify-content-between">
+                <h4 class="text-center text-info">No Appointments made yet</h4>
+              </div>
+            </div> -->
+            <div
+              class="invest-card-1 card mt-1 py-2 mb-2 mb-xl-1 mx-0 mx-md-1 px-2 shadow-lg"
+            >
+              <div class="iteration">
+                <div class="item-container-1 mt-1">
+                  <div
+                    class="list-card card mt-1 pt-2 mb-0 mx-auto px-0 pb-1 shadow-lg"
+                    *ngFor="let rfq of rfqTable; let i = index"
+                  >
+                    <div
+                      class="list-card-body card-body my-0 py-0 mx-0 px-4 px-md-3"
+                    >
+                      <div class="row my-0 pt-md-0 pb-md-1 mx-md-0 px-md-0">
+                        <div
+                          class="col-1 px-0 mx-md-0 d-flex justify-content-start"
+                        >
+                          <span class="">{{ i + 1 }}</span>
+                        </div>
+                        <div class="col-11 mx-0 px-0">
+                          <div class="row mx-md-0 px-md-0">
+                            <div class="col-12 col-md-6 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Serial No:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated">{{
+                                    rfq.rfqId
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-6 mx-md-0 px-md-0">
+                              <div class="row">
+                                <div
+                                  class="col-3 col-lg-2 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Client:</span>
+                                </div>
+                                <div
+                                  class="col-9 col-lg-10 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="">{{ rfq.clientName }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-xl-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Source:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-xl-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.rfqSource }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-5 col-xl-4 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">No Of Items:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-7 col-xl-8 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.noOfItems }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="col-12 col-md-6 col-lg-4 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-5 col-md-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Amount:</span>
+                                </div>
+                                <div
+                                  class="col-7 col-md-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.totalAmount }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <div
+                              class="col-12 col-md-6 mx-md-0 px-md-0"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-4 col-lg-3 d-flex justify-content-start mx-md-0 px-md-0"
+                                >
+                                  <span class="">Department:</span>
+                                </div>
+                                <div
+                                  class="col-8 col-lg-9 d-flex justify-content-start font-weight-bold mx-0 px-0"
+                                >
+                                  <span class="itemCreated"
+                                    >{{ rfq.department }}
+                                  </span>
+                                </div>
+                              </div>
+                            </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ end of record container-->
+            <div class="card-tools mx-2 mb-5 mb-md-3 mb-xl-4 pt-0 pt-md-3 px-auto">
+              <ul
+                class="pagination pagination-sm text-info align-items-center"
+              >
+                <li class="page-item">
+                  <a href="#" class="page-link">&laquo;</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">&raquo;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-template>
 

@@ -55,71 +55,24 @@ export class FileArchiveComponent implements OnInit {
 
   ngOnInit() {
     this.personalFormGroup = this._formBuilder.group({
-      userName: [
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(128),
-          // 4. check whether the entered password has a lower-case letter
-          CustomValidatorInitialCompanySetup.patternValidator(/[a-zA-Z]/, {
-            hasCharacters: true,
-          }),
-        ]),
-      ],
-      phoneNumber: [
-        "",
-        Validators.compose([
-          Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([0])([1-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-            { hasNumber: true }
-          ),
-        ]),
-      ],
-      kinRelation: ["", Validators.required],
+      // userName: [
+      //   "",
+      //   Validators.compose([
+      //     Validators.required,
+      //     Validators.minLength(2),
+      //     Validators.maxLength(128),
+      //     // 4. check whether the entered password has a lower-case letter
+      //     CustomValidatorInitialCompanySetup.patternValidator(/[a-zA-Z]/, {
+      //       hasCharacters: true,
+      //     }),
+      //   ]),
+      // ],
       docType: ["", Validators.required],
       dateOfBirth2: ["", Validators.required],
-      emergencyName: ["", Validators.required],
-      emergencyRelation: ["", Validators.required],
-      emergencyNumber: [
-        "",
-        Validators.compose([
-          Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([0])([1-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-            { hasNumber: true }
-          ),
-        ]),
-      ],
-      bankName: ["", Validators.required],
-      accountName: ["", Validators.required],
-      accountNumber: [
-        "",
-        Validators.compose([
-          Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([0])([1-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
-            { hasNumber: true }
-          ),
-        ]),
-      ],
-      national_id: [
-        "",
-        Validators.compose([
-          Validators.required,
-          CustomValidatorInitialCompanySetup.patternValidator(
-            /^(([a-zA-Z])([a-zA-Z])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z])([a-zA-Z]))$/,
-            { nationalIdCheck: true }
-          ),
-        ]),
-      ],
-      date_of_birth: ["", Validators.required],
-      gender: ["", Validators.required],
-      address: ["", Validators.required],
-      email: ["", Validators.email],
+      fileId: ["", Validators.required],
+      docName: ["", Validators.required],
+      fileLocation: ["", Validators.required],
       photo: ["", Validators.required],
-      fileSource: ["", [Validators.required]],
     });
 
     this.employeeFormGroup = this._formBuilder.group({

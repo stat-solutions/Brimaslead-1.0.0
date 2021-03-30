@@ -56,7 +56,6 @@ import { AdministrationDashboardComponent } from './components/administration-da
 import { AdminiNotificationsComponent } from './components/admini-notifications/admini-notifications.component';
 import { RfqPreparationComponent } from './components/rfq-preparation/rfq-preparation.component';
 import { BidPreparationComponent } from './components/bid-preparation/bid-preparation.component';
-import { StockTakingComponent } from './components/stock-taking/stock-taking.component';
 import { DebtManagementComponent } from './components/debt-management/debt-management.component';
 import { ProcurementManagementComponent } from './components/procurement-management/procurement-management.component';
 import { AddRfqItemComponent } from './components/rfq-preparation/add-rfq-item/add-rfq-item.component';
@@ -69,7 +68,8 @@ import { CreateClientsComponent } from './components/front-desk/create-clients/c
 import { PhoneRfqsComponent } from './components/front-desk/phone-rfqs/phone-rfqs.component';
 import { FileAndArchiveComponent } from './components/front-desk/file-and-archive/file-and-archive.component';
 import { ReportsComponent } from './components/reports/reports.component';
-
+import { DatepickerModule, BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -83,7 +83,6 @@ import { ReportsComponent } from './components/reports/reports.component';
     AdminiNotificationsComponent,
     RfqPreparationComponent,
     BidPreparationComponent,
-    StockTakingComponent,
     DebtManagementComponent,
     ProcurementManagementComponent,
     AddRfqItemComponent,
@@ -106,6 +105,9 @@ import { ReportsComponent } from './components/reports/reports.component';
     ServicesModule,
     ModalModule.forRoot(),
     NgxSpinnerModule,
+    DatepickerModule,
+    BsDatepickerModule,
+    NgbModule,
     AlertModule.forRoot(),
     ReactiveFormsModule,
     AngularSlickgridModule.forRoot(),
@@ -147,6 +149,6 @@ import { ReportsComponent } from './components/reports/reports.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule
-    ],
+  ],
 })
 export class AdministrationDashboardModule {}

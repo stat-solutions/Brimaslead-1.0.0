@@ -57,24 +57,7 @@ export class LeftPanelAdminiComponent implements OnInit {
       {
         name: "RFQ Preparation",
         icon: "fas fa-list",
-        url: "/administration/rfqpreps",
-        subMenu: [
-          {
-            name: "Request for quotation(RFQ)",
-            icon: "fas fa-list",
-            url: "/administration/rfqpreps/rfqs",
-          },
-          {
-            name: "Add RFQ Item",
-            icon: "fas fa-cart-plus",
-            url: "/administration/rfqpreps/addRfqItems",
-          },
-          // {
-          //   name: "RFQ Details",
-          //   icon: "fas fa-list",
-          //   url: "/administration/rfqpreps/rfqdetails",
-          // },
-        ],
+        url: "/administration/rfqs",
       },
       {
         name: "Bid Preparation",
@@ -82,52 +65,15 @@ export class LeftPanelAdminiComponent implements OnInit {
         url: "/administration/bidpreps",
       },
       {
-        name: "Stock-taking",
-        icon: "fas fa-clipboard-list",
-        url: "/administration/stocktaking",
-      },
-      {
         name: "Debt Management",
         icon: "fas fa-balance-scale",
         url: "/administration/debtmanagement",
       },
-      // {
-      //   name: "Procurement Management",
-      //   icon: "fas fa-warehouse",
-      //   url: "/administration/procurement",
-      // },
-      // {
-      //   name: "Front Desk",
-      //   icon: "fas fa-building",
-      //   url: "/administration/frontdesk",
-      //   subMenu: [
-      //     {
-      //       name: "Create Catalog Item",
-      //       icon: "fas fa-cart-plus",
-      //       url: "/administration/frontdesk/createcatalogitem",
-      //     },
-      //     {
-      //       name: "Create Client",
-      //       icon: "fas fa-users",
-      //       url: "/administration/frontdesk/createclient",
-      //     },
-      //     {
-      //       name: "File and Archive",
-      //       icon: "fas fa-file",
-      //       url: "/administration/frontdesk/fileandarchive",
-      //     },
-      //     {
-      //       name: "Make Appointment",
-      //       icon: "fas fa-tasks",
-      //       url: "/administration/frontdesk/makeappointment",
-      //     },
-      //     {
-      //       name: "Phone RFQ",
-      //       icon: "fas fa-file",
-      //       url: "/administration/frontdesk/phonerfqs",
-      //     },
-      //   ],
-      // },
+      {
+        name: "Procurement Management",
+        icon: "fas fa-warehouse",
+        url: "/administration/procurement",
+      },
       {
         name: "Reports",
         icon: "fas fa-chart-line",

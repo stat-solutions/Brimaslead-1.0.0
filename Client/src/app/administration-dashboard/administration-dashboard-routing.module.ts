@@ -8,7 +8,6 @@ import { BidPreparationComponent } from './components/bid-preparation/bid-prepar
 import { DebtManagementComponent } from './components/debt-management/debt-management.component';
 import { ProcurementManagementComponent } from './components/procurement-management/procurement-management.component';
 import { RfqPreparationComponent } from './components/rfq-preparation/rfq-preparation.component';
-import { StockTakingComponent } from './components/stock-taking/stock-taking.component';
 import { AddRfqItemComponent } from './components/rfq-preparation/add-rfq-item/add-rfq-item.component';
 import { RfqDetailsComponent } from './components/rfq-preparation/rfq-details/rfq-details.component';
 import { RfqsComponent } from './components/rfq-preparation/rfqs/rfqs.component';
@@ -35,31 +34,17 @@ const routes: Routes = [
         path: "administration",
         component: AdministrationDashboardComponent,
       },
-      {
-        path: "rfqpreps",
-        component: RfqPreparationComponent,
-        children: [
           {
             path: "rfqs",
             component: RfqsComponent,
-          },
-          {
-            path: "addRfqItems",
-            component: AddRfqItemComponent,
-          },
-          {
-            path: "rfqdetails",
-            component: RfqDetailsComponent,
-          },
-        ],
       },
       {
         path: "bidpreps",
         component: BidPreparationComponent,
       },
       {
-        path: "stocktaking",
-        component: StockTakingComponent,
+        path: "procurement",
+        component: ProcurementManagementComponent,
       },
       {
         path: "debtmanagement",

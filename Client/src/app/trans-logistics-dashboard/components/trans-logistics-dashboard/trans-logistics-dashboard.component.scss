@@ -1,0 +1,134 @@
+.text-danger{
+  color: #c63685f3 !important;
+}
+.text-warning{
+  color: #eee206ef !important;
+}
+.bg-danger{
+  background-color: #c63685 !important;
+}
+.tickets-card2 hr.top{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-left: 0px;
+  background-color: #c63685f3;
+  height: 4px;
+}
+.tickets-card2 hr.bottom{
+  width: 10%;
+  min-width: 15px;
+  max-width: 30px;
+  position: relative;
+  margin-right: 0px;
+  background-color: #eee206ef;
+  height: 4px;
+}
+.card1{
+  max-height: 340px;
+  min-height: 190px;
+  overflow-y: auto;
+}
+.card2{
+  max-height: 340px;
+  min-height: 190px;
+  overflow-y: auto;
+}
+.invest-card{
+  max-height: 270px;
+  min-height: 90px;
+  overflow-y: auto;
+}
+.list-card {
+  width: 100%!important;
+  height: auto;
+  border-radius: 8px;
+  border-left: 3px solid #84868ace;
+  contain: auto;
+}
+.list-card-body {
+  width: 100% !important;
+  height: auto;
+}
+.list-card:hover{
+  border-left: 3px solid #17aae0ee;
+}
+
+
+
+//media queries
+@media (min-width:360px){
+}
+
+@media (min-width:375px){
+}
+
+@media (min-width:400px){
+}
+
+@media (min-width: 768px){
+.container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.card1{
+  max-height: 320px;
+}
+.card2{
+  max-height: 320px;
+}
+.invest-card{
+  max-height: 250px;
+}
+}
+
+
+@media (min-width: 812px){
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+}
+
+
+@media (min-width: 1024px){
+.container {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.card1{
+  max-height: 380px;
+}
+.card2{
+  max-height: 380px;
+}
+.invest-card{
+  max-height: 310px;
+}
+}
+
+@media (min-width:1100px){
+.card1{
+  max-height: 340px;
+}
+.card2{
+  max-height: 340px;
+}
+.invest-card{
+  max-height: 270px;
+}
+}
+
+@media (min-width:1280px){
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+}
+
+
+@media (min-width:1320px){
+}
+

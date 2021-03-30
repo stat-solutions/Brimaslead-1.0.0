@@ -1,21 +1,3 @@
-hr.top {
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-left: 0px;
-  background-color: #c63685f3;
-  height: 4px;
-}
-hr.bottom {
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-right: 0px;
-  background-color: #eee206ef;
-  height: 4px;
-}
 .tickets-card2 hr.top {
   width: 10%;
   min-width: 15px;
@@ -52,21 +34,19 @@ hr.bottom {
   background-color: #eee206ef;
   height: 4px;
 }
-
 .rfqs {
-  min-height: 160px;
-  max-height: 540px;
-  margin-top: 0 !important;
-}
-.rfqs .card-body {
   height: auto;
-  overflow-y: auto;
 }
+
 .list-card {
   width: 100%!important;
   height: auto;
   border-radius: 8px;
   contain: auto;
+  border-left: 3px solid #84868ace;
+}
+.list-card:hover{
+  border-left: 3px solid #17aae0ee;
 }
 .list-card-body {
   width: 100% !important;
@@ -87,9 +67,6 @@ hr.bottom {
   width: 130px;
   height: 130px;
 }
-// .itemCreated{
-//   word-break: break-word;
-// }
 
 
 
@@ -144,11 +121,11 @@ hr.bottom {
 }
 
 @media (min-width: 1280px) {
-}
-
-@media (min-width: 1320px) {
   .container {
     margin-left: auto !important;
     margin-right: auto !important;
   }
+}
+
+@media (min-width: 1320px) {
 }

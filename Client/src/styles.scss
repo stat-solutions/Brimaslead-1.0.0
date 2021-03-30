@@ -2577,20 +2577,23 @@ fieldset:disabled a.btn {
 }
 
 .btn-secondary {
-    color: #fff;
-    background-color: #6c757d;
+    color: #6c757d;
+    background-color: transparent;
     border-color: #6c757d
 }
 
 .btn-secondary:hover {
-    color: #fff;
-    background-color: #5a6268;
-    border-color: #545b62
+    color: #54a9c9;
+    background-color: transparent;
+    border-color: #54a9c9
 }
 
 .btn-secondary.focus,
 .btn-secondary:focus {
-    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5)
+    color: #54a9c9;
+    background-color: transparent;
+    border-color: #54a9c9;
+    box-shadow: 0 0 0 .2rem #54a9c9
 }
 
 .btn-secondary.disabled,
@@ -2603,15 +2606,19 @@ fieldset:disabled a.btn {
 .btn-secondary:not(:disabled):not(.disabled).active,
 .btn-secondary:not(:disabled):not(.disabled):active,
 .show>.btn-secondary.dropdown-toggle {
-    color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b
+    color: #54a9c9;
+    background-color: transparent;
+    border-color: #54a9c9;
+    box-shadow: 0 0 0 .2rem #54a9c9;
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active:focus,
 .btn-secondary:not(:disabled):not(.disabled):active:focus,
 .show>.btn-secondary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, .5)
+    color: #54a9c9;
+    box-shadow: 0 0 0 .2rem #54a9c9;
+    background-color: transparent;
+    border-color: #54a9c9;
 }
 
 .btn-success {
@@ -9947,7 +9954,7 @@ a.text-primo-2:hover {
 
 a.text-info:focus,
 a.text-info:hover {
-    color: #17aae0 !important
+    color: #c63685 !important
 }
 
 .text-warning {

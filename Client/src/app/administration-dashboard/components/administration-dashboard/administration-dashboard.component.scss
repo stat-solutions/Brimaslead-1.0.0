@@ -29,28 +29,6 @@
 .text-warning{
   color: #eee206ef !important;
 }
-.bg-danger{
-  background-color: #c63685 !important;
-}
-
-hr.top{
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-left: 0px;
-  background-color: #c63685f3;
-  height: 4px;
-}
-hr.bottom{
-  width: 10%;
-  min-width: 30px;
-  max-width: 50px;
-  position: relative;
-  margin-right: 0px;
-  background-color: #eee206ef;
-  height: 4px;
-}
 .tickets-card2 hr.top{
   width: 10%;
   min-width: 15px;
@@ -68,6 +46,38 @@ hr.bottom{
   margin-right: 0px;
   background-color: #eee206ef;
   height: 4px;
+}
+.card1{
+  max-height: 340px;
+  min-height: 190px;
+}
+.card2{
+  max-height: 340px;
+  min-height: 190px;
+}
+.invest-card{
+  max-height: 240px;
+  min-height: 90px;
+  overflow-y: auto;
+}
+.invest-card-1{
+  max-height: 540px;
+  min-height: 90px;
+  overflow-y: auto;
+}
+.list-card {
+  width: 100%!important;
+  height: auto;
+  border-radius: 8px;
+  border-left: 3px solid #84868ace;
+  contain: auto;
+}
+.list-card-body {
+  width: 100% !important;
+  height: auto;
+}
+.list-card:hover{
+  border-left: 3px solid #17aae0ee;
 }
 
 
@@ -175,37 +185,17 @@ hr.bottom{
 }
 
 @media (min-width: 640px) {
-  .sm-card-1 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-2 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
   .sm-card-title-2 {
       font-size: .9rem !important;
       padding-left: .5rem !important;
-  }
-  .sm-card-3 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
   }
   .sm-card-title-3 {
       font-size: .9rem !important;
       padding-left: .5rem !important;
   }
-  .sm-card-4 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
   .sm-card-title-4 {
       font-size: .9rem !important;
       padding-left: .5rem !important;
-  }
-  .sm-card-5 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
   }
   .sm-card-title-5 {
       font-size: .9rem !important;
@@ -215,41 +205,36 @@ hr.bottom{
 
 @media (min-width: 768px) {
   .container {
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
   }
   .sm-card-1 {
-    width: 95%;
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
+    width: 100%;
   }
   .sm-card-2 {
-    width: 95%;
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-title-2 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
+    width: 100%;
   }
   .sm-card-3 {
-    width: 95%;
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-title-3 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
+    width: 100%;
   }
   .sm-card-4 {
-    width: 95%;
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
+    width: 100%;
   }
-  .sm-card-title-4 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
+  .sm-card-5 {
+    width: 100%;
   }
+.card1{
+  max-height: 320px;
+}
+.card2{
+  max-height: 320px;
+}
+.invest-card{
+  max-height: 220px;
+}
+.invest-card-1{
+  max-height: 720px;
+}
 }
 
 @media (min-width: 812px) {
@@ -261,121 +246,59 @@ hr.bottom{
 
 @media (min-width: 1024px) {
   .container {
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
   }
-  .sm-card-1 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-2 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-title-2 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
-  }
-  .sm-card-3 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-title-3 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
-  }
-  .sm-card-4 {
-      padding-left: .3rem !important;
-      padding-right: .3rem !important;
-  }
-  .sm-card-title-4 {
-      font-size: .9rem !important;
-      padding-left: .5rem !important;
-  }
+.card1{
+  max-height: 380px;
+}
+.card2{
+  max-height: 380px;
+}
+.invest-card{
+  max-height: 280px;
+}
+.invest-card-1{
+  max-height: 920px;
+}
 }
 
 @media (min-width:1100px) {
+.container {
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
-
-@media (min-width:1280px) {
-  .global-container{
-    max-width: 1190px !important;
-    min-width: 1050px !important;
-  }
-    .thunder-col-1 {
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
-      margin-bottom: 0px !important;
-  }
-  .thunder-col-2 {
-      margin-left: -2.4rem !important;
-      margin-right: 0rem !important;
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
-      margin-bottom: 0px !important;
-  }
-  .thunder-col-3 {
-      margin-left: 0rem !important;
-      margin-right: 0rem !important;
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
-      margin-bottom: 0px !important;
-  }
-  .thunder-col-4 {
-      margin-left: -2.6rem !important;
-      margin-right: 0rem !important;
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
-      margin-bottom: 0px !important;
-  }
-  .thunder-col-5 {
-      margin-left: 3.3rem !important;
-      margin-right: 0rem !important;
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
-      margin-bottom: 0px !important;
-  }
-  .sm-card-1 {
-      width: 80%;
-      margin-left: .5rem !important;
-      margin-right: 0rem !important;
-      padding-left: .1rem !important;
-      padding-right: 0rem !important;
-  }
-  .sm-card-2 {
-      padding-left: .1rem !important;
-      padding-right: .1rem !important;
-  }
   .sm-card-title-2 {
       font-size: .8rem !important;
       padding-left: 0rem !important;
-  }
-  .sm-card-3 {
-      width: 80%;
-      padding-left: .1rem !important;
-      padding-right: 0rem !important;
   }
   .sm-card-title-3 {
       font-size: .8rem !important;
       padding-left: 0rem !important;
   }
-  .sm-card-4 {
-      width: 125%;
-      padding-left: .1rem !important;
-      padding-right: 0rem !important;
-  }
   .sm-card-title-4 {
       font-size: .8rem !important;
       padding-left: 0rem !important;
-  }
-  .sm-card-5 {
-      padding-left: .1rem !important;
-      padding-right: .1rem !important;
   }
   .sm-card-title-5 {
       font-size: .8rem !important;
       padding-left: 0rem !important;
   }
+.card1{
+  max-height: 340px;
+}
+.card2{
+  max-height: 340px;
+}
+.invest-card{
+  max-height: 230px;
+}
+.invest-card-1{
+  max-height: 460px;
+}
+}
+
+@media (min-width:1280px) {
 }
 
 @media (min-width:1320px) {
