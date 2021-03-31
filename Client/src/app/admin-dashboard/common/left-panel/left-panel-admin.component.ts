@@ -49,51 +49,33 @@ export class LeftPanelAdminComponent implements OnInit {
     this.title = 'Navigation';
 
     this.menuList = [
-      // {
-      //   name: this.userName,
-      //   icon: 'far fa-user-circle',
-      //   url: '/none',
-      //   image: this.imageurl
-      // },
-
       {
-        name: "Admin Dashboard",
+        name: "Dashboard",
         icon: "fas fa-tachometer-alt",
-        url: "/admindashboard"
-        // badge: '2',
-        // badgeBg: 'bg-success',
-      },
-
-      {
-        name: "Role Management",
-        icon: "fas fa-tasks",
-        url: "/role-mgt"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        url: "/admindashboard",
       },
       {
-        name: "Account Management",
-        icon: "far fa-user-circle",
-        url: "/account-mgt"
-        // badge: '3',
-        // badgeBg: 'bg-danger',
+        name: "Users",
+        icon: "fas fa-users",
+        url: "/users",
       },
-
       {
-        name: "Tickets",
-        icon: "fas fa-tools",
-        url: "/tickets",
-        badge: "8",
-        badgeBg: "bg-warning"
+        name: "Reports",
+        icon: "fas fa-file",
+        url: "/adminreports",
       },
-
+      {
+        name: "Profile",
+        icon: "fas fa-user-cog",
+        url: "/adminprofile",
+      },
       {
         name: "Notifications",
         icon: "fas fa-envelope",
-        url: "/notifications",
+        url: "/notification",
         badge: "8",
-        badgeBg: "bg-warning"
-      }
+        badgeBg: "bg-warning",
+      },
     ];
   }
 }
