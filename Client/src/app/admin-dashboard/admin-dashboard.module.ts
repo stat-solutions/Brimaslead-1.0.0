@@ -50,8 +50,9 @@ import { DatepickerModule, BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { TabsModule } from "ngx-bootstrap/tabs";
 import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { NgxPaginationModule } from "ngx-pagination";
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { UpdateadminProfileComponent } from './components/update-admin-profile/update-admin-profile.component';
+import { UpdateAdminProfileComponent } from './components/update-admin-profile/update-admin-profile.component';
 import { LeftPanelAdminComponent } from './common/left-panel/left-panel-admin.component';
 import { RightPanelAdminComponent } from './common/right-panel/right-panel-admin.component';
 import { HeaderAdminComponent } from './common/header/header-admin.component';
@@ -59,8 +60,9 @@ import { ContentSectionAdminComponent } from './content-section/content-section-
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminNotificationsComponent } from './components/admin-notifications/admin-notifications.component';
 import { AccountManagementComponent } from './components/account-management/account-management.component';
-import { RoleManagementComponent } from './components/role-management/role-management.component';
-import { AdminTicketsComponent } from './components/admin-tickets/admin-tickets.component';
+import { AdminReportComponent } from './components/admin-report/admin-report.component';
+import { ApproveUsersComponent } from './components/approve-users/approve-users.component';
+import { ViewLoggedinComponent } from './components/view-loggedin/view-loggedin.component';
 
 
 @NgModule({
@@ -72,11 +74,12 @@ import { AdminTicketsComponent } from './components/admin-tickets/admin-tickets.
     ContentSectionAdminComponent,
     AuthenticationComponent,
     AdminDashboardComponent,
-    UpdateadminProfileComponent,
+    UpdateAdminProfileComponent,
     AdminNotificationsComponent,
-    AdminTicketsComponent,
-    RoleManagementComponent,
     AccountManagementComponent,
+    AdminReportComponent,
+    ApproveUsersComponent,
+    ViewLoggedinComponent,
   ],
   imports: [
     CommonModule,
@@ -87,6 +90,7 @@ import { AdminTicketsComponent } from './components/admin-tickets/admin-tickets.
     ServicesModule,
     ModalModule.forRoot(),
     NgxSpinnerModule,
+NgxPaginationModule,
     DatepickerModule,
     BsDatepickerModule,
     NgbModule,

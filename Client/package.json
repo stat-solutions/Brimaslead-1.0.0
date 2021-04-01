@@ -48,6 +48,7 @@
     "ngx-export-as": "^1.4.2",
     "ngx-extended-pdf-viewer": "^3.3.3",
     "ngx-filter-pipe": "^2.1.2",
+    "ngx-pagination": "^5.0.0",
     "ngx-spinner": "^8.1.0",
     "ngx-tags-input": "^2.0.1",
     "ngx-toastr": "^12.0.1",

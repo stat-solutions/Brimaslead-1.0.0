@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesCoreAdminComponent } from './pages-core/pages-core-admin.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { UpdateadminProfileComponent } from './components/update-admin-profile/update-admin-profile.component';
+import { UpdateAdminProfileComponent } from './components/update-admin-profile/update-admin-profile.component';
 import { AdminNotificationsComponent } from './components/admin-notifications/admin-notifications.component';
-import { AdminTicketsComponent } from './components/admin-tickets/admin-tickets.component';
 import { AccountManagementComponent } from './components/account-management/account-management.component';
-import { RoleManagementComponent } from './components/role-management/role-management.component';
+import { ApproveUsersComponent } from './components/approve-users/approve-users.component';
+import { ViewLoggedinComponent } from './components/view-loggedin/view-loggedin.component';
+import { AdminReportComponent } from './components/admin-report/admin-report.component';
 
 const routes: Routes = [
   {
@@ -16,35 +17,39 @@ const routes: Routes = [
       {
         path: "",
         pathMatch: "full",
-        redirectTo: "admindashboard"
+        redirectTo: "admindashboard",
       },
 
       {
         path: "admindashboard",
-        component: AdminDashboardComponent
+        component: AdminDashboardComponent,
       },
       {
-        path: "updateadminprofile",
-        component: UpdateadminProfileComponent
+        path: "approveusers",
+        component: ApproveUsersComponent,
       },
       {
-        path: "role-mgt",
-        component: RoleManagementComponent
+        path: "users",
+        component: AccountManagementComponent,
       },
       {
-        path: "account-mgt",
-        component: AccountManagementComponent
+        path: "loggedin",
+        component: ViewLoggedinComponent,
       },
       {
-        path: "tickets",
-        component: AdminTicketsComponent
+        path: "adminprofile",
+        component: UpdateAdminProfileComponent,
+      },
+      {
+        path: "adminreports",
+        component: AdminReportComponent,
       },
       {
         path: "notifications",
-        component: AdminNotificationsComponent
-      }
-    ]
-  }
+        component: AdminNotificationsComponent,
+      },
+    ],
+  },
 ];
 
 
