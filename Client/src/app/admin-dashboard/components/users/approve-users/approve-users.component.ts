@@ -17,6 +17,8 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { Router } from "@angular/router";
 // import { UsersService } from "src/app/shared/services/users.service";
 import * as XLSX from "xlsx";
+import { UserApproval } from "src/app/shared/models/user-profile/user-approval";
+import { Observable } from "rxjs";
 // import { AuthServiceService } from "src/app/shared/services/auth-service.service";
 // import { ExportService } from "src/app/shared/services/export.service";
 // import { AlertService } from "ngx-alerts";
@@ -28,6 +30,7 @@ import * as XLSX from "xlsx";
 })
 export class ApproveUsersComponent implements OnInit {
   users: any;
+  users$: Observable<UserApproval[]>;
   filteredUsers: any;
   fileName = "users.xlsx";
   reverse = false;
