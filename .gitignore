@@ -11,6 +11,12 @@ Client/bazel-out
 Client/node_modules
 Server/node_modules
 
+#folders
+Server
+
+#Sensitive data
+.env
+
 # profiling files
 Client/chrome-profiler-events*.json
 Client/speed-measure-plugin*.json
