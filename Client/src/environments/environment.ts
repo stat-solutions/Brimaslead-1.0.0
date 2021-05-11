@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3002',
+  apiUrl: 'https://statbackend.com:3077',
    firebaseConfig : {
     apiKey: 'AIzaSyBZla-RugcDXajs5BV2Nn24FCjJNjmZ7v4',
     authDomain: 'brimaslead.firebaseapp.com',

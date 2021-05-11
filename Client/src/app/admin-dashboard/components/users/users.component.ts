@@ -6,29 +6,16 @@ import {
   ViewChild,
 } from "@angular/core";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import { ItemStock } from "src/app/shared/models/other-models/rfqRelatedModels/item_stock.model";
 import { BsModalService, BsModalRef } from "ngx-bootstrap";
-import { Observable } from "rxjs";
-import { RfqRelatedServiceService } from "src/app/shared/services/front-desk-services/rfq-related-service.service";
-import { DbServiceService } from "src/app/shared/services/firestore-db/DbServiceService";
-import { CustomerData } from "src/app/shared/models/user-profile/client_data.model";
-import { UserData } from "src/app/shared/models/user-profile/user-data";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { ToastrService } from "ngx-toastr";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from "@angular/router";
-import * as XLSX from "xlsx";
-// import { BranchesService } from "src/app/shared/services/branches.service";
-// import { ExportService } from "src/app/shared/services/export.service";
-// import { AlertService } from "ngx-alerts";
-// import { AuthServiceService } from "src/app/shared/services/auth-service.service";
 
 @Component({
-  selector: "app-account-management",
-  templateUrl: "./account-management.component.html",
-  styleUrls: ["./account-management.component.scss"],
+  selector: "app-users",
+  templateUrl: "./users.component.html",
+  styleUrls: ["./users.component.scss"],
 })
-export class AccountManagementComponent implements OnInit {
+export class UsersComponent implements OnInit {
   modalRef: BsModalRef;
   userForm: FormGroup;
   posted = false;

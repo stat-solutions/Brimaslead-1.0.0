@@ -4,10 +4,11 @@ import { PagesCoreAdminComponent } from './pages-core/pages-core-admin.component
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UpdateAdminProfileComponent } from './components/update-admin-profile/update-admin-profile.component';
 import { AdminNotificationsComponent } from './components/admin-notifications/admin-notifications.component';
-import { AccountManagementComponent } from './components/account-management/account-management.component';
-import { ApproveUsersComponent } from './components/approve-users/approve-users.component';
-import { ViewLoggedinComponent } from './components/view-loggedin/view-loggedin.component';
+import { UsersComponent } from './components/users/users.component';
+
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
+import { ApproveUsersComponent } from './components/users/approve-users/approve-users.component';
+import { ViewLoggedinComponent } from './components/users/view-loggedin/view-loggedin.component';
 
 const routes: Routes = [
   {
@@ -24,17 +25,19 @@ const routes: Routes = [
         path: "admindashboard",
         component: AdminDashboardComponent,
       },
-      {
-        path: "approveusers",
-        component: ApproveUsersComponent,
-      },
+     
       {
         path: "users",
-        component: AccountManagementComponent,
-      },
-      {
-        path: "loggedin",
-        component: ViewLoggedinComponent,
+        component: UsersComponent,
+        children: [
+              {
+                path: 'loggedin',
+                component: ViewLoggedinComponent,
+              },
+              {
+                path: 'approveusers',
+                component: ApproveUsersComponent,
+              }]
       },
       {
         path: "adminprofile",

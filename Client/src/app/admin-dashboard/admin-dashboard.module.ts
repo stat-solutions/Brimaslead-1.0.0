@@ -59,10 +59,11 @@ import { HeaderAdminComponent } from './common/header/header-admin.component';
 import { ContentSectionAdminComponent } from './content-section/content-section-admin.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminNotificationsComponent } from './components/admin-notifications/admin-notifications.component';
-import { AccountManagementComponent } from './components/account-management/account-management.component';
+import { UsersComponent } from './components/users/users.component';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
-import { ApproveUsersComponent } from './components/approve-users/approve-users.component';
-import { ViewLoggedinComponent } from './components/view-loggedin/view-loggedin.component';
+import { ApproveUsersComponent } from './components/users/approve-users/approve-users.component';
+import { ViewLoggedinComponent } from './components/users/view-loggedin/view-loggedin.component';
+
 
 
 @NgModule({
@@ -76,7 +77,7 @@ import { ViewLoggedinComponent } from './components/view-loggedin/view-loggedin.
     AdminDashboardComponent,
     UpdateAdminProfileComponent,
     AdminNotificationsComponent,
-    AccountManagementComponent,
+    UsersComponent,
     AdminReportComponent,
     ApproveUsersComponent,
     ViewLoggedinComponent,

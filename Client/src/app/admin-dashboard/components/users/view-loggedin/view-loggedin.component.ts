@@ -49,6 +49,7 @@ export class ViewLoggedinComponent implements OnInit {
   ngOnInit(): any {
     this.getLoggedInUsers();
   }
+  
   getLoggedInUsers(): any {
     // this.userService.getLoggedInUsers().subscribe((loggedIn) => {
     //   if (loggedIn.length > 0) {
@@ -128,4 +129,5 @@ export class ViewLoggedinComponent implements OnInit {
   approveUsers(): any {
     this.router.navigate(["admin/approveusers"]);
   }
+
 }
