@@ -7,7 +7,11 @@ import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/cu
 import { ToastrService } from 'ngx-toastr';
 import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
 import { throwIfEmpty } from 'rxjs/operators';
-export interface Department {departmentName:string};
+import { Observable } from 'rxjs/internal/Observable';
+export interface Department {
+  roleName:string,
+  roleId:number
+  };
 
 @Component({
   selector: 'app-register',
@@ -16,6 +20,7 @@ export interface Department {departmentName:string};
 })
 export class RegisterComponent implements OnInit {
 
+   roleId:any;
   isHovering: boolean;
   file: any;
   files: File[] = [];
@@ -35,13 +40,13 @@ export class RegisterComponent implements OnInit {
   personalFormGroup: FormGroup;
   employeeFormGroup: FormGroup;
   appData: any;
-  department: Department[];
-
+  department$:Observable<Department[]>;
+   departments:Department[];
   constructor(
     private authService: AuthServiceService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private _formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private toastr: ToastrService
   ) {}
 
@@ -66,15 +71,23 @@ export class RegisterComponent implements OnInit {
     this.personalFormGroup  = this.createPersonalFormControls();
     this.employeeFormGroup = this.createEmployeeFormControls();
     this.getDepartments();
+    this.createDepartments();
   }
 
  getDepartments(){
-  this.authService.getAllDepartments().subscribe(
-    x=>{this.department=x;console.log(x[0].departmentName)}
-  );
+ this.department$= this.authService.getAllDepartments();
+}
+
+createDepartments(){
+
+   this.department$.subscribe(x=>{
+     this.departments=x;
+    //  console.log(this.departments);
+   });
 }
   createLoginFormControls() {
-  return  this._formBuilder.group(
+
+  return  this.fb.group(
       {
         userName: [
           '',
@@ -88,7 +101,7 @@ export class RegisterComponent implements OnInit {
             })
           ])
         ],
-        phoneNumber: [
+        userPhone1: [
           '',
           Validators.compose([
             Validators.required,
@@ -98,7 +111,7 @@ export class RegisterComponent implements OnInit {
             )
           ])
         ],
-        password: [
+        userPassword: [
           '',
           Validators.compose([
 
@@ -130,9 +143,9 @@ export class RegisterComponent implements OnInit {
     );
   }
     createPersonalFormControls() {
-    return this._formBuilder.group(
+    return this.fb.group(
       {
-      nationalId: ['',
+      userIdNumber: ['',
         Validators.compose([
           Validators.required,
           Validators.maxLength(14),
@@ -140,10 +153,10 @@ export class RegisterComponent implements OnInit {
 
         ])
       ],
-      dateOfBirth: ['', Validators.required],
-      gender: ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', Validators.email],
+      userDateOfBirth: ['', Validators.required],
+      userGender: ['', Validators.required],
+      userHomeAreaDetails: ['', Validators.required],
+      userEmail: ['', Validators.email],
 
 
 
@@ -152,8 +165,8 @@ export class RegisterComponent implements OnInit {
 
 
     createEmployeeFormControls() {
-  return this._formBuilder.group({
-      employeeId: [
+  return this.fb.group({
+      employmentNumber: [
         '',
         Validators.compose([
           Validators.required,
@@ -162,7 +175,7 @@ export class RegisterComponent implements OnInit {
       ],
       jobTitle: ['', Validators.required],
       department: ['', Validators.required],
-      commenceDate: ['', Validators.required]
+      userRecruitmentDate: ['', Validators.required]
     });
   }
 
@@ -180,7 +193,15 @@ export class RegisterComponent implements OnInit {
   }
 
 
+updateRoleId(selectedChange: any) {
+ 
+ this.roleId= this.departments.find(x=>{
 
+return x.roleName===selectedChange.value
+
+ }).roleId; 
+// console.log( this.roleId);
+}
 
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
@@ -190,7 +211,7 @@ export class RegisterComponent implements OnInit {
   onFileSelected(event) {
 
     this.file = event.target.files[0];
-    console.log( this.file);
+    // console.log( this.file);
   }
 
   showSuccess() {
@@ -200,23 +221,31 @@ export class RegisterComponent implements OnInit {
   }
   showDanger() {
 
-    this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+    this.toastr.error(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
   }
 
   onSubmit() {
 
     this.spinner.show();
+
     this.appData = {...this.loginFormGroup.value, ...this.personalFormGroup.value, ...this.employeeFormGroup.value};
   //  console.log(  this.appData );
-    this.authData = {email: this.appData.email, password: this.appData.password};
-    this.submitted = true;
-    delete this.appData.password;
-    delete this.appData.confirmPassword;
-    // console.log(this.authData);
-    this.authService.registerEmployee(this.authData, this.appData).subscribe(
-        (data: string) => {
+    // this.authData = {email: this.appData.email, password: this.appData.password};
 
-          if (data === 'Employee account created successfully') {
+    
+    this.submitted = true;
+    // delete this.appData.password;
+    delete this.appData.confirmPassword;
+      // console.log(jwt_decode(this.authService.getJwtToken()).user_id);
+    this.appData={...this.appData,
+      userDateOfBirth: `${this.appData.userDateOfBirth.getFullYear()}-${this.appData.userDateOfBirth.getMonth() + 1}-${this.appData.userDateOfBirth.getDate()}`,
+      userRecruitmentDate:`${this.appData.userRecruitmentDate.getFullYear()}-${this.appData.userRecruitmentDate.getMonth() + 1}-${this.appData.userRecruitmentDate.getDate()}`,roleId:this.roleId
+    };
+    // console.table(this.appData);
+    this.authService.registerEmployee(this.appData).subscribe(
+        (data: boolean) => {
+
+          if (data) {
             this.serviceErrors = 'Registration was Successful';
 
             setTimeout(() => {
@@ -229,10 +258,16 @@ export class RegisterComponent implements OnInit {
         },
 
         (error: string) => {
-          this.spinner.hide();
+
+  setTimeout(() => {
+                this.spinner.hide();
           this.errored = true;
           this.serviceErrors = error;
           this.showDanger();
+              this.router.navigate(['authpage/loginpage']);
+            }, 2000);
+
+        
         }
       );
     }

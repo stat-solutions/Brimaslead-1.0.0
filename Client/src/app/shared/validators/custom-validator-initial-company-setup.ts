@@ -17,7 +17,7 @@ export class CustomValidatorInitialCompanySetup {
   }
 
   static passwordMatchValidator(control: AbstractControl) {
-    const password: string = control.get('password').value; // get password from our password form control
+    const password: string = control.get('userPassword').value; // get password from our password form control
     const confirmPassword: string = control.get('confirmPassword').value; // get password from our confirmPassword form control
     // compare is the password match
     if (password !== confirmPassword) {
