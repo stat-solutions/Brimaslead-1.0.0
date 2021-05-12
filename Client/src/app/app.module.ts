@@ -3,7 +3,6 @@ import { SharedModule } from './shared/shared.module';
 import { TransLogisticsDashboardModule } from './trans-logistics-dashboard/trans-logistics-dashboard.module';
 import { SuppliersDashboardModule } from './suppliers-dashboard/suppliers-dashboard.module';
 import { SalesMarketDashboardModule } from './sales-market-dashboard/sales-market-dashboard.module';
-import { DesignCreativeDashboardModule } from './design-creative-dashboard/design-creative-dashboard.module';
 import { ProcurementDashboardModule } from './procurement-dashboard/procurement-dashboard.module';
 import { ProductionDashboardModule } from './production-dashboard/production-dashboard.module';
 import { ManagementDashboardModule } from './management-dashboard/management-dashboard.module';
@@ -16,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { AuthClientsSuppliersModule } from "./auth-clients-suppliers/auth-clients-suppliers.module";
 import { FrontDeskModule } from './front-desk/front-desk.module';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BsDatepickerModule, DatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -74,16 +74,15 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+AuthClientsSuppliersModule,
     AdminDashboardModule,
     CustomerDashboardModule,
     FinanceDashboardModule,
     FrontDeskModule,
     SharedModule,
     NgxSpinnerModule,
-    // NgbModule,
     ManagementDashboardModule,
     ProductionDashboardModule,
-    DesignCreativeDashboardModule,
     SalesMarketDashboardModule,
     SuppliersDashboardModule,
     ProcurementDashboardModule,

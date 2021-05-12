@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './auth.component';
+import { AuthClientsSuppliersRoutingModule } from './auth-clients-suppliers-routing.module';
+import { AuthClientsSuppliersComponent } from './auth-clients-suppliers.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { SupplierRegisterComponent } from './supplier-register/supplier-register.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -12,6 +11,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
@@ -54,17 +54,17 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 @NgModule({
   declarations: [
-    AuthComponent,
+AuthClientsSuppliersComponent,
     LoginComponent,
-    RegisterComponent,
     SupplierRegisterComponent,
     CustomerRegisterComponent,
+    HomeComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
+    AuthClientsSuppliersRoutingModule,
     NgxSpinnerModule,
     AlertModule.forRoot(),
 
@@ -107,4 +107,4 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     MatTreeModule,
   ],
 })
-export class AuthModule {}
+export class AuthClientsSuppliersModule {}
