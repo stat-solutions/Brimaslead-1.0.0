@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  { path: "auth", redirectTo: "auth/loginpage", pathMatch: "full" },
   { path: "authpage", redirectTo: "authpage/home", pathMatch: "full" },
 
   { path: "", redirectTo: "authpage/home", pathMatch: "full" },
@@ -54,11 +55,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: "designcreative",
+    path: "qa-dashboard",
 
     loadChildren: () =>
-      import("./design-creative-dashboard/design-creative-dashboard.module").then(
-        (m) => m.DesignCreativeDashboardModule
+      import("./qa-dashboard/qa-dashboard.module").then(
+        (m) => m.QaDashboardModule
       ),
   },
   {
