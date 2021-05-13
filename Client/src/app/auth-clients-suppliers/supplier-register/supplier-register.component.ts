@@ -143,7 +143,7 @@ export class SupplierRegisterComponent implements OnInit {
       delete this.appData.confirmPassword;
       // console.log(this.authData);
 
-      this.authService.registerSupplier(this.authData, this.appData).subscribe(
+      this.authService.registerSupplier(this.appData).subscribe(
 
 
         (data: string) => {

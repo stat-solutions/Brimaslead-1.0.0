@@ -43,6 +43,7 @@ import { HandleErrorService } from '../other-services/handle-error.service';
     }
 
     loginEmployee(postData: any): any {
+      console.log(postData);
       return this.http.post<any>(`${this.API_URL}/api/user/loginUser`, postData, this.httpOptions)
         .pipe(
           // tap(tokens => console.log(`${tokens}`)),
@@ -54,6 +55,17 @@ import { HandleErrorService } from '../other-services/handle-error.service';
     }
 
 
+    loginSupplier(postData: any): any {
+      console.log(postData);
+      return this.http.post<any>(`${this.API_URL}/api/user/loginUser`, postData, this.httpOptions)
+        .pipe(
+          // tap(tokens => console.log(`${tokens}`)),
+          tap(tokens => this.doLoginUser(postData.userEmail, tokens)),
+          mapTo(true)
+          // catchError(this.handleErrorsNow.handleError)
+
+        );
+    }
     testingTheTablePost(postData: FormGroup): any {
       return this.http.post<any>(`${this.API_URL}/api/auth/testTableData`, postData.value, this.httpOptions)
         .pipe(

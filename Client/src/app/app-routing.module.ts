@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: "auth", redirectTo: "auth/loginpage", pathMatch: "full" },
   { path: "authpage", redirectTo: "authpage/home", pathMatch: "full" },
 
-  { path: "", redirectTo: "authpage/home", pathMatch: "full" },
+  { path: "", redirectTo: "auth/loginpage", pathMatch: "full" },
   {
     path: "admindashboard",
     loadChildren: () =>

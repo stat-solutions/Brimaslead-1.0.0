@@ -127,7 +127,7 @@ export class UsersComponent implements OnInit {
   }
 
   approveUsers(): any {
-    this.router.navigate(["admin/approveusers"]);
+    this.router.navigate(["users/approveusers"]);
   }
   pageChanged(event): any {
     this.currentPage = event;
@@ -170,6 +170,6 @@ export class UsersComponent implements OnInit {
     this.reverse = !this.reverse;
   }
   loggedInUsers(): any {
-    this.router.navigate(["admin/loggedin"]);
+    this.router.navigate(["users/loggedin"]);
   }
 }

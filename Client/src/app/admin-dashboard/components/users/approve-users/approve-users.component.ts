@@ -19,6 +19,7 @@ import { Router } from "@angular/router";
 import * as XLSX from "xlsx";
 import { UserApproval } from "src/app/shared/models/user-profile/user-approval";
 import { Observable } from "rxjs";
+import { AllOtherService } from "src/app/shared/services/other-services/all-other.service";
 // import { AuthServiceService } from "src/app/shared/services/auth-service.service";
 // import { ExportService } from "src/app/shared/services/export.service";
 // import { AlertService } from "ngx-alerts";
@@ -53,7 +54,7 @@ export class ApproveUsersComponent implements OnInit {
   // tslint:disable-next-line: no-shadowed-variable
   constructor(
     // private authService: AuthServiceService,
-    // private userService: UsersService,
+    private otherServ: AllOtherService,
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
     private bsModalService: BsModalService,
@@ -62,6 +63,8 @@ export class ApproveUsersComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+    this.users$=this.otherServ.getUsersForApproval();
+    this.users$.subscribe(x=>{console.log(x)});
     this.getUserToApproval();
     this.getRoles();
     this.userRole = this.fb.group({

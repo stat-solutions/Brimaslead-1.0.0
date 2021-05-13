@@ -68,6 +68,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorsInterceptorInterceptor } from './shared/services/other-services/errors-interceptor.interceptor';
+import { QaDashboardModule } from './qa-dashboard/qa-dashboard.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -78,6 +79,7 @@ import { ErrorsInterceptorInterceptor } from './shared/services/other-services/e
 AuthClientsSuppliersModule,
     AdminDashboardModule,
     CustomerDashboardModule,
+    QaDashboardModule,
     FinanceDashboardModule,
     FrontDeskModule,
     SharedModule,

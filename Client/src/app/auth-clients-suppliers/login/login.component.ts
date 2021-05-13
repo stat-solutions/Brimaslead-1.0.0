@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
     } else {
       // if(this.afa.auth.currentUser==null){
       // console.log(this.afa.auth.currentUser.isAnonymous);
-      this.authService.loginEmployee(this.userForm.value).subscribe(
+      this.authService.loginSupplier(this.userForm.value).subscribe(
         (user) => {
           if (user) {
             if (user.emailVerified) {

@@ -126,7 +126,7 @@ export class CustomerRegisterComponent implements OnInit {
     delete this.appData.confirmPassword;
     console.log(this.authData);
 
-    this.authService.registerCustomer(this.authData, this.appData).subscribe(
+    this.authService.registerCustomer(this.appData).subscribe(
         (data: string) => {
 
           if (data === 'User created successfully') {
