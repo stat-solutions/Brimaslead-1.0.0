@@ -63,6 +63,7 @@ import { UsersComponent } from './components/users/users.component';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
 import { ApproveUsersComponent } from './components/users/approve-users/approve-users.component';
 import { ViewLoggedinComponent } from './components/users/view-loggedin/view-loggedin.component';
+import { UsersListComponent } from './components/users/users-list/users-list.component';
 
 
 
@@ -81,6 +82,7 @@ import { ViewLoggedinComponent } from './components/users/view-loggedin/view-log
     AdminReportComponent,
     ApproveUsersComponent,
     ViewLoggedinComponent,
+    UsersListComponent,
   ],
   imports: [
     CommonModule,
