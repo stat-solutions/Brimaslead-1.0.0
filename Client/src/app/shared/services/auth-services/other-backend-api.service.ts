@@ -116,22 +116,7 @@ return this.http.get<boolean>(`${this.API_URL}/api/auth/isAdminRegistered`, opti
 }
 
 
-  // logout() {
 
-  //   return this.http.post<any>(`${this.API_URL}/api/auth/logout`, { refreshToken: this.getRefreshToken() })
-
-  //     .pipe(
-  //       tap(() => this.doLogoutUser()),
-  //       mapTo(true),
-
-  //       catchError(error => {
-  //         this.handleLoginError(error);
-  //         return of(false);
-
-  //       }
-  //       )
-  //     );
-  // }
 
  registerUser(postData: FormGroup) {
 

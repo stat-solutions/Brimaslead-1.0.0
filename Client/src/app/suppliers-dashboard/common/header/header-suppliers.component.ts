@@ -53,7 +53,7 @@ export class HeaderSuppliersComponent implements OnInit {
     this.serviceErrors = "Buy buy!";
     this.showDanger();
     setTimeout(() => {
-      this.authService.logoutUser();
+      this.authService.doLogoutUser();
       this.router.navigate(["authpage/home"]);
 
       // this.spinner.hide();

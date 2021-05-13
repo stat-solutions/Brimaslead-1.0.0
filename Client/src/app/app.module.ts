@@ -66,7 +66,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
-
+import { JwtModule } from '@auth0/angular-jwt';
+import { ErrorsInterceptorInterceptor } from './shared/services/other-services/errors-interceptor.interceptor';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -136,11 +137,25 @@ NgbModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
     AngularFireAuthModule,
     AngularFireFunctionsModule,
+     JwtModule.forRoot({
+      config: {
+        //   tokenGetter: () => {
+        //   //   // ;
+        //   // },
+        //   allowedDomains: ["localhost:4200/"],
+        //   disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptorServiceService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorsInterceptorInterceptor,
       multi: true,
     },
     { provide: StorageBucket, useValue: "gs://brimaslead/" },

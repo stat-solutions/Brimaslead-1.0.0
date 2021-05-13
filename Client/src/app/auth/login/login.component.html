@@ -15,12 +15,12 @@ class="container-fluid d-flex flex-row justify-content-center my-1 my-md-5 my-xl
       <form [formGroup]="userForm" (ngSubmit)="login()">
         <div class="form-group text-primary">
           <label
-            for="email"
+            for="userEmail"
             [ngClass]="
-              fval.email.valid ? 'text-success' : ''
+              fval.userEmail.valid ? 'text-success' : ''
             "
             >Email<i
-              *ngIf="fval.email.valid"
+              *ngIf="fval.userEmail.valid"
               class="material-icons"
               >check_circle</i
             ></label
@@ -35,36 +35,36 @@ class="container-fluid d-flex flex-row justify-content-center my-1 my-md-5 my-xl
               </div>
             </div>
             <input
-              id="email"
-              formControlName="email"
+              id="userEmail"
+              formControlName="userEmail"
               type="text"
               class="form-control"
               [ngClass]="{
                 'is-invalid':
-                  (fval.email.touched ||
-                    fval.email.dirty) &&
-                  fval.email.errors
+                  (fval.userEmail.touched ||
+                    fval.userEmail.dirty) &&
+                  fval.userEmail.errors
               }"
-              placeholder="Enter email address"
+              placeholder="Enter userEmail address"
               autocomplete="off"
             />
           </div>
           <div
             class="text-danger col"
             *ngIf="
-              (fval.email.touched ||
-                fval.email.dirty) &&
-              fval.email.errors?.required
+              (fval.userEmail.touched ||
+                fval.userEmail.dirty) &&
+              fval.userEmail.errors?.required
             "
           >
-            Your email is required!
+            Your Email is required!
           </div>
           <div
             class="text-danger col"
             *ngIf="
-              (fval.email.touched ||
-                fval.email.dirty) &&
-              fval.email.errors?.email
+              (fval.userEmail.touched ||
+                fval.userEmail.dirty) &&
+              fval.userEmail.errors?.userEmail
             "
           >
             The email is not valid!
@@ -72,9 +72,9 @@ class="container-fluid d-flex flex-row justify-content-center my-1 my-md-5 my-xl
         </div>
         <div class="form-group text-primary">
           <label
-            for="password"
-            [ngClass]="fval.password.valid ? 'text-success' : ''"
-            >Password<i *ngIf="fval.password.valid" class="material-icons"
+            for="userPassword"
+            [ngClass]="fval.userPassword.valid ? 'text-success' : ''"
+            >userPassword<i *ngIf="fval.userPassword.valid" class="material-icons"
               >check_circle</i
             ></label
           >
@@ -89,14 +89,14 @@ class="container-fluid d-flex flex-row justify-content-center my-1 my-md-5 my-xl
               </div>
             </div>
             <input
-              id="password"
-              formControlName="password"
+              id="userPassword"
+              formControlName="userPassword"
               type="password"
               class="form-control"
               [ngClass]="{
                 'is-invalid':
-                  (fval.password.touched || fval.password.dirty) &&
-                  fval.password.errors
+                  (fval.userPassword.touched || fval.userPassword.dirty) &&
+                  fval.userPassword.errors
               }"
               placeholder="Enter Password"
               autocomplete="off"
@@ -117,8 +117,8 @@ class="container-fluid d-flex flex-row justify-content-center my-1 my-md-5 my-xl
           <label
             class="text-danger col"
             *ngIf="
-              (fval.password.touched || fval.password.dirty) &&
-              fval.password.errors?.required
+              (fval.userPassword.touched || fval.userPassword.dirty) &&
+              fval.userPassword.errors?.required
             "
           >
             Your Password is Required!

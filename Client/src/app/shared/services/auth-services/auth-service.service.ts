@@ -1,25 +1,26 @@
    import { Injectable } from '@angular/core';
    import { Observable, throwError } from 'rxjs';
-   import { catchError, mapTo, tap } from 'rxjs/operators';
-   import { AuthUser } from '../../models/user-profile/auth-user';
-   import { EmailServiceService } from './email-service.service';
-   import { UserData } from '../../models/user-profile/user-data';
+   import { catchError, map, mapTo, tap } from 'rxjs/operators';
    import { Department } from '../../../auth/register/register.component';
-   import { DbServiceService } from '../firestore-db/DbServiceService';
-   import { CustomerData } from '../../models/user-profile/client_data.model';
-   import { SupplierData } from '../../models/user-profile/supplier-data';
-import { HttpClient, HttpHeaders,  HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpHeaders,  HttpErrorResponse, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { FormGroup } from '@angular/forms';
+import { RegisterUser } from '../../models/register';
+import { Tokens } from '../../models/tokens';
+import { UserRole } from '../../models/user-role';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HandleErrorService } from '../other-services/handle-error.service';
 
    @Injectable({
      providedIn: 'root'
    })
    export class AuthServiceService {
 
-      displayNamex?: string;
-      photoURLx?: string;
-private API_URL = environment.apiUrl;
+
+
+
+    private API_URL = environment.apiUrl;
     private loggedInUser: string;
     private readonly ACCESS_TOKEN = 'ACCESS TOKEN';
     private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
@@ -29,50 +30,69 @@ private API_URL = environment.apiUrl;
         'Content-Type': 'application/json'
       })
     };
+    stations: any;
+    constructor(
+      private http: HttpClient,
+      private jwtHelper: JwtHelperService,
+      private handleErrorsNow:HandleErrorService
+      ) { }
 
 
-   constructor(
-
-   private sendEmail: EmailServiceService,
-   private db: DbServiceService,
-    private http: HttpClient,
-      private router: Router,
-
- 
-   ) {
-
-   }
-
-
-   logoutUser() {
-
-      this.sendEmail.signOut();
-
-   }
-
-
-
-   getAllDepartments(): Observable<Department[]> {
+  getAllDepartments(): Observable<Department[]> {
        return this.http.get<any[]>(`${this.API_URL}/api/auth/userRoles`);
     }
 
-  //  registerEmployee(authUser: AuthUser, userProfile: UserData): Observable<string> {
+    loginEmployee(postData: any): any {
+      return this.http.post<any>(`${this.API_URL}/api/user/loginUser`, postData, this.httpOptions)
+        .pipe(
+          // tap(tokens => console.log(`${tokens}`)),
+          tap(tokens => this.doLoginUser(postData.userEmail, tokens)),
+          mapTo(true)
+          // catchError(this.handleErrorsNow.handleError)
 
-  // return this. sendEmail.signUpEmployee(authUser, userProfile).pipe(
-  //       mapTo('Employee account created successfully'),
-
-  //       catchError((errorc) => {
-  //        console.log(errorc);
-  //        return     throwError(errorc);
-  //          }));
-
-  //     }
+        );
+    }
 
 
-  registerEmployee(postData: any): Observable<boolean> {
+    testingTheTablePost(postData: FormGroup): any {
+      return this.http.post<any>(`${this.API_URL}/api/auth/testTableData`, postData.value, this.httpOptions)
+        .pipe(
+          // tap(tokens => console.log(`${tokens}`)),
+          // tap(tokens => this.doLoginUser(postData.value.main_contact_number, tokens)),
+          // mapTo(true),
+          catchError(this.handleErrorsNow.handleError)
+        );
+    }
+
+    isAgentRegistered(id: string): any {
+          //  return of(true);
+      const options1 = { params: new HttpParams().set('id', id) };
+      return this.http.get<any>(`${this.API_URL}/api/auth/isAgentRegistered`, options1)
+        .pipe(
+          catchError(this.handleErrorsNow.OtherErrors)
+        );
+    }
+    getRoles(): Observable<UserRole[]> {
+      return this.http.get<any[]>(`${this.API_URL}/api/auth/userRoles`);
+    }
+
+    // logout(): any {
+    //   return this.http.post<any>(`${this.API_URL}/api/auth/logout`, { refreshToken: this.getRefreshToken() })
+    //     .pipe(
+    //       tap(() => this.doLogoutUser()),
+    //       mapTo(true),
+    //       catchError(error => {
+    //         this.handleLoginError(error);
+    //         return of(false);
+    //       }
+    //       )
+    //     );
+    // }
+         
+   registerCustomer(postData: any): any {
 // console.log(postData);
     return this.http
-    .post<boolean>(
+    .post<any>(
       `${this.API_URL}/api/user/registerUser`,
       postData,
       this.httpOptions
@@ -81,65 +101,118 @@ private API_URL = environment.apiUrl;
     .pipe(
       tap(response => console.log(`${response}`)),
 
-      catchError(this.handleError)
+      catchError(this.handleErrorsNow.handleError)
+    );
+  }
+       
+        
+   registerSupplier(postData: any): any {
+// console.log(postData);
+    return this.http
+    .post<any>(
+      `${this.API_URL}/api/user/registerUser`,
+      postData,
+      this.httpOptions
+    )
+
+    .pipe(
+      tap(response => console.log(`${response}`)),
+
+      catchError(this.handleErrorsNow.handleError)
+    );
+  }
+        
+        
+   registerEmployee(postData: any): any{
+// console.log(postData);
+    return this.http
+    .post<any>(
+      `${this.API_URL}/api/user/registerUser`,
+      postData,
+      this.httpOptions
+    )
+
+    .pipe(
+      
+      tap(response => console.log(`${response}`)),
+
+      catchError(this.handleErrorsNow.handleError)
     );
   }
 
-       registerCustomer(authUser: AuthUser, userProfile: CustomerData): Observable<string> {
-         return this. sendEmail.signUpCustomerByHimself(authUser, userProfile).pipe(
-            mapTo('Customer account created successfully'),
-
-            catchError((errorc) => {
-             console.log(errorc);
-             return     throwError(errorc);
-               }));
-      }
-
-       registerSupplier(authUser: AuthUser, userProfile: SupplierData): Observable<string> {
-         return this. sendEmail.signUpSupplier(authUser, userProfile).pipe(
-            mapTo('Supplier account created successfully'),
-
-            catchError((errorc) => {
-             console.log(errorc);
-             return     throwError(errorc);
-               }));
-
-
-      }
-
-
-
-       loginEmployee(userCredetials:AuthUser):Observable<firebase.User> {
-          return this.sendEmail.signIn(userCredetials);
-       }
-
-   
-
-
-
-  private handleError(errorResponse: HttpErrorResponse) {
-
-
-    if (errorResponse.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', errorResponse.error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${errorResponse.status}, ` +
-          `body was: ${errorResponse.error.error.message}`
-      );
+    registerUser(postData: RegisterUser): any {
+      return this.http.post<any>(`${this.API_URL}/api/user/registerUser`, postData, this.httpOptions)
+        .pipe(
+          map((res: string) => res),
+          tap(res => console.log(`AFTER MAP: ${res}`)),
+          catchError(this.handleErrorsNow.handleError)
+        );
     }
-    // return an observable with a user-facing error message
-    return throwError(`Registration Error!
-       ${
-         errorResponse.status === 500 ||
-         errorResponse.status === 0 ||
-         errorResponse.status === 200
-           ? 'The Back End was not able to Handle this Request'
-           : errorResponse.error.error.message
-       }
-   `);
-  }
+    changePIN(postData: any): any {
+      return this.http.post<any>(`${this.API_URL}/api/user/registerUser`, postData.value, this.httpOptions)
+        .pipe(
+          // tap(tokens => console.log(`${tokens}`)),
+          tap(tokens => this.doLoginUser(postData.value.main_contact_number, tokens)),
+          mapTo(true),
+          catchError(this.handleErrorsNow.handleError)
+        );
+    }
+    // tslint:disable-next-line: typedef
+    doLoginUser(phoneNubmer: string, tokens: Tokens): any {
+      this.loggedInUser = phoneNubmer;
+      this.storeTokens(tokens);
+    }
+
+    doLogoutUser(): any {
+      this.loggedInUser = null;
+      this.removeTokens();
+    }
+
+    private removeTokens(): any {
+      localStorage.removeItem(this.ACCESS_TOKEN);
+      localStorage.removeItem(this.REFRESH_TOKEN);
+    }
+
+    isLoggedIn(): any {
+      return !!this.getJwtToken();
+    }
+    loggedInUserInfo(): any {
+      // console.log(this.jwtHelper.decodeToken(this.getJwtToken()));
+      const xn = this.jwtHelper.decodeToken(this.getJwtToken());
+      return {
+        userName: xn.userName,
+        userId: xn.userId,
+        userPhone: xn.userPhone1,
+        userLocationId: xn.locationId,
+        userLocationName: xn.locationName.toUpperCase(),
+        accessRights: xn.fkAccessRightsIdUser,
+      };
+    }
+
+    getJwtToken(): any {
+      return localStorage.getItem(this.ACCESS_TOKEN);
+    }
+
+    refreshToken(): any {
+      // console.log('am refreshing');
+      return this.http.post<any>(`${this.API_URL}/api/user/userRefreshToken`, {
+        refreshToken: this.getRefreshToken()
+      }).pipe(tap((tokens: Tokens) => {
+        this.storeJwtToken(tokens.accessToken);
+      }));
+    }
+
+    storeJwtToken(accessToken: string): any {
+      localStorage.setItem(this.ACCESS_TOKEN, accessToken);
+    }
+
+    getRefreshToken(): any {
+      return localStorage.getItem(this.REFRESH_TOKEN);
+    }
+
+    private storeTokens(tokens: Tokens): any {
+      localStorage.setItem(this.ACCESS_TOKEN, tokens.accessToken);
+      localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    }
+
 }

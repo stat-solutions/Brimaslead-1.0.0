@@ -143,11 +143,11 @@ export class SupplierRegisterComponent implements OnInit {
       delete this.appData.confirmPassword;
       // console.log(this.authData);
 
-      this.authService.registerSupplier(this.authData, this.appData).subscribe(
+      this.authService.registerSupplier(this.appData).subscribe(
 
 
-        (data: string) => {
-          if (data === 'Posted Successfully') {
+        (data: boolean) => {
+          if (data) {
             this.serviceErrors = 'Registration was Successful';
             // this.userForm.reset();
             setTimeout(() => {

@@ -4,10 +4,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/shared/services/auth-services/auth-service.service';
 import { CustomValidatorInitialCompanySetup } from 'src/app/shared/validators/custom-validator-initial-company-setup';
-import { ToastrService } from 'ngx-toastr';
+
 import { AuthUser } from 'src/app/shared/models/user-profile/auth-user';
 import { throwIfEmpty } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { ToastrMessagesService } from 'src/app/shared/services/other-services/toastr-messages.service';
 export interface Department {
   roleName:string,
   roleId:number
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private popMsg:ToastrMessagesService
   ) {}
 
 
@@ -214,15 +215,7 @@ return x.roleName===selectedChange.value
     // console.log( this.file);
   }
 
-  showSuccess() {
-
-    this.toastr.success('Please first verify your email and then proceed to login', this.serviceErrors,
-                         {timeOut: 6000, positionClass: 'toast-top-right'});
-  }
-  showDanger() {
-
-    this.toastr.error(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
-  }
+ 
 
   onSubmit() {
 
@@ -251,7 +244,7 @@ return x.roleName===selectedChange.value
             setTimeout(() => {
               this.posted = true;
               this.spinner.hide();
-              this.showSuccess();
+              this.popMsg.registerSuccess(this.serviceErrors);
               this.router.navigate(['authpage/loginpage']);
             }, 2000);
           }
@@ -263,7 +256,7 @@ return x.roleName===selectedChange.value
                 this.spinner.hide();
           this.errored = true;
           this.serviceErrors = error;
-          this.showDanger();
+            this.popMsg.registerError(this.serviceErrors);
               this.router.navigate(['authpage/loginpage']);
             }, 2000);
 
