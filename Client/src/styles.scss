@@ -2,29 +2,6 @@
 Created by: @LogicalStack
 */
 
-// @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-// @import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
-// @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham";
-// @import "../node_modules/ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material.scss";
-// .ag-theme-alpine {
-//     @include ag-theme-alpine();
-// }
-// regular style toast
-// @import '~ngx-toastr/toastr';
-// bootstrap style toast
-// or import a bootstrap 4 alert styled design (SASS ONLY)
-// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
-// @import '~ngx-toastr/toastr-bs4-alert';
-// if you'd like to use it without importing all of bootstrap it requires
-// @import '~bootstrap/scss/functions';
-// @import '~bootstrap/scss/variables';
-// @import '~bootstrap/scss/mixins';
-// @import '~ngx-toastr/toastr-bs4-alert';
-// .ag-theme-alpine {
-//     @include ag-theme-alpine();
-// }
-// .ag-theme-balham{ @include ag-theme-balham(); }
-
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham";
 @import "../node_modules/ag-grid-community/src/styles/ag-theme-material/sass/ag-theme-material.scss";

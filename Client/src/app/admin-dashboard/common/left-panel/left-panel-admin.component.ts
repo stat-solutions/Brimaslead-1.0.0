@@ -60,6 +60,11 @@ export class LeftPanelAdminComponent implements OnInit {
         url: "/users",
       },
       {
+        name: "Company Setup",
+        icon: "fas fa-briefcase",
+        url: "/companysetup",
+      },
+      {
         name: "Reports",
         icon: "fas fa-file",
         url: "/adminreports",
