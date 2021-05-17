@@ -1,0 +1,707 @@
+<div class="d-flex flex-column">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div
+          class="tickets-card2 card shadow-lg mt-2 mb-0 pt-2 pb-1 px-4 px-md-5"
+        >
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 pt-0">
+              <h4 class="text-info text-uppercase font-weight-bold pull-right">
+                <hr class="top mt-1 mb-0" />
+                company setup
+                <hr class="bottom my-0" />
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-9">
+        <div class="card mt-1 mb-3 pt-3 pb-4 px-2 px-lg-3 shadow-lg">
+          <form [formGroup]="companyForm" (ngSubmit)="createCompany()">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyName"
+                    [ngClass]="fval.companyName.valid ? 'text-info' : ''"
+                    >Name<i
+                      *ngIf="fval.companyName.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-tag text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyName"
+                      formControlName="companyName"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyName.touched ||
+                            fval.companyName.dirty) &&
+                          fval.companyName.errors
+                      }"
+                      placeholder="Enter company name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyName.touched || fval.companyName.dirty) &&
+                      fval.companyName.errors?.required
+                    "
+                  >
+                    Company name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyOfficeFloor"
+                    [ngClass]="fval.companyOfficeFloor.valid ? 'text-info' : ''"
+                    >Office floor<i
+                      *ngIf="fval.companyOfficeFloor.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-1">
+                    <input
+                      id="companyOfficeFloor"
+                      formControlName="companyOfficeFloor"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyOfficeFloor.touched ||
+                            fval.companyOfficeFloor.dirty) &&
+                          fval.companyOfficeFloor.errors
+                      }"
+                      placeholder="Enter office floor"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyOfficeFloor.touched ||
+                        fval.companyOfficeFloor.dirty) &&
+                      fval.companyOfficeFloor.errors?.required
+                    "
+                  >
+                    The company office floor is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyStreetBuilding"
+                    [ngClass]="
+                      fval.companyStreetBuilding.valid ? 'text-info' : ''
+                    "
+                    >Street Building<i
+                      *ngIf="fval.companyStreetBuilding.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-building text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyStreetBuilding"
+                      formControlName="companyStreetBuilding"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyStreetBuilding.touched ||
+                            fval.companyStreetBuilding.dirty) &&
+                          fval.companyStreetBuilding.errors
+                      }"
+                      placeholder="Enter building name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyStreetBuilding.touched ||
+                        fval.companyStreetBuilding.dirty) &&
+                      fval.companyStreetBuilding.errors?.required
+                    "
+                  >
+                    The building name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyPlotNumber"
+                    [ngClass]="fval.companyPlotNumber.valid ? 'text-info' : ''"
+                    >Plot number<i
+                      *ngIf="fval.companyPlotNumber.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-location-arrow text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyPlotNumber"
+                      formControlName="companyPlotNumber"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyPlotNumber.touched ||
+                            fval.companyPlotNumber.dirty) &&
+                          fval.companyPlotNumber.errors
+                      }"
+                      placeholder="Enter plot number"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyPlotNumber.touched ||
+                        fval.companyPlotNumber.dirty) &&
+                      fval.companyPlotNumber.errors?.required
+                    "
+                  >
+                    The plot number is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyStreetName"
+                    [ngClass]="fval.companyStreetName.valid ? 'text-info' : ''"
+                    >Street name<i
+                      *ngIf="fval.companyStreetName.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-location-arrow text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyStreetName"
+                      formControlName="companyStreetName"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyStreetName.touched ||
+                            fval.companyStreetName.dirty) &&
+                          fval.companyStreetName.errors
+                      }"
+                      placeholder="Enter street name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyStreetName.touched ||
+                        fval.companyStreetName.dirty) &&
+                      fval.companyStreetName.errors?.required
+                    "
+                  >
+                    The street name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyCityLocation"
+                    [ngClass]="
+                      fval.companyCityLocation.valid ? 'text-info' : ''
+                    "
+                    >City<i
+                      *ngIf="fval.companyCityLocation.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-map-marker-alt text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyCityLocation"
+                      formControlName="companyCityLocation"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyCityLocation.touched ||
+                            fval.companyCityLocation.dirty) &&
+                          fval.companyCityLocation.errors
+                      }"
+                      placeholder="Enter city name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyCityLocation.touched ||
+                        fval.companyCityLocation.dirty) &&
+                      fval.companyCityLocation.errors?.required
+                    "
+                  >
+                    The city name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyRegionLocation"
+                    [ngClass]="
+                      fval.companyRegionLocation.valid ? 'text-info' : ''
+                    "
+                    >Region<i
+                      *ngIf="fval.companyRegionLocation.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-map-marker-alt text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyRegionLocation"
+                      formControlName="companyRegionLocation"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyRegionLocation.touched ||
+                            fval.companyRegionLocation.dirty) &&
+                          fval.companyRegionLocation.errors
+                      }"
+                      placeholder="Enter region name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyRegionLocation.touched ||
+                        fval.companyRegionLocation.dirty) &&
+                      fval.companyRegionLocation.errors?.required
+                    "
+                  >
+                    The region name is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyCountryLocation"
+                    [ngClass]="
+                      fval.companyCountryLocation.valid ? 'text-info' : ''
+                    "
+                    >Country<i
+                      *ngIf="fval.companyCountryLocation.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-map-marker text-secondary mx-auto"
+                          style="size: 50px"
+                        >
+                        </i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyCountryLocation"
+                      formControlName="companyCountryLocation"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyCountryLocation.touched ||
+                            fval.companyCountryLocation.dirty) &&
+                          fval.companyCountryLocation.errors
+                      }"
+                      placeholder="Enter country name"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyCountryLocation.touched ||
+                        fval.companyCountryLocation.dirty) &&
+                      fval.companyCountryLocation.errors?.required
+                    "
+                  >
+                    The country name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyEmail1"
+                    [ngClass]="fval.companyEmail1.valid ? 'text-info' : ''"
+                    >Email 1<i
+                      *ngIf="fval.companyEmail1.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-envelope text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyEmail1"
+                      formControlName="companyEmail1"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyEmail1.touched ||
+                            fval.companyEmail1.dirty) &&
+                          fval.companyEmail1.errors
+                      }"
+                      placeholder="Enter email address"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyEmail1.touched ||
+                        fval.companyEmail1.dirty) &&
+                      fval.companyEmail1.errors?.required
+                    "
+                  >
+                    The email address is required
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyEmail1.touched ||
+                        fval.companyEmail1.dirty) &&
+                      fval.companyEmail1.errors?.pattern
+                    "
+                  >
+                    Please enter valid email address
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyEmail2"
+                    [ngClass]="fval.companyEmail2.valid ? 'text-info' : ''"
+                    >Email 2<i
+                      *ngIf="fval.companyEmail2.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-envelope text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyEmail2"
+                      formControlName="companyEmail2"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyEmail2.touched ||
+                            fval.companyEmail2.dirty) &&
+                          fval.companyEmail2.errors
+                      }"
+                      placeholder="Enter second email (optional)"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyEmail2.touched ||
+                        fval.companyEmail2.dirty) &&
+                      fval.companyEmail2.errors?.pattern
+                    "
+                  >
+                    Please enter valid email address
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyPhoneContact1"
+                    [ngClass]="
+                      fval.companyPhoneContact1.valid ? 'text-info' : ''
+                    "
+                    >Phone contact 1<i
+                      *ngIf="fval.companyPhoneContact1.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-phone text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyPhoneContact1"
+                      formControlName="companyPhoneContact1"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyPhoneContact1.touched ||
+                            fval.companyPhoneContact1.dirty) &&
+                          fval.companyPhoneContact1.errors
+                      }"
+                      placeholder="e.g. 07XXXXXXXX"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyPhoneContact1.touched ||
+                        fval.companyPhoneContact1.dirty) &&
+                      fval.companyPhoneContact1.errors?.required
+                    "
+                  >
+                    Company phone contact is required
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyPhoneContact1.touched ||
+                        fval.companyPhoneContact1.dirty) &&
+                      fval.companyPhoneContact1.errors?.hasNumber
+                    "
+                  >
+                    The phone number should be equal to 10 "digits"
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyPhoneContact2"
+                    [ngClass]="
+                      fval.companyPhoneContact2.valid ? 'text-info' : ''
+                    "
+                    >Phone contact 2<i
+                      *ngIf="fval.companyPhoneContact2.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-phone text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyPhoneContact2"
+                      formControlName="companyPhoneContact2"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyPhoneContact2.touched ||
+                            fval.companyPhoneContact2.dirty) &&
+                          fval.companyPhoneContact2.errors
+                      }"
+                      placeholder="e.g. 07XXXXXXXX (optional)"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyPhoneContact2.touched ||
+                        fval.companyPhoneContact2.dirty) &&
+                      fval.companyPhoneContact2.errors?.hasNumber
+                    "
+                  >
+                    The phone number should be equal to 10 "digits"
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group text-secondary">
+                  <label
+                    for="companyBoxNumber"
+                    [ngClass]="fval.companyBoxNumber.valid ? 'text-info' : ''"
+                    >Box Number<i
+                      *ngIf="fval.companyBoxNumber.valid"
+                      class="material-icons"
+                      >check_circle</i
+                    ></label
+                  >
+
+                  <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i
+                          class="fas fa-envelope text-secondary mx-auto"
+                          style="size: 50px"
+                        ></i>
+                      </div>
+                    </div>
+                    <input
+                      id="companyBoxNumber"
+                      formControlName="companyBoxNumber"
+                      type="text"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (fval.companyBoxNumber.touched ||
+                            fval.companyBoxNumber.dirty) &&
+                          fval.companyBoxNumber.errors
+                      }"
+                      placeholder="Enter Box number"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div
+                    class="text-danger col"
+                    *ngIf="
+                      (fval.companyBoxNumber.touched ||
+                        fval.companyBoxNumber.dirty) &&
+                      fval.companyBoxNumber.errors?.required
+                    "
+                  >
+                    The company box number is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex my-1 pt-0 pb-2 mx-auto">
+              <button
+                type="submit"
+                class="btn btn-info col-4 col-md-3 mx-auto"
+                [disabled]="!companyForm.valid"
+              ><i class="fas fa-save mx-auto" style="size: 50px"></i>
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-info col-4 col-md-3 mx-auto"
+                (click)="returnHome()"
+              ><i class="fas fa-times mx-auto" style="size: 50px"></i>
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-info col-4 col-md-3 mx-auto"
+                (click)="enableEdit()"
+              ><i class="fas fa-edit mx-auto" style="size: 50px"></i>
+                Edit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

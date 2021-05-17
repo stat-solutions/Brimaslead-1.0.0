@@ -9,6 +9,7 @@ import { UsersComponent } from './components/users/users.component';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
 import { ApproveUsersComponent } from './components/users/approve-users/approve-users.component';
 import { ViewLoggedinComponent } from './components/users/view-loggedin/view-loggedin.component';
+import { CompanySetupComponent } from './components/company-setup/company-setup.component';
 
 const routes: Routes = [
   {
@@ -25,19 +26,24 @@ const routes: Routes = [
         path: "admindashboard",
         component: AdminDashboardComponent,
       },
-     
+
       {
         path: "users",
         component: UsersComponent,
         children: [
-              {
-                path: 'loggedin',
-                component: ViewLoggedinComponent,
-              },
-              {
-                path: 'approveusers',
-                component: ApproveUsersComponent,
-              }]
+          {
+            path: "loggedin",
+            component: ViewLoggedinComponent,
+          },
+          {
+            path: "approveusers",
+            component: ApproveUsersComponent,
+          },
+        ],
+      },
+      {
+        path: "companysetup",
+        component: CompanySetupComponent,
       },
       {
         path: "adminprofile",

@@ -140,10 +140,6 @@ height: 100%;
 }
 
 @media (min-width: 812px) {
-    .container-fluid {
-      padding-top: 0rem !important;
-      padding-bottom: 0rem !important;
-    }
     .jumbotron-fluid {
       padding-top: 0rem !important;
       padding-bottom: 0rem !important;
@@ -179,10 +175,6 @@ height: 100%;
 }
 
 @media (min-width: 1280px) {
-    .container-fluid {
-      padding-top: 0.3rem !important;
-      padding-bottom: 0rem !important;
-    }
 }
 
 @media (min-width: 1320px) {
