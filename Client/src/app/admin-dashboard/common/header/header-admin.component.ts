@@ -46,7 +46,7 @@ export class HeaderAdminComponent implements OnInit {
     this.showDanger();
     setTimeout(() => {
       // this.authService.doLogoutUser();
-      this.router.navigate(["authpage/loginpage"]);
+      this.router.navigate(["auth/loginpage"]);
     }, 1000);
   }
 }

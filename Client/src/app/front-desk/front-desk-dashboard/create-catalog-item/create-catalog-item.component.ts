@@ -249,7 +249,7 @@ setSelectedChanges(selectedChange: any) {
 
   }
   public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'white modal-lg' }));
+    this.modalRef = this.modalService.show(template, Object.assign({}, { class: 'white modal-lg'}));
 
   }
 

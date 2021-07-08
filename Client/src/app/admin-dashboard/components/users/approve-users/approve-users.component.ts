@@ -32,6 +32,7 @@ import { AllOtherService } from "src/app/shared/services/other-services/all-othe
 export class ApproveUsersComponent implements OnInit {
   users: any;
   users$: Observable<UserApproval[]>;
+  userRoles$: Observable<any>;
   filteredUsers: any;
   fileName = "users.xlsx";
   reverse = false;
@@ -64,7 +65,10 @@ export class ApproveUsersComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.users$=this.otherServ.getUsersForApproval();
-    this.users$.subscribe(x=>{console.log(x)});
+      this.userRoles$=this.otherServ.getUserRoles();
+      // this.userRoles$.subscribe(x=>{console.log(x)});
+    // this.users$.subscribe(x=>{console.log(x)});
+
     this.getUserToApproval();
     this.getRoles();
     this.userRole = this.fb.group({
@@ -97,6 +101,9 @@ export class ApproveUsersComponent implements OnInit {
     //   (err) => console.log(err.error.error.message)
     // );
   }
+
+
+  
   goToUsers(): any {
     this.router.navigate(["admin/users"]);
   }

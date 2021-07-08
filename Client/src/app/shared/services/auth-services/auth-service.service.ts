@@ -144,12 +144,12 @@ import { HandleErrorService } from '../other-services/handle-error.service';
       this.httpOptions
     )
 
-    .pipe(
+    // .pipe(
       
-      tap(response => console.log(`${response}`)),
+    //   tap(response => console.log(`${response}`)),
 
-      catchError(this.handleErrorsNow.handleError)
-    );
+    //   catchError(this.handleErrorsNow.handleError)
+    // );
   }
 
     registerUser(postData: RegisterUser): any {

@@ -149,7 +149,7 @@
                               tooltip="Assign user role"
                               (click)="approveUser(template, user, i)"
                             >
-                              AssignRole
+                              Approve User
                             </button>
                           </div>
                         </div>
@@ -190,7 +190,7 @@
                     <option selected disabled>Assigned Role</option>
                     <option
                       [ngValue]="role.roleName"
-                      *ngFor="let role of roles"
+                        *ngFor="let role of userRoles$|async; let i = index"
                     >
                       {{ role.roleName }}
                     </option>

@@ -25,7 +25,9 @@ export class AllOtherService {
    getUsersForApproval(): Observable<any> {
     return this.http.get<any>(`${this.API_URL}/api/user/getUsersForApproval`);
   }
-
+getUserRoles(): Observable<any> {
+    return this.http.get<any>(`${this.API_URL}/api/auth/userRoles`);
+  }
 
 
 

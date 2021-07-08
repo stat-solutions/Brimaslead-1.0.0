@@ -245,19 +245,20 @@ return x.roleName===selectedChange.value
               this.posted = true;
               this.spinner.hide();
               this.popMsg.registerSuccess(this.serviceErrors);
-              this.router.navigate(['authpage/loginpage']);
+              this.router.navigate(['auth/loginpage']);
             }, 2000);
           }
         },
 
-        (error: string) => {
-
+        (result: any) => {
+  // console.log(result);
   setTimeout(() => {
                 this.spinner.hide();
           this.errored = true;
-          this.serviceErrors = error;
+          // console.log(result);
+          this.serviceErrors = result;
             this.popMsg.registerError(this.serviceErrors);
-              this.router.navigate(['authpage/loginpage']);
+              this.router.navigate(['auth/loginpage']);
             }, 2000);
 
         
@@ -265,7 +266,7 @@ return x.roleName===selectedChange.value
       );
     }
 
-
+// Prince?;=2020
 
 
 
