@@ -1,7 +1,7 @@
 <div class="container-fluid shadow-lg mt-0 pt-0 mb-2 pb-2 mx-0 px-0">
   <div class="container-fluid mt-0 pt-0 mb-0 pb-0">
     <div class="row ">
-      <div class="col-12 col-lg-6 mt-0 mb-0 pt-1 pt-md-5 pt-xl-0 pb-xl-0">
+      <div class="col-12 col-lg-6 mt-4 mb-0 pt-5 pb-xl-0">
         <ol class="breadcrumb float-sm-left mt-0 pt-0 pb-0 pl-2">
           <li class="breadcrumb-item text-info">
             <a class="pointerCursor" routerLink="/authpage"
@@ -15,10 +15,8 @@
       </div>
     </div>
   </div>
-  <!-- /.container-fluid -->
-
   <!-- Main content -->
-  <div class="container d-flex justify-content-center mt-0 mx-auto px-0 py-0">
+  <div class="container d-flex justify-content-center mt-0 mx-auto px-3 py-0">
     <div class="customer-card card shadow-lg my-0 mx-auto px-0 pt-2 pb-0">
             <div class="col-12 pt-0 d-flex justify-content-center">
               <h5 class="text-info text-center font-weight-bold">
@@ -190,27 +188,13 @@
           >
             Register
           </button>
-          <ngx-spinner
-            class="bg-warning bg-success"
-            size="medium"
-            type="ball-scale-multiple"
-          >
-            <p class="text-light">Loading...</p>
-          </ngx-spinner>
-          <button
-            type="button"
-            class="btn btn-danger col-5 mx-auto"
-            (click)="useform.reset()"
-          >
+                <button type="button" class="btn btn-danger col-5 mx-auto" routerLink="../loginpage">
             Cancel
           </button>
         </div>
       </div>
     </div>
   </div>
-  <!-- /.content -->
-  <!-- /.content-wrapper -->
-  <!-- ./wrapper -->
 </div>
 <!--footer -->
 <div class="container mt-3 pb-2">

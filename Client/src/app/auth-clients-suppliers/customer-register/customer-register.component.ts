@@ -44,35 +44,32 @@ export class CustomerRegisterComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userForm = this._formBuilder.group(
+    this.userForm = new FormGroup(
       {
-        clientName: [
+        clientName: this._formBuilder.control(
           "",
           Validators.compose([
             Validators.required,
             Validators.minLength(2),
             Validators.maxLength(128),
             // 4. check whether the entered password has a lower-case letter
-            CustomValidatorInitialCompanySetup.patternValidator(
-              /[a-zA-Z]/,
-              {
-                hasCharacters: true
-              }
-            )
+            CustomValidatorInitialCompanySetup.patternValidator(/[a-zA-Z]/, {
+              hasCharacters: true,
+            }),
           ])
-        ],
-        phoneNumber: [
+        ),
+        phoneNumber: this._formBuilder.control(
           "",
           Validators.compose([
             Validators.required,
             CustomValidatorInitialCompanySetup.patternValidator(
               /^(([0])([1-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9]))$/,
               { hasNumber: true }
-            )
+            ),
           ])
-        ],
-        email: ["", Validators.email],
-        password: [
+        ),
+        email: this._formBuilder.control("", Validators.email),
+        password: this._formBuilder.control(
           "",
           Validators.compose([
             // 1. Password Field is Required
@@ -86,23 +83,19 @@ export class CustomerRegisterComponent implements OnInit {
             //Validators.maxLength(4),
             // 3. check whether the entered password has upper case letter
             CustomValidatorInitialCompanySetup.patternValidator(/[A-Z]/, {
-              hasCapitalCase: true
+              hasCapitalCase: true,
             }),
             // 4. check whether the entered password has a lower-case letter
             CustomValidatorInitialCompanySetup.patternValidator(/[a-z]/, {
-              hasSmallCase: true
+              hasSmallCase: true,
             }),
             // 5. check whether the entered password has a special character
-            CustomValidatorInitialCompanySetup.patternValidator(
-              /[!@#$%^&*_+-=;':"|,.<>/?]/,
-              { hasSpecialCharacters: true }
-            )
-          ])
-        ],
-        confirmPassword: ["", Validators.required]
-      },
-      {
-        validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
+            CustomValidatorInitialCompanySetup.patternValidator(/[?!]/, {
+              hasSpecialCharacters: true,
+            }),
+          ]),
+        ),
+        confirmPassword: this._formBuilder.control("", Validators.required),
       }
     );
   }
@@ -113,7 +106,7 @@ export class CustomerRegisterComponent implements OnInit {
   }
   showDanger() {
 
-    this.toastr.warning(this.serviceErrors, 'Registration Failed!!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
+    this.toastr.warning(this.serviceErrors, 'Registration Failed!', {timeOut: 6000, positionClass: 'toast-bottom-left'});
   }
 
   onSubmit() {
