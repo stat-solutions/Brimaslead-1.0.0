@@ -57,9 +57,9 @@ export class SupplierRegisterComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.userForm = this._formBuilder.group(
+    this.userForm = new FormGroup(
       {
-        user_name: [
+        user_name: this._formBuilder.control(
           '',
           Validators.compose([
             Validators.required,
@@ -70,8 +70,8 @@ export class SupplierRegisterComponent implements OnInit {
               hasCharacters: true
             })
           ])
-        ],
-        phone_number: [
+        ),
+        phone_number: this._formBuilder.control(
           '',
           Validators.compose([
             Validators.required,
@@ -80,9 +80,10 @@ export class SupplierRegisterComponent implements OnInit {
               { hasNumber: true }
             )
           ])
-        ],
-        email: ['', Validators.email],
-        password: [
+
+          ),
+        email: this._formBuilder.control('', Validators.email),
+        password: this._formBuilder.control(
           '',
           Validators.compose([
             // 1. Password Field is Required
@@ -108,11 +109,8 @@ export class SupplierRegisterComponent implements OnInit {
               { hasSpecialCharacters: true }
             )
           ])
-        ],
-        confirmPassword: ['', Validators.required]
-      },
-      {
-        validator: CustomValidatorInitialCompanySetup.passwordMatchValidator
+        ),
+        confirmPassword: this._formBuilder.control('', Validators.required)
       }
     );
 
